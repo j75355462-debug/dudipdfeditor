@@ -117,6 +117,13 @@
     <p class="max-w-3xl mx-auto mt-5 text-lg text-slate-500">Convert, merge, split, rotate and turn documents into PDF — without server uploads.</p>
   </section>
 
+  <!-- Social ad banner above feature buttons -->
+  <section class="py-5" aria-label="Advertisement space">
+    <div class="ad-space ad-space-large">
+      <script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script>
+    </div>
+  </section>
+
   <section class="pb-6">
     <div id="toolsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
   </section>
@@ -249,7 +256,7 @@ const tools={
  pageNumbers:{title:'PDF Page Numbers',desc:'Add page numbers to every PDF page.',icon:'🔢',accept:'application/pdf',multiple:false,button:'Add Page Numbers',hint:'PDF only'},
  wordToPdf:{title:'Word to PDF',desc:'Convert a DOCX document to PDF in your browser.',icon:'📝',accept:'.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document',multiple:false,button:'Convert Word to PDF',hint:'DOCX — basic formatting'},
  excelToPdf:{title:'Excel to PDF',desc:'Convert XLS/XLSX workbook sheets to PDF.',icon:'📊',accept:'.xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',multiple:false,button:'Convert Excel to PDF',hint:'XLS / XLSX'},
- pdfEditorPro:{title:'PDF EDITOR — All-in-One',desc:'all in one place with text, images, signatures and drawing.',icon:'🛠️',accept:'application/pdf',multiple:false,button:'Edit PDF',hint:'PDF only'},
+ pdfEditorPro:{title:'PDF Editor Pro',desc:'Live, WYSIWYG editor — add text, images, signatures and freehand drawing with a real-time preview.',icon:'🖋️',accept:'application/pdf',multiple:false,button:'Save Edited PDF',hint:'PDF only'},
 
  signPdf:{title:'Sign PDF',desc:'Add a digital/electronic signature image to the PDF.',icon:'✍️',accept:'application/pdf',multiple:false,button:'Sign PDF',hint:'PDF + signature image'},
  protectPdf:{title:'Protect PDF',desc:'Dedicated tool for PDF password protection.',icon:'🔐',accept:'application/pdf',multiple:false,button:'Protect PDF',hint:'PDF only'},
@@ -263,12 +270,13 @@ compressPdf:{title:'Compress PDF',desc:'Reduce PDF size by rendering pages at a 
 
 let currentTool=null,selectedFiles=[],processing=false,pdfjs=null;
 const $=id=>document.getElementById(id);
+let editorProDoc=null,editorProPageNum=1,editorProPageCount=1,editorProScale=1,editorProPageW=612,editorProPageH=792,editorProBaseCanvas=null,editorProMode='text',editorProImageEl=null,editorProStrokes=[],editorProCurrentStroke=null,editorProDragging=false;
 
 const siteInfo={
  about:{title:'About Us',html:`<h3 class="font-black text-lg text-slate-900 mb-2">PDFMaster</h3><p>PDFMaster is a browser-based document and photo utility website designed to make common PDF and image tasks simple and fast.</p><p class="mt-3">Tools run directly in your browser where supported, so selected files can be processed on your device without being uploaded to a server.</p>`},
  terms:{title:'Terms & Conditions',html:`<h3 class="font-black text-lg text-slate-900 mb-2">Terms & Conditions</h3><p>By using PDFMaster, you agree to use the website only for lawful purposes and to remain responsible for the files and content you process.</p><p class="mt-3">PDFMaster is provided on an “as available” basis. Processing results can depend on your browser, device, file format and the capabilities of the libraries used by the site.</p><p class="mt-3">Do not use the service to process content you do not have permission to use.</p>`},
  privacy:{title:'Privacy Policy',html:`<h3 class="font-black text-lg text-slate-900 mb-2">Privacy Policy</h3><p><b>File processing:</b> The website is designed so that selected files are processed in your browser. This means the file-processing code does not intentionally upload your selected files to a PDFMaster server.</p><p class="mt-3"><b>Downloads:</b> Generated files are created locally in your browser and downloaded to your device.</p><p class="mt-3"><b>Third-party services:</b> The website may load libraries from third-party CDNs. Those services can have their own privacy policies and technical logs.</p><p class="mt-3">If you add analytics, advertising, cookies or any server-side service later, this policy should be updated to describe those services accurately.</p>`},
- contact:{title:'Contact Us',html:`<h3 class="font-black text-lg text-slate-900 mb-2">Contact Us</h3><p>If you need help, want to report a problem, or have a suggestion, contact us by email:</p><a href="mailto:j75355462@gmail.com" class="inline-flex mt-4 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">✉️ j75355462@gmail.com</a>`}
+ contact:{title:'Contact Us',html:`<h3 class="font-black text-lg text-slate-900 mb-2">Contact Us</h3><p>If you need help, want to report a problem, or have a suggestion, contact us by email:</p><a href="mailto:j75355462@gmail.com" class="inline-flex mt-4 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">✉️ j75355462@gmail.com</a><a href="tel:+919950573427" class="inline-flex mt-3 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">📞 +91 9950573427</a><p class="mt-4 text-sm text-slate-500">Owner: <b class="text-slate-700">Vikram Dudi</b></p>`}
 };
 function toggleSiteMenu(){const m=$('siteMenu'),a=$('siteMenuArrow');if(!m)return;const opening=m.classList.contains('hidden');m.classList.toggle('hidden');if(a)a.textContent=opening?'↑':'↓';}
 function closeSiteMenu(){const m=$('siteMenu'),a=$('siteMenuArrow');if(m)m.classList.add('hidden');if(a)a.textContent='↓';}
@@ -291,7 +299,7 @@ function toggleMoreFeatures(){
 }
 
 function openTool(key){
-  currentTool=key;selectedFiles=[];
+  currentTool=key;selectedFiles=[];editorProDoc=null;editorProBaseCanvas=null;editorProStrokes=[];editorProImageEl=null;editorProPageNum=1;
   const t=tools[key];
   $('home').classList.add('hidden');$('toolSection').classList.remove('hidden');
   $('toolIcon').textContent=t.icon;$('toolTitle').textContent=t.title;$('toolDescription').textContent=t.desc;
@@ -312,7 +320,59 @@ function renderOptions(){
   } else if(currentTool==='photoEditor'){
     box.innerHTML=`<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"><div><label class="block text-sm font-bold mb-2">Brightness <span id="brightnessVal">100%</span></label><input id="photoBrightness" type="range" min="0" max="200" value="100" class="w-full"></div><div><label class="block text-sm font-bold mb-2">Contrast <span id="contrastVal">100%</span></label><input id="photoContrast" type="range" min="0" max="200" value="100" class="w-full"></div><div><label class="block text-sm font-bold mb-2">Saturation <span id="saturationVal">100%</span></label><input id="photoSaturation" type="range" min="0" max="200" value="100" class="w-full"></div><div><label class="block text-sm font-bold mb-2">Grayscale <span id="grayscaleVal">0%</span></label><input id="photoGrayscale" type="range" min="0" max="100" value="0" class="w-full"></div><div><label class="block text-sm font-bold mb-2">Blur <span id="blurVal">0px</span></label><input id="photoBlur" type="range" min="0" max="12" value="0" class="w-full"></div><div><label class="block text-sm font-bold mb-2">Rotate</label><select id="photoRotate" class="w-full border rounded-xl px-4 py-3"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div><div><label class="block text-sm font-bold mb-2">Flip</label><select id="photoFlip" class="w-full border rounded-xl px-4 py-3"><option value="none">None</option><option value="h">Horizontal</option><option value="v">Vertical</option></select></div><div><label class="block text-sm font-bold mb-2">Output</label><select id="photoFormat" class="w-full border rounded-xl px-4 py-3"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></div><div><label class="block text-sm font-bold mb-2">Quality <span id="photoQualityVal">92%</span></label><input id="photoQuality" type="range" min="40" max="100" value="92" class="w-full"></div></div><div class="mt-5 p-4 rounded-2xl border bg-slate-50"><label class="block text-sm font-bold mb-2">Add Text (optional)</label><div class="grid sm:grid-cols-3 gap-3"><input id="photoText" class="border rounded-xl px-4 py-3" placeholder="Your text"><input id="photoTextSize" type="number" min="8" max="200" value="32" class="border rounded-xl px-4 py-3"><input id="photoTextColor" type="color" value="#ffffff" class="w-full h-12 border rounded-xl"></div></div><div class="mt-5 p-3 rounded-2xl border bg-slate-900"><canvas id="photoEditorCanvas" style="display:block;max-width:100%;height:auto;margin:auto;background:#fff;border-radius:12px"></canvas></div><button type="button" onclick="resetPhotoEditor()" class="mt-3 px-4 py-2 rounded-xl border bg-white font-bold">Reset edits</button>`;box.classList.remove('hidden');setTimeout(initPhotoEditorControls,50);
   } else if(currentTool==='pdfEditorPro'){
-    box.innerHTML=`<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"><div><label class="block text-sm font-bold mb-2">Page Number</label><input id="editorPage" type="number" min="1" value="1" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Text</label><input id="editorText" class="w-full border rounded-xl px-4 py-3" placeholder="Enter your text"></div><div><label class="block text-sm font-bold mb-2">Font Size</label><input id="editorSize" type="number" value="18" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Text X</label><input id="editorX" type="number" value="50" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Text Y</label><input id="editorY" type="number" value="700" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Text Color</label><input id="editorColor" type="color" value="#111827" class="w-full h-12 border rounded-xl"></div></div><div class="mt-5 p-4 bg-slate-50 rounded-2xl border"><b>Image / Signature</b><input id="editorImage" type="file" accept="image/png,image/jpeg" class="w-full border rounded-xl px-4 py-3 mt-2"><div class="grid sm:grid-cols-3 gap-3 mt-3"><input id="imageX" type="number" value="50" class="border rounded-xl px-4 py-3" placeholder="X"><input id="imageY" type="number" value="500" class="border rounded-xl px-4 py-3" placeholder="Y"><input id="imageWidth" type="number" value="140" class="border rounded-xl px-4 py-3" placeholder="Width"><input id="imageHeight" type="number" value="90" class="border rounded-xl px-4 py-3" placeholder="Height"></div></div><div class="mt-5 p-4 bg-white rounded-2xl border"><b>Freehand Drawing</b><canvas id="editorCanvas" width="760" height="260" style="width:100%;border:2px dashed #cbd5e1;border-radius:14px;background:#fff;display:block;margin-top:10px;touch-action:none"></canvas><button type="button" onclick="clearEditorCanvas()" class="mt-3 px-4 py-2 rounded-xl border font-bold">Clear drawing</button><span class="text-xs text-slate-400 ml-2">Draw with mouse/touch</span></div>`;box.classList.remove('hidden');setTimeout(initEditorCanvas,50);
+    box.innerHTML=`<div class="rounded-2xl border border-red-100 bg-gradient-to-br from-red-50 to-white p-4 sm:p-5">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+        <div class="inline-flex items-center gap-2 bg-red-500 text-white text-xs font-black px-3 py-1.5 rounded-full tracking-wide">✨ PRO EDITOR — LIVE PREVIEW</div>
+        <div class="flex items-center gap-2 bg-white border rounded-xl px-2 py-1.5">
+          <button type="button" onclick="editorProPrevPage()" class="w-8 h-8 rounded-lg hover:bg-slate-100 font-black">‹</button>
+          <span class="text-sm font-bold px-1">Page <span id="editorPageLabel">1</span> / <span id="editorPageTotal">1</span></span>
+          <button type="button" onclick="editorProNextPage()" class="w-8 h-8 rounded-lg hover:bg-slate-100 font-black">›</button>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button type="button" onclick="editorProSetMode('text')" data-mode="text" class="editor-tab px-4 py-2 rounded-xl font-bold text-sm border bg-white text-slate-600">📝 Text</button>
+        <button type="button" onclick="editorProSetMode('image')" data-mode="image" class="editor-tab px-4 py-2 rounded-xl font-bold text-sm border bg-white text-slate-600">🖼️ Image / Signature</button>
+        <button type="button" onclick="editorProSetMode('draw')" data-mode="draw" class="editor-tab px-4 py-2 rounded-xl font-bold text-sm border bg-white text-slate-600">✏️ Draw</button>
+      </div>
+
+      <div class="rounded-2xl border-2 border-slate-200 bg-slate-100 p-2 sm:p-3 overflow-auto">
+        <canvas id="editorCanvas" width="760" height="1000" style="width:100%;height:auto;background:#fff;border-radius:10px;display:block;touch-action:none;cursor:crosshair;box-shadow:0 6px 24px rgba(15,23,42,.12)"></canvas>
+      </div>
+      <p class="text-xs text-slate-400 mt-2 text-center">👆 Canvas par click ya drag karke seedha PDF par position set karein — jo yahan dikhega, wahi final PDF mein save hoga.</p>
+
+      <div id="editorPanelText" class="editor-panel mt-4 p-4 bg-white rounded-2xl border grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="sm:col-span-2 lg:col-span-4"><label class="block text-sm font-bold mb-2">Text</label><input id="editorText" class="w-full border rounded-xl px-4 py-3" placeholder="Yahan apna text likhein…"></div>
+        <div><label class="block text-sm font-bold mb-2">Font</label><select id="editorFont" class="w-full border rounded-xl px-4 py-3"><option value="Helvetica">Helvetica</option><option value="HelveticaBold">Helvetica Bold</option><option value="TimesRoman">Times Roman</option><option value="Courier">Courier</option></select></div>
+        <div><label class="block text-sm font-bold mb-2">Size</label><input id="editorSize" type="number" value="22" class="w-full border rounded-xl px-4 py-3"></div>
+        <div><label class="block text-sm font-bold mb-2">Color</label><input id="editorColor" type="color" value="#111827" class="w-full h-12 border rounded-xl"></div>
+        <div><label class="block text-sm font-bold mb-2">Opacity <span id="editorOpacityVal">100%</span></label><input id="editorOpacity" type="range" min="20" max="100" value="100" class="w-full mt-3"></div>
+        <div><label class="block text-sm font-bold mb-2">X</label><input id="editorX" type="number" value="60" class="w-full border rounded-xl px-4 py-3"></div>
+        <div><label class="block text-sm font-bold mb-2">Y</label><input id="editorY" type="number" value="700" class="w-full border rounded-xl px-4 py-3"></div>
+      </div>
+
+      <div id="editorPanelImage" class="editor-panel hidden mt-4 p-4 bg-white rounded-2xl border">
+        <label class="block text-sm font-bold mb-2">Image / Signature (PNG or JPG)</label>
+        <input id="editorImage" type="file" accept="image/png,image/jpeg" class="w-full border rounded-xl px-4 py-3">
+        <div class="grid sm:grid-cols-4 gap-3 mt-3">
+          <input id="imageX" type="number" value="60" class="border rounded-xl px-4 py-3" placeholder="X">
+          <input id="imageY" type="number" value="500" class="border rounded-xl px-4 py-3" placeholder="Y">
+          <input id="imageWidth" type="number" value="150" class="border rounded-xl px-4 py-3" placeholder="Width">
+          <input id="imageHeight" type="number" value="90" class="border rounded-xl px-4 py-3" placeholder="Height">
+        </div>
+        <p class="text-xs text-slate-400 mt-2">Image select karne ke baad canvas par drag karke position set karein.</p>
+      </div>
+
+      <div id="editorPanelDraw" class="editor-panel hidden mt-4 p-4 bg-white rounded-2xl border">
+        <div class="flex flex-wrap items-center gap-4">
+          <div class="flex items-center gap-2"><label class="text-sm font-bold">Pen Color</label><input id="editorPenColor" type="color" value="#ef4444" class="w-10 h-10 border rounded-lg"></div>
+          <div class="flex items-center gap-2"><label class="text-sm font-bold">Thickness</label><input id="editorPenWidth" type="range" min="1" max="12" value="3" class="w-32"></div>
+          <button type="button" onclick="editorProUndo()" class="px-4 py-2 rounded-xl border font-bold bg-white">↩ Undo</button>
+          <button type="button" onclick="editorProClearDrawing()" class="px-4 py-2 rounded-xl border font-bold bg-white">🗑 Clear</button>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">Mouse ya finger se seedha PDF page par draw ya sign karein.</p>
+      </div>
+    </div>`;box.classList.remove('hidden');setTimeout(initEditorProControls,50);
   } else if(currentTool==='compressPdf'){
     box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">Compression Quality</label><select id="compressQuality" class="w-full border rounded-xl px-4 py-3"><option value="1.2">High — better quality, larger file</option><option value="0.9" selected>Balanced — recommended</option><option value="0.65">Small — more compression</option><option value="0.45">Maximum — smallest size</option></select></div><div><label class="block text-sm font-bold mb-2">JPEG Quality</label><select id="compressJpegQuality" class="w-full border rounded-xl px-4 py-3"><option value="0.92">92%</option><option value="0.82" selected>82%</option><option value="0.7">70%</option><option value="0.55">55%</option></select></div></div><p class="text-xs text-slate-400 mt-3">The PDF is rebuilt from rendered page images. Text/searchable content may be flattened.</p>`;box.classList.remove('hidden');
   } else if(currentTool==='signPdf'){
@@ -343,7 +403,7 @@ function validFile(file){
   if(currentTool==='excelToPdf')return /\.(xlsx|xls)$/i.test(file.name);
   return file.type==='application/pdf'||/\.pdf$/i.test(file.name);
 }
-function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);}
+function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);}
 function renderFiles(){$('fileList').innerHTML=selectedFiles.map((f,i)=>`<div class="flex items-center gap-3 p-4 bg-slate-50 border rounded-xl"><div class="text-2xl">${fileIcon(f)}</div><div class="flex-1 min-w-0"><b class="block truncate text-sm">${esc(f.name)}</b><span class="text-xs text-slate-400">${bytes(f.size)}</span></div><button onclick="removeFile(${i})" class="w-9 h-9 rounded-lg hover:bg-red-100">✕</button></div>`).join('');}
 function fileIcon(f){return /image/i.test(f.type)?'🖼️':/word|docx/i.test(f.type)||/\.docx$/i.test(f.name)?'📝':/sheet|excel|xlsx|xls/i.test(f.type)||/\.(xlsx|xls)$/i.test(f.name)?'📊':'📄';}
 function removeFile(i){selectedFiles.splice(i,1);renderFiles();updateButton();}
@@ -481,12 +541,145 @@ function renderPhotoEditorPreview(){const c=$('photoEditorCanvas');if(!c||!photo
 function resetPhotoEditor(){['photoBrightness','photoContrast','photoSaturation','photoGrayscale','photoBlur'].forEach((id,i)=>{const el=$(id);if(el)el.value=[100,100,100,0,0][i];});if($('photoRotate'))$('photoRotate').value='0';if($('photoFlip'))$('photoFlip').value='none';if($('photoText'))$('photoText').value='';if($('photoQuality'))$('photoQuality').value='92';updatePhotoEditorLabels();renderPhotoEditorPreview();}
 async function photoEditor(){if(!selectedFiles[0]||!photoEditorImage)await updatePhotoEditorPreview();if(!photoEditorImage)throw new Error('Choose a photo first.');renderPhotoEditorPreview();const c=$('photoEditorCanvas'),format=$('photoFormat')?.value||'image/jpeg',quality=Math.max(.4,Math.min(1,(Number($('photoQuality')?.value)||92)/100));const blob=await new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(new Error('Could not create the edited image.')),format,quality));const ext=format==='image/png'?'png':'jpg';addDownload(URL.createObjectURL(blob),`edited-photo.${ext}`,`Download Edited ${ext.toUpperCase()}`);showResult(`Photo edited successfully. ${bytes(blob.size)} file ready.`);}
 
-async function pdfEditorPro(){if(!selectedFiles.length)throw new Error('Choose a PDF first.');const {PDFDocument,StandardFonts}=PDFLib;const src=await PDFDocument.load(await selectedFiles[0].arrayBuffer());const pageNo=Math.max(1,Number($('editorPage').value)||1);if(pageNo>src.getPageCount())throw new Error('This page does not exist in the PDF.');const page=src.getPage(pageNo-1),font=await src.embedFont(StandardFonts.Helvetica);const text=($('editorText').value||'').trim();if(text)page.drawText(text,{x:Number($('editorX').value)||50,y:Number($('editorY').value)||700,size:Math.max(6,Number($('editorSize').value)||18),font,color:editorHexRgb($('editorColor').value)});const imageFile=$('editorImage')?.files?.[0];if(imageFile){const b=await imageFile.arrayBuffer();const img=/png$/i.test(imageFile.type)||/\.png$/i.test(imageFile.name)?await src.embedPng(b):await src.embedJpg(b);const w=Math.max(10,Number($('imageWidth').value)||140),h=Math.max(10,Number($('imageHeight').value)||90);page.drawImage(img,{x:Number($('imageX').value)||50,y:Number($('imageY').value)||500,width:w,height:h});}const c=$('editorCanvas');if(c){const blank=document.createElement('canvas');blank.width=c.width;blank.height=c.height;if(c.toDataURL()!==blank.toDataURL()){const img=await src.embedPng(c.toDataURL('image/png'));const w=Math.min(page.getWidth()-40,img.width),h=w*(img.height/img.width);page.drawImage(img,{x:20,y:20,width:w,height:h});}}const out=await src.save({useObjectStreams:true});downloadBlob(new Blob([out],{type:'application/pdf'}),'edited-pdf.pdf','Edited Download PDF');showResult('PDF is ready.');}
-
-let editorDrawing=false,editorLastX=0,editorLastY=0;
-function initEditorCanvas(){const c=$('editorCanvas');if(!c)return;const ctx=c.getContext('2d');ctx.lineCap='round';ctx.lineJoin='round';const point=e=>{const r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:(p.clientX-r.left)*c.width/r.width,y:(p.clientY-r.top)*c.height/r.height};};const start=e=>{e.preventDefault();const p=point(e);editorDrawing=true;editorLastX=p.x;editorLastY=p.y;};const move=e=>{if(!editorDrawing)return;e.preventDefault();const p=point(e);ctx.beginPath();ctx.moveTo(editorLastX,editorLastY);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#111827';ctx.lineWidth=3;ctx.stroke();editorLastX=p.x;editorLastY=p.y;};const end=()=>editorDrawing=false;c.onmousedown=start;c.onmousemove=move;c.onmouseup=end;c.onmouseleave=end;c.ontouchstart=start;c.ontouchmove=move;c.ontouchend=end;}
-function clearEditorCanvas(){const c=$('editorCanvas');if(c)c.getContext('2d').clearRect(0,0,c.width,c.height);}
 function editorHexRgb(hex){const n=parseInt((hex||'#111827').slice(1),16);return PDFLib.rgb(((n>>16)&255)/255,((n>>8)&255)/255,(n&255)/255);}
+
+/* ---------- PDF Editor Pro — live WYSIWYG preview engine ---------- */
+async function editorProLoadFile(){
+  if(currentTool!=='pdfEditorPro'||!selectedFiles[0])return;
+  if(!pdfjs){toast('PDF engine is still loading — try again in a moment.');return;}
+  try{
+    const buf=await selectedFiles[0].arrayBuffer();
+    editorProDoc=await pdfjs.getDocument({data:buf}).promise;
+    editorProPageCount=editorProDoc.numPages;editorProPageNum=1;editorProStrokes=[];editorProImageEl=null;
+    if($('editorImage'))$('editorImage').value='';
+    await editorProRenderPage();
+  }catch(e){console.error(e);toast('Could not load the PDF preview.');}
+}
+async function editorProRenderPage(){
+  if(!editorProDoc)return;
+  const page=await editorProDoc.getPage(editorProPageNum);
+  const viewport0=page.getViewport({scale:1});
+  const scale=760/viewport0.width;
+  const viewport=page.getViewport({scale});
+  const base=document.createElement('canvas');base.width=Math.ceil(viewport.width);base.height=Math.ceil(viewport.height);
+  await page.render({canvasContext:base.getContext('2d'),viewport}).promise;
+  editorProBaseCanvas=base;editorProScale=scale;editorProPageW=viewport0.width;editorProPageH=viewport0.height;
+  const c=$('editorCanvas');if(c){c.width=base.width;c.height=base.height;}
+  if($('editorPageLabel'))$('editorPageLabel').textContent=editorProPageNum;
+  if($('editorPageTotal'))$('editorPageTotal').textContent=editorProPageCount;
+  editorProStrokes=[];editorProRedraw();
+}
+function editorProPrevPage(){if(!editorProDoc||editorProPageNum<=1)return;editorProPageNum--;editorProRenderPage();}
+function editorProNextPage(){if(!editorProDoc||editorProPageNum>=editorProPageCount)return;editorProPageNum++;editorProRenderPage();}
+function editorProSetMode(m){
+  editorProMode=m;
+  document.querySelectorAll('.editor-tab').forEach(b=>{const active=b.dataset.mode===m;b.classList.toggle('bg-red-500',active);b.classList.toggle('text-white',active);b.classList.toggle('border-red-500',active);b.classList.toggle('bg-white',!active);b.classList.toggle('text-slate-600',!active);});
+  ['Text','Image','Draw'].forEach(p=>{const el=$('editorPanel'+p);if(el)el.classList.toggle('hidden',p.toLowerCase()!==m);});
+  editorProRedraw();
+}
+function editorProToCanvasXY(px,py){return{x:px*editorProScale,y:(editorProPageH-py)*editorProScale};}
+function editorProToPdfXY(cx,cy){return{x:cx/editorProScale,y:editorProPageH-(cy/editorProScale)};}
+function editorProImageCanvasRect(){
+  const x=Number($('imageX')?.value)||0,y=Number($('imageY')?.value)||0,w=Number($('imageWidth')?.value)||100,h=Number($('imageHeight')?.value)||100;
+  const topLeft=editorProToCanvasXY(x,y+h);
+  return{cx:topLeft.x,cy:topLeft.y,cw:w*editorProScale,ch:h*editorProScale};
+}
+function editorProRedraw(){
+  const c=$('editorCanvas');if(!c||!editorProBaseCanvas)return;
+  const ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(editorProBaseCanvas,0,0);
+  const allStrokes=editorProCurrentStroke?[...editorProStrokes,editorProCurrentStroke]:editorProStrokes;
+  allStrokes.forEach(s=>{if(s.points.length<2)return;ctx.beginPath();ctx.moveTo(s.points[0].x,s.points[0].y);for(let i=1;i<s.points.length;i++)ctx.lineTo(s.points[i].x,s.points[i].y);ctx.strokeStyle=s.color;ctx.lineWidth=s.width;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();});
+  const text=($('editorText')?.value||'').trim();
+  if(text){
+    const size=Math.max(6,Number($('editorSize')?.value)||22),x=Number($('editorX')?.value)||0,y=Number($('editorY')?.value)||0,pos=editorProToCanvasXY(x,y);
+    const fontChoice=$('editorFont')?.value||'Helvetica';
+    const weightMap={Helvetica:'',HelveticaBold:'bold ',TimesRoman:'',Courier:''};
+    const familyMap={Helvetica:'Helvetica, Arial, sans-serif',HelveticaBold:'Helvetica, Arial, sans-serif',TimesRoman:'"Times New Roman", Times, serif',Courier:'"Courier New", monospace'};
+    ctx.font=`${weightMap[fontChoice]}${Math.round(size*editorProScale)}px ${familyMap[fontChoice]}`;
+    ctx.fillStyle=$('editorColor')?.value||'#111827';ctx.globalAlpha=(Number($('editorOpacity')?.value)||100)/100;ctx.textBaseline='alphabetic';
+    ctx.fillText(text,pos.x,pos.y);ctx.globalAlpha=1;
+    if(editorProMode==='text'){ctx.beginPath();ctx.arc(pos.x,pos.y,6,0,Math.PI*2);ctx.fillStyle='rgba(239,68,68,.9)';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();}
+  }
+  if(editorProImageEl){
+    const r=editorProImageCanvasRect();ctx.drawImage(editorProImageEl,r.cx,r.cy,r.cw,r.ch);
+    if(editorProMode==='image'){ctx.strokeStyle='#ef4444';ctx.setLineDash([6,4]);ctx.lineWidth=2;ctx.strokeRect(r.cx,r.cy,r.cw,r.ch);ctx.setLineDash([]);}
+  }
+}
+function editorProPoint(e){const c=$('editorCanvas'),r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:(p.clientX-r.left)*c.width/r.width,y:(p.clientY-r.top)*c.height/r.height};}
+function editorProPointerDown(e){
+  if(!editorProBaseCanvas)return;e.preventDefault();editorProDragging=true;
+  if(editorProMode==='draw'){const p=editorProPoint(e);editorProCurrentStroke={points:[p],color:$('editorPenColor')?.value||'#ef4444',width:Number($('editorPenWidth')?.value)||3};}
+  editorProPointerMove(e);
+}
+function editorProPointerMove(e){
+  if(!editorProDragging||!editorProBaseCanvas)return;e.preventDefault();
+  const p=editorProPoint(e);
+  if(editorProMode==='draw'){if(editorProCurrentStroke){editorProCurrentStroke.points.push(p);editorProRedraw();}return;}
+  const pdf=editorProToPdfXY(p.x,p.y);
+  if(editorProMode==='text'){$('editorX').value=Math.round(pdf.x);$('editorY').value=Math.round(pdf.y);}
+  else if(editorProMode==='image'){$('imageX').value=Math.round(pdf.x);$('imageY').value=Math.round(pdf.y);}
+  editorProRedraw();
+}
+function editorProPointerUp(){
+  if(editorProMode==='draw'&&editorProCurrentStroke){if(editorProCurrentStroke.points.length>1)editorProStrokes.push(editorProCurrentStroke);editorProCurrentStroke=null;}
+  editorProDragging=false;editorProRedraw();
+}
+function editorProUndo(){editorProStrokes.pop();editorProRedraw();}
+function editorProClearDrawing(){editorProStrokes=[];editorProRedraw();}
+function initEditorProControls(){
+  ['editorText','editorSize','editorX','editorY','editorColor','editorFont','editorOpacity','imageX','imageY','imageWidth','imageHeight'].forEach(id=>{
+    const el=$(id);if(el)el.oninput=el.onchange=()=>{if(id==='editorOpacity'&&$('editorOpacityVal'))$('editorOpacityVal').textContent=(el.value||100)+'%';editorProRedraw();};
+  });
+  const img=$('editorImage');
+  if(img)img.onchange=async()=>{
+    const f=img.files?.[0];if(!f){editorProImageEl=null;editorProRedraw();return;}
+    try{const el=await loadImage(f);editorProImageEl=el;const w=150,h=Math.max(10,Math.round(w*((el.naturalHeight/el.naturalWidth)||0.6)));$('imageWidth').value=w;$('imageHeight').value=h;editorProRedraw();}
+    catch(e){toast('Could not load the image.');}
+  };
+  const c=$('editorCanvas');
+  if(c){c.onmousedown=editorProPointerDown;c.onmousemove=editorProPointerMove;c.onmouseup=editorProPointerUp;c.onmouseleave=editorProPointerUp;c.ontouchstart=editorProPointerDown;c.ontouchmove=editorProPointerMove;c.ontouchend=editorProPointerUp;}
+  editorProSetMode('text');
+  if(editorProBaseCanvas)editorProRenderExisting();
+}
+function editorProRenderExisting(){const c=$('editorCanvas');if(c&&editorProBaseCanvas){c.width=editorProBaseCanvas.width;c.height=editorProBaseCanvas.height;if($('editorPageLabel'))$('editorPageLabel').textContent=editorProPageNum;if($('editorPageTotal'))$('editorPageTotal').textContent=editorProPageCount;editorProRedraw();}}
+
+async function pdfEditorPro(){
+  if(!selectedFiles.length)throw new Error('Choose a PDF first.');
+  if(!editorProDoc||!editorProBaseCanvas)throw new Error('The preview is still loading — please wait a moment and try again.');
+  const {PDFDocument,StandardFonts}=PDFLib;
+  const src=await PDFDocument.load(await selectedFiles[0].arrayBuffer());
+  const pageNo=editorProPageNum;
+  if(pageNo>src.getPageCount())throw new Error('This page does not exist in the PDF.');
+  const page=src.getPage(pageNo-1);
+
+  const text=($('editorText')?.value||'').trim();
+  if(text){
+    const fontChoice=$('editorFont')?.value||'Helvetica';
+    const fontMap={Helvetica:StandardFonts.Helvetica,HelveticaBold:StandardFonts.HelveticaBold,TimesRoman:StandardFonts.TimesRoman,Courier:StandardFonts.Courier};
+    const font=await src.embedFont(fontMap[fontChoice]||StandardFonts.Helvetica);
+    page.drawText(text,{x:Number($('editorX').value)||50,y:Number($('editorY').value)||700,size:Math.max(6,Number($('editorSize').value)||22),font,color:editorHexRgb($('editorColor').value),opacity:(Number($('editorOpacity')?.value)||100)/100});
+  }
+
+  const imageFile=$('editorImage')?.files?.[0];
+  if(imageFile&&editorProImageEl){
+    const b=await imageFile.arrayBuffer();
+    const img=/png$/i.test(imageFile.type)||/\.png$/i.test(imageFile.name)?await src.embedPng(b):await src.embedJpg(b);
+    page.drawImage(img,{x:Number($('imageX').value)||50,y:Number($('imageY').value)||500,width:Math.max(10,Number($('imageWidth').value)||140),height:Math.max(10,Number($('imageHeight').value)||90)});
+  }
+
+  if(editorProStrokes.length){
+    const w=editorProBaseCanvas.width,h=editorProBaseCanvas.height;
+    const overlay=document.createElement('canvas');overlay.width=w;overlay.height=h;
+    const octx=overlay.getContext('2d');
+    editorProStrokes.forEach(s=>{if(s.points.length<2)return;octx.beginPath();octx.moveTo(s.points[0].x,s.points[0].y);for(let i=1;i<s.points.length;i++)octx.lineTo(s.points[i].x,s.points[i].y);octx.strokeStyle=s.color;octx.lineWidth=s.width;octx.lineCap='round';octx.lineJoin='round';octx.stroke();});
+    const overlayImg=await src.embedPng(overlay.toDataURL('image/png'));
+    page.drawImage(overlayImg,{x:0,y:0,width:editorProPageW,height:editorProPageH});
+  }
+
+  const out=await src.save({useObjectStreams:true});
+  downloadBlob(new Blob([out],{type:'application/pdf'}),'edited-pdf.pdf','Edited Download PDF');
+  showResult('Your PDF has been edited successfully — download it below.');
+}
 
 async function wordToPdf(){if(!window.mammoth)throw new Error('Word library did not load. Check your internet connection.');const result=await mammoth.convertToHtml({arrayBuffer:await selectedFiles[0].arrayBuffer()},{convertImage:mammoth.images.imgElement(async image=>({src:`data:${image.contentType};base64,${await image.read('base64')}`}))});const wrap=document.createElement('div');wrap.className='doc-preview';wrap.innerHTML=result.value;document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,100));const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4'});await pdf.html(wrap,{margin:[36,36,36,36],autoPaging:'text',html2canvas:{scale:1,useCORS:true,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'word-to-pdf.pdf','Word Download PDF');}});wrap.remove();showResult('DOCX PDF is ready.');}
 async function excelToPdf(){if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');const wb=XLSX.read(await selectedFiles[0].arrayBuffer(),{type:'array'});const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});let first=true;for(let si=0;si<wb.SheetNames.length;si++){const name=wb.SheetNames[si],sheet=wb.Sheets[name],html=XLSX.utils.sheet_to_html(sheet,{header:'',footer:''});const wrap=document.createElement('div');wrap.className='sheet-preview';wrap.innerHTML=`<h2 style="font-size:18px;font-weight:700;margin:0 0 12px">${esc(name)}</h2>${html}`;document.body.appendChild(wrap);if(!first)pdf.addPage('a4','landscape');first=false;await pdf.html(wrap,{margin:[28,28,28,28],autoPaging:'text',html2canvas:{scale:.75,backgroundColor:'#fff'},callback:()=>{}});wrap.remove();setProgress(si+1,wb.SheetNames.length,`Sheet ${si+1}/${wb.SheetNames.length} ready`);await idle();}downloadBlob(pdf.output('blob'),'excel-to-pdf.pdf','Excel Download PDF');showResult(`${wb.SheetNames.length} worksheet(s) converted to PDF.`);}

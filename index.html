@@ -766,7 +766,7 @@ async function pdfEditorPro(){
 async function wordToPdf(){if(!window.mammoth)throw new Error('Word library did not load. Check your internet connection.');const result=await mammoth.convertToHtml({arrayBuffer:await selectedFiles[0].arrayBuffer()},{convertImage:mammoth.images.imgElement(async image=>({src:`data:${image.contentType};base64,${await image.read('base64')}`}))});const wrap=document.createElement('div');wrap.className='doc-preview';wrap.innerHTML=result.value;document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,100));const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4'});await pdf.html(wrap,{margin:[36,36,36,36],autoPaging:'text',html2canvas:{scale:1,useCORS:true,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'word-to-pdf.pdf','Word Download PDF');}});wrap.remove();showResult('DOCX PDF is ready.');}
 async function excelToPdf(){if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');const wb=XLSX.read(await selectedFiles[0].arrayBuffer(),{type:'array'});const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});let first=true;for(let si=0;si<wb.SheetNames.length;si++){const name=wb.SheetNames[si],sheet=wb.Sheets[name],html=XLSX.utils.sheet_to_html(sheet,{header:'',footer:''});const wrap=document.createElement('div');wrap.className='sheet-preview';wrap.innerHTML=`<h2 style="font-size:18px;font-weight:700;margin:0 0 12px">${esc(name)}</h2>${html}`;document.body.appendChild(wrap);if(!first)pdf.addPage('a4','landscape');first=false;await pdf.html(wrap,{margin:[28,28,28,28],autoPaging:'text',html2canvas:{scale:.75,backgroundColor:'#fff'},callback:()=>{}});wrap.remove();setProgress(si+1,wb.SheetNames.length,`Sheet ${si+1}/${wb.SheetNames.length} ready`);await idle();}downloadBlob(pdf.output('blob'),'excel-to-pdf.pdf','Excel Download PDF');showResult(`${wb.SheetNames.length} worksheet(s) converted to PDF.`);}
 
-function openDownloadGate(url,name){window.__pendingDownload={url,name};const gate=$('downloadAdGate'),btn=$('downloadGateBtn'),count=$('downloadGateCount');if(!gate)return;gate.classList.remove('hidden');btn.disabled=true;let left=5;count.textContent='Download button will appear in '+left+' seconds…';clearInterval(window.__downloadGateTimer);window.__downloadGateTimer=setInterval(()=>{left--;if(left>0)count.textContent='Download button will appear in '+left+' seconds…';else{clearInterval(window.__downloadGateTimer);count.textContent='You can download your file now.';btn.disabled=false;}},1000);}
+function openDownloadGate(url,name){window.__pendingDownload={url,name};const gate=$('downloadAdGate'),btn=$('downloadGateBtn'),count=$('downloadGateCount');if(!gate)return;gate.classList.remove('hidden');if(btn){btn.disabled=true;btn.style.display='none';}let left=5;count.textContent='Download will start in '+left+' seconds…';clearInterval(window.__downloadGateTimer);window.__downloadGateTimer=setInterval(()=>{left--;if(left>0){count.textContent='Download will start in '+left+' seconds…';}else{clearInterval(window.__downloadGateTimer);count.textContent='Downloading…';completeDownloadGate();}},1000);}
 function completeDownloadGate(){const p=window.__pendingDownload;if(!p)return;const a=document.createElement('a');a.href=p.url;a.download=p.name;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();closeDownloadGate();}
 function closeDownloadGate(){clearInterval(window.__downloadGateTimer);const gate=$('downloadAdGate');if(gate)gate.classList.add('hidden');window.__pendingDownload=null;}
 function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('button');a.type='button';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.onclick=()=>openDownloadGate(url,name);$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');$('resultText').textContent='PDF is ready. Click the Download button below.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
@@ -789,103 +789,21 @@ window.addEventListener('load',()=>{
 
 </script>
 
-<style>
-#downloadAdModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:999999;align-items:center;justify-content:center;padding:18px}
-#downloadAdBox{width:min(92vw,520px);background:#fff;border-radius:16px;padding:20px;text-align:center;box-shadow:0 15px 50px rgba(0,0,0,.35)}
-#downloadAdBox h3{margin:0 0 10px;font-size:22px}
-#downloadAdBox p{margin:8px 0;color:#555}
-#downloadAdArea{min-height:180px;margin:15px 0;border:1px dashed #bbb;border-radius:10px;display:flex;align-items:center;justify-content:center}
-#downloadContinue{display:none;border:0;border-radius:10px;padding:12px 24px;background:#1677ff;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
-#downloadContinue:disabled{opacity:.55;cursor:not-allowed}
-</style>
-<div id="downloadAdModal">
-  <div id="downloadAdBox">
-    <h3>Preparing your download</h3>
-    <p id="downloadAdTimer">Please wait 5 seconds...</p>
-    <div id="downloadAdArea">
+
+<div id="downloadAdGate" class="hidden" aria-modal="true" role="dialog">
+  <div class="download-gate-card">
+    <h3 style="margin:0;font-size:22px;font-weight:900;color:#0f172a">Preparing your download</h3>
+    <p style="margin:8px 0 0;color:#64748b">Please wait while your download is prepared.</p>
+    <div class="download-gate-ad">
       <div>
-        <div>Ad</div>
-        <div style="font-size:12px;color:#888">AdMaven placement: BqHC8qTCH</div>
+        <div style="font-weight:800;color:#64748b">Ad</div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px">AdMaven placement: BqHC8qTCH</div>
       </div>
     </div>
-    <button id="downloadContinue" type="button">Download</button>
+    <div id="downloadGateCount" class="download-gate-count">Download will start in 5 seconds…</div>
+    <button id="downloadGateBtn" class="download-gate-btn" type="button" disabled style="display:none">Download</button>
   </div>
 </div>
 
 </body>
-
-<script>
-(function(){
-  let pendingDownload = null;
-  let timer = null;
-
-  function openDownloadAd(downloadFn){
-    pendingDownload = downloadFn;
-    const modal = document.getElementById('downloadAdModal');
-    const timerText = document.getElementById('downloadAdTimer');
-    const btn = document.getElementById('downloadContinue');
-    modal.style.display = 'flex';
-    btn.style.display = 'none';
-    btn.disabled = true;
-
-    let seconds = 5;
-    timerText.textContent = 'Please wait ' + seconds + ' seconds...';
-    clearInterval(timer);
-    timer = setInterval(function(){
-      seconds--;
-      if(seconds > 0){
-        timerText.textContent = 'Please wait ' + seconds + ' seconds...';
-      } else {
-        clearInterval(timer);
-        timerText.textContent = 'Downloading...';
-        btn.style.display = 'none';
-        btn.disabled = true;
-
-        // Automatically start the download after 5 seconds,
-        // then close the popup.
-        if(typeof pendingDownload === 'function'){
-          pendingDownload();
-        }
-        pendingDownload = null;
-        setTimeout(function(){
-          modal.style.display = 'none';
-        }, 300);
-      }
-    },1000);
-  }
-
-  document.addEventListener('click', function(e){
-    const el = e.target.closest('a[download], button');
-    if(!el) return;
-
-    const txt = (el.textContent || '').trim().toLowerCase();
-    const href = el.getAttribute('href');
-
-    // Only intercept obvious download links/buttons.
-    if(el.hasAttribute('download') || txt.includes('download')){
-      if(el.dataset.adHandled === '1') return;
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      const clone = el.cloneNode(true);
-      clone.dataset.adHandled = '1';
-      clone.style.display = 'none';
-      document.body.appendChild(clone);
-
-      openDownloadAd(function(){
-        clone.click();
-        clone.remove();
-      });
-    }
-  }, true);
-
-  document.getElementById('downloadContinue').addEventListener('click', function(){
-    if(typeof pendingDownload === 'function') pendingDownload();
-    pendingDownload = null;
-    clearInterval(timer);
-    document.getElementById('downloadAdModal').style.display = 'none';
-  });
-})();
-</script>
-
 </html>

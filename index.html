@@ -1216,7 +1216,7 @@ document.querySelectorAll("[data-ai-action]").forEach(b=>b.onclick=()=>{
 });
 $("aiClearBtn")?.addEventListener("click",()=>{img=null;ctx.clearRect(0,0,canvas.width,canvas.height)});
 $("aiDownloadBtn").onclick=()=>{if(!img)return;let a=document.createElement("a");a.download="ai-photo-edited.png";a.href=canvas.toDataURL("image/png");a.click()};
-$("aiGenerateBtn").onclick=async()=>{let p=$("aiPrompt").value.trim();if(!p){$("aiStatus").textContent="Please enter a prompt.";return}$("aiStatus").textContent="Generating image…";try{let [width,height]=$("aiSize").value.split("x").map(Number),r=await fetch("/api/text-to-image",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:p,negative_prompt:$("aiNegative").value.trim(),width,height})});if(!r.ok)throw Error();setImage(URL.createObjectURL(await r.blob()));$("aiStatus").textContent="Generated successfully."}catch(e){$("aiStatus").textContent="AI generation needs a secure backend at /api/text-to-image."}};
+$("aiGenerateBtn").onclick=async()=>{let p=$("aiPrompt").value.trim();if(!p){$("aiStatus").textContent="Please enter a prompt.";return}$("aiStatus").textContent="Generating image…";try{let [width,height]=$("aiSize").value.split("x").map(Number),r=await fetch("https://ai-pdf-editor-314iewk8h-myteam-c68d.vercel.app/api/text-to-image",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:p,negative_prompt:$("aiNegative").value.trim(),width,height})});if(!r.ok)throw Error();setImage(URL.createObjectURL(await r.blob()));$("aiStatus").textContent="Generated successfully."}catch(e){$("aiStatus").textContent="AI generation needs a secure backend at /api/text-to-image."}};
 })();
 </script>
 

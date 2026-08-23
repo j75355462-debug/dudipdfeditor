@@ -124,7 +124,11 @@
     <div class="flex items-center gap-2">
       <button onclick="toggleLang()" id="langToggleBtn" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-sm font-bold text-slate-700 flex items-center gap-1">🌐 <span id="langToggleLabel">हिंदी</span></button>
       <div class="relative">
-        <button onclick="toggleNotifBox()" id="notifButton" class="relative w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 grid place-items-center text-lg" aria-label="Notifications">🔔<span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
+        <button onclick="toggleNotifBox()" id="notifButton" class="relative w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 grid place-items-center text-lg" aria-label="Notifications"><!-- Notification icon ad -->
+<span id="notificationAd" class="inline-flex items-center justify-center">
+<script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script>
+</span>
+🔔<span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
         <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]">
           <div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div>
           <div class="rounded-xl border border-slate-100 bg-slate-50 p-2">
@@ -182,7 +186,13 @@
       </div>
     </button>
 
-    <div id="moreFeaturesPanel" class="hidden mt-5">
+    <!-- More New Features ad -->
+<div id="moreFeaturesAd" class="my-4 flex justify-center">
+<div class="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+<script async="async" data-cfasync="false" src="https://pl30964195.profitableratecpmnetwork.com/3ee04ac9d05e6caef39a0d0285701995/invoke.js"></script>
+<div id="container-3ee04ac9d05e6caef39a0d0285701995"></div>
+</div></div>
+<div id="moreFeaturesPanel" class="hidden mt-5">
       <div id="moreFeaturesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
   </section>
@@ -221,7 +231,21 @@
       <button id="processBtn" onclick="processFiles()" disabled class="w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3">
         <span id="processBtnText">Choose files first</span><span id="processSpinner" class="spinner hidden"></span>
       </button>
-      <div id="resultBox" class="hidden mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
+      <!-- Download area ad -->
+<div id="downloadAreaAd" class="my-4 flex justify-center">
+<div class="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+<script>
+atOptions = {
+  'key' : 'f11b7ad6ff521e60831764f61b19eefe',
+  'format' : 'iframe',
+  'height' : 60,
+  'width' : 468,
+  'params' : {}
+};
+</script>
+<script src="https://www.highrevenueformat.com/f11b7ad6ff521e60831764f61b19eefe/invoke.js"></script>
+</div></div>
+<div id="resultBox" class="hidden mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
         <h3 class="font-black text-emerald-800">✅ Done</h3>
         <p id="resultText" class="text-sm text-emerald-700 mt-1"></p>
         <div id="downloadArea" class="mt-4 flex flex-wrap gap-2"></div>
@@ -287,6 +311,12 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  deletePages:{title:'Delete Pages',titleHi:'पेज डिलीट करें',desc:'Remove selected pages from a PDF and download a clean copy.',descHi:'PDF से चुने गए पन्ने हटाकर नई साफ कॉपी डाउनलोड करें।',icon:'🗑️',accept:'application/pdf',multiple:false,button:'Delete Pages',buttonHi:'पेज डिलीट करें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  imageConvert:{title:'Image Format Converter',titleHi:'इमेज फॉर्मेट कन्वर्टर',desc:'Convert JPG, PNG and WEBP images to each other, right in your browser.',descHi:'JPG, PNG और WEBP इमेज को आपस में बदलें — सीधे ब्राउज़र में।',icon:'🔄',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Convert Images',buttonHi:'इमेज कन्वर्ट करें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
  imageCompress:{title:'Image Compressor',titleHi:'इमेज कंप्रेसर',desc:'Shrink photo file size by adjusting quality and width — right in your browser.',descHi:'क्वालिटी और साइज़ कम करके फोटो की फाइल साइज़ छोटी करें।',icon:'🗜️',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Compress Images',buttonHi:'इमेज कंप्रेस करें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
+ imageResize:{title:'Image Resizer',titleHi:'इमेज रिसाइज़र',desc:'Resize images by exact width/height or fit them inside a maximum size.',descHi:'इमेज को exact width/height या maximum size के हिसाब से resize करें।',icon:'📐',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Resize Images',buttonHi:'इमेज resize करें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
+ imageUpscale:{title:'Image Upscaler',titleHi:'इमेज अपस्केलर',desc:'Create larger 2× or 3× copies of images directly in your browser.',descHi:'ब्राउज़र में इमेज की 2× या 3× बड़ी कॉपी बनाएं।',icon:'🔎',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Upscale Images',buttonHi:'इमेज अपस्केल करें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
+ imageGrayscale:{title:'Grayscale Image',titleHi:'ग्रेस्केल इमेज',desc:'Convert one or many images to clean black-and-white grayscale copies.',descHi:'एक या कई इमेज को साफ ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'⚫',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Make Grayscale',buttonHi:'ग्रेस्केल बनाएं',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
+ pdfCrop:{title:'Crop PDF',titleHi:'PDF क्रॉप करें',desc:'Crop PDF page margins by entering precise top, right, bottom and left values.',descHi:'Top, right, bottom और left की precise values से PDF pages crop करें।',icon:'✂️',accept:'application/pdf',multiple:false,button:'Crop PDF',buttonHi:'PDF क्रॉप करें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+ pdfGrayscale:{title:'Grayscale PDF',titleHi:'ग्रेस्केल PDF',desc:'Convert PDF pages to black-and-white grayscale while keeping the page layout.',descHi:'PDF pages को layout बनाए रखते हुए ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'🖤',accept:'application/pdf',multiple:false,button:'Make Grayscale PDF',buttonHi:'ग्रेस्केल PDF बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+ pdfToText:{title:'PDF to Text',titleHi:'PDF से Text',desc:'Extract readable text from PDF pages and save it as a TXT file.',descHi:'PDF pages से readable text निकालकर TXT फाइल बनाएं।',icon:'🔤',accept:'application/pdf',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  wordEditor:{title:'Word Document Editor',titleHi:'वर्ड डॉक्यूमेंट एडिटर',desc:'Create and format documents like MS Word — bold, headings, lists, tables, images — then export as PDF, JPG or PNG.',descHi:'MS Word जैसा डॉक्यूमेंट बनाएं — बोल्ड, हेडिंग, लिस्ट, टेबल, इमेज — फिर PDF, JPG या PNG में डाउनलोड करें।',icon:'📝',accept:'',multiple:false,button:'Open Editor',buttonHi:'एडिटर खोलें',hint:'No file needed — start typing',hintHi:'फाइल की ज़रूरत नहीं — सीधे लिखना शुरू करें',isNew:true}
 };
 
@@ -363,7 +393,7 @@ function closeInfo(){const modal=$('infoModal');if(!modal)return;modal.classList
 document.addEventListener('click',e=>{const menu=$('siteMenu'),btn=$('siteMenuButton');if(menu&&!menu.classList.contains('hidden')&&!menu.contains(e.target)&&!btn.contains(e.target))closeSiteMenu();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
-const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','wordEditor'];
+const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','pdfCrop','pdfGrayscale','pdfToText','wordEditor'];
 function T(t,key){return siteLang==='hi'&&t[key+'Hi']!==undefined?t[key+'Hi']:t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
@@ -518,10 +548,19 @@ function renderOptions(){
     box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">${lbl1}</label><select id="convertFormat" class="w-full border rounded-xl px-4 py-3"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div><div><label class="block text-sm font-bold mb-2">${lbl2} <span id="convertQualityVal">92%</span></label><input id="convertQuality" type="range" min="40" max="100" value="92" class="w-full mt-3"></div></div>`;box.classList.remove('hidden');
     setTimeout(()=>{const q=$('convertQuality');if(q)q.oninput=()=>{if($('convertQualityVal'))$('convertQualityVal').textContent=q.value+'%';};},20);
   } else if(currentTool==='imageCompress'){
-    const lbl1=siteLang==='hi'?'क्वालिटी':'Quality';
-    const lbl2=siteLang==='hi'?'ज़्यादा से ज़्यादा चौड़ाई (px)':'Max width (px)';
-    box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">${lbl1} <span id="compressImgQualityVal">70%</span></label><input id="compressImgQuality" type="range" min="20" max="95" value="70" class="w-full mt-3"></div><div><label class="block text-sm font-bold mb-2">${lbl2}</label><input id="compressImgMaxW" type="number" min="200" max="6000" value="1600" class="w-full border rounded-xl px-4 py-3"></div></div>`;box.classList.remove('hidden');
-    setTimeout(()=>{const q=$('compressImgQuality');if(q)q.oninput=()=>{if($('compressImgQualityVal'))$('compressImgQualityVal').textContent=q.value+'%';};},20);
+    const l=siteLang==='hi';box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">${l?'Compression level':'Compression level'}</label><select id="compressImgPreset" class="w-full border rounded-xl px-4 py-3"><option value="recommended">${l?'Recommended — अच्छा size/quality':'Recommended — good size/quality'}</option><option value="extreme">${l?'Extreme — सबसे छोटा':'Extreme — smallest'}</option><option value="less">${l?'Less — ज्यादा quality':'Less — higher quality'}</option></select></div><div><label class="block text-sm font-bold mb-2">${l?'Output format':'Output format'}</label><select id="compressImgFormat" class="w-full border rounded-xl px-4 py-3"><option value="auto">Auto</option><option value="jpg">JPG</option><option value="webp">WEBP</option><option value="png">PNG</option></select></div><div><label class="block text-sm font-bold mb-2">${l?'Max width (px)':'Max width (px)'}</label><input id="compressImgMaxW" type="number" min="200" max="6000" value="1600" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">${l?'Target size (KB, optional)':'Target size (KB, optional)'}</label><input id="compressImgTargetKB" type="number" min="10" max="50000" placeholder="e.g. 500" class="w-full border rounded-xl px-4 py-3"></div></div><p class="text-xs text-slate-400 mt-2">${l?'Target size JPG/WEBP पर iterative compression से try किया जाता है।':'Target size is attempted with iterative JPG/WEBP compression.'}</p>`;box.classList.remove('hidden');
+  } else if(currentTool==='imageResize'){
+    const l=siteLang==='hi';box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">${l?'चौड़ाई (px)':'Width (px)'}</label><input id="resizeW" type="number" min=1 value="1200" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">${l?'ऊंचाई (px) — खाली = ratio':'Height (px) — blank = ratio'}</label><input id="resizeH" type="number" min=1 placeholder="Auto" class="w-full border rounded-xl px-4 py-3"></div></div><label class="flex items-center gap-2 mt-3 text-sm font-bold"><input id="resizeKeepRatio" type="checkbox" checked> ${l?'Aspect ratio बनाए रखें':'Keep aspect ratio'}</label>`;box.classList.remove('hidden');
+  } else if(currentTool==='imageUpscale'){
+    const l=siteLang==='hi';box.innerHTML=`<label class="block text-sm font-bold mb-2">${l?'Scale':'Scale'}</label><select id="upscaleScale" class="w-full border rounded-xl px-4 py-3"><option value="2">2×</option><option value="3">3×</option></select><p class="text-xs text-slate-400 mt-2">${l?'यह AI सुपर-रिज़ॉल्यूशन नहीं है; ब्राउज़र में high-quality canvas upscaling है।':'This is high-quality browser canvas upscaling, not AI super-resolution.'}</p>`;box.classList.remove('hidden');
+  } else if(currentTool==='imageGrayscale'){
+    box.innerHTML=`<div class="p-4 rounded-2xl bg-slate-50 border text-sm">${siteLang==='hi'?'सभी चुनी हुई इमेज को grayscale बनाया जाएगा।':'All selected images will be converted to grayscale.'}</div>`;box.classList.remove('hidden');
+  } else if(currentTool==='pdfCrop'){
+    const l=siteLang==='hi';box.innerHTML=`<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">${[['cropTop',l?'ऊपर':'Top'],['cropRight',l?'दायां':'Right'],['cropBottom',l?'नीचे':'Bottom'],['cropLeft',l?'बायां':'Left']].map(([id,lab])=>`<label class="text-sm font-bold">${lab}<input id="${id}" type="number" min=0 value="0" class="w-full border rounded-xl px-3 py-3 mt-1"></label>`).join('')}</div><p class="text-xs text-slate-400 mt-2">${l?'माप PDF points में हैं।':'Values are in PDF points.'}</p>`;box.classList.remove('hidden');
+  } else if(currentTool==='pdfGrayscale'){
+    box.innerHTML=`<div class="p-4 rounded-2xl bg-slate-50 border text-sm">${siteLang==='hi'?'हर page को grayscale image में render करके PDF बनाया जाएगा।':'Each page is rendered as a grayscale image and rebuilt into a PDF.'}</div>`;box.classList.remove('hidden');
+  } else if(currentTool==='pdfToText'){
+    box.innerHTML=`<div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-sm">${siteLang==='hi'?'सिर्फ selectable/readable PDF text निकलेगा; scanned image-only pages के लिए OCR अलग फीचर चाहिए।':'Readable/selectable PDF text is extracted; image-only scanned pages require OCR.'}</div>`;box.classList.remove('hidden');
   } else if(currentTool==='wordEditor'){
     const exportLbl=siteLang==='hi'?'एक्सपोर्ट फॉर्मेट':'Export format';
     box.innerHTML=`<div class="flex items-center gap-2 mb-3"><span class="text-[10px] font-black tracking-wide text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">✨ NEW • FREE</span><span class="text-xs text-slate-500 font-bold">MS Word-style editor — bold, headings, lists, tables, images. No file upload needed.</span></div>
@@ -582,7 +621,7 @@ async function processFiles(){
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'wordEditor':await exportWordEditor();break;
+      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -735,26 +774,42 @@ async function imageConvertTool(){
 
 /* ---------- New: Image Compressor ---------- */
 async function imageCompressTool(){
-  const quality=Math.max(.2,Math.min(1,(Number($('compressImgQuality')?.value)||70)/100));
+  const preset=$('compressImgPreset')?.value||'recommended';
+  const presetQ={extreme:.42,recommended:.70,less:.88};
+  const quality=presetQ[preset]||.70;
   const maxW=Number($('compressImgMaxW')?.value)||1600;
+  const fmt=$('compressImgFormat')?.value||'auto';
+  const targetKB=Number($('compressImgTargetKB')?.value)||0;
   clearDownloads();
   for(let i=0;i<selectedFiles.length;i++){
     setProgress(i,selectedFiles.length,siteLang==='hi'?`इमेज ${i+1} कंप्रेस हो रही है…`:`Compressing image ${i+1}…`);
-    const f=selectedFiles[i];const img=await loadImage(f);
-    const scale=Math.min(1,maxW/img.naturalWidth);
+    const f=selectedFiles[i],img=await loadImage(f);const scale=Math.min(1,maxW/img.naturalWidth);
     const w=Math.max(1,Math.round(img.naturalWidth*scale)),h=Math.max(1,Math.round(img.naturalHeight*scale));
     const c=document.createElement('canvas');c.width=w;c.height=h;
-    const isPng=/png/i.test(f.type);
-    const ctx=c.getContext('2d',{alpha:isPng});
-    if(!isPng){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);}
-    ctx.drawImage(img,0,0,w,h);
-    const mime=isPng?'image/png':'image/jpeg';
-    const blob=await new Promise(r=>c.toBlob(r,mime,quality));
-    addDownload(URL.createObjectURL(blob),`compressed-${i+1}.${isPng?'png':'jpg'}`,`Image ${i+1} (${bytes(blob.size)})`);
+    let mime=fmt==='png'?'image/png':fmt==='webp'?'image/webp':fmt==='jpg'?'image/jpeg':(/png/i.test(f.type)?'image/png':'image/jpeg');
+    const ctx=c.getContext('2d',{alpha:mime==='image/png'});if(mime!=='image/png'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);}ctx.drawImage(img,0,0,w,h);
+    let q=quality,blob=await new Promise(r=>c.toBlob(r,mime,q));
+    if(targetKB>0 && mime!=='image/png'){
+      let lo=.15,hi=.95,best=blob;
+      for(let k=0;k<8;k++){q=(lo+hi)/2;const b=await new Promise(r=>c.toBlob(r,mime,q));if(b.size>targetKB*1024)hi=q;else{best=b;lo=q;}}
+      blob=best;
+    }
+    const ext=mime==='image/png'?'png':mime==='image/webp'?'webp':'jpg';
+    const saved=Math.max(0,Math.round((1-blob.size/f.size)*100));
+    addDownload(URL.createObjectURL(blob),`compressed-${i+1}.${ext}`,`Image ${i+1} • ${bytes(f.size)} → ${bytes(blob.size)} • ${saved}% smaller`);
     setProgress(i+1,selectedFiles.length,siteLang==='hi'?`इमेज ${i+1} तैयार`:`Image ${i+1} ready`);await idle();
   }
   showResult(siteLang==='hi'?`${selectedFiles.length} इमेज कंप्रेस हो गईं।`:`${selectedFiles.length} image(s) compressed.`);
 }
+
+async function imageResizeTool(){
+  const tw=Number($('resizeW')?.value)||1200,th=Number($('resizeH')?.value)||0,keep=$('resizeKeepRatio')?.checked!==false;clearDownloads();
+  for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f);let w=tw,h=th;if(keep){const ratio=img.naturalHeight/img.naturalWidth;w=tw;h=th?th:Math.round(w*ratio);}else{h=th||Math.round(tw*img.naturalHeight/img.naturalWidth);}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);const mime=f.type==='image/png'?'image/png':'image/jpeg';const b=await new Promise(r=>c.toBlob(r,mime,.92));addDownload(URL.createObjectURL(b),`resized-${i+1}.${mime==='image/png'?'png':'jpg'}`,`Image ${i+1} • ${w}×${h}`);}showResult(siteLang==='hi'?`${selectedFiles.length} इमेज resize हो गईं।`:`${selectedFiles.length} image(s) resized.`);}
+async function imageUpscaleTool(){const scale=Number($('upscaleScale')?.value)||2;clearDownloads();for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f),w=img.naturalWidth*scale,h=img.naturalHeight*scale,c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);const mime=f.type==='image/png'?'image/png':'image/jpeg',b=await new Promise(r=>c.toBlob(r,mime,.94));addDownload(URL.createObjectURL(b),`upscaled-${i+1}.${mime==='image/png'?'png':'jpg'}`,`Image ${i+1} • ${scale}×`);}showResult(siteLang==='hi'?`${selectedFiles.length} इमेज ${scale}× upscaled हो गईं।`:`${selectedFiles.length} image(s) upscaled ${scale}×.`);}
+async function imageGrayscaleTool(){clearDownloads();for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f),c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);const d=ctx.getImageData(0,0,c.width,c.height);for(let p=0;p<d.data.length;p+=4){const y=.299*d.data[p]+.587*d.data[p+1]+.114*d.data[p+2];d.data[p]=d.data[p+1]=d.data[p+2]=y;}ctx.putImageData(d,0,0);const b=await new Promise(r=>c.toBlob(r,'image/jpeg',.92));addDownload(URL.createObjectURL(b),`grayscale-${i+1}.jpg`,`Grayscale ${i+1}`);}showResult(siteLang==='hi'?`${selectedFiles.length} grayscale images तैयार हैं।`:`${selectedFiles.length} grayscale images are ready.`);}
+async function pdfCropTool(){const {PDFDocument}=PDFLib,src=await PDFDocument.load(await selectedFiles[0].arrayBuffer());const t=Number($('cropTop')?.value)||0,r=Number($('cropRight')?.value)||0,b=Number($('cropBottom')?.value)||0,l=Number($('cropLeft')?.value)||0;for(const p of src.getPages()){const box=p.getMediaBox();const x=l,y=b,w=Math.max(1,box.width-l-r),h=Math.max(1,box.height-t-b);p.setCropBox(x,y,w,h);}const out=await src.save({useObjectStreams:true});downloadBlob(new Blob([out],{type:'application/pdf'}),'cropped.pdf','Cropped PDF');showResult(siteLang==='hi'?'PDF crop हो गई।':'PDF cropped.');}
+async function pdfGrayscaleTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;const {jsPDF}=window.jspdf,out=new jsPDF({unit:'pt',format:'a4'});for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:1.6}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;const ctx=c.getContext('2d'),d=ctx.getImageData(0,0,c.width,c.height);for(let p=0;p<d.data.length;p+=4){const y=.299*d.data[p]+.587*d.data[p+1]+.114*d.data[p+2];d.data[p]=d.data[p+1]=d.data[p+2]=y;}ctx.putImageData(d,0,0);if(n>1)out.addPage([vp.width,vp.height]);out.addImage(c.toDataURL('image/jpeg',.9),'JPEG',0,0,vp.width,vp.height,'','FAST');setProgress(n,pdf.numPages,`Page ${n}/${pdf.numPages}`);}downloadBlob(out.output('blob'),'grayscale.pdf','Grayscale PDF');showResult(siteLang==='hi'?'ग्रेस्केल PDF तैयार है।':'Grayscale PDF is ready.');}
+async function pdfToTextTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),tc=await page.getTextContent();all+=`--- Page ${n} ---\\n`+tc.items.map(x=>x.str).join(' ')+'\\n\\n';}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'extracted-text.txt','Download TXT');showResult(siteLang==='hi'?'PDF text निकाल लिया गया।':'PDF text extracted.');}
 
 /* ---------- New: Word Document Editor Pro ---------- */
 function weCmd(cmd,val){const el=$('weCanvas');if(!el)return;el.focus();try{document.execCommand(cmd,false,val==null?null:val);}catch(e){console.error(e);}el.focus();}

@@ -124,7 +124,11 @@
     <div class="flex items-center gap-2">
       <button onclick="toggleLang()" id="langToggleBtn" class="px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-sm font-bold text-slate-700 flex items-center gap-1">🌐 <span id="langToggleLabel">हिंदी</span></button>
       <div class="relative">
-        <button onclick="toggleNotifBox()" id="notifButton" class="relative w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 grid place-items-center text-lg" aria-label="Notifications">🔔<span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
+        <button onclick="toggleNotifBox()" id="notifButton" class="relative w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 grid place-items-center text-lg" aria-label="Notifications"><!-- Notification icon ad -->
+<span id="notificationAd" class="inline-flex items-center justify-center">
+<script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script>
+</span>
+🔔<span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
         <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]">
           <div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div>
           <div class="rounded-xl border border-slate-100 bg-slate-50 p-2">
@@ -146,7 +150,7 @@
       </div>
     </div>
   </div>
-</header><div class="my-2 flex justify-center"><button type="button" onclick="document.getElementById('aiPhotoEditor')?.scrollIntoView({behavior:'smooth'})" class="w-full max-w-5xl px-4 py-2 rounded-xl border border-violet-200 bg-violet-50 text-violet-700 text-sm font-black">✨ TRY OUR AI PHOTO EDITOR</button></div>
+</header>
 
 <main id="home" class="max-w-7xl mx-auto px-4">
   <section class="text-center pt-14 pb-10">
@@ -182,144 +186,12 @@
       </div>
     </button>
 
-    </div>
-
-
-<!-- AI Photo Editor launcher + editor modal -->
-<div id="aiEditorLauncherWrap" class="my-3 flex justify-center">
-  <button id="openAiEditorBtn" type="button"
-    class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-sm font-black shadow-lg hover:scale-[1.01] transition">
-    ✨ TRY OUR AI PHOTO EDITOR
-  </button>
-</div>
-
-<div id="aiEditorModal" class="fixed inset-0 z-[9999] hidden bg-black/70 p-3 sm:p-6 overflow-y-auto">
-  <div class="mx-auto max-w-7xl min-h-full flex items-center justify-center">
-    <div class="w-full rounded-3xl bg-white shadow-2xl overflow-hidden">
-      <div class="px-4 sm:px-6 py-4 border-b flex items-center justify-between gap-3">
-        <div>
-          <h2 class="text-xl sm:text-2xl font-black">✨ AI Photo Editor</h2>
-          <p class="text-xs sm:text-sm text-slate-500">Resize, enhance, retouch, filters, text, crop & more</p>
-        </div>
-        <button id="closeAiEditorBtn" type="button" class="w-10 h-10 rounded-full border font-black text-xl">×</button>
-      </div>
-
-      <div class="p-3 sm:p-5">
-        <div class="grid lg:grid-cols-[310px_1fr] gap-4">
-          <aside class="space-y-3 max-h-[75vh] overflow-y-auto pr-1">
-            <div class="grid grid-cols-2 gap-2">
-              <button data-ai-tab="generate" class="ai-tab px-3 py-2 rounded-xl bg-violet-600 text-white font-bold text-sm">✨ AI Generate</button>
-              <button data-ai-tab="enhance" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">⚡ Enhance</button>
-              <button data-ai-tab="resize" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">↔ Resize</button>
-              <button data-ai-tab="adjust" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">🎚 Adjust</button>
-              <button data-ai-tab="filter" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">🎨 Filters</button>
-              <button data-ai-tab="retouch" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">✨ Retouch</button>
-              <button data-ai-tab="text" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">T Text</button>
-              <button data-ai-tab="transform" class="ai-tab px-3 py-2 rounded-xl border font-bold text-sm">↻ Transform</button>
-            </div>
-
-            <div id="aiPanelGenerate" class="ai-tool-panel space-y-3">
-              <textarea id="aiPrompt" rows="4" class="w-full border rounded-2xl px-3 py-3 text-sm" placeholder="Describe an image to create..."></textarea>
-              <div class="grid grid-cols-2 gap-2">
-                <select id="aiSize" class="border rounded-xl px-3 py-2 text-sm"><option value="512x512">512 × 512</option><option value="768x768">768 × 768</option><option value="1024x1024">1024 × 1024</option></select>
-                <input id="aiNegative" class="border rounded-xl px-3 py-2 text-sm" placeholder="Negative prompt">
-              </div>
-              <button id="aiGenerateBtn" type="button" class="w-full rounded-xl bg-violet-600 text-white py-3 font-black">✨ Generate Image</button>
-              <div id="aiStatus" class="text-xs text-slate-500"></div>
-            </div>
-
-            <div id="aiPanelEnhance" class="ai-tool-panel hidden space-y-2">
-              <button data-ai-action="autoEnhance" class="w-full px-3 py-2 rounded-xl bg-violet-600 text-white font-bold">✨ Auto Enhance</button>
-              <button data-ai-action="sharpen" class="w-full px-3 py-2 rounded-xl border font-bold">🔍 Sharpen</button>
-              <button data-ai-action="clarity" class="w-full px-3 py-2 rounded-xl border font-bold">💎 Clarity</button>
-              <button data-ai-action="denoise" class="w-full px-3 py-2 rounded-xl border font-bold">🧹 Denoise</button>
-            </div>
-
-            <div id="aiPanelResize" class="ai-tool-panel hidden space-y-2">
-              <label class="text-xs font-bold">Width (px)<input id="aiWidth" type="number" min="1" class="mt-1 w-full border rounded-xl px-3 py-2" value="1200"></label>
-              <label class="text-xs font-bold">Height (px)<input id="aiHeight" type="number" min="1" class="mt-1 w-full border rounded-xl px-3 py-2" value="1200"></label>
-              <label class="flex gap-2 items-center text-sm"><input id="aiKeepRatio" type="checkbox" checked> Keep aspect ratio</label>
-              <button data-ai-action="resize" class="w-full px-3 py-2 rounded-xl bg-slate-900 text-white font-bold">Apply Resize</button>
-              <div class="grid grid-cols-2 gap-2">
-                <button data-ai-action="resizeHalf" class="px-3 py-2 rounded-xl border font-bold">50%</button>
-                <button data-ai-action="resizeDouble" class="px-3 py-2 rounded-xl border font-bold">200%</button>
-              </div>
-            </div>
-
-            <div id="aiPanelAdjust" class="ai-tool-panel hidden space-y-2">
-              <label class="text-xs font-bold">Brightness <input id="aiBrightness" type="range" min="-100" max="100" value="0" class="w-full"></label>
-              <label class="text-xs font-bold">Contrast <input id="aiContrast" type="range" min="-100" max="100" value="0" class="w-full"></label>
-              <label class="text-xs font-bold">Saturation <input id="aiSaturation" type="range" min="-100" max="100" value="0" class="w-full"></label>
-              <label class="text-xs font-bold">Blur <input id="aiBlur" type="range" min="0" max="10" value="0" class="w-full"></label>
-              <button data-ai-action="applyAdjust" class="w-full px-3 py-2 rounded-xl bg-slate-900 text-white font-bold">Apply Adjustments</button>
-            </div>
-
-            <div id="aiPanelFilter" class="ai-tool-panel hidden grid grid-cols-2 gap-2">
-              <button data-ai-filter="none" class="px-3 py-2 rounded-xl border font-bold">Original</button>
-              <button data-ai-filter="grayscale" class="px-3 py-2 rounded-xl border font-bold">B&W</button>
-              <button data-ai-filter="sepia" class="px-3 py-2 rounded-xl border font-bold">Sepia</button>
-              <button data-ai-filter="vintage" class="px-3 py-2 rounded-xl border font-bold">Vintage</button>
-              <button data-ai-filter="warm" class="px-3 py-2 rounded-xl border font-bold">Warm</button>
-              <button data-ai-filter="cool" class="px-3 py-2 rounded-xl border font-bold">Cool</button>
-            </div>
-
-            <div id="aiPanelRetouch" class="ai-tool-panel hidden space-y-2">
-              <button data-ai-action="softSkin" class="w-full px-3 py-2 rounded-xl border font-bold">✨ Skin Softening</button>
-              <button data-ai-action="faceLight" class="w-full px-3 py-2 rounded-xl border font-bold">💡 Face Light</button>
-              <button data-ai-action="removeBg" class="w-full px-3 py-2 rounded-xl border font-bold">🪄 Background Remove</button>
-              <p class="text-[11px] text-slate-500">Browser-only effects are used here. True AI background removal needs an AI backend.</p>
-            </div>
-
-            <div id="aiPanelText" class="ai-tool-panel hidden space-y-2">
-              <input id="aiTextInput" class="w-full border rounded-xl px-3 py-2" placeholder="Text to add">
-              <div class="grid grid-cols-2 gap-2"><input id="aiTextSize" type="number" value="48" class="border rounded-xl px-3 py-2" placeholder="Size"><input id="aiTextColor" type="color" value="#ffffff" class="h-10 w-full border rounded-xl"></div>
-              <button data-ai-action="addText" class="w-full px-3 py-2 rounded-xl bg-slate-900 text-white font-bold">Add Text</button>
-            </div>
-
-            <div id="aiPanelTransform" class="ai-tool-panel hidden grid grid-cols-2 gap-2">
-              <button data-ai-action="rotateLeft" class="px-3 py-2 rounded-xl border font-bold">↶ Rotate Left</button>
-              <button data-ai-action="rotateRight" class="px-3 py-2 rounded-xl border font-bold">↷ Rotate Right</button>
-              <button data-ai-action="flipH" class="px-3 py-2 rounded-xl border font-bold">↔ Flip H</button>
-              <button data-ai-action="flipV" class="px-3 py-2 rounded-xl border font-bold">↕ Flip V</button>
-              <button data-ai-action="reset" class="col-span-2 px-3 py-2 rounded-xl border font-bold">Reset</button>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2 pt-2 border-t">
-              <button id="aiUploadBtn" type="button" class="px-3 py-2 rounded-xl border font-bold">📤 Upload</button>
-              <button id="aiDownloadBtn" type="button" class="px-3 py-2 rounded-xl bg-slate-900 text-white font-bold">⬇ Download</button>
-            </div>
-            <input id="aiImageInput" type="file" accept="image/*" class="hidden">
-          </aside>
-
-          <div class="rounded-2xl bg-black min-h-[60vh] flex items-center justify-center overflow-hidden">
-            <canvas id="aiCanvas" class="max-w-full max-h-[72vh] block"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Free / Premium choice popup -->
-<div id="aiPlanPopup" class="fixed inset-0 z-[10000] hidden bg-black/70 p-4">
-  <div class="max-w-md mx-auto mt-[12vh] bg-white rounded-3xl shadow-2xl p-6">
-    <div class="text-center">
-      <div class="text-3xl">✨</div>
-      <h3 class="text-2xl font-black mt-2">Try AI Photo Editor</h3>
-      <p class="text-sm text-slate-500 mt-1">Choose how you want to start</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-      <button id="aiFreeBtn" class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-4 text-left">
-        <div class="font-black text-violet-700">🆓 TRY FREE</div><div class="text-xs text-slate-500 mt-1">Start with browser editing tools</div>
-      </button>
-      <button id="aiPremiumBtn" class="rounded-2xl border-2 border-amber-400 bg-amber-50 p-4 text-left">
-        <div class="font-black text-amber-700">👑 TRY PREMIUM</div><div class="text-xs text-slate-500 mt-1">Premium AI features can be connected later</div>
-      </button>
-    </div>
-    <button id="aiPlanClose" class="w-full mt-4 py-2 rounded-xl border font-bold">Maybe later</button>
-  </div>
-</div>
-
+    <!-- More New Features ad -->
+<div id="moreFeaturesAd" class="my-4 flex justify-center">
+<div class="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+<script async="async" data-cfasync="false" src="https://pl30964195.profitableratecpmnetwork.com/3ee04ac9d05e6caef39a0d0285701995/invoke.js"></script>
+<div id="container-3ee04ac9d05e6caef39a0d0285701995"></div>
+</div></div>
 <div id="moreFeaturesPanel" class="hidden mt-5">
       <div id="moreFeaturesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
@@ -342,22 +214,7 @@
     </div>
     <div class="p-6 sm:p-8">
       <div id="optionsBox" class="hidden mb-5"></div>
-      <!-- Single ad: file upload area -->
-<div id="uploadAreaAd" class="my-3 flex justify-center">
-  <div class="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
-    <script>
-      atOptions = {
-        'key' : 'f11b7ad6ff521e60831764f61b19eefe',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highrevenueformat.com/f11b7ad6ff521e60831764f61b19eefe/invoke.js"></script>
-  </div>
-</div>
-<div id="dropZone" class="drop-zone border-2 border-dashed border-slate-300 rounded-2xl p-8 sm:p-12 text-center cursor-pointer">
+      <div id="dropZone" class="drop-zone border-2 border-dashed border-slate-300 rounded-2xl p-8 sm:p-12 text-center cursor-pointer">
         <input id="fileInput" type="file" class="hidden">
         <div class="text-4xl mb-3">⬆️</div>
         <h3 class="font-black text-base" id="dropTitle">Drop files here</h3>
@@ -374,7 +231,21 @@
       <button id="processBtn" onclick="processFiles()" disabled class="w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3">
         <span id="processBtnText">Choose files first</span><span id="processSpinner" class="spinner hidden"></span>
       </button>
-      <div id="resultBox" class="hidden mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
+      <!-- Download area ad -->
+<div id="downloadAreaAd" class="my-4 flex justify-center">
+<div class="w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+<script>
+atOptions = {
+  'key' : 'f11b7ad6ff521e60831764f61b19eefe',
+  'format' : 'iframe',
+  'height' : 60,
+  'width' : 468,
+  'params' : {}
+};
+</script>
+<script src="https://www.highrevenueformat.com/f11b7ad6ff521e60831764f61b19eefe/invoke.js"></script>
+</div></div>
+<div id="resultBox" class="hidden mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200">
         <h3 class="font-black text-emerald-800">✅ Done</h3>
         <p id="resultText" class="text-sm text-emerald-700 mt-1"></p>
         <div id="downloadArea" class="mt-4 flex flex-wrap gap-2"></div>
@@ -1167,58 +1038,5 @@ window.addEventListener('load',()=>{
 });
 
 </script>
-
-
-<script>
-(()=> {
-const $=id=>document.getElementById(id), canvas=$("aiCanvas"), ctx=canvas.getContext("2d");
-let img=null, base=null, rot=0, flipH=false, flipV=false, filter="none", brightness=0, contrast=0, saturation=0, blur=0;
-function redraw(){
- if(!img)return;
- const w=img.naturalWidth||img.width,h=img.naturalHeight||img.height, r=Math.abs(rot%180)===90;
- canvas.width=r?h:w; canvas.height=r?w:h;
- ctx.save();ctx.translate(canvas.width/2,canvas.height/2);ctx.rotate(rot*Math.PI/180);ctx.scale(flipH?-1:1,flipV?-1:1);
- let f=`brightness(${100+brightness}%) contrast(${100+contrast}%) saturate(${100+saturation}%) blur(${blur}px)`;
- if(filter==="grayscale")f+=" grayscale(1)"; if(filter==="sepia")f+=" sepia(1)"; if(filter==="vintage")f+=" sepia(.35) contrast(1.1)"; if(filter==="warm")f+=" sepia(.18) saturate(1.2)"; if(filter==="cool")f+=" hue-rotate(15deg) saturate(1.1)";
- ctx.filter=f;ctx.drawImage(img,-w/2,-h/2,w,h);ctx.restore();
-}
-function setImage(src){let i=new Image();i.onload=()=>{img=i;base=i;rot=0;flipH=false;flipV=false;filter="none";brightness=contrast=saturation=blur=0;redraw()};i.src=src}
-function applyResize(w,h){if(!img)return;let c=document.createElement("canvas"),cx=c.getContext("2d");c.width=w;c.height=h;cx.drawImage(img,0,0,w,h);setImage(c.toDataURL("image/png"))}
-$("openAiEditorBtn").onclick=()=>{$("aiPlanPopup").classList.remove("hidden")};
-$("aiPlanClose").onclick=()=>{$("aiPlanPopup").classList.add("hidden")};
-$("aiFreeBtn").onclick=()=>{$("aiPlanPopup").classList.add("hidden");$("aiEditorModal").classList.remove("hidden")};
-$("aiPremiumBtn").onclick=()=>{alert("Premium mode selected. Connect your secure premium/AI backend to activate paid AI generation.");$("aiPlanPopup").classList.add("hidden");$("aiEditorModal").classList.remove("hidden")};
-$("closeAiEditorBtn").onclick=()=>$("aiEditorModal").classList.add("hidden");
-$("aiUploadBtn").onclick=()=>$("aiImageInput").click();
-$("aiImageInput").onchange=e=>{let f=e.target.files?.[0];if(f){let r=new FileReader();r.onload=()=>setImage(r.result);r.readAsDataURL(f)}};
-document.querySelectorAll(".ai-tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".ai-tool-panel").forEach(p=>p.classList.add("hidden"));$("aiPanel"+b.dataset.aiTab[0].toUpperCase()+b.dataset.aiTab.slice(1)).classList.remove("hidden");document.querySelectorAll(".ai-tab").forEach(x=>x.classList.remove("bg-violet-600","text-white"));b.classList.add("bg-violet-600","text-white")});
-document.querySelectorAll("[data-ai-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.aiFilter;redraw()});
-$("aiBrightness").oninput=e=>brightness=+e.target.value;
-$("aiContrast").oninput=e=>contrast=+e.target.value;
-$("aiSaturation").oninput=e=>saturation=+e.target.value;
-$("aiBlur").oninput=e=>blur=+e.target.value;
-document.querySelectorAll("[data-ai-action]").forEach(b=>b.onclick=()=>{
- const a=b.dataset.aiAction;
- if(!img&&a!=="reset")return;
- if(a==="rotateLeft")rot=(rot+270)%360;if(a==="rotateRight")rot=(rot+90)%360;if(a==="flipH")flipH=!flipH;if(a==="flipV")flipV=!flipV;
- if(a==="reset"){if(base){img=base;rot=0;flipH=flipV=false;filter="none";brightness=contrast=saturation=blur=0;redraw()};return}
- if(a==="autoEnhance"){brightness=8;contrast=12;saturation=10}
- if(a==="sharpen"){contrast=Math.min(100,contrast+18)}
- if(a==="clarity"){contrast=Math.min(100,contrast+10);saturation=Math.min(100,saturation+8)}
- if(a==="denoise"){blur=1}
- if(a==="softSkin"){blur=1}
- if(a==="faceLight"){brightness=Math.min(100,brightness+15)}
- if(a==="resize"){let w=+$("aiWidth").value,h=+$("aiHeight").value;if($("aiKeepRatio").checked){let rw=(img.naturalWidth||img.width),rh=(img.naturalHeight||img.height);if(w&&h){let ratio=rw/rh;h=Math.round(w/ratio)}}applyResize(w,h);return}
- if(a==="resizeHalf"){applyResize(Math.max(1,Math.round((img.naturalWidth||img.width)/2)),Math.max(1,Math.round((img.naturalHeight||img.height)/2)));return}
- if(a==="resizeDouble"){applyResize((img.naturalWidth||img.width)*2,(img.naturalHeight||img.height)*2);return}
- if(a==="addText"){let text=$("aiTextInput").value.trim();if(text){redraw();ctx.save();ctx.font=`bold ${+$("aiTextSize").value||48}px Arial`;ctx.fillStyle=$("aiTextColor").value;ctx.strokeStyle="rgba(0,0,0,.55)";ctx.lineWidth=4;ctx.textAlign="center";ctx.strokeText(text,canvas.width/2,canvas.height-60);ctx.fillText(text,canvas.width/2,canvas.height-60);ctx.restore();return}}
- redraw();
-});
-$("aiClearBtn")?.addEventListener("click",()=>{img=null;ctx.clearRect(0,0,canvas.width,canvas.height)});
-$("aiDownloadBtn").onclick=()=>{if(!img)return;let a=document.createElement("a");a.download="ai-photo-edited.png";a.href=canvas.toDataURL("image/png");a.click()};
-$("aiGenerateBtn").onclick=async()=>{let p=$("aiPrompt").value.trim();if(!p){$("aiStatus").textContent="Please enter a prompt.";return}$("aiStatus").textContent="Generating image…";try{let [width,height]=$("aiSize").value.split("x").map(Number),r=await fetch("https://ai-pdf-editor-314iewk8h-myteam-c68d.vercel.app/api/text-to-image",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:p,negative_prompt:$("aiNegative").value.trim(),width,height})});if(!r.ok)throw Error();setImage(URL.createObjectURL(await r.blob()));$("aiStatus").textContent="Generated successfully."}catch(e){$("aiStatus").textContent="AI generation needs a secure backend at /api/text-to-image."}};
-})();
-</script>
-
 </body>
 </html>

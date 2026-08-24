@@ -2,49 +2,10 @@
 <html lang="hi">
 <head>
   <meta charset="utf-8">
-  <meta name="google-site-verification" content="6JdZG59RKxutpKZOrFx-NQ0NBk6-G3b7HPZFT0HXb8A" />
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#ef4444">
- <title>Dudi PDF Editor - 100% Free Online PDF Editor (No Sign-up)</title>
-
+  <title>Dudi PDF Editor — Free PDF Tools</title>
   <meta name="description" content="Free browser-based PDF tools: JPG to PDF, PDF to JPG, Merge, Split, Rotate, Page Numbers, Word to PDF, Excel to PDF and more.">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
-  <link rel="shortcut icon" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-
-  <!-- Social sharing: WhatsApp / Facebook / other platforms -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://j75355462-debug.github.io/dudipdfeditor/">
-  <meta property="og:title" content="Dudi PDF Editor — Free PDF Tools">
-  <meta property="og:description" content="Free PDF tools to convert, merge, split, rotate and edit PDF files. No Sign-up required, Your files are processed on your device.">
-  <meta property="og:image" content="https://j75355462-debug.github.io/dudipdfeditor/logo.jpg">
-  <meta property="og:image:secure_url" content="https://j75355462-debug.github.io/dudipdfeditor/logo.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="Dudi PDF Editor logo">
-  <meta property="og:site_name" content="Dudi PDF Editor">
-
-  <!-- X / Twitter sharing -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dudi PDF Editor — Free PDF Tools">
-  <meta name="twitter:description" content="Free PDF tools to convert, merge, split, rotate and edit PDF files. Your files are processed on your device.">
-  <meta name="twitter:image" content="https://j75355462-debug.github.io/dudipdfeditor/logo.jpg">
-  <meta name="twitter:image:alt" content="Dudi PDF Editor logo">
-
-  <!-- Search engine site information -->
-  <link rel="canonical" href="https://j75355462-debug.github.io/dudipdfeditor/">
-  <meta name="robots" content="index,follow">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Dudi PDF Editor",
-    "url":"https://j75355462-debug.github.io/dudipdfeditor/",
-    "description":"Free browser-based PDF tools for converting, merging, splitting, rotating and editing PDF files.",
-    "image":"https://j75355462-debug.github.io/dudipdfeditor/logo.jpg"
-  }
-  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
@@ -153,6 +114,92 @@
     @keyframes updatePop{0%{opacity:0;transform:scale(.65) translateY(20px)}70%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
     .update-emoji{font-size:58px;display:inline-block;animation:updateEmoji 1s ease-in-out infinite alternate}@keyframes updateEmoji{from{transform:rotate(-8deg) scale(1)}to{transform:rotate(8deg) scale(1.12)}}
     @media(max-width:640px){.cookie-card{align-items:flex-start;flex-direction:column}.cookie-lang{width:100%}.cookie-lang button{flex:1}}
+
+    /* ================= DARK MODE (real fix — works with the theme toggle) ================= */
+    html.dark{color-scheme:dark}
+    html.dark body{background:radial-gradient(circle at 10% 10%,rgba(239,68,68,.14),transparent 27%),radial-gradient(circle at 90% 5%,rgba(99,102,241,.14),transparent 27%),#0b1220!important;color:#e2e8f0}
+    html.dark header{background:rgba(15,23,42,.92)!important;border-color:#1e293b!important}
+    html.dark .bg-white{background:#111827!important;color:#e2e8f0}
+    html.dark .bg-slate-50{background:#0f172a!important}
+    html.dark .bg-slate-100{background:#1e293b!important}
+    html.dark .bg-slate-200{background:#1e293b!important}
+    html.dark .border-slate-100,html.dark .border-slate-200,html.dark .border{border-color:#1e293b!important}
+    html.dark .text-slate-900,html.dark .text-slate-800,html.dark .text-slate-700{color:#e5e7eb!important}
+    html.dark .text-slate-500,html.dark .text-slate-400,html.dark .text-slate-600{color:#94a3b8!important}
+    html.dark .drop-zone{border-color:#334155!important;background:#0f172a!important}
+    html.dark .drop-zone.drag{background:#1c1017!important;border-color:#ef4444!important}
+    html.dark .feature-pill{background:#111827!important;border-color:#1e293b!important;color:#e2e8f0}
+    html.dark .tool-card{background:#111827!important;border-color:#1e293b!important;color:#e2e8f0}
+    html.dark .feature-slider{background:linear-gradient(135deg,#111827,#170f10)!important;border-color:#3f1d1d!important}
+    html.dark .slider-controls button{background:#111827!important;border-color:#3f1d1d!important;color:#e2e8f0}
+    html.dark .info-card,html.dark .cookie-card,html.dark .update-card{background:#111827!important;color:#e2e8f0;border-color:#1e293b!important}
+    html.dark .info-card h3{color:#f1f5f9!important}
+    html.dark .info-card p,html.dark .info-card li{color:#94a3b8!important}
+    html.dark .headline-wrap{background:#111827!important;border-color:#3f1d1d!important}
+    html.dark .headline-text{color:#f87171!important}
+    html.dark .native-banner,html.dark .ad-space{background:#0f172a!important;border-color:#1e293b!important;color:#64748b!important}
+    html.dark #siteMenu,html.dark #notifBox{background:#111827!important;border-color:#1e293b!important}
+    html.dark .site-menu-item{color:#e2e8f0!important}
+    html.dark .site-menu-item:hover{background:#1e293b!important;color:#f87171!important}
+    html.dark .icon-btn,html.dark .privacy-lang button,html.dark .cookie-lang button{background:#111827!important;border-color:#334155!important;color:#e2e8f0!important}
+    html.dark input,html.dark select,html.dark textarea{background:#0f172a!important;color:#e2e8f0!important;border-color:#334155!important}
+    html.dark .bg-slate-900{background:#0b1220!important}
+    html.dark ::placeholder{color:#64748b!important}
+
+    /* ================= Compact drop zone (smaller, saves space) ================= */
+    .compact-drop{padding:10px!important;min-height:96px!important}
+    .compact-drop .text-4xl{font-size:18px!important;margin-bottom:2px!important}
+    .compact-drop h3{font-size:13px!important}
+    .compact-drop p{font-size:11px!important;margin-top:2px!important}
+    .compact-drop button{margin-top:6px!important;padding:6px 13px!important;font-size:12px!important}
+    .compact-drop #fileHint{margin-top:6px!important}
+
+    /* ================= Feature slider — smoother animation + pill entrance ================= */
+    .feature-slider:hover .feature-track{filter:brightness(1.01)}
+    .feature-track{will-change:transform}
+    .feature-slide .feature-pill{animation:pillPop .45s cubic-bezier(.2,.8,.2,1) both}
+    .feature-slide .feature-pill:nth-child(1){animation-delay:.02s}
+    .feature-slide .feature-pill:nth-child(2){animation-delay:.08s}
+    .feature-slide .feature-pill:nth-child(3){animation-delay:.14s}
+    .feature-slide .feature-pill:nth-child(4){animation-delay:.20s}
+    @keyframes pillPop{0%{opacity:0;transform:translateY(10px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    .feature-pill{cursor:pointer}
+    .feature-pill:hover{border-color:#ef4444!important;box-shadow:0 10px 24px rgba(239,68,68,.14);transform:translateY(-2px);transition:.2s ease}
+    .slider-controls button{transition:.15s ease}
+    .slider-controls button:hover{background:#ef4444!important;color:#fff!important;border-color:#ef4444!important;transform:scale(1.06)}
+    .slider-dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
+    .slider-dots button{width:7px;height:7px;border-radius:999px;border:0;background:#fecaca;padding:0;transition:.2s ease}
+    .slider-dots button.active{background:#ef4444;width:18px}
+    html.dark .slider-dots button{background:#3f1d1d}
+    html.dark .slider-dots button.active{background:#ef4444}
+
+    /* ================= Word / Excel editor styling (was missing) ================= */
+    .we-toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:8px}
+    .we-sel{border:1px solid #cbd5e1;border-radius:8px;padding:6px 8px;font-size:12px;font-weight:700;background:#fff;cursor:pointer}
+    .we-btn{border:1px solid #cbd5e1;border-radius:8px;min-width:34px;height:32px;padding:0 8px;font-size:13px;font-weight:800;background:#fff;cursor:pointer;transition:.15s ease}
+    .we-btn:hover{border-color:#ef4444;color:#dc2626;background:#fff1f1}
+    #weCanvas{min-height:420px;background:#fff;border:1px solid #e2e8f0;border-top:0;border-radius:0 0 14px 14px;padding:28px;box-shadow:inset 0 0 0 1px rgba(15,23,42,.02);outline:none;line-height:1.6}
+    #weCanvas table{border-collapse:collapse}
+    #weCanvas table td{border:1px solid #94a3b8;padding:6px;min-width:60px}
+    html.dark .we-toolbar{background:#0f172a!important;border-color:#1e293b!important}
+    html.dark .we-sel,html.dark .we-btn{background:#111827!important;border-color:#334155!important;color:#e2e8f0!important}
+    html.dark #weCanvas{background:#111827!important;border-color:#1e293b!important;color:#e2e8f0!important}
+
+    /* ================= Excel Maker (spreadsheet editor) ================= */
+    .xm-toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:8px}
+    .xm-wrap{border:1px solid #e2e8f0;border-top:0;border-radius:0 0 14px 14px;overflow:auto;max-height:460px;background:#fff}
+    .xm-wrap table{border-collapse:collapse;width:100%}
+    .xm-wrap th{position:sticky;top:0;background:#f8fafc;border:1px solid #e2e8f0;font-size:11px;color:#64748b;padding:4px;z-index:1}
+    .xm-wrap td{border:1px solid #e2e8f0;padding:0}
+    .xm-cell{width:110px;min-width:90px;border:0;padding:7px 8px;font-size:13px;outline:none;background:transparent}
+    .xm-cell:focus{background:#fff7f7;box-shadow:inset 0 0 0 2px #ef4444}
+    .xm-rowhead{background:#f8fafc;font-size:11px;color:#64748b;text-align:center;padding:4px;border:1px solid #e2e8f0}
+    html.dark .xm-toolbar{background:#0f172a!important;border-color:#1e293b!important}
+    html.dark .xm-wrap{background:#111827!important;border-color:#1e293b!important}
+    html.dark .xm-wrap th,html.dark .xm-rowhead{background:#0f172a!important;border-color:#1e293b!important;color:#94a3b8!important}
+    html.dark .xm-wrap td{border-color:#1e293b!important}
+    html.dark .xm-cell{color:#e2e8f0!important}
+    html.dark .xm-cell:focus{background:#1c1017!important}
 </style>
 </head>
 <body>
@@ -223,25 +270,26 @@
 
   <section class="pb-5">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-      <button onclick="openTool('ocrConverter')" class="tool-card text-left bg-white border border-red-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">🔎</div><b class="block mt-2">OCR Converter</b><span class="text-xs text-slate-500">Image/PDF → editable text</span></button>
-      <button onclick="openTool('textToPdf')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">📝</div><b class="block mt-2">Text to PDF</b><span class="text-xs text-slate-500">Write text and export PDF</span></button>
-      <button onclick="openTool('imageToText')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">📷</div><b class="block mt-2">Image to Text</b><span class="text-xs text-slate-500">Fast browser OCR</span></button>
-      <button onclick="showComingSoon('Batch Workspace')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">⚡</div><b class="block mt-2">Batch Workspace</b><span class="text-xs text-slate-500">Coming soon</span></button>
+      <button onclick="openTool('ocrConverter')" class="tool-card text-left bg-white border border-red-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">🔎</div><b class="block mt-2" id="ocrCardTitle">OCR Converter</b><span class="text-xs text-slate-500" id="ocrCardDesc">Image/PDF → editable text</span></button>
+      <button onclick="openTool('textToPdf')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">📝</div><b class="block mt-2" id="t2pCardTitle">Text to PDF</b><span class="text-xs text-slate-500" id="t2pCardDesc">Write text and export PDF</span></button>
+      <button onclick="openTool('imageToText')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">📷</div><b class="block mt-2" id="i2tCardTitle">Image to Text</b><span class="text-xs text-slate-500" id="i2tCardDesc">Fast browser OCR</span></button>
+      <button onclick="showComingSoon(UI_TEXT[siteLang].batchCardTitle)" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">⚡</div><b class="block mt-2" id="batchCardTitle">Batch Workspace</b><span class="text-xs text-slate-500" id="batchCardDesc">Coming soon</span></button>
     </div>
   </section>
 
   <!-- More New Features slider -->
   <section class="pb-7">
     <div class="feature-slider">
-      <div class="flex items-center gap-2 px-2 pb-3"><span class="text-xl">🧰</span><div><b>ALL</b><p class="text-xs text-slate-500">Swipe through all extra tools</p></div></div>
-      <div id="featureTrack" class="feature-track"></div>
+      <div class="flex items-center gap-2 px-2 pb-3"><span class="text-xl">🧰</span><div><b id="sliderAllTitle">ALL FEATURES</b><p class="text-xs text-slate-500" id="sliderAllDesc">Swipe through all extra tools</p></div></div>
+      <div id="featureTrack" class="feature-track" onmouseenter="pauseFeatureSlider()" onmouseleave="resumeFeatureSlider()"></div>
       <div class="slider-controls"><button onclick="moveFeatureSlider(-1)" aria-label="Previous">‹</button><button onclick="moveFeatureSlider(1)" aria-label="Next">›</button></div>
+      <div id="featureDots" class="slider-dots"></div>
     </div>
   </section>
 
   <section class="pb-4">
-    <button onclick="showComingSoon('AI Workshop')" class="w-full rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-4 text-center shadow-sm hover:shadow-md transition">
-      <span class="text-2xl">🤖</span><span class="ml-2 font-black text-indigo-700">AI Workshop</span><span class="block text-xs text-slate-500 mt-1">AI-powered tools — coming soon</span>
+    <button onclick="showComingSoon(UI_TEXT[siteLang].aiWorkshopTitle)" class="w-full rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-4 text-center shadow-sm hover:shadow-md transition">
+      <span class="text-2xl">🤖</span><span class="ml-2 font-black text-indigo-700" id="aiWorkshopTitle">AI Workshop</span><span class="block text-xs text-slate-500 mt-1" id="aiWorkshopDesc">AI-powered tools — coming soon</span>
     </button>
   </section>
 
@@ -357,7 +405,9 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  ocrConverter:{title:'OCR File Converter',titleHi:'OCR फाइल कन्वर्टर',desc:'Recognize text from images and scanned PDFs directly in your browser.',descHi:'इमेज और scanned PDF से टेक्स्ट निकालें — सीधे ब्राउज़र में।',icon:'🔎',accept:'image/png,image/jpeg,image/webp,application/pdf',multiple:false,button:'Run OCR',buttonHi:'OCR चलाएं',hint:'JPG / PNG / WEBP / PDF',hintHi:'JPG / PNG / WEBP / PDF',isNew:true},
 imageToText:{title:'Image to Text',titleHi:'इमेज से Text',desc:'Extract text from a photo using browser OCR.',descHi:'फोटो से ब्राउज़र OCR द्वारा टेक्स्ट निकालें।',icon:'📷',accept:'image/png,image/jpeg,image/webp',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
 textToPdf:{title:'Text to PDF',titleHi:'Text से PDF',desc:'Write or paste text and create a clean PDF locally.',descHi:'Text लिखें या paste करें और PDF बनाएं।',icon:'📝',accept:'',multiple:false,button:'Create PDF',buttonHi:'PDF बनाएं',hint:'No file needed',hintHi:'फाइल की जरूरत नहीं',isNew:true},
-wordEditor:{title:'Word Document Editor',titleHi:'वर्ड डॉक्यूमेंट एडिटर',desc:'Create and format documents like MS Word — bold, headings, lists, tables, images — then export as PDF, JPG or PNG.',descHi:'MS Word जैसा डॉक्यूमेंट बनाएं — बोल्ड, हेडिंग, लिस्ट, टेबल, इमेज — फिर PDF, JPG या PNG में डाउनलोड करें।',icon:'📝',accept:'',multiple:false,button:'Open Editor',buttonHi:'एडिटर खोलें',hint:'No file needed — start typing',hintHi:'फाइल की ज़रूरत नहीं — सीधे लिखना शुरू करें',isNew:true}
+wordEditor:{title:'Word Document Editor',titleHi:'वर्ड डॉक्यूमेंट एडिटर',desc:'Create and format documents like MS Word — bold, headings, lists, tables, images — then export as PDF, JPG or PNG.',descHi:'MS Word जैसा डॉक्यूमेंट बनाएं — बोल्ड, हेडिंग, लिस्ट, टेबल, इमेज — फिर PDF, JPG या PNG में डाउनलोड करें।',icon:'📝',accept:'',multiple:false,button:'Open Editor',buttonHi:'एडिटर खोलें',hint:'No file needed — start typing',hintHi:'फाइल की ज़रूरत नहीं — सीधे लिखना शुरू करें',isNew:true},
+excelMaker:{title:'Excel Maker (Spreadsheet Editor)',titleHi:'एक्सेल मेकर (स्प्रेडशीट एडिटर)',desc:'Build a spreadsheet with rows, columns, bold/colors and simple =SUM formulas, then export as XLSX or PDF.',descHi:'रो, कॉलम, बोल्ड/कलर और simple =SUM फॉर्मूला के साथ स्प्रेडशीट बनाएं — फिर XLSX या PDF में डाउनलोड करें।',icon:'📊',accept:'',multiple:false,button:'Open Excel Maker',buttonHi:'एक्सेल मेकर खोलें',hint:'No file needed — start filling cells',hintHi:'फाइल की ज़रूरत नहीं — सीधे सेल भरना शुरू करें',isNew:true},
+pdfToWord:{title:'PDF to Word',titleHi:'PDF से वर्ड',desc:'Turn a PDF into an editable Word (.doc) file that opens directly in MS Word.',descHi:'PDF को एडिटेबल Word (.doc) फाइल में बदलें, जो सीधे MS Word में खुलती है।',icon:'📄➡️📝',accept:'application/pdf',multiple:false,button:'Convert to Word',buttonHi:'Word में बदलें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true}
 };
 
 let currentTool=null,selectedFiles=[],processing=false,pdfjs=null;
@@ -388,13 +438,29 @@ const langText={
   hi:{badge:'⚡ 100% फ्री • 🚫 सर्वर पर अपलोड नहीं • 🔁 बार-बार इस्तेमाल करें • 🎯 बिना साइनअप',title:'PDF का काम, <span class="text-red-500">एक ही जगह</span>',sub:'दस्तावेज़ों को कन्वर्ट, मर्ज, स्प्लिट, रोटेट करें — बिना सर्वर पर अपलोड किए।',footer:'सबसे प्राइवेसी-फ्रेंडली टूल',toggle:'English'}
 };
 const UI_TEXT={
-  en:{btnHomeLabel:'Home',menuBtnLabel:'Menu',miHowto:'❓ How to Use',miAbout:'ℹ️ About Us',miTerms:'📜 Terms & Conditions',miPrivacy:'🔒 Privacy Policy',miContact:'✉️ Contact Us',miPhotoEditor:'🎨 Photo Editor Pro',miPhotoEditorBadge:'FREE',notifTitleText:'Notifications',notifMsgLabel:'Message',notifMsgText:'🎉 100% free tools, no ads, no server upload — everything happens right in your browser!',dropTitle:'Drop files here',dropSub:'or choose files from your device',chooseFilesBtn:'Choose files',backAllTools:'← All tools',privTitle:'Private',privDesc:'Your selected files are not uploaded to a server.',fastTitle:'Fast',fastDesc:'Processing happens directly on your device.',mnfNewLabel:'ALL',mnfTitle:'More New Features',mnfDesc:'Sign, Protect, Watermark, Blank Page, Extract Images, PDF Repair, Compress PDF, Delete Pages, Image Converter, Image Compressor and Word Editor'},
-  hi:{btnHomeLabel:'होम',menuBtnLabel:'मेनू',miHowto:'❓ कैसे इस्तेमाल करें',miAbout:'ℹ️ हमारे बारे में',miTerms:'📜 नियम और शर्तें',miPrivacy:'🔒 प्राइवेसी पॉलिसी',miContact:'✉️ संपर्क करें',miPhotoEditor:'🎨 फोटो एडिटर प्रो',miPhotoEditorBadge:'फ्री',notifTitleText:'नोटिफिकेशन',notifMsgLabel:'संदेश',notifMsgText:'🎉 100% फ्री टूल, कोई ऐड नहीं, कोई सर्वर अपलोड नहीं — सब कुछ आपके ब्राउज़र में ही होता है!',dropTitle:'फाइलें यहां छोड़ें',dropSub:'या अपने डिवाइस से फाइल चुनें',chooseFilesBtn:'फाइल चुनें',backAllTools:'← सभी टूल',privTitle:'प्राइवेट',privDesc:'आपकी चुनी हुई फाइलें सर्वर पर अपलोड नहीं होतीं।',fastTitle:'फास्ट',fastDesc:'प्रोसेसिंग सीधे आपके डिवाइस पर होती है।',mnfNewLabel:'सभी',mnfTitle:'और नए फीचर्स',mnfDesc:'साइन, प्रोटेक्ट, वॉटरमार्क, खाली पेज, इमेज निकालें, PDF रिपेयर, PDF कंप्रेस, पेज डिलीट, इमेज कन्वर्टर, इमेज कंप्रेसर और वर्ड एडिटर'}
+  en:{btnHomeLabel:'Home',menuBtnLabel:'Menu',miHowto:'❓ How to Use',miAbout:'ℹ️ About Us',miTerms:'📜 Terms & Conditions',miPrivacy:'🔒 Privacy Policy',miContact:'✉️ Contact Us',miPhotoEditor:'🎨 Photo Editor Pro',miPhotoEditorBadge:'FREE',notifTitleText:'Notifications',notifMsgLabel:'Message',notifMsgText:'🎉 100% free tools, no ads, no server upload — everything happens right in your browser!',dropTitle:'Drop files here',dropSub:'or choose files from your device',chooseFilesBtn:'Choose files',backAllTools:'← All tools',privTitle:'Private',privDesc:'Your selected files are not uploaded to a server.',fastTitle:'Fast',fastDesc:'Processing happens directly on your device.',mnfNewLabel:'ALL',mnfTitle:'More New Features',mnfDesc:'Sign, Protect, Watermark, Blank Page, Extract Images, PDF Repair, Compress PDF, Delete Pages, Image Converter, Image Compressor and Word Editor',
+    ocrCardTitle:'OCR Converter',ocrCardDesc:'Image/PDF → editable text',t2pCardTitle:'Text to PDF',t2pCardDesc:'Write text and export PDF',i2tCardTitle:'Image to Text',i2tCardDesc:'Fast browser OCR',batchCardTitle:'Batch Workspace',batchCardDesc:'Coming soon',
+    sliderAllTitle:'ALL FEATURES',sliderAllDesc:'Swipe through all extra tools',aiWorkshopTitle:'AI Workshop',aiWorkshopDesc:'AI-powered tools — coming soon',comingSoonText:'Coming Soon',okBtnText:'OK'},
+  hi:{btnHomeLabel:'होम',menuBtnLabel:'मेनू',miHowto:'❓ कैसे इस्तेमाल करें',miAbout:'ℹ️ हमारे बारे में',miTerms:'📜 नियम और शर्तें',miPrivacy:'🔒 प्राइवेसी पॉलिसी',miContact:'✉️ संपर्क करें',miPhotoEditor:'🎨 फोटो एडिटर प्रो',miPhotoEditorBadge:'फ्री',notifTitleText:'नोटिफिकेशन',notifMsgLabel:'संदेश',notifMsgText:'🎉 100% फ्री टूल, कोई ऐड नहीं, कोई सर्वर अपलोड नहीं — सब कुछ आपके ब्राउज़र में ही होता है!',dropTitle:'फाइलें यहां छोड़ें',dropSub:'या अपने डिवाइस से फाइल चुनें',chooseFilesBtn:'फाइल चुनें',backAllTools:'← सभी टूल',privTitle:'प्राइवेट',privDesc:'आपकी चुनी हुई फाइलें सर्वर पर अपलोड नहीं होतीं।',fastTitle:'फास्ट',fastDesc:'प्रोसेसिंग सीधे आपके डिवाइस पर होती है।',mnfNewLabel:'सभी',mnfTitle:'और नए फीचर्स',mnfDesc:'साइन, प्रोटेक्ट, वॉटरमार्क, खाली पेज, इमेज निकालें, PDF रिपेयर, PDF कंप्रेस, पेज डिलीट, इमेज कन्वर्टर, इमेज कंप्रेसर और वर्ड एडिटर',
+    ocrCardTitle:'OCR कन्वर्टर',ocrCardDesc:'इमेज/PDF → एडिटेबल टेक्स्ट',t2pCardTitle:'Text से PDF',t2pCardDesc:'टेक्स्ट लिखें और PDF बनाएं',i2tCardTitle:'इमेज से Text',i2tCardDesc:'तेज़ ब्राउज़र OCR',batchCardTitle:'बैच वर्कस्पेस',batchCardDesc:'जल्द आ रहा है',
+    sliderAllTitle:'सभी फीचर्स',sliderAllDesc:'सभी एक्स्ट्रा टूल यहां स्वाइप करें',aiWorkshopTitle:'AI वर्कशॉप',aiWorkshopDesc:'AI-पावर्ड टूल — जल्द आ रहे हैं',comingSoonText:'जल्द आ रहा है',okBtnText:'ठीक है'}
 };
 function applyUiText(){
   const t=UI_TEXT[siteLang];
   Object.keys(t).forEach(id=>{const el=$(id);if(el)el.textContent=t[id];});
   if(typeof updateHeadlineAndPrivacy==='function') updateHeadlineAndPrivacy();
+  if(typeof buildTools==='function') buildTools();
+  if(typeof buildFeaturePills==='function') buildFeaturePills();
+  if(typeof buildFeatureSlider==='function') buildFeatureSlider();
+  if(typeof currentTool==='string'&&currentTool&&tools[currentTool]){
+    const t2=tools[currentTool];
+    if($('toolTitle'))$('toolTitle').textContent=T(t2,'title');
+    if($('toolDescription'))$('toolDescription').textContent=T(t2,'desc');
+    if($('fileHint'))$('fileHint').textContent=T(t2,'hint');
+    if(typeof renderOptions==='function')renderOptions();
+    if(typeof updateButton==='function')updateButton();
+  }
+  document.documentElement.lang=siteLang;
 }
 function updateHeadlineAndPrivacy(){
   const h=$('headlineText'),l=$('headlineLabel');
@@ -407,7 +473,7 @@ function closeInfo(){const modal=$('infoModal');if(!modal)return;modal.classList
 document.addEventListener('click',e=>{const menu=$('siteMenu'),btn=$('siteMenuButton');if(menu&&!menu.classList.contains('hidden')&&!menu.contains(e.target)&&!btn.contains(e.target))closeSiteMenu();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
-const MORE_FEATURES_KEYS=['ocrConverter','imageToText','textToPdf','excelToPdf','pdfEditorPro','signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','pdfCrop','pdfGrayscale','pdfToText','wordEditor','pngToPdf','jpegToPdf','pdfPagePreview','pdfImages','pdfTextExtract','imageToJpg','imageToPng','imageToWebp','photoCompress','pdfCompressFast','pdfRotatePages','pdfSplitPages','pdfMergeFiles','pdfPageNumbering','pdfWatermarkQuick','pdfProtectQuick','pdfBlankPage']
+const MORE_FEATURES_KEYS=['ocrConverter','imageToText','textToPdf','excelToPdf','excelMaker','pdfToWord','pdfEditorPro','signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','pdfCrop','pdfGrayscale','pdfToText','wordEditor','pngToPdf','jpegToPdf','pdfPagePreview','pdfImages','pdfTextExtract','imageToJpg','imageToPng','imageToWebp','photoCompress','pdfCompressFast','pdfRotatePages','pdfSplitPages','pdfMergeFiles','pdfPageNumbering','pdfWatermarkQuick','pdfProtectQuick','pdfBlankPage']
 function T(t,key){return siteLang==='hi'&&t[key+'Hi']!==undefined?t[key+'Hi']:t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
@@ -429,11 +495,19 @@ function buildFeatureSlider(){
   const keys=MORE_FEATURES_KEYS.filter(k=>tools[k]);const track=$('featureTrack');if(!track)return;
   const per=window.innerWidth<640?2:(window.innerWidth<900?2:4);const slides=[];
   for(let i=0;i<keys.length;i+=per){slides.push(keys.slice(i,i+per));}
-  track.innerHTML=slides.map(group=>`<div class="feature-slide">${group.map(key=>{const t=tools[key];return `<button onclick="openTool('${key}')" class="feature-pill text-left hover:border-red-300 transition"><div class="text-xl">${t.icon}</div><b class="block text-sm mt-1">${T(t,'title')}</b><span class="text-[11px] text-slate-500">${T(t,'desc')}</span></button>`}).join('')}</div>`).join('');window.__featureSlide=0;window.__featureSlides=slides.length;track.style.transform='translateX(0)';}
-function moveFeatureSlider(dir){const track=$('featureTrack');if(!track||!window.__featureSlides)return;window.__featureSlide=(window.__featureSlide+dir+window.__featureSlides)%window.__featureSlides;track.style.transform=`translateX(-${window.__featureSlide*100}%)`;}
-setInterval(()=>moveFeatureSlider(1),5000);
+  track.innerHTML=slides.map(group=>`<div class="feature-slide">${group.map(key=>{const t=tools[key];return `<button onclick="openTool('${key}')" class="feature-pill text-left hover:border-red-300 transition"><div class="text-xl">${t.icon}</div><b class="block text-sm mt-1">${T(t,'title')}</b><span class="text-[11px] text-slate-500">${T(t,'desc')}</span></button>`}).join('')}</div>`).join('');
+  window.__featureSlide=0;window.__featureSlides=slides.length;track.style.transform='translateX(0)';
+  const dots=$('featureDots');if(dots)dots.innerHTML=slides.map((_,i)=>`<button aria-label="Slide ${i+1}" class="${i===0?'active':''}" onclick="goFeatureSlide(${i})"></button>`).join('');
+}
+function updateFeatureDots(){const dots=$('featureDots');if(!dots)return;[...dots.children].forEach((b,i)=>b.classList.toggle('active',i===window.__featureSlide));}
+function moveFeatureSlider(dir){const track=$('featureTrack');if(!track||!window.__featureSlides)return;window.__featureSlide=(window.__featureSlide+dir+window.__featureSlides)%window.__featureSlides;track.style.transform=`translateX(-${window.__featureSlide*100}%)`;updateFeatureDots();}
+function goFeatureSlide(i){const track=$('featureTrack');if(!track)return;window.__featureSlide=i;track.style.transform=`translateX(-${i*100}%)`;updateFeatureDots();}
+let __featureTimer=setInterval(()=>moveFeatureSlider(1),5000);
+function pauseFeatureSlider(){clearInterval(__featureTimer);}
+function resumeFeatureSlider(){clearInterval(__featureTimer);__featureTimer=setInterval(()=>moveFeatureSlider(1),5000);}
 window.addEventListener('resize',()=>buildFeatureSlider());
 
+initSiteLanguage();
 buildTools();
 buildFeaturePills();
 buildFeatureSlider();
@@ -455,7 +529,7 @@ function openTool(key){
   $('home').classList.add('hidden');$('toolSection').classList.remove('hidden');
   $('toolIcon').textContent=t.icon;$('toolTitle').textContent=T(t,'title');$('toolDescription').textContent=T(t,'desc');
   $('fileInput').accept=t.accept;$('fileInput').multiple=t.multiple;$('fileHint').textContent=T(t,'hint');
-  const needsNoFile=key==='wordEditor'||key==='textToPdf';
+  const needsNoFile=key==='wordEditor'||key==='textToPdf'||key==='excelMaker';
   $('dropZone').classList.toggle('hidden',needsNoFile);
   $('fileList').classList.toggle('hidden',needsNoFile);
   renderOptions();renderFiles();clearResult();updateButton();scrollTo(0,0);
@@ -466,6 +540,9 @@ function renderOptions(){
   const box=$('optionsBox');box.innerHTML='';box.classList.add('hidden');
 
   if(currentTool==='textToPdf'){box.innerHTML=`<label class="block text-sm font-bold mb-2">Text</label><textarea id="textToPdfInput" class="w-full min-h-64 border border-slate-300 rounded-xl p-4" placeholder="Write or paste your text here..."></textarea>`;box.classList.remove('hidden');
+  } else if(currentTool==='ocrConverter'||currentTool==='imageToText'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<label class="block text-sm font-bold mb-2">${l?'OCR भाषा (accuracy बेहतर करने के लिए सही भाषा चुनें)':'OCR language (choose correctly for better accuracy)'}</label><select id="ocrLangSelect" class="w-full border rounded-xl px-4 py-3"><option value="eng" selected>${l?'English':'English'}</option><option value="hin">${l?'हिंदी':'Hindi'}</option><option value="eng+hin">${l?'English + हिंदी (मिश्रित दस्तावेज़)':'English + Hindi (mixed documents)'}</option></select><p class="text-xs text-slate-400 mt-2">${l?'साफ, सीधी और अच्छी रोशनी वाली स्कैन/फोटो से सबसे सही टेक्स्ट मिलता है।':'Clear, straight and well-lit scans/photos give the most accurate text.'}</p>`;box.classList.remove('hidden');
   } else if(currentTool==='splitPdf'){
     box.innerHTML=`<label class="block text-sm font-bold mb-2">Pages / ranges</label><input id="rangeInput" class="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-red-400" placeholder="Example: 1-3,5,8-10"><p class="text-xs text-slate-400 mt-2">Separate page numbers with commas. Ranges are inclusive.</p>`;box.classList.remove('hidden');
   } else if(currentTool==='rotatePdf'){
@@ -617,6 +694,23 @@ function renderOptions(){
     <div id="weCanvas" contenteditable="true" spellcheck="true"><p>Yahan apna document type karein…</p></div>
     <div class="mt-4"><label class="block text-sm font-bold mb-2">${exportLbl}</label><select id="weExportFormat" class="w-full border rounded-xl px-4 py-3"><option value="pdf">PDF</option><option value="jpg">JPG</option><option value="png">PNG</option></select></div>`;
     box.classList.remove('hidden');
+  } else if(currentTool==='excelMaker'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="flex items-center gap-2 mb-3"><span class="text-[10px] font-black tracking-wide text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">✨ NEW • FREE</span><span class="text-xs text-slate-500 font-bold">${l?'Excel-style ग्रिड — बोल्ड, सेल कलर और =SUM(A1:A5) जैसे फॉर्मूला। फाइल अपलोड की ज़रूरत नहीं।':'Excel-style grid — bold, cell colors, and =SUM(A1:A5)-style formulas. No file upload needed.'}</span></div>
+    <div class="xm-toolbar">
+      <button type="button" class="we-btn" onclick="xmAddRow()">${l?'➕ रो':'➕ Row'}</button>
+      <button type="button" class="we-btn" onclick="xmAddCol()">${l?'➕ कॉलम':'➕ Column'}</button>
+      <button type="button" class="we-btn" onclick="xmDelRow()">${l?'➖ रो':'➖ Row'}</button>
+      <button type="button" class="we-btn" onclick="xmDelCol()">${l?'➖ कॉलम':'➖ Column'}</button>
+      <button type="button" class="we-btn" onclick="xmStyle('bold')"><b>B</b></button>
+      <input type="color" title="${l?'सेल रंग':'Cell color'}" value="#ffffff" class="we-btn p-0" onchange="xmStyle('bg',this.value)">
+      <button type="button" class="we-btn" onclick="xmClear()">🗑 ${l?'साफ़ करें':'Clear'}</button>
+      <span class="text-[11px] text-slate-400 ml-auto">${l?'फॉर्मूला के लिए = से शुरू करें, जैसे =SUM(A1:A5)':'Start with = for formulas, e.g. =SUM(A1:A5)'}</span>
+    </div>
+    <div class="xm-wrap"><table id="xmTable"></table></div>
+    <div class="mt-4"><label class="block text-sm font-bold mb-2">${l?'एक्सपोर्ट फॉर्मेट':'Export format'}</label><select id="xmExportFormat" class="w-full border rounded-xl px-4 py-3"><option value="xlsx">XLSX</option><option value="pdf">PDF</option><option value="csv">CSV</option></select></div>`;
+    box.classList.remove('hidden');
+    xmInit();
   }
 }
 
@@ -638,10 +732,10 @@ function addFiles(files){const valid=files.filter(validFile);if(!valid.length)re
 function renderFiles(){$('fileList').innerHTML=selectedFiles.map((f,i)=>`<div class="flex items-center gap-3 p-4 bg-slate-50 border rounded-xl"><div class="text-2xl">${fileIcon(f)}</div><div class="flex-1 min-w-0"><b class="block truncate text-sm">${esc(f.name)}</b><span class="text-xs text-slate-400">${bytes(f.size)}</span></div><button onclick="removeFile(${i})" class="w-9 h-9 rounded-lg hover:bg-red-100">✕</button></div>`).join('');}
 function fileIcon(f){return /image/i.test(f.type)?'🖼️':/word|docx/i.test(f.type)||/\.docx$/i.test(f.name)?'📝':/sheet|excel|xlsx|xls/i.test(f.type)||/\.(xlsx|xls)$/i.test(f.name)?'📊':'📄';}
 function removeFile(i){selectedFiles.splice(i,1);renderFiles();updateButton();}
-function updateButton(){const b=$('processBtn');const fileOk=selectedFiles.length||currentTool==='wordEditor'||currentTool==='textToPdf';if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
+function updateButton(){const b=$('processBtn');const fileOk=selectedFiles.length||currentTool==='wordEditor'||currentTool==='textToPdf'||currentTool==='excelMaker';if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
 
 async function processFiles(){
-  if((!selectedFiles.length&&!['wordEditor','textToPdf'].includes(currentTool))||processing)return;
+  if((!selectedFiles.length&&!['wordEditor','textToPdf','excelMaker'].includes(currentTool))||processing)return;
   processing=true;$('processSpinner').classList.remove('hidden');$('processBtnText').textContent=siteLang==='hi'?'प्रोसेस हो रहा है…':'Processing…';$('processBtn').disabled=true;
   try{
     switch(currentTool){
@@ -649,7 +743,7 @@ async function processFiles(){
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'ocrConverter':await ocrConverterTool();break;case'imageToText':await imageToTextTool();break;case'textToPdf':await textToPdfTool();break;case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;
+      case'ocrConverter':await ocrConverterTool();break;case'imageToText':await imageToTextTool();break;case'textToPdf':await textToPdfTool();break;case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'excelMaker':await exportExcelMaker();break;case'pdfToWord':await pdfToWordTool();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -882,6 +976,80 @@ async function exportWordEditor(){
   }
 }
 
+/* ============ Excel Maker (browser spreadsheet editor) ============ */
+function xmColLetter(i){let s='';i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;}
+function xmColIndex(letters){letters=letters.toUpperCase();let n=0;for(let i=0;i<letters.length;i++)n=n*26+(letters.charCodeAt(i)-64);return n-1;}
+function xmKey(r,c){return r+'_'+c;}
+function xmInit(){if(!window.__xmData)window.__xmData={rows:10,cols:6,cells:{}};xmRender();}
+function xmCellNumeric(r,c){const v=xmComputeDisplay(r,c);const n=parseFloat(v);return isNaN(n)?0:n;}
+function xmEvalFormula(raw){
+  const expr=raw.slice(1).trim();
+  const sumMatch=expr.match(/^SUM\(([A-Za-z]+)(\d+):([A-Za-z]+)(\d+)\)$/i);
+  if(sumMatch){const c1=xmColIndex(sumMatch[1]),r1=+sumMatch[2]-1,c2=xmColIndex(sumMatch[3]),r2=+sumMatch[4]-1;let sum=0;
+    for(let r=Math.min(r1,r2);r<=Math.max(r1,r2);r++)for(let c=Math.min(c1,c2);c<=Math.max(c1,c2);c++)sum+=xmCellNumeric(r,c);
+    return sum;}
+  const replaced=expr.replace(/([A-Za-z]+)(\d+)/g,(m,col,row)=>xmCellNumeric(+row-1,xmColIndex(col)));
+  if(!/^[0-9+\-*/().\s]+$/.test(replaced))throw new Error('bad formula');
+  return Function('"use strict";return ('+replaced+')')();
+}
+function xmComputeDisplay(r,c){const d=window.__xmData;const cell=d&&d.cells[xmKey(r,c)];const raw=cell?(cell.v||''):'';if(raw.startsWith('='))
+  {try{return String(xmEvalFormula(raw));}catch(e){return '#ERR';}}return raw;}
+function xmRender(){
+  const d=window.__xmData;const tbl=$('xmTable');if(!tbl)return;
+  let html='<thead><tr><th></th>';for(let c=0;c<d.cols;c++)html+=`<th>${xmColLetter(c)}</th>`;html+='</tr></thead><tbody>';
+  for(let r=0;r<d.rows;r++){html+=`<tr><td class="xm-rowhead">${r+1}</td>`;
+    for(let c=0;c<d.cols;c++){const cell=d.cells[xmKey(r,c)]||{};const style=`font-weight:${cell.bold?'800':'400'};background:${cell.bg||'transparent'}`;const disp=esc(xmComputeDisplay(r,c));
+      html+=`<td><input class="xm-cell" style="${style}" value="${disp}" onfocus="xmFocus(${r},${c},this)" oninput="xmInput(${r},${c},this.value)" onblur="xmBlur(${r},${c},this)"></td>`;}
+    html+='</tr>';}
+  tbl.innerHTML=html+'</tbody>';
+}
+function xmFocus(r,c,el){window.__xmSelected={r,c};const d=window.__xmData;const cell=d.cells[xmKey(r,c)];el.value=cell?(cell.v||''):'';}
+function xmInput(r,c,val){const d=window.__xmData;const key=xmKey(r,c);if(!d.cells[key])d.cells[key]={};d.cells[key].v=val;}
+function xmBlur(r,c,el){el.value=xmComputeDisplay(r,c);}
+function xmStyle(kind,val){const s=window.__xmSelected;if(!s)return toast(siteLang==='hi'?'पहले कोई सेल चुनें':'Select a cell first');const d=window.__xmData;const key=xmKey(s.r,s.c);if(!d.cells[key])d.cells[key]={};if(kind==='bold')d.cells[key].bold=!d.cells[key].bold;else if(kind==='bg')d.cells[key].bg=val;xmRender();}
+function xmAddRow(){window.__xmData.rows++;xmRender();}
+function xmAddCol(){window.__xmData.cols++;xmRender();}
+function xmDelRow(){const d=window.__xmData;if(d.rows<=1)return;d.rows--;xmRender();}
+function xmDelCol(){const d=window.__xmData;if(d.cols<=1)return;d.cols--;xmRender();}
+function xmClear(){window.__xmData={rows:10,cols:6,cells:{}};xmRender();}
+async function exportExcelMaker(){
+  const fmt=$('xmExportFormat')?.value||'xlsx';const d=window.__xmData||{rows:0,cols:0,cells:{}};
+  const rows=[];for(let r=0;r<d.rows;r++){const row=[];for(let c=0;c<d.cols;c++)row.push(xmComputeDisplay(r,c));rows.push(row);}
+  if(fmt==='csv'){
+    const csv=rows.map(row=>row.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+    downloadBlob(new Blob([csv],{type:'text/csv;charset=utf-8'}),'spreadsheet.csv',siteLang==='hi'?'CSV डाउनलोड करें':'Download CSV');
+  } else if(fmt==='xlsx'){
+    if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');
+    const ws=XLSX.utils.aoa_to_sheet(rows),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Sheet1');
+    const out=XLSX.write(wb,{bookType:'xlsx',type:'array'});
+    downloadBlob(new Blob([out],{type:'application/octet-stream'}),'spreadsheet.xlsx',siteLang==='hi'?'XLSX डाउनलोड करें':'Download XLSX');
+  } else {
+    const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});
+    const wrap=document.createElement('div');wrap.className='sheet-preview';
+    wrap.innerHTML='<table>'+rows.map(row=>'<tr>'+row.map(v=>`<td>${esc(v||'')}</td>`).join('')+'</tr>').join('')+'</table>';
+    document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,60));
+    await pdf.html(wrap,{margin:[24,24,24,24],autoPaging:'text',html2canvas:{scale:.9,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'spreadsheet.pdf',siteLang==='hi'?'PDF डाउनलोड करें':'Download PDF');wrap.remove();}});
+    return;
+  }
+  showResult(siteLang==='hi'?'स्प्रेडशीट तैयार है।':'Spreadsheet is ready.');
+}
+
+/* ============ PDF to Word ============ */
+async function pdfToWordTool(){
+  if(!pdfjs)throw new Error('PDF engine has not loaded yet. Refresh the page and try again.');
+  const f=selectedFiles[0],pdf=await pdfjs.getDocument({data:await f.arrayBuffer()}).promise;
+  let bodyHtml='';
+  for(let n=1;n<=pdf.numPages;n++){
+    const page=await pdf.getPage(n),content=await page.getTextContent();
+    const pageText=content.items.map(it=>it.str).join(' ');
+    bodyHtml+=`<p>${esc(pageText)}</p>`+(n<pdf.numPages?'<br clear="all" style="page-break-before:always">':'');
+    setProgress(n,pdf.numPages,`Page ${n}/${pdf.numPages}`);await idle();
+  }
+  const html=`<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Document</title></head><body style="font-family:Arial,sans-serif;line-height:1.5">${bodyHtml}</body></html>`;
+  downloadBlob(new Blob(['\ufeff',html],{type:'application/msword'}),'converted-document.doc',siteLang==='hi'?'Word डाउनलोड करें':'Download Word');
+  showResult(siteLang==='hi'?`${pdf.numPages} पेज Word फ़ाइल में बदले गए। नोट: टेक्स्ट-आधारित PDF सबसे अच्छे रिज़ल्ट देते हैं; स्कैन की गई PDF के लिए पहले OCR Converter का इस्तेमाल करें।`:`${pdf.numPages} page(s) converted to Word. Note: text-based PDFs give the best results — for scanned PDFs, run OCR Converter first.`);
+}
+
 let photoEditorImage=null;
 const photoPresets={
   Original:{brightness:100,contrast:100,saturation:100,warmth:0,sharpen:0,vignette:0,sepia:0,grayscale:0,blur:0},
@@ -1046,9 +1214,10 @@ async function pdfEditorPro(){
 async function wordToPdf(){if(!window.mammoth)throw new Error('Word library did not load. Check your internet connection.');const result=await mammoth.convertToHtml({arrayBuffer:await selectedFiles[0].arrayBuffer()},{convertImage:mammoth.images.imgElement(async image=>({src:`data:${image.contentType};base64,${await image.read('base64')}`}))});const wrap=document.createElement('div');wrap.className='doc-preview';wrap.innerHTML=result.value;document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,100));const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4'});await pdf.html(wrap,{margin:[36,36,36,36],autoPaging:'text',html2canvas:{scale:1,useCORS:true,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'word-to-pdf.pdf','Word Download PDF');}});wrap.remove();showResult('DOCX PDF is ready.');}
 async function excelToPdf(){if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');const wb=XLSX.read(await selectedFiles[0].arrayBuffer(),{type:'array'});const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});let first=true;for(let si=0;si<wb.SheetNames.length;si++){const name=wb.SheetNames[si],sheet=wb.Sheets[name],html=XLSX.utils.sheet_to_html(sheet,{header:'',footer:''});const wrap=document.createElement('div');wrap.className='sheet-preview';wrap.innerHTML=`<h2 style="font-size:18px;font-weight:700;margin:0 0 12px">${esc(name)}</h2>${html}`;document.body.appendChild(wrap);if(!first)pdf.addPage('a4','landscape');first=false;await pdf.html(wrap,{margin:[28,28,28,28],autoPaging:'text',html2canvas:{scale:.75,backgroundColor:'#fff'},callback:()=>{}});wrap.remove();setProgress(si+1,wb.SheetNames.length,`Sheet ${si+1}/${wb.SheetNames.length} ready`);await idle();}downloadBlob(pdf.output('blob'),'excel-to-pdf.pdf','Excel Download PDF');showResult(`${wb.SheetNames.length} worksheet(s) converted to PDF.`);}
 
-async function ocrCanvas(canvas){if(!window.Tesseract)throw new Error('OCR engine did not load. Check your internet connection.');const {data}=await Tesseract.recognize(canvas,'eng',{logger:m=>{if(m.status==='recognizing text'&&m.progress)setProgress(Math.round(m.progress*100),100,'OCR is reading text…');}});return data.text||'';}
-async function imageToTextTool(){const img=await loadImage(selectedFiles[0]);const c=document.createElement('canvas');const max=2200,s=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));c.width=Math.round(img.naturalWidth*s);c.height=Math.round(img.naturalHeight*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);const text=await ocrCanvas(c);downloadBlob(new Blob([text],{type:'text/plain;charset=utf-8'}),'image-to-text.txt','Download OCR Text');showResult('Image text extracted successfully.');}
-async function ocrConverterTool(){const f=selectedFiles[0];if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name)){if(!pdfjs)throw new Error('PDF engine has not loaded yet. Refresh the page and try again.');const pdf=await pdfjs.getDocument({data:await f.arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:1.5}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;all+=`\n--- Page ${n} ---\n`+(await ocrCanvas(c));setProgress(n,pdf.numPages,`OCR page ${n}/${pdf.numPages}`);await idle();}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'ocr-pdf-text.txt','Download OCR Text');showResult(`${pdf.numPages} PDF page(s) processed with OCR.`);}else{await imageToTextTool();}}
+function ocrPreprocess(canvas){const ctx=canvas.getContext('2d');const img=ctx.getImageData(0,0,canvas.width,canvas.height),d=img.data;for(let i=0;i<d.length;i+=4){const g=d[i]*.299+d[i+1]*.587+d[i+2]*.114;const v=g>150?255:g;d[i]=d[i+1]=d[i+2]=v;}ctx.putImageData(img,0,0);return canvas;}
+async function ocrCanvas(canvas){if(!window.Tesseract)throw new Error('OCR engine did not load. Check your internet connection.');const lang=$('ocrLangSelect')?.value||'eng';const {data}=await Tesseract.recognize(ocrPreprocess(canvas),lang,{logger:m=>{if(m.status==='recognizing text'&&m.progress)setProgress(Math.round(m.progress*100),100,siteLang==='hi'?'OCR टेक्स्ट पढ़ रहा है…':'OCR is reading text…');}});return data.text||'';}
+async function imageToTextTool(){const img=await loadImage(selectedFiles[0]);const c=document.createElement('canvas');const max=2600,s=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));c.width=Math.round(img.naturalWidth*s);c.height=Math.round(img.naturalHeight*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);const text=await ocrCanvas(c);downloadBlob(new Blob([text],{type:'text/plain;charset=utf-8'}),'image-to-text.txt','Download OCR Text');showResult(siteLang==='hi'?'इमेज से टेक्स्ट सफलतापूर्वक निकाला गया।':'Image text extracted successfully.');}
+async function ocrConverterTool(){const f=selectedFiles[0];if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name)){if(!pdfjs)throw new Error('PDF engine has not loaded yet. Refresh the page and try again.');const pdf=await pdfjs.getDocument({data:await f.arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:2}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;all+=`\n--- Page ${n} ---\n`+(await ocrCanvas(c));setProgress(n,pdf.numPages,`OCR page ${n}/${pdf.numPages}`);await idle();}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'ocr-pdf-text.txt','Download OCR Text');showResult(siteLang==='hi'?`${pdf.numPages} PDF पेज OCR से प्रोसेस हुए।`:`${pdf.numPages} PDF page(s) processed with OCR.`);}else{await imageToTextTool();}}
 async function textToPdfTool(){const text=($('textToPdfInput')?.value||'').trim();if(!text)throw new Error('Enter some text first.');const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'pt',format:'a4'});const margin=48,maxW=pdf.internal.pageSize.getWidth()-margin*2,lines=pdf.splitTextToSize(text,maxW);let y=60;for(const line of lines){if(y>pdf.internal.pageSize.getHeight()-60){pdf.addPage();y=60;}pdf.text(line,margin,y);y+=18;}downloadBlob(pdf.output('blob'),'text-to-pdf.pdf','Download Text PDF');showResult('Text PDF created successfully.');}
 
 function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('a');a.href=url;a.download=name;a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');$('resultText').textContent=siteLang==='hi'?'फाइल तैयार है। नीचे डाउनलोड बटन दबाएं।':'File is ready. Click the Download button below.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
@@ -1085,7 +1254,7 @@ function showCookieSlide(){const c=$('cookieSlide');if(c)c.classList.add('show')
 function hideCookieSlide(){const c=$('cookieSlide');if(c)c.classList.remove('show')}
 window.addEventListener('load',()=>{initSiteLanguage();setTimeout(showCookieSlide,5000)});
 
-function showComingSoon(name){const existing=$('comingSoonModal');if(existing)existing.remove();const d=document.createElement('div');d.id='comingSoonModal';d.className='fixed inset-0 z-[10000] grid place-items-center bg-slate-950/60 backdrop-blur-sm';d.innerHTML=`<div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-sm mx-4 text-center shadow-2xl animate-pulse"><div class="text-5xl mb-3">🚀</div><h2 class="text-2xl font-black">${esc(name)}</h2><p class="text-slate-500 mt-2">Coming Soon</p><button onclick="document.getElementById('comingSoonModal').remove()" class="mt-5 bg-red-500 text-white font-black px-6 py-3 rounded-xl">OK</button></div>`;document.body.appendChild(d);}
+function showComingSoon(name){const existing=$('comingSoonModal');if(existing)existing.remove();const d=document.createElement('div');d.id='comingSoonModal';d.className='fixed inset-0 z-[10000] grid place-items-center bg-slate-950/60 backdrop-blur-sm';d.innerHTML=`<div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-sm mx-4 text-center shadow-2xl animate-pulse"><div class="text-5xl mb-3">🚀</div><h2 class="text-2xl font-black">${esc(name)}</h2><p class="text-slate-500 mt-2">${esc(UI_TEXT[siteLang].comingSoonText)}</p><button onclick="document.getElementById('comingSoonModal').remove()" class="mt-5 bg-red-500 text-white font-black px-6 py-3 rounded-xl">${esc(UI_TEXT[siteLang].okBtnText)}</button></div>`;document.body.appendChild(d);}
 
 window.addEventListener('load',()=>{ if(typeof updateHeadlineAndPrivacy==='function') updateHeadlineAndPrivacy(); });
 

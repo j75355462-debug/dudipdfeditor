@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta name="monetag" content="6e1816f9779b94bae4534b09f3d4b34f">
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#ef4444">
@@ -30,23 +28,6 @@
     .sheet-preview{position:absolute;left:-100000px;top:0;width:1000px;background:#fff;padding:20px;color:#111827;font-family:Arial,sans-serif}
     .sheet-preview table{border-collapse:collapse;width:100%;font-size:11px}.sheet-preview td{border:1px solid #cbd5e1;padding:5px;vertical-align:top}
     .feature-pill{border:1px solid #e2e8f0;background:#fff;border-radius:16px;padding:14px}
-
-    /* Dudi PDF Editor polish */
-    .brand-title{font-weight:950;letter-spacing:-.03em;background:linear-gradient(90deg,#ef4444,#f97316,#ef4444);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandGlow 3s linear infinite}
-    @keyframes brandGlow{0%{background-position:0%}100%{background-position:200%}}
-    .icon-btn{width:38px;height:38px;padding:0!important;display:grid!important;place-items:center;font-size:18px!important}
-    .compact-drop{padding:14px!important;min-height:150px!important}
-    .compact-drop .text-4xl{font-size:22px!important;margin-bottom:3px!important}
-    .compact-drop button{margin-top:7px!important;padding:7px 15px!important;font-size:13px!important}
-    .feature-slider{position:relative;overflow:hidden;border:1px solid #fecaca;border-radius:20px;background:linear-gradient(135deg,#fff,#fff7f7);padding:12px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
-    .feature-track{display:flex;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
-    .feature-slide{min-width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-    .feature-slide .feature-pill{min-height:92px}
-    .slider-controls{position:absolute;right:10px;top:10px;display:flex;gap:5px}
-    .slider-controls button{width:30px;height:30px;border-radius:9px;border:1px solid #fecaca;background:#fff;font-weight:900}
-    .native-banner{min-height:82px;border:1px solid #e2e8f0;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    @media(max-width:900px){.feature-slide{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:640px){.feature-slide{grid-template-columns:1fr 1fr}.compact-drop{padding:16px!important}.icon-btn{width:36px;height:36px}}
     @media(max-width:640px){.doc-preview{width:900px}.sheet-preview{width:1200px}}
 
     /* News-style scrolling headline */
@@ -55,8 +36,11 @@
     .headline-track{position:relative;overflow:hidden;display:flex;align-items:center;flex:1;white-space:nowrap}
     .headline-text{display:inline-block;padding-left:100%;font-size:13px;font-weight:800;color:#334155;animation:headlineScroll 18s linear infinite}
     @keyframes headlineScroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+    .privacy-notice{position:fixed;left:16px;right:16px;bottom:16px;z-index:10001;background:rgba(255,255,255,.98);border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 18px 50px rgba(15,23,42,.18);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:900px;margin:auto}
+    .privacy-notice.hidden{display:none}
     .privacy-lang button{border:1px solid #cbd5e1;border-radius:9px;padding:5px 9px;font-size:11px;font-weight:800;background:#fff;cursor:pointer}
     .privacy-lang button.active{background:#0f172a;color:#fff;border-color:#0f172a}
+    @media(max-width:640px){.privacy-notice{left:10px;right:10px;bottom:10px;align-items:flex-start}.headline-text{animation-duration:16s}.headline-label{padding:0 10px;font-size:10px}}
 
     /* Compact layout + centered ad space */
     .tool-card{padding:12px!important;border-radius:16px!important}
@@ -80,189 +64,161 @@
     .info-card{width:min(760px,96vw);max-height:86vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(15,23,42,.28)}
     .info-card p,.info-card li{line-height:1.7;color:#475569;font-size:14px}
     .info-card h3{font-weight:900;color:#0f172a;margin-top:18px;margin-bottom:6px}
-    /* Dudi logo opening animation — icon only, 2 seconds */
-    #dudiIntro{
-      position:fixed;inset:0;z-index:10000;display:grid;place-items:center;
-      background:rgba(248,250,252,.98);pointer-events:none;
-      animation:dudiIntroOut .42s ease 1.58s forwards;
-    }
-    #dudiIntroLogo{
-      width:clamp(135px,22vw,205px);height:clamp(135px,22vw,205px);
-      object-fit:cover;border-radius:30px;background:#fff;
-      box-shadow:0 24px 70px rgba(15,23,42,.20),0 0 0 1px rgba(226,232,240,.9);
-      transform-origin:center;
-      animation:dudiLogoIn 1.58s cubic-bezier(.2,.8,.2,1) both;
-    }
-    @keyframes dudiLogoIn{
-      0%{opacity:0;transform:scale(.58) rotate(-8deg);filter:blur(10px)}
-      18%{opacity:1;transform:scale(.82) rotate(-3deg);filter:blur(2px)}
-      48%{opacity:1;transform:scale(1.08) rotate(1deg);filter:blur(0)}
-      70%{opacity:1;transform:scale(.98) rotate(0)}
-      100%{opacity:1;transform:scale(1) rotate(0)}
-    }
-    @keyframes dudiIntroOut{
-      0%{opacity:1;transform:scale(1)}
-      100%{opacity:0;visibility:hidden;transform:scale(1.035)}
-    }
-    .headline-text{color:#dc2626!important;font-weight:950!important}
-    .update-btn{background:#dc2626;color:#fff;border:0;border-radius:10px;padding:7px 14px;font-size:12px;font-weight:950;box-shadow:0 5px 14px rgba(220,38,38,.22);cursor:pointer}
-    .update-btn:hover{background:#b91c1c}
-    #cookieSlide{position:fixed;left:14px;right:14px;bottom:14px;z-index:9997;transform:translateY(130%);opacity:0;transition:transform .55s cubic-bezier(.22,.61,.36,1),opacity .4s ease}
-    #cookieSlide.show{transform:translateY(0);opacity:1}
-    .cookie-card{margin:auto;max-width:760px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 18px 50px rgba(15,23,42,.22);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .cookie-lang{display:flex;gap:6px;flex-wrap:wrap}.cookie-lang button{border:1px solid #cbd5e1;border-radius:9px;padding:6px 10px;font-size:11px;font-weight:900;background:#fff}.cookie-lang button:hover{border-color:#ef4444;color:#dc2626}
-    #updateModal{position:fixed;inset:0;z-index:10001;background:rgba(15,23,42,.62);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:18px}
-    #updateModal.show{display:flex}.update-card{width:min(520px,94vw);background:#fff;border-radius:26px;padding:30px;text-align:center;box-shadow:0 30px 100px rgba(15,23,42,.35);animation:updatePop .45s cubic-bezier(.2,.8,.2,1)}
-    @keyframes updatePop{0%{opacity:0;transform:scale(.65) translateY(20px)}70%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
-    .update-emoji{font-size:58px;display:inline-block;animation:updateEmoji 1s ease-in-out infinite alternate}@keyframes updateEmoji{from{transform:rotate(-8deg) scale(1)}to{transform:rotate(8deg) scale(1.12)}}
-    @media(max-width:640px){.cookie-card{align-items:flex-start;flex-direction:column}.cookie-lang{width:100%}.cookie-lang button{flex:1}}
 
-    /* ================= DARK MODE (real fix — works with the theme toggle) ================= */
-    html.dark{color-scheme:dark}
-    html.dark body{background:radial-gradient(circle at 10% 10%,rgba(239,68,68,.14),transparent 27%),radial-gradient(circle at 90% 5%,rgba(99,102,241,.14),transparent 27%),#0b1220!important;color:#e2e8f0}
-    html.dark header{background:rgba(15,23,42,.92)!important;border-color:#1e293b!important}
-    html.dark .bg-white{background:#111827!important;color:#e2e8f0}
-    html.dark .bg-slate-50{background:#0f172a!important}
-    html.dark .bg-slate-100{background:#1e293b!important}
-    html.dark .bg-slate-200{background:#1e293b!important}
-    html.dark .border-slate-100,html.dark .border-slate-200,html.dark .border{border-color:#1e293b!important}
-    html.dark .text-slate-900,html.dark .text-slate-800,html.dark .text-slate-700{color:#e5e7eb!important}
-    html.dark .text-slate-500,html.dark .text-slate-400,html.dark .text-slate-600{color:#94a3b8!important}
-    html.dark .drop-zone{border-color:#334155!important;background:#0f172a!important}
-    html.dark .drop-zone.drag{background:#1c1017!important;border-color:#ef4444!important}
-    html.dark .feature-pill{background:#111827!important;border-color:#1e293b!important;color:#e2e8f0}
-    html.dark .tool-card{background:#111827!important;border-color:#1e293b!important;color:#e2e8f0}
-    html.dark .feature-slider{background:linear-gradient(135deg,#111827,#170f10)!important;border-color:#3f1d1d!important}
-    html.dark .slider-controls button{background:#111827!important;border-color:#3f1d1d!important;color:#e2e8f0}
-    html.dark .info-card,html.dark .cookie-card,html.dark .update-card{background:#111827!important;color:#e2e8f0;border-color:#1e293b!important}
-    html.dark .info-card h3{color:#f1f5f9!important}
-    html.dark .info-card p,html.dark .info-card li{color:#94a3b8!important}
-    html.dark .headline-wrap{background:#111827!important;border-color:#3f1d1d!important}
-    html.dark .headline-text{color:#f87171!important}
-    html.dark .native-banner,html.dark .ad-space{background:#0f172a!important;border-color:#1e293b!important;color:#64748b!important}
-    html.dark #siteMenu,html.dark #notifBox{background:#111827!important;border-color:#1e293b!important}
-    html.dark .site-menu-item{color:#e2e8f0!important}
-    html.dark .site-menu-item:hover{background:#1e293b!important;color:#f87171!important}
-    html.dark .icon-btn,html.dark .privacy-lang button,html.dark .cookie-lang button{background:#111827!important;border-color:#334155!important;color:#e2e8f0!important}
-    html.dark input,html.dark select,html.dark textarea{background:#0f172a!important;color:#e2e8f0!important;border-color:#334155!important}
-    html.dark .bg-slate-900{background:#0b1220!important}
-    html.dark ::placeholder{color:#64748b!important}
-
-    /* ================= Compact drop zone (smaller, saves space) ================= */
-    .compact-drop{padding:10px!important;min-height:96px!important}
-    .compact-drop .text-4xl{font-size:18px!important;margin-bottom:2px!important}
-    .compact-drop h3{font-size:13px!important}
-    .compact-drop p{font-size:11px!important;margin-top:2px!important}
-    .compact-drop button{margin-top:6px!important;padding:6px 13px!important;font-size:12px!important}
-    .compact-drop #fileHint{margin-top:6px!important}
-
-    /* ================= Feature slider — smoother animation + pill entrance ================= */
-    .feature-slider:hover .feature-track{filter:brightness(1.01)}
-    .feature-track{will-change:transform}
-    .feature-slide .feature-pill{animation:pillPop .45s cubic-bezier(.2,.8,.2,1) both}
-    .feature-slide .feature-pill:nth-child(1){animation-delay:.02s}
-    .feature-slide .feature-pill:nth-child(2){animation-delay:.08s}
-    .feature-slide .feature-pill:nth-child(3){animation-delay:.14s}
-    .feature-slide .feature-pill:nth-child(4){animation-delay:.20s}
-    @keyframes pillPop{0%{opacity:0;transform:translateY(10px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}
-    .feature-pill{cursor:pointer}
-    .feature-pill:hover{border-color:#ef4444!important;box-shadow:0 10px 24px rgba(239,68,68,.14);transform:translateY(-2px);transition:.2s ease}
-    .slider-controls button{transition:.15s ease}
-    .slider-controls button:hover{background:#ef4444!important;color:#fff!important;border-color:#ef4444!important;transform:scale(1.06)}
-    .slider-dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
-    .slider-dots button{width:7px;height:7px;border-radius:999px;border:0;background:#fecaca;padding:0;transition:.2s ease}
-    .slider-dots button.active{background:#ef4444;width:18px}
-    html.dark .slider-dots button{background:#3f1d1d}
-    html.dark .slider-dots button.active{background:#ef4444}
-
-    /* ================= Word / Excel editor styling (was missing) ================= */
-    .we-toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:8px}
-    .we-sel{border:1px solid #cbd5e1;border-radius:8px;padding:6px 8px;font-size:12px;font-weight:700;background:#fff;cursor:pointer}
-    .we-btn{border:1px solid #cbd5e1;border-radius:8px;min-width:34px;height:32px;padding:0 8px;font-size:13px;font-weight:800;background:#fff;cursor:pointer;transition:.15s ease}
-    .we-btn:hover{border-color:#ef4444;color:#dc2626;background:#fff1f1}
-    #weCanvas{min-height:420px;background:#fff;border:1px solid #e2e8f0;border-top:0;border-radius:0 0 14px 14px;padding:28px;box-shadow:inset 0 0 0 1px rgba(15,23,42,.02);outline:none;line-height:1.6}
+    /* Welcome logo popup */
+    #welcomeLogoPopup{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(15,23,42,.58);
+      backdrop-filter:blur(4px);
+      opacity:1;
+      visibility:visible;
+      transition:opacity .35s ease, visibility .35s ease;
+    }
+    #welcomeLogoPopup.hide{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+    #welcomeLogoPopup .welcome-logo-card{
+      width:min(420px,88vw);
+      max-height:82vh;
+      background:#fff;
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 30px 90px rgba(15,23,42,.28);
+      transform:scale(1);
+      transition:transform .35s ease;
+    }
+    #welcomeLogoPopup.hide .welcome-logo-card{transform:scale(.96)}
+    /* Word Document Editor Pro */
+    .we-toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px 16px 0 0}
+    .we-btn{min-width:36px;height:36px;padding:0 10px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;font-weight:800;font-size:14px;cursor:pointer}
+    .we-btn:hover{border-color:#ef4444;color:#ef4444}
+    .we-sel{height:36px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;font-weight:700;font-size:13px;padding:0 8px}
+    #weCanvas{min-height:520px;max-height:70vh;overflow:auto;background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;padding:48px;font-family:Arial,sans-serif;font-size:15px;line-height:1.6;color:#111827;box-shadow:0 4px 18px rgba(15,23,42,.06)}
+    #weCanvas:focus{outline:2px solid #fecaca}
     #weCanvas table{border-collapse:collapse}
-    #weCanvas table td{border:1px solid #94a3b8;padding:6px;min-width:60px}
-    html.dark .we-toolbar{background:#0f172a!important;border-color:#1e293b!important}
-    html.dark .we-sel,html.dark .we-btn{background:#111827!important;border-color:#334155!important;color:#e2e8f0!important}
-    html.dark #weCanvas{background:#111827!important;border-color:#1e293b!important;color:#e2e8f0!important}
+    #weCanvas table td{border:1px solid #94a3b8;padding:6px;min-width:40px}
+    #weCanvas img{max-width:100%}
 
-    /* ================= Excel Maker (spreadsheet editor) ================= */
-    .xm-toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:14px 14px 0 0;padding:8px}
-    .xm-wrap{border:1px solid #e2e8f0;border-top:0;border-radius:0 0 14px 14px;overflow:auto;max-height:460px;background:#fff}
-    .xm-wrap table{border-collapse:collapse;width:100%}
-    .xm-wrap th{position:sticky;top:0;background:#f8fafc;border:1px solid #e2e8f0;font-size:11px;color:#64748b;padding:4px;z-index:1}
-    .xm-wrap td{border:1px solid #e2e8f0;padding:0}
-    .xm-cell{width:110px;min-width:90px;border:0;padding:7px 8px;font-size:13px;outline:none;background:transparent}
-    .xm-cell:focus{background:#fff7f7;box-shadow:inset 0 0 0 2px #ef4444}
-    .xm-rowhead{background:#f8fafc;font-size:11px;color:#64748b;text-align:center;padding:4px;border:1px solid #e2e8f0}
-    html.dark .xm-toolbar{background:#0f172a!important;border-color:#1e293b!important}
-    html.dark .xm-wrap{background:#111827!important;border-color:#1e293b!important}
-    html.dark .xm-wrap th,html.dark .xm-rowhead{background:#0f172a!important;border-color:#1e293b!important;color:#94a3b8!important}
-    html.dark .xm-wrap td{border-color:#1e293b!important}
-    html.dark .xm-cell{color:#e2e8f0!important}
-    html.dark .xm-cell:focus{background:#1c1017!important}
-</style>
+    #welcomeLogoPopup img{
+      display:block;
+      width:100%;
+      max-height:72vh;
+      object-fit:contain;
+      border-radius:18px;
+    }
+
+
+    :root{--bg:#f8fafc;--fg:#0f172a;--card:#fff;--muted:#64748b;--line:#e2e8f0}
+    body.dark-mode{background:#0b1220;color:#e5e7eb}
+    body.dark-mode .bg-white,body.dark-mode .feature-pill,body.dark-mode .tool-card,body.dark-mode .info-card,body.dark-mode .privacy-notice,body.dark-mode .welcome-logo-card{background:#111827!important;color:#e5e7eb!important;border-color:#334155!important}
+    body.dark-mode .text-slate-900,body.dark-mode .text-slate-800,body.dark-mode .text-slate-700{color:#f1f5f9!important}
+    body.dark-mode .text-slate-600,body.dark-mode .text-slate-500,body.dark-mode .text-slate-400{color:#94a3b8!important}
+    body.dark-mode header{background:rgba(15,23,42,.92)!important;border-color:#334155!important}
+    body.dark-mode .headline-wrap{background:#111827;border-color:#334155}.headline-text{color:#334155}
+    body.dark-mode .headline-text{color:#cbd5e1}
+    body.dark-mode .site-menu-item{color:#cbd5e1}.site-menu-item:hover{background:#f8fafc}
+    body.dark-mode .site-menu-item:hover{background:#1e293b}
+    body.dark-mode .we-toolbar,body.dark-mode #weCanvas{background:#111827;color:#e5e7eb;border-color:#334155}
+    .top-icon-btn{width:38px;height:38px;padding:0;border:1px solid #e2e8f0;background:#fff;border-radius:11px;display:grid;place-items:center;cursor:pointer;transition:.2s;flex:none}
+    .top-icon-btn:hover{transform:translateY(-1px);border-color:#ef4444;color:#ef4444}.top-icon-btn svg{width:19px;height:19px}
+    body.dark-mode .top-icon-btn{background:#111827;border-color:#334155;color:#e5e7eb}
+    .brand-mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#ef4444,#f97316);box-shadow:0 8px 20px rgba(239,68,68,.25)}
+    .brand-mark svg{width:21px;height:21px;color:#fff}
+    .logo-shake{animation:logoShake .9s ease-in-out infinite alternate}@keyframes logoShake{0%{transform:translateX(-2px) rotate(-1deg)}50%{transform:translateX(2px) rotate(1deg)}100%{transform:translateX(-1px) rotate(-.5deg)}}
+    .feature-slider-shell{position:relative}.feature-slider{display:flex;gap:12px;overflow:hidden;scroll-behavior:smooth;padding:4px 34px 12px;scrollbar-width:none}.feature-slider::-webkit-scrollbar{display:none}
+    .feature-slide{flex:0 0 min(260px,82vw)}.feature-nav{width:34px;height:34px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.12);font-weight:900;cursor:pointer}
+    body.dark-mode .feature-nav{background:#111827;color:#fff;border-color:#334155}
+    .slider-dot{width:7px;height:7px;border-radius:999px;background:#cbd5e1;transition:.2s}.slider-dot.active{width:20px;background:#ef4444}
+    .workshop-card{border:1px solid #e2e8f0;background:linear-gradient(135deg,#fff,#fff7ed);border-radius:24px;padding:30px;text-align:center;cursor:pointer;box-shadow:0 14px 40px rgba(15,23,42,.08);transition:.25s}
+    .workshop-card:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(15,23,42,.13)}body.dark-mode .workshop-card{background:linear-gradient(135deg,#111827,#1f2937);border-color:#334155}
+    #comingSoonModal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(2,6,23,.62);backdrop-filter:blur(6px)}#comingSoonModal.hidden{display:none}
+    .coming-card{background:#fff;border-radius:26px;padding:30px;text-align:center;width:min(390px,92vw);box-shadow:0 30px 90px rgba(0,0,0,.28);animation:popIn .35s cubic-bezier(.2,.8,.2,1)}body.dark-mode .coming-card{background:#111827;color:#fff}
+    @keyframes popIn{from{transform:scale(.78) translateY(15px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}.coming-icon{font-size:42px;animation:floatIcon 1.2s ease-in-out infinite alternate}@keyframes floatIcon{to{transform:translateY(-7px) rotate(4deg)}}
+    #privacyNotice{display:none}.privacy-ok{background:#ef4444;color:#fff;border:0;border-radius:10px;padding:8px 14px;font-weight:900;cursor:pointer;white-space:nowrap}
+    .welcome-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0 16px}.welcome-brand .brand-mark{width:58px;height:58px;border-radius:17px}.welcome-brand .brand-mark svg{width:35px;height:35px}.welcome-brand h2{font-size:28px;font-weight:950;letter-spacing:-.04em}
+
+    /* Image Crop tool */
+    #cropStage{position:relative;display:inline-block;max-width:100%;margin:auto;overflow:hidden;border-radius:12px;background:#0f172a}
+    #cropImage{display:block;max-width:100%;height:auto;border-radius:12px;user-select:none}
+    #cropBox{position:absolute;border:2px solid #ef4444;box-shadow:0 0 0 9999px rgba(15,23,42,.55);cursor:move;touch-action:none}
+    .crop-handle{position:absolute;width:16px;height:16px;background:#fff;border:2px solid #ef4444;border-radius:4px;touch-action:none;z-index:2}
+    .crop-handle[data-handle="nw"]{left:-9px;top:-9px;cursor:nwse-resize}
+    .crop-handle[data-handle="ne"]{right:-9px;top:-9px;cursor:nesw-resize}
+    .crop-handle[data-handle="sw"]{left:-9px;bottom:-9px;cursor:nesw-resize}
+    .crop-handle[data-handle="se"]{right:-9px;bottom:-9px;cursor:nwse-resize}
+    .crop-aspect-btn{border:1px solid #e2e8f0;background:#fff;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer}
+    .crop-aspect-btn.active{background:#0f172a;color:#fff;border-color:#0f172a}
+    body.dark-mode .crop-aspect-btn{background:#111827;border-color:#334155;color:#e5e7eb}
+
+    /* Blog section */
+    .blog-list{display:flex;flex-direction:column;gap:12px}
+    .blog-item{border:1px solid #e2e8f0;border-radius:16px;background:#fff;padding:2px 16px;overflow:hidden}
+    .blog-item summary{cursor:pointer;list-style:none;padding:14px 4px;font-weight:900;font-size:15px;color:#0f172a;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .blog-item summary::-webkit-details-marker{display:none}
+    .blog-item summary::after{content:'+';font-size:20px;font-weight:900;color:#ef4444;flex:none}
+    .blog-item[open] summary::after{content:'−'}
+    .blog-body{padding:2px 4px 18px}
+    .blog-body p{line-height:1.75;color:#475569;font-size:14px;margin-top:10px}
+    .blog-body h4{font-weight:900;color:#0f172a;margin-top:18px;margin-bottom:4px;font-size:15.5px}
+    .blog-body h5{font-weight:900;color:#0f172a;margin-top:14px;margin-bottom:2px;font-size:14.5px}
+    .blog-body ul,.blog-body ol{margin-top:8px;padding-left:20px;color:#475569;font-size:14px;line-height:1.7}
+    .blog-body li{margin-top:4px}
+    .blog-flow{margin-top:10px;background:#fff1f2;border:1px solid #fecaca;border-radius:10px;padding:9px 12px;font-weight:800;font-size:13px;color:#b91c1c;display:inline-block}
+    .blog-faq{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    .blog-faq-item{border:1px solid #e2e8f0;border-radius:12px;padding:2px 12px;background:#f8fafc}
+    .blog-faq-item summary{cursor:pointer;list-style:none;padding:10px 2px;font-weight:800;font-size:13.5px;color:#0f172a}
+    .blog-faq-item summary::-webkit-details-marker{display:none}
+    .blog-faq-item p{padding-bottom:10px}
+    body.dark-mode .blog-item{background:#111827;border-color:#334155}
+    body.dark-mode .blog-item summary{color:#f1f5f9}
+    body.dark-mode .blog-body p,body.dark-mode .blog-body ul,body.dark-mode .blog-body ol{color:#94a3b8}
+    body.dark-mode .blog-body h4,body.dark-mode .blog-body h5{color:#f1f5f9}
+    body.dark-mode .blog-faq-item{background:#0b1220;border-color:#334155}
+    body.dark-mode .blog-faq-item summary{color:#f1f5f9}
+    body.dark-mode .blog-flow{background:#1f2937;border-color:#334155;color:#fca5a5}
+  </style>
 </head>
 <body>
-<div id="dudiIntro" aria-hidden="true"><img id="dudiIntroLogo" alt="Dudi PDF Editor" src="data:image/webp;base64,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"></div>
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
-    <div class="flex items-center gap-2 min-w-0">
-      <button onclick="goHome()" class="icon-btn rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700" aria-label="Home" title="Home">⌂</button>
-      <button onclick="goHome()" class="brand-title text-lg sm:text-xl whitespace-nowrap" aria-label="Dudi PDF Editor">Dudi PDF Editor</button>
-    </div>
-    <div class="flex items-center gap-1.5">
-      <button onclick="toggleLang()" id="langToggleBtn" class="icon-btn rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700" aria-label="Language" title="Language">🌐<span id="langToggleLabel" class="sr-only">हिंदी</span></button>
-      <button onclick="toggleTheme()" id="themeToggleBtn" class="icon-btn rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700" aria-label="Dark light mode" title="Dark / Light mode">🌙</button>
+    <button onclick="goHome()" class="top-icon-btn" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></button>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleLang()" id="langToggleBtn" class="top-icon-btn" aria-label="Language" title="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"/></svg></button>
+      <button onclick="toggleDarkMode()" id="darkModeBtn" class="top-icon-btn" aria-label="Dark mode" title="Dark / Light mode"><svg id="darkModeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.8 6.8 0 0 0 21 12.8Z"/></svg></button>
       <div class="relative">
-        <button onclick="toggleNotifBox()" id="notifButton" class="relative w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 grid place-items-center text-lg" aria-label="Notifications"><!-- Notification icon ad -->
-<span id="notificationAd" class="inline-flex items-center justify-center">
-<script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script>
-</span>
-🔔<span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
-        <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]">
-          <div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div>
-          <div class="rounded-xl border border-slate-100 bg-slate-50 p-2">
-            <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1" id="notifMsgLabel">Message</div>
-            <p id="notifMsgText" class="text-sm text-slate-600 px-1 py-2">🎉 100% free tools, koi ad nahi, koi server upload nahi — sab kuch aapke browser mein!</p>
-          </div>
-        </div>
+        <button onclick="toggleNotifBox()" id="notifButton" class="top-icon-btn relative" aria-label="Notifications" title="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
+        <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]"><div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div><div class="rounded-xl border border-slate-100 bg-slate-50 p-2"><div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1" id="notifMsgLabel">Message</div><p id="notifMsgText" class="text-sm text-slate-600 px-1 py-2">🎉 100% free tools, koi ad nahi, koi server upload nahi — sab kuch aapke browser mein!</p></div></div>
       </div>
       <div class="relative">
-        <button onclick="toggleSiteMenu()" id="siteMenuButton" class="icon-btn rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700">☰ <span id="menuBtnLabel" class="sr-only">Menu</span><span id="siteMenuArrow" class="sr-only">↓</span></button>
+        <button onclick="toggleSiteMenu()" id="siteMenuButton" class="top-icon-btn" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
         <div id="siteMenu" class="hidden absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-2xl shadow-2xl p-2 z-[100]">
-          <button onclick="openInfo('howto')" class="site-menu-item"><span id="miHowto">❓ How to Use</span></button>
-          <button onclick="openInfo('about')" class="site-menu-item"><span id="miAbout">ℹ️ About Us</span></button>
-          <button onclick="openInfo('terms')" class="site-menu-item"><span id="miTerms">📜 Terms & Conditions</span></button>
-          <button onclick="openInfo('privacy')" class="site-menu-item"><span id="miPrivacy">🔒 Privacy Policy</span></button>
-          <button onclick="openInfo('contact')" class="site-menu-item"><span id="miContact">✉️ Contact Us</span></button>
-          <button onclick="openTool('photoEditor');closeSiteMenu()" class="site-menu-item"><span id="miPhotoEditor">🎨 Photo Editor Pro</span> <span id="miPhotoEditorBadge" class="ml-1 text-[9px] font-black text-amber-600">FREE</span></button>
+          <button onclick="openInfo('howto')" class="site-menu-item"><span id="miHowto">❓ How to Use</span></button><button onclick="openInfo('about')" class="site-menu-item"><span id="miAbout">ℹ️ About Us</span></button><button onclick="openInfo('blog')" class="site-menu-item"><span id="miBlog">📰 Blog</span></button><button onclick="openInfo('terms')" class="site-menu-item"><span id="miTerms">📜 Terms & Conditions</span></button><button onclick="openInfo('privacy')" class="site-menu-item"><span id="miPrivacy">🔒 Privacy Policy</span></button><button onclick="openInfo('contact')" class="site-menu-item"><span id="miContact">✉️ Contact Us</span></button><button onclick="openTool('photoEditor');closeSiteMenu()" class="site-menu-item"><span id="miPhotoEditor">🎨 Photo Editor Pro</span> <span id="miPhotoEditorBadge" class="ml-1 text-[9px] font-black text-amber-600">FREE</span></button>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<div id="updateModal" aria-hidden="true"><div class="update-card"><div class="update-emoji">🎉</div><h2 class="text-3xl font-black text-slate-900 mt-3">No Update Available</h2><p class="text-slate-500 mt-2">You are already using the latest version of Dudi PDF Editor.</p><button onclick="closeUpdateModal()" class="mt-6 bg-red-500 hover:bg-red-600 text-white font-black px-7 py-3 rounded-xl">OK</button></div></div>
-<div id="cookieSlide" aria-hidden="true"><div class="cookie-card"><div><b id="cookieNoticeText" class="text-sm text-slate-800">We are not using cookies</b><p id="cookieChooseText" class="text-xs text-slate-500 mt-1">Choose your language</p></div><div class="cookie-lang flex gap-2"><button type="button" onclick="setCookieLanguage('en')" class="border border-slate-300 rounded-lg px-3 py-2 text-xs font-black bg-white hover:bg-slate-50">English</button><button type="button" onclick="setCookieLanguage('hi')" class="border border-slate-300 rounded-lg px-3 py-2 text-xs font-black bg-white hover:bg-slate-50">हिंदी</button></div></div></div>
-
 <main id="home" class="max-w-7xl mx-auto px-4">
   <section class="text-center pt-14 pb-10">
     <div id="heroBadge" class="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full bg-red-50 text-red-600 px-5 py-2.5 text-sm font-black mb-5">⚡ 100% FREE • 🚫 No Server Upload • 🔁 Unlimited Use • 🎯 No Signup</div>
-    <h1 id="heroTitle" class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight"><span class="text-red-500">All work in one space</span></h1>
+    <h1 id="heroTitle" class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight">PDF work, <span class="text-red-500">all in one place</span></h1>
     <p id="heroSub" class="max-w-3xl mx-auto mt-5 text-lg text-slate-500">Convert, merge, split, rotate and turn documents into PDF — without server uploads.</p>
   </section>
 
   <section class="pb-5">
     <div class="headline-wrap" aria-label="Website headline">
-      <div class="headline-label" id="headlineLabel">NOTE</div>
+      <div class="headline-label" id="headlineLabel">NEWS</div>
       <div class="headline-track"><div class="headline-text" id="headlineText">Dudi PDF Editor — 100% Free PDF Editor • Feel free, you are safe • All work is processed on your device.</div></div>
-    </div>
-    <div class="flex justify-center mt-2">
-      <button class="update-btn" onclick="openUpdateModal()">UPDATE</button>
-    </div>
     </div>
   </section>
 
@@ -270,44 +226,12 @@
     <div id="toolsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
   </section>
 
-  <section class="pb-5">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-      <button onclick="openTool('ocrConverter')" class="tool-card text-left bg-white border border-red-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">🔎</div><b class="block mt-2" id="ocrCardTitle">OCR Converter</b><span class="text-xs text-slate-500" id="ocrCardDesc">Image/PDF → editable text</span></button>
-      <button onclick="openTool('textToPdf')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">📝</div><b class="block mt-2" id="t2pCardTitle">Text to PDF</b><span class="text-xs text-slate-500" id="t2pCardDesc">Write text and export PDF</span></button>
-      <button onclick="openTool('imageToText')" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">📷</div><b class="block mt-2" id="i2tCardTitle">Image to Text</b><span class="text-xs text-slate-500" id="i2tCardDesc">Fast browser OCR</span></button>
-      <button onclick="showComingSoon(UI_TEXT[siteLang].batchCardTitle)" class="tool-card text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><div class="text-2xl">⚡</div><b class="block mt-2" id="batchCardTitle">Batch Workspace</b><span class="text-xs text-slate-500" id="batchCardDesc">Coming soon</span></button>
-    </div>
-  </section>
-
-  <!-- More New Features slider -->
-  <section class="pb-7">
-    <div class="feature-slider">
-      <div class="flex items-center gap-2 px-2 pb-3"><span class="text-xl">🧰</span><div><b id="sliderAllTitle">ALL FEATURES</b><p class="text-xs text-slate-500" id="sliderAllDesc">Swipe through all extra tools</p></div></div>
-      <div id="featureTrack" class="feature-track" onmouseenter="pauseFeatureSlider()" onmouseleave="resumeFeatureSlider()"></div>
-      <div class="slider-controls"><button onclick="moveFeatureSlider(-1)" aria-label="Previous">‹</button><button onclick="moveFeatureSlider(1)" aria-label="Next">›</button></div>
-      <div id="featureDots" class="slider-dots"></div>
-    </div>
-  </section>
-
-  <section class="pb-4">
-    <button onclick="showComingSoon(UI_TEXT[siteLang].aiWorkshopTitle)" class="w-full rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-4 text-center shadow-sm hover:shadow-md transition">
-      <span class="text-2xl">🤖</span><span class="ml-2 font-black text-indigo-700" id="aiWorkshopTitle">AI Workshop</span><span class="block text-xs text-slate-500 mt-1" id="aiWorkshopDesc">AI-powered tools — coming soon</span>
-    </button>
-  </section>
-
   <section class="pb-8">
-    <div class="native-banner">
-      <script async="async" data-cfasync="false" src="https://pl30964195.profitableratecpmnetwork.com/3ee04ac9d05e6caef39a0d0285701995/invoke.js"></script>
-      <div id="container-3ee04ac9d05e6caef39a0d0285701995"></div>
-    </div>
+    <div class="flex items-center justify-between mb-3"><div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">✨ New</div><h2 class="text-xl sm:text-2xl font-black" id="mnfTitle">All New Features</h2></div><div class="flex gap-2"><button class="feature-nav" onclick="slideFeatures(-1)" aria-label="Previous">‹</button><button class="feature-nav" onclick="slideFeatures(1)" aria-label="Next">›</button></div></div>
+    <div class="feature-slider-shell"><div id="featureSlider" class="feature-slider"></div></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
   </section>
 
-  <section class="pb-20">
-    <div class="bg-slate-900 text-white rounded-3xl p-7 sm:p-9 grid md:grid-cols-3 gap-7">
-      <div><div class="text-2xl">🔐</div><b id="privTitle">Private</b><p class="text-slate-400 text-sm mt-1" id="privDesc">Your selected files are not uploaded to a server.</p></div>
-      <div><div class="text-2xl">⚡</div><b id="fastTitle">Fast</b><p class="text-slate-400 text-sm mt-1" id="fastDesc">Processing happens directly on your device.</p></div>
-    </div>
-  </section>
+  <section class="pb-16"><button class="workshop-card w-full" onclick="openComingSoon()"><div class="text-4xl mb-2">🤖</div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">AI</div><h2 class="text-2xl font-black mt-1">AI Workshop</h2><p class="text-sm text-slate-500 mt-1">Powerful AI tools are coming soon.</p></button></section>>
 </main>
 
 <section id="toolSection" class="hidden max-w-5xl mx-auto px-4 py-8">
@@ -319,7 +243,7 @@
     </div>
     <div class="p-6 sm:p-8">
       <div id="optionsBox" class="hidden mb-5"></div>
-      <div id="dropZone" class="drop-zone compact-drop border-2 border-dashed border-slate-300 rounded-2xl text-center cursor-pointer">
+      <div id="dropZone" class="drop-zone border-2 border-dashed border-slate-300 rounded-2xl p-8 sm:p-12 text-center cursor-pointer">
         <input id="fileInput" type="file" class="hidden">
         <div class="text-4xl mb-3">⬆️</div>
         <h3 class="font-black text-base" id="dropTitle">Drop files here</h3>
@@ -370,9 +294,13 @@ atOptions = {
   </div>
 </div>
 
+<div id="welcomeLogoPopup" aria-hidden="true"><div class="welcome-logo-card"><div class="welcome-brand logo-shake"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h6M8 16h8"/></svg></div><h2>Dudi PDF Editor</h2></div><p class="text-center text-sm text-slate-500">Fast • Private • Browser based PDF tools</p></div></div>
+
 <footer class="border-t bg-white"><div class="max-w-7xl mx-auto px-4 py-8 text-center"><div class="text-2xl font-black tracking-wide text-slate-900">Dudi PDF Editor</div><p id="footerTag" class="text-sm text-slate-500 mt-2">The world’s most privacy-focused tool</p><p class="text-sm font-black text-slate-700 mt-4">🇮🇳 Make in India</p></div></footer>
 <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[100] bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl text-sm max-w-[90vw] text-center"></div>
 
+<div id="comingSoonModal" class="hidden" onclick="if(event.target===this)closeComingSoon()"><div class="coming-card"><div class="coming-icon">🤖</div><h2 class="text-2xl font-black mt-2">Coming Soon</h2><p class="text-slate-500 text-sm mt-2">AI Workshop is being prepared. Stay tuned!</p><button onclick="closeComingSoon()" class="mt-5 bg-red-500 hover:bg-red-600 text-white font-black px-7 py-3 rounded-xl">OK</button></div></div>
+<div id="privacyNotice" class="privacy-notice" role="status"><div class="min-w-0"><div id="privacyNoticeTitle" class="font-black text-slate-800 text-sm">🔒 We are not using cookies</div><div id="privacyNoticeText" class="text-xs text-slate-500 mt-1">This editor does not use cookies for your work. Your data and processing stay on your device.</div></div><button class="privacy-ok" onclick="closePrivacyNotice()">OK</button></div>
 <script>
 const tools={
  jpgToPdf:{title:'JPG to PDF',titleHi:'JPG से PDF',desc:'Convert JPG, JPEG and PNG images to PDF.',descHi:'JPG, JPEG और PNG इमेज को PDF में बदलें।',icon:'🖼️',accept:'image/jpeg,image/png',multiple:true,button:'Convert JPG to PDF',buttonHi:'JPG से PDF बनाएं',hint:'JPG, JPEG or PNG',hintHi:'JPG, JPEG या PNG'},
@@ -384,7 +312,7 @@ const tools={
  pageNumbers:{title:'PDF Page Numbers',titleHi:'PDF पेज नंबर',desc:'Add page numbers to every PDF page.',descHi:'हर PDF पन्ने पर पेज नंबर जोड़ें।',icon:'🔢',accept:'application/pdf',multiple:false,button:'Add Page Numbers',buttonHi:'पेज नंबर जोड़ें',hint:'PDF only',hintHi:'सिर्फ PDF'},
  wordToPdf:{title:'Word to PDF',titleHi:'Word से PDF',desc:'Convert a DOCX document to PDF in your browser.',descHi:'DOCX डॉक्यूमेंट को अपने ब्राउज़र में PDF में बदलें।',icon:'📝',accept:'.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document',multiple:false,button:'Convert Word to PDF',buttonHi:'Word से PDF बनाएं',hint:'DOCX — basic formatting',hintHi:'DOCX — बेसिक फॉर्मेटिंग'},
  excelToPdf:{title:'Excel to PDF',titleHi:'Excel से PDF',desc:'Convert XLS/XLSX workbook sheets to PDF.',descHi:'XLS/XLSX शीट को PDF में बदलें।',icon:'📊',accept:'.xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel',multiple:false,button:'Convert Excel to PDF',buttonHi:'Excel से PDF बनाएं',hint:'XLS / XLSX',hintHi:'XLS / XLSX'},
- pdfEditorPro:{title:'PDF Editor Pro',titleHi:'PDF एडिटर प्रो',desc:'Live, WYSIWYG editor — add text, images, signatures and freehand drawing with a real-time preview.',descHi:'लाइव एडिटर — रियल-टाइम प्रीव्यू के साथ टेक्स्ट, इमेज, सिग्नेचर और ड्रॉइंग जोड़ें।',icon:'🖋️',accept:'application/pdf',multiple:false,button:'Save Edited PDF',buttonHi:'एडिटेड PDF सेव करें',hint:'PDF only',hintHi:'सिर्फ PDF'},
+ocrConverter:{title:'OCR File Converter',titleHi:'OCR फाइल कन्वर्टर',desc:'Extract text from images and PDF files using Optical Character Recognition.',descHi:'इमेज और PDF से Optical Character Recognition द्वारा टेक्स्ट निकालें।',icon:'🔎',accept:'image/jpeg,image/png,image/webp,application/pdf',multiple:false,button:'Convert with OCR',buttonHi:'OCR से कन्वर्ट करें',hint:'JPG, PNG, WEBP or PDF',hintHi:'JPG, PNG, WEBP या PDF'}, pdfEditorPro:{title:'PDF Editor Pro',titleHi:'PDF एडिटर प्रो',desc:'Live, WYSIWYG editor — add text, images, signatures and freehand drawing with a real-time preview.',descHi:'लाइव एडिटर — रियल-टाइम प्रीव्यू के साथ टेक्स्ट, इमेज, सिग्नेचर और ड्रॉइंग जोड़ें।',icon:'🖋️',accept:'application/pdf',multiple:false,button:'Save Edited PDF',buttonHi:'एडिटेड PDF सेव करें',hint:'PDF only',hintHi:'सिर्फ PDF'},
 
  signPdf:{title:'Sign PDF',titleHi:'PDF साइन करें',desc:'Add a digital/electronic signature image to the PDF.',descHi:'PDF में डिजिटल/इलेक्ट्रॉनिक सिग्नेचर इमेज जोड़ें।',icon:'✍️',accept:'application/pdf',multiple:false,button:'Sign PDF',buttonHi:'PDF साइन करें',hint:'PDF + signature image',hintHi:'PDF + सिग्नेचर इमेज'},
  protectPdf:{title:'Protect PDF',titleHi:'PDF प्रोटेक्ट करें',desc:'Dedicated tool for PDF password protection.',descHi:'PDF पासवर्ड प्रोटेक्शन के लिए खास टूल।',icon:'🔐',accept:'application/pdf',multiple:false,button:'Protect PDF',buttonHi:'PDF प्रोटेक्ट करें',hint:'PDF only',hintHi:'सिर्फ PDF'},
@@ -401,15 +329,12 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  imageResize:{title:'Image Resizer',titleHi:'इमेज रिसाइज़र',desc:'Resize images by exact width/height or fit them inside a maximum size.',descHi:'इमेज को exact width/height या maximum size के हिसाब से resize करें।',icon:'📐',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Resize Images',buttonHi:'इमेज resize करें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
  imageUpscale:{title:'Image Upscaler',titleHi:'इमेज अपस्केलर',desc:'Create larger 2× or 3× copies of images directly in your browser.',descHi:'ब्राउज़र में इमेज की 2× या 3× बड़ी कॉपी बनाएं।',icon:'🔎',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Upscale Images',buttonHi:'इमेज अपस्केल करें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
  imageGrayscale:{title:'Grayscale Image',titleHi:'ग्रेस्केल इमेज',desc:'Convert one or many images to clean black-and-white grayscale copies.',descHi:'एक या कई इमेज को साफ ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'⚫',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Make Grayscale',buttonHi:'ग्रेस्केल बनाएं',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
+ removeBg:{title:'Background Remover',titleHi:'बैकग्राउंड रिमूवर',desc:'Automatically remove the background from a photo and download a transparent PNG — powered by on-device AI, right in your browser.',descHi:'फोटो से बैकग्राउंड अपने-आप हटाएं और transparent PNG डाउनलोड करें — यह ऑन-डिवाइस AI से सीधे आपके ब्राउज़र में होता है।',icon:'🪄',accept:'image/jpeg,image/png,image/webp',multiple:false,button:'Remove Background',buttonHi:'बैकग्राउंड हटाएं',hint:'JPG, PNG or WEBP',hintHi:'JPG, PNG या WEBP',isNew:true},
+ imageCrop:{title:'Image Crop',titleHi:'इमेज क्रॉप करें',desc:'Drag a box over your photo to crop it to exactly the part you want, with optional aspect ratios.',descHi:'फोटो पर बॉक्स को खींचकर बिल्कुल अपनी पसंद के हिस्से में क्रॉप करें, चाहें तो aspect ratio भी चुनें।',icon:'🔲',accept:'image/jpeg,image/png,image/webp',multiple:false,button:'Crop Image',buttonHi:'इमेज क्रॉप करें',hint:'JPG, PNG or WEBP',hintHi:'JPG, PNG या WEBP',isNew:true},
  pdfCrop:{title:'Crop PDF',titleHi:'PDF क्रॉप करें',desc:'Crop PDF page margins by entering precise top, right, bottom and left values.',descHi:'Top, right, bottom और left की precise values से PDF pages crop करें।',icon:'✂️',accept:'application/pdf',multiple:false,button:'Crop PDF',buttonHi:'PDF क्रॉप करें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  pdfGrayscale:{title:'Grayscale PDF',titleHi:'ग्रेस्केल PDF',desc:'Convert PDF pages to black-and-white grayscale while keeping the page layout.',descHi:'PDF pages को layout बनाए रखते हुए ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'🖤',accept:'application/pdf',multiple:false,button:'Make Grayscale PDF',buttonHi:'ग्रेस्केल PDF बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  pdfToText:{title:'PDF to Text',titleHi:'PDF से Text',desc:'Extract readable text from PDF pages and save it as a TXT file.',descHi:'PDF pages से readable text निकालकर TXT फाइल बनाएं।',icon:'🔤',accept:'application/pdf',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
- ocrConverter:{title:'OCR File Converter',titleHi:'OCR फाइल कन्वर्टर',desc:'Recognize text from images and scanned PDFs directly in your browser.',descHi:'इमेज और scanned PDF से टेक्स्ट निकालें — सीधे ब्राउज़र में।',icon:'🔎',accept:'image/png,image/jpeg,image/webp,application/pdf',multiple:false,button:'Run OCR',buttonHi:'OCR चलाएं',hint:'JPG / PNG / WEBP / PDF',hintHi:'JPG / PNG / WEBP / PDF',isNew:true},
-imageToText:{title:'Image to Text',titleHi:'इमेज से Text',desc:'Extract text from a photo using browser OCR.',descHi:'फोटो से ब्राउज़र OCR द्वारा टेक्स्ट निकालें।',icon:'📷',accept:'image/png,image/jpeg,image/webp',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'JPG / PNG / WEBP',hintHi:'JPG / PNG / WEBP',isNew:true},
-textToPdf:{title:'Text to PDF',titleHi:'Text से PDF',desc:'Write or paste text and create a clean PDF locally.',descHi:'Text लिखें या paste करें और PDF बनाएं।',icon:'📝',accept:'',multiple:false,button:'Create PDF',buttonHi:'PDF बनाएं',hint:'No file needed',hintHi:'फाइल की जरूरत नहीं',isNew:true},
-wordEditor:{title:'Word Document Editor',titleHi:'वर्ड डॉक्यूमेंट एडिटर',desc:'Create and format documents like MS Word — bold, headings, lists, tables, images — then export as PDF, JPG or PNG.',descHi:'MS Word जैसा डॉक्यूमेंट बनाएं — बोल्ड, हेडिंग, लिस्ट, टेबल, इमेज — फिर PDF, JPG या PNG में डाउनलोड करें।',icon:'📝',accept:'',multiple:false,button:'Open Editor',buttonHi:'एडिटर खोलें',hint:'No file needed — start typing',hintHi:'फाइल की ज़रूरत नहीं — सीधे लिखना शुरू करें',isNew:true},
-excelMaker:{title:'Excel Maker (Spreadsheet Editor)',titleHi:'एक्सेल मेकर (स्प्रेडशीट एडिटर)',desc:'Build a spreadsheet with rows, columns, bold/colors and simple =SUM formulas, then export as XLSX or PDF.',descHi:'रो, कॉलम, बोल्ड/कलर और simple =SUM फॉर्मूला के साथ स्प्रेडशीट बनाएं — फिर XLSX या PDF में डाउनलोड करें।',icon:'📊',accept:'',multiple:false,button:'Open Excel Maker',buttonHi:'एक्सेल मेकर खोलें',hint:'No file needed — start filling cells',hintHi:'फाइल की ज़रूरत नहीं — सीधे सेल भरना शुरू करें',isNew:true},
-pdfToWord:{title:'PDF to Word',titleHi:'PDF से वर्ड',desc:'Turn a PDF into an editable Word (.doc) file that opens directly in MS Word.',descHi:'PDF को एडिटेबल Word (.doc) फाइल में बदलें, जो सीधे MS Word में खुलती है।',icon:'📄➡️📝',accept:'application/pdf',multiple:false,button:'Convert to Word',buttonHi:'Word में बदलें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true}
+ wordEditor:{title:'Word Document Editor',titleHi:'वर्ड डॉक्यूमेंट एडिटर',desc:'Create and format documents like MS Word — bold, headings, lists, tables, images — then export as PDF, JPG or PNG.',descHi:'MS Word जैसा डॉक्यूमेंट बनाएं — बोल्ड, हेडिंग, लिस्ट, टेबल, इमेज — फिर PDF, JPG या PNG में डाउनलोड करें।',icon:'📝',accept:'',multiple:false,button:'Open Editor',buttonHi:'एडिटर खोलें',hint:'No file needed — start typing',hintHi:'फाइल की ज़रूरत नहीं — सीधे लिखना शुरू करें',isNew:true}
 };
 
 let currentTool=null,selectedFiles=[],processing=false,pdfjs=null;
@@ -427,6 +352,9 @@ const siteInfo={
   htmlHi:`<h3 class="font-black text-lg text-slate-900 mb-2">प्राइवेसी पॉलिसी</h3><p>यह प्राइवेसी पॉलिसी बताती है कि जब आप हमारी वेबसाइट इस्तेमाल करते हैं तो PDFMaster जानकारी को कैसे संभालता है। आपकी प्राइवेसी की सुरक्षा इस वेबसाइट के डिज़ाइन का एक मुख्य हिस्सा है।</p><p class="mt-3"><b>फाइल प्रोसेसिंग:</b> यह वेबसाइट इस तरह बनाई गई है कि आपकी चुनी हुई फाइलें सीधे आपके ब्राउज़र के अंदर, क्लाइंट-साइड कोड से प्रोसेस होती हैं। यानी आम कन्वर्ज़न, एडिटिंग या मर्जिंग के दौरान आपकी फाइलें जानबूझकर किसी PDFMaster सर्वर पर नहीं भेजी या स्टोर नहीं की जातीं।</p><p class="mt-3"><b>डाउनलोड:</b> एडिटेड फोटो और कन्वर्ट की गई PDF जैसे रिज़ल्ट आपके डिवाइस पर लोकली बनते हैं और आपके ब्राउज़र से डाउनलोड होते हैं; हम इनकी कोई कॉपी नहीं रखते।</p><p class="mt-3"><b>थर्ड-पार्टी सेवाएं और विज्ञापन:</b> यह वेबसाइट फॉन्ट, लाइब्रेरी, विज्ञापन या नोटिफिकेशन कंटेंट थर्ड-पार्टी प्रोवाइडर जैसे CDN और ऐड नेटवर्क से लोड कर सकती है। ये प्रोवाइडर कुकीज़, स्क्रिप्ट या इसी तरह की तकनीकों का इस्तेमाल कर सकते हैं और डिवाइस टाइप, ब्राउज़र टाइप, अनुमानित लोकेशन जैसा सीमित टेक्निकल डेटा इकट्ठा कर सकते हैं, जो उनकी अपनी प्राइवेसी पॉलिसी के अनुसार होता है।</p><p class="mt-3"><b>संपर्क:</b> इस पॉलिसी या आपके डेटा को संभालने के तरीके से जुड़े सवालों के लिए Contact Us सेक्शन से संपर्क करें। यह पॉलिसी नए फीचर के हिसाब से समय-समय पर अपडेट हो सकती है, और वेबसाइट का इस्तेमाल जारी रखना मौजूदा वर्शन की स्वीकृति माना जाएगा।</p>`},
  contact:{title:'Contact Us',titleHi:'संपर्क करें',html:`<h3 class="font-black text-lg text-slate-900 mb-2">Contact Us</h3><p>If you need help, want to report a problem, or have a suggestion, contact us by email:</p><a href="mailto:j75355462@gmail.com" class="inline-flex mt-4 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">✉️ j75355462@gmail.com</a><a href="tel:+919950573427" class="inline-flex mt-3 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">📞 +91 9950573427</a><p class="mt-4 text-sm text-slate-500">Owner: <b class="text-slate-700">Vikram Dudi</b></p>`,
   htmlHi:`<h3 class="font-black text-lg text-slate-900 mb-2">संपर्क करें</h3><p>अगर आपको मदद चाहिए, कोई समस्या बतानी है, या कोई सुझाव देना है, तो हमें ईमेल पर संपर्क करें:</p><a href="mailto:j75355462@gmail.com" class="inline-flex mt-4 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">✉️ j75355462@gmail.com</a><a href="tel:+919950573427" class="inline-flex mt-3 px-5 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-black">📞 +91 9950573427</a><p class="mt-4 text-sm text-slate-500">मालिक: <b class="text-slate-700">Vikram Dudi</b></p>`}
+,
+ blog:{title:'Blog',titleHi:'ब्लॉग',html:`<p class="mb-4 text-sm text-slate-500">Our latest articles — tap a title to expand and read.</p><div class="blog-list"><details class="blog-item"><summary>बिना साइन-अप और बिना पैसे दिए PDF एडिट करने के क्या फायदे हैं?</summary><div class="blog-body"><p>आज के समय में PDF सबसे ज्यादा इस्तेमाल किए जाने वाले document formats में से एक है। स्कूल के assignments से लेकर office documents, invoices, forms, resumes और personal documents तक, लगभग हर जगह PDF का इस्तेमाल होता है। लेकिन PDF फाइल मिलने के बाद अक्सर उसमें कोई छोटा बदलाव करने की जरूरत पड़ जाती है।</p><p>कभी नाम ठीक करना होता है, कभी कोई text जोड़ना होता है, कभी किसी जरूरी हिस्से पर highlight करना होता है और कभी PDF के pages को व्यवस्थित करना होता है। ऐसी स्थिति में सबसे पहला सवाल आता है—PDF edit कैसे करें?</p><p>पहले PDF editing के लिए desktop software install करना पड़ता था। कई advanced software paid होते हैं और कुछ tools इस्तेमाल करने से पहले account या sign-up भी मांगते हैं। लेकिन अब browser-based PDF tools ने यह काम काफी आसान बना दिया है।</p><p>बिना साइन-अप और बिना पैसे दिए PDF edit करने का सबसे बड़ा फायदा यह है कि आप जरूरत के समय सीधे browser में काम शुरू कर सकते हैं। आपको account बनाने, subscription लेने या केवल एक छोटे PDF task के लिए कोई भारी software install करने की जरूरत नहीं पड़ती।</p><p>इस लेख में हम विस्तार से जानेंगे कि free PDF editing और no-sign-up PDF tools के क्या फायदे हैं, कौन-से users के लिए ये उपयोगी हैं, मोबाइल से PDF edit करना कितना आसान हो सकता है और PDF editing tool चुनते समय किन बातों का ध्यान रखना चाहिए।</p><h4>बिना साइन-अप PDF Edit करने का क्या मतलब है?</h4><p>जब कोई PDF tool no-sign-up सुविधा देता है, तो आम तौर पर इसका मतलब होता है कि user को tool इस्तेमाल करने से पहले account बनाने या email से registration करने की आवश्यकता नहीं होती।</p><p>सामान्य workflow कुछ ऐसा हो सकता है:</p><div class="blog-flow">Website खोलें → PDF चुनें → Edit करें → PDF Download करें</div><p>इसके लिए अलग से username और password बनाने की जरूरत नहीं पड़ती।</p><p>यह सुविधा खासकर उन लोगों के लिए उपयोगी है जिन्हें PDF editing कभी-कभी करनी होती है और वे किसी permanent account की जरूरत नहीं समझते।</p><h4>No-Sign-Up PDF Tool के फायदे</h4><ul><li>तुरंत काम शुरू किया जा सकता है।</li><li>Registration process की जरूरत नहीं।</li><li>Password याद रखने की जरूरत नहीं।</li><li>Email verification जैसे steps से बचा जा सकता है।</li><li>छोटे और जल्दी होने वाले PDF tasks के लिए सुविधाजनक।</li><li>Shared या temporary device पर account बनाने की जरूरत कम हो सकती है।</li></ul><p>हालांकि, किसी भी website पर personal information डालने से पहले उसकी privacy policy और security practices को देखना अच्छी आदत है।</p><h4>बिना पैसे दिए PDF Edit करने के फायदे</h4><p>Free PDF editing tools उन users के लिए उपयोगी हो सकते हैं जिन्हें कभी-कभी basic PDF editing करनी होती है।</p><p>मान लीजिए आपको केवल किसी PDF में text जोड़ना है या कुछ pages को व्यवस्थित करना है। इसके लिए महंगा software खरीदना हर user के लिए जरूरी नहीं होता।</p><h4>Free PDF Editing के प्रमुख फायदे</h4><h5>1. पैसे की बचत</h5><p>अगर आपका काम basic PDF editing तक सीमित है, तो paid software या subscription पर पैसे खर्च करने की आवश्यकता कम हो सकती है।</p><h5>2. छोटे कामों के लिए सुविधाजनक</h5><p>एक-दो बार PDF edit करने के लिए software खरीदना practical नहीं लग सकता। Free browser-based tool ऐसी स्थिति में उपयोगी हो सकता है।</p><h5>3. Software Installation की जरूरत नहीं</h5><p>Browser-based tool होने पर PDF editing browser से की जा सकती है।</p><h5>4. Beginners के लिए आसान</h5><p>कई users को complex PDF software के menus और settings समझने में परेशानी होती है। Simple web-based interface शुरुआत करने के लिए आसान हो सकता है।</p><h5>5. Mobile पर भी उपयोगी</h5><p>अगर tool mobile browser को support करता है, तो smartphone से भी PDF editing की जा सकती है।</p><h4>PDF Edit करने के लिए Account क्यों जरूरी नहीं होना चाहिए?</h4><p>हर PDF editing task के लिए account की आवश्यकता नहीं होती।</p><p>अगर user केवल एक PDF में छोटा बदलाव करना चाहता है, तो उससे पहले account बनवाना अतिरिक्त step हो सकता है।</p><p>उदाहरण के लिए:</p><p>आपके पास एक PDF है और उसमें केवल एक text या annotation जोड़ना है।</p><p>अगर tool कहता है:</p><div class="blog-flow">Sign Up → Email Verify → Login → Upload → Edit</div><p>तो पूरा process लंबा हो जाता है।</p><p>इसके मुकाबले no-sign-up workflow हो सकता है:</p><div class="blog-flow">Open Tool → Upload PDF → Edit → Download</div><p>यही सरलता no-sign-up tools की एक बड़ी खासियत है।</p><h4>किन लोगों के लिए यह सुविधा ज्यादा उपयोगी हो सकती है?</h4><ul><li>Students</li><li>Teachers</li><li>Job seekers</li><li>Office employees</li><li>Freelancers</li><li>Small business owners</li><li>सामान्य home users</li><li>ऐसे users जिन्हें occasional PDF editing करनी होती है</li></ul><h4>Browser-Based PDF Editor के फायदे</h4><p>Dudi PDF Editor एक browser-based PDF tool है। इसका मतलब यह है कि PDF editing के लिए dedicated desktop application install करने की बजाय browser के माध्यम से tool इस्तेमाल किया जा सकता है।</p><p>Browser-based PDF editor के कुछ सामान्य फायदे हैं:</p><h5>1. किसी भी compatible browser से काम</h5><p>आप अपने device पर उपलब्ध browser के माध्यम से PDF tool access कर सकते हैं।</p><h5>2. Installation की जरूरत नहीं</h5><p>सिर्फ PDF edit करने के लिए अलग software install करने की जरूरत नहीं होती।</p><h5>3. Storage की बचत</h5><p>Heavy desktop PDF software को install करने के लिए device में अतिरिक्त storage की जरूरत हो सकती है। Browser-based approach में ऐसा installation आवश्यक नहीं होता।</p><h5>4. Updates की चिंता कम</h5><p>Desktop software में updates install करने पड़ सकते हैं। Browser-based tools में user आम तौर पर website के current version को access करता है।</p><h5>5. Different Devices पर सुविधा</h5><p>एक ही तरह का browser-based workflow desktop, laptop और supported mobile devices पर उपयोग किया जा सकता है।</p><h4>मोबाइल से Free PDF Edit करने के फायदे</h4><p>आज PDF से जुड़े बहुत से काम मोबाइल पर ही किए जाते हैं। इसलिए mobile-friendly PDF editor काफी उपयोगी हो सकता है।</p><p>मान लीजिए आपको किसी document में तुरंत correction करना है लेकिन आपके पास computer नहीं है।</p><p>अगर PDF editor mobile browser पर ठीक से काम करता है, तो आप smartphone से ही editing कर सकते हैं।</p><h4>Mobile PDF Editing के फायदे</h4><ul><li>Computer की आवश्यकता नहीं।</li><li>कहीं से भी browser खोलकर काम किया जा सकता है।</li><li>अलग PDF editing application install करने की जरूरत कम हो सकती है।</li><li>छोटे edits जल्दी किए जा सकते हैं।</li><li>Edited PDF को device में save किया जा सकता है।</li></ul><h4>Mobile से PDF Edit करने का सामान्य तरीका</h4><ol><li>Mobile browser खोलें।</li><li>Dudi PDF Editor की वेबसाइट पर जाएं।</li><li>उपलब्ध PDF editing tool चुनें।</li><li>PDF file select करें।</li><li>आवश्यक बदलाव करें।</li><li>Preview करके changes check करें।</li><li>Edited PDF तैयार करें।</li><li>PDF download करें।</li><li>Download की गई file को खोलकर verify करें।</li></ol><h4>Free PDF Editor में कौन-कौन से काम किए जा सकते हैं?</h4><p>किसी tool में उपलब्ध सुविधाएं अलग-अलग हो सकती हैं, लेकिन सामान्य PDF editors में कई तरह के editing tasks मिल सकते हैं।</p><p>उदाहरण के लिए:</p><ul><li>PDF में text जोड़ना</li><li>Text या content को highlight करना</li><li>Annotations करना</li><li>Shapes या markup जोड़ना</li><li>Pages को व्यवस्थित करना</li><li>PDF pages को rotate करना</li><li>कुछ PDF files को merge करना</li><li>PDF को दूसरे format में convert करना</li><li>PDF को compress करना</li><li>PDF पर basic document changes करना</li></ul><p>यहां यह समझना जरूरी है कि हर free PDF editor में सभी advanced features उपलब्ध हों, यह जरूरी नहीं है।</p><p>इसलिए किसी specific task के लिए tool की उपलब्ध features और limitations पहले देखना अच्छा रहता है।</p><h4>बिना पैसे दिए PDF Edit करने से किन खर्चों से बच सकते हैं?</h4><p>Free PDF editing का सबसे सीधा फायदा subscription cost से बचना है।</p><p>कुछ PDF software monthly या yearly subscription model पर काम करते हैं। अगर user को केवल occasional editing करनी है, तो subscription लेना अनावश्यक खर्च हो सकता है।</p><p>उदाहरण के लिए कोई user साल में केवल कुछ बार PDF edit करता है। उसके लिए एक expensive PDF editing package खरीदने की बजाय free tool पर्याप्त हो सकता है—अगर उसके required features उपलब्ध हों।</p><h5>इससे बच सकते हैं:</h5><ul><li>Software purchase cost</li><li>Monthly subscription</li><li>Yearly subscription</li><li>Unnecessary premium upgrades</li><li>केवल basic editing के लिए paid application</li></ul><p>लेकिन "Free" का अर्थ यह नहीं कि हर tool में unlimited features या unlimited file processing उपलब्ध होगी। कुछ free tools में file-size, feature या usage limitations हो सकती हैं।</p><h4>No-Sign-Up PDF Editing से समय कैसे बचता है?</h4><p>आजकल online काम करते समय कई websites पर account बनाना पड़ता है।</p><p>एक सामान्य registration process में हो सकता है:</p><ol><li>Name enter करें।</li><li>Email enter करें।</li><li>Password बनाएं।</li><li>Terms accept करें।</li><li>Verification email खोलें।</li><li>Account verify करें।</li><li>फिर tool इस्तेमाल करें।</li></ol><p>अगर आपको केवल एक छोटी PDF edit करनी है, तो यह पूरा process unnecessary लग सकता है।</p><p>No-sign-up tool में यह workflow काफी छोटा हो सकता है:</p><div class="blog-flow">Website → PDF → Edit → Download</div><p>इससे खासकर छोटे और urgent tasks में समय बच सकता है।</p><h4>PDF Edit करने से पहले किन बातों का ध्यान रखें?</h4><p>Free और no-sign-up होने के बावजूद किसी PDF tool का इस्तेमाल करते समय कुछ basic precautions जरूरी हैं।</p><h5>1. Website का सही address देखें</h5><p>किसी भी unknown website पर document upload करने से पहले सुनिश्चित करें कि आप सही service का इस्तेमाल कर रहे हैं।</p><h5>2. Privacy Policy पढ़ें</h5><p>खासकर अगर PDF में personal या confidential information है।</p><h5>3. HTTPS Check करें</h5><p>Browser में secure connection की जानकारी देखना एक अच्छी security practice है।</p><h5>4. Important PDF का Backup रखें</h5><p>Editing शुरू करने से पहले original PDF की copy सुरक्षित रखना बेहतर है।</p><h5>5. Edited PDF को Check करें</h5><p>Download करने के बाद final PDF को खोलकर देखें कि changes सही हैं या नहीं।</p><h4>Dudi PDF Editor और Privacy</h4><p>Dudi PDF Editor browser-based है और PDF processing के लिए आपका अपना server नहीं है। इसलिए इसका workflow traditional server-upload based PDF editors से अलग है।</p><p>यदि processing browser में client-side होती है, तो PDF को किसी dedicated remote PDF-processing server पर भेजने की आवश्यकता नहीं होती।</p><p>फिर भी users को यह समझना चाहिए कि किसी भी online tool की privacy केवल "free" या "no sign-up" होने से तय नहीं होती।</p><h5>Sensitive PDF के लिए हमेशा:</h5><ul><li>Privacy Policy देखें।</li><li>HTTPS connection verify करें।</li><li>Website की data handling practices समझें।</li><li>केवल trusted website इस्तेमाल करें।</li><li>अपना device और browser updated रखें।</li></ul><p>No-sign-up का मतलब यह नहीं है कि कोई website automatically 100% private या secure है। Privacy को समझने के लिए technical architecture और website की policies दोनों देखना महत्वपूर्ण है।</p><h4>Free PDF Editor किन लोगों के लिए सबसे उपयोगी है?</h4><p>Free PDF editing tool लगभग हर तरह के सामान्य user के लिए उपयोगी हो सकता है, लेकिन कुछ users के लिए इसका फायदा विशेष रूप से अधिक हो सकता है।</p><h5>Students</h5><p>Assignments, notes, forms और study documents में छोटे बदलाव करने के लिए।</p><h5>Job Seekers</h5><p>Resume या supporting documents में basic corrections के लिए।</p><h5>Teachers</h5><p>Study material और worksheets को annotate या organize करने के लिए।</p><h5>Small Businesses</h5><p>Invoices, forms और business documents में basic changes के लिए।</p><h5>Freelancers</h5><p>Client documents और project-related PDFs को manage करने के लिए।</p><h5>सामान्य Users</h5><p>जब कभी किसी PDF में छोटा बदलाव करना हो और paid software खरीदना उचित न लगे।</p><h4>Free PDF Editor इस्तेमाल करने का आसान तरीका</h4><p>अगर आप पहली बार browser-based PDF editor इस्तेमाल कर रहे हैं, तो इस simple workflow को follow कर सकते हैं:</p><h5>Step 1: PDF तैयार रखें</h5><p>जिस PDF को edit करना है उसे अपने device में सुरक्षित रखें।</p><h5>Step 2: Browser खोलें</h5><p>Chrome, Edge, Safari या कोई compatible browser खोलें।</p><h5>Step 3: PDF Editor खोलें</h5><p>Dudi PDF Editor जैसे browser-based PDF editor पर जाएं।</p><h5>Step 4: PDF Upload/Select करें</h5><p>अपनी PDF file चुनें।</p><h5>Step 5: Edit करें</h5><p>Tool में उपलब्ध editing features का इस्तेमाल करें।</p><h5>Step 6: Preview करें</h5><p>Download से पहले PDF को ध्यान से देखें।</p><h5>Step 7: Download करें</h5><p>Final PDF को अपने device में save करें।</p><h5>Step 8: Original सुरक्षित रखें</h5><p>जब तक आपको नई PDF के सही होने का भरोसा न हो, original file delete न करें।</p><h4>Free PDF Editing की कुछ Limitations भी समझें</h4><p>Free tool के कई फायदे हैं, लेकिन हर user को अपनी जरूरत के हिसाब से tool चुनना चाहिए।</p><p>कुछ free PDF editors में:</p><ul><li>Advanced editing features उपलब्ध नहीं हो सकते।</li><li>बहुत बड़ी PDF files पर limits हो सकती हैं।</li><li>कुछ advanced conversion options उपलब्ध नहीं हो सकते।</li><li>Complex PDF layouts में editing सीमित हो सकती है।</li><li>OCR जैसी advanced सुविधाएं उपलब्ध हों या न हों।</li></ul><p>इसलिए अगर आपको केवल basic editing करनी है, तो free tool काफी हो सकता है। लेकिन professional-level PDF workflow के लिए advanced software की आवश्यकता पड़ सकती है।</p><h4>FAQ: Free और No-Sign-Up PDF Editing से जुड़े सवाल</h4><div class="blog-faq"><details class="blog-faq-item"><summary>क्या बिना account बनाए PDF edit कर सकते हैं?</summary><p>हां, अगर PDF editor no-sign-up editing की सुविधा देता है, तो account बनाए बिना PDF edit की जा सकती है।</p></details><details class="blog-faq-item"><summary>क्या बिना पैसे PDF edit करना संभव है?</summary><p>हां। कई PDF tools basic editing सुविधाएं free में उपलब्ध कराते हैं। हालांकि features और usage limits tool के अनुसार अलग हो सकती हैं।</p></details><details class="blog-faq-item"><summary>क्या मोबाइल से PDF edit कर सकते हैं?</summary><p>हां, यदि PDF editor mobile browser को support करता है, तो smartphone से भी PDF edit की जा सकती है।</p></details><details class="blog-faq-item"><summary>No-sign-up PDF editor का क्या फायदा है?</summary><p>इसका सबसे बड़ा फायदा यह है कि user को पहले account बनाने और registration process पूरा करने की आवश्यकता नहीं होती। इससे छोटे tasks जल्दी शुरू किए जा सकते हैं।</p></details><details class="blog-faq-item"><summary>क्या Dudi PDF Editor free है?</summary><p>Dudi PDF Editor को free PDF tools उपलब्ध कराने के लिए बनाया गया है और इसे बिना sign-up के इस्तेमाल करने की सुविधा दी गई है।</p></details><details class="blog-faq-item"><summary>क्या Dudi PDF Editor browser-based है?</summary><p>हां। Dudi PDF Editor browser-based है और PDF processing के लिए आपका अपना server नहीं है।</p></details><details class="blog-faq-item"><summary>क्या Free PDF Editor सुरक्षित होता है?</summary><p>Free होना security की guarantee नहीं है। PDF editor चुनते समय privacy policy, HTTPS, data handling और technical architecture को भी ध्यान में रखना चाहिए।</p></details><details class="blog-faq-item"><summary>क्या Free PDF Editor में सभी advanced features मिलते हैं?</summary><p>जरूरी नहीं। Free tools में basic features उपलब्ध हो सकते हैं, जबकि advanced features की availability अलग-अलग tool पर निर्भर करती है।</p></details></div><h4>निष्कर्ष</h4><p>बिना साइन-up और बिना पैसे दिए PDF edit करने का सबसे बड़ा फायदा सुविधा, समय की बचत और कम लागत है। अगर आपको कभी-कभी PDF में छोटे बदलाव करने होते हैं, तो केवल इसके लिए paid software या subscription लेना जरूरी नहीं हो सकता।</p><p>Browser-based PDF editors की मदद से आप अपने मोबाइल या कंप्यूटर के browser से PDF editing शुरू कर सकते हैं। No-sign-up सुविधा registration की परेशानी कम करती है, जबकि free access छोटे और सामान्य PDF tasks के लिए उपयोगी हो सकता है।</p><p>Dudi PDF Editor browser-based है, बिना sign-up के इस्तेमाल करने के लिए बनाया गया है और PDF processing के लिए आपका अपना server नहीं है। इसलिए इसका workflow traditional server-based PDF tools से अलग है।</p><p>फिर भी एक बात हमेशा याद रखें: Free और No-Sign-Up का मतलब automatically 100% secure या private होना नहीं है। Sensitive documents के लिए privacy policy और data handling practices को समझना जरूरी है।</p><p>अगर आपकी जरूरत basic PDF editing की है, तो एक simple workflow काफी हो सकता है:</p><div class="blog-flow">PDF चुनें → Edit करें → Preview करें → Download करें → Final File Check करें।</div><p>यही सरलता free और no-sign-up PDF editing tools को रोजमर्रा के PDF कामों के लिए एक सुविधाजनक विकल्प बनाती है।</p></div></details><details class="blog-item"><summary>यूनिट, कनवर्टर और सिक्योरिटी टूल्स — School, Home और Internet Use के लिए</summary><div class="blog-body"><p>यह लेख Dudi PDF Editor जैसी वेबसाइट्स पर मिलने वाले कुछ लोकप्रिय यूनिट कनवर्टर और सिक्योरिटी टूल्स की एक झलक देता है — जो पढ़ाई, घर के हिसाब-किताब और रोज़मर्रा के ऑनलाइन काम में उपयोगी होते हैं।</p><h4>यूनिट और कनवर्टर टूल्स (School &amp; Home Use)</h4><p>गणित के होमवर्क और घरेलू काम के लिए:</p><ul><li><b>Length Converter:</b> मीटर, किलोमीटर, फीट और इंच को आपस में बदलना।</li><li><b>Weight Converter:</b> किलोग्राम, ग्राम, पाउंड और टन को बदलना।</li><li><b>Temperature Converter:</b> सेल्सियस को फारेनहाइट में बदलना।</li><li><b>Currency Converter:</b> डॉलर, यूरो को भारतीय रुपयों (₹) में देखना।</li><li><b>Area Converter:</b> ज़मीन के माप (गज़, बीघा, स्क्वायर फीट, एकड़) को बदलना।</li><li><b>Time Converter:</b> घंटे, मिनट, सेकंड और दिनों का हिसाब लगाना।</li><li><b>Speed Converter:</b> किमी/घंटा को मीटर/सेकंड में बदलना।</li><li><b>Data Transfer Converter:</b> MBps को Mbps में बदलना (इंटरनेट स्पीड के लिए)।</li><li><b>Number to Words Converter:</b> अंकों (जैसे 1500) को शब्दों (One Thousand Five Hundred) में बदलना (चेक भरने के लिए)।</li><li><b>Roman Numerals Converter:</b> सामान्य नंबरों को रोमन अंकों (जैसे IX, X) में बदलना।</li></ul><h4>🔐 इंटरनेट, सेक्यूरिटी और डेवलपर टूल्स</h4><p>नौजवानों और तकनीकी काम करने वालों के लिए:</p><ul><li><b>QR Code Generator:</b> किसी भी वेबसाइट या फोन नंबर का क्यूआर कोड बनाना।</li><li><b>QR Code Scanner:</b> कैमरे से या फोटो अपलोड करके क्यूआर कोड पढ़ना।</li><li><b>Strong Password Generator:</b> हैकर्स से बचने के लिए मजबूत पासवर्ड बनाना।</li><li><b>My IP Address:</b> यूजर के कंप्यूटर/इंटरनेट का लाइव आईपी एड्रेस दिखाना।</li><li><b>Password Strength Checker:</b> आपका पासवर्ड कितना सुरक्षित है, यह जांचना।</li><li><b>URL Encoder/Decoder:</b> वेबसाइट के लिंक को सुरक्षित कोड में बदलना।</li><li><b>HTML Entities Converter:</b> कोडिंग के स्पेशल कैरेक्टर्स को बदलना।</li><li><b>MD5 / SHA256 Hash Generator:</b> सिक्योरिटी के लिए डेटा को एनक्रिप्ट करना।</li><li><b>Stopwatch &amp; Timer:</b> ऑनलाइन स्टॉपवॉच और अलार्म टाइमर।</li></ul><p>नोट: यह लिस्ट अभी अपडेट हो रही है — जल्द ही और टूल्स (जैसे Random Number / Dice Roller) इसमें जोड़े जाएंगे।</p></div></details></div>`,
+  htmlHi:`<p class="mb-4 text-sm text-slate-500">हमारे नए आर्टिकल — किसी भी टाइटल पर टैप करके पूरा पढ़ें।</p><div class="blog-list"><details class="blog-item"><summary>बिना साइन-अप और बिना पैसे दिए PDF एडिट करने के क्या फायदे हैं?</summary><div class="blog-body"><p>आज के समय में PDF सबसे ज्यादा इस्तेमाल किए जाने वाले document formats में से एक है। स्कूल के assignments से लेकर office documents, invoices, forms, resumes और personal documents तक, लगभग हर जगह PDF का इस्तेमाल होता है। लेकिन PDF फाइल मिलने के बाद अक्सर उसमें कोई छोटा बदलाव करने की जरूरत पड़ जाती है।</p><p>कभी नाम ठीक करना होता है, कभी कोई text जोड़ना होता है, कभी किसी जरूरी हिस्से पर highlight करना होता है और कभी PDF के pages को व्यवस्थित करना होता है। ऐसी स्थिति में सबसे पहला सवाल आता है—PDF edit कैसे करें?</p><p>पहले PDF editing के लिए desktop software install करना पड़ता था। कई advanced software paid होते हैं और कुछ tools इस्तेमाल करने से पहले account या sign-up भी मांगते हैं। लेकिन अब browser-based PDF tools ने यह काम काफी आसान बना दिया है।</p><p>बिना साइन-अप और बिना पैसे दिए PDF edit करने का सबसे बड़ा फायदा यह है कि आप जरूरत के समय सीधे browser में काम शुरू कर सकते हैं। आपको account बनाने, subscription लेने या केवल एक छोटे PDF task के लिए कोई भारी software install करने की जरूरत नहीं पड़ती।</p><p>इस लेख में हम विस्तार से जानेंगे कि free PDF editing और no-sign-up PDF tools के क्या फायदे हैं, कौन-से users के लिए ये उपयोगी हैं, मोबाइल से PDF edit करना कितना आसान हो सकता है और PDF editing tool चुनते समय किन बातों का ध्यान रखना चाहिए।</p><h4>बिना साइन-अप PDF Edit करने का क्या मतलब है?</h4><p>जब कोई PDF tool no-sign-up सुविधा देता है, तो आम तौर पर इसका मतलब होता है कि user को tool इस्तेमाल करने से पहले account बनाने या email से registration करने की आवश्यकता नहीं होती।</p><p>सामान्य workflow कुछ ऐसा हो सकता है:</p><div class="blog-flow">Website खोलें → PDF चुनें → Edit करें → PDF Download करें</div><p>इसके लिए अलग से username और password बनाने की जरूरत नहीं पड़ती।</p><p>यह सुविधा खासकर उन लोगों के लिए उपयोगी है जिन्हें PDF editing कभी-कभी करनी होती है और वे किसी permanent account की जरूरत नहीं समझते।</p><h4>No-Sign-Up PDF Tool के फायदे</h4><ul><li>तुरंत काम शुरू किया जा सकता है।</li><li>Registration process की जरूरत नहीं।</li><li>Password याद रखने की जरूरत नहीं।</li><li>Email verification जैसे steps से बचा जा सकता है।</li><li>छोटे और जल्दी होने वाले PDF tasks के लिए सुविधाजनक।</li><li>Shared या temporary device पर account बनाने की जरूरत कम हो सकती है।</li></ul><p>हालांकि, किसी भी website पर personal information डालने से पहले उसकी privacy policy और security practices को देखना अच्छी आदत है।</p><h4>बिना पैसे दिए PDF Edit करने के फायदे</h4><p>Free PDF editing tools उन users के लिए उपयोगी हो सकते हैं जिन्हें कभी-कभी basic PDF editing करनी होती है।</p><p>मान लीजिए आपको केवल किसी PDF में text जोड़ना है या कुछ pages को व्यवस्थित करना है। इसके लिए महंगा software खरीदना हर user के लिए जरूरी नहीं होता।</p><h4>Free PDF Editing के प्रमुख फायदे</h4><h5>1. पैसे की बचत</h5><p>अगर आपका काम basic PDF editing तक सीमित है, तो paid software या subscription पर पैसे खर्च करने की आवश्यकता कम हो सकती है।</p><h5>2. छोटे कामों के लिए सुविधाजनक</h5><p>एक-दो बार PDF edit करने के लिए software खरीदना practical नहीं लग सकता। Free browser-based tool ऐसी स्थिति में उपयोगी हो सकता है।</p><h5>3. Software Installation की जरूरत नहीं</h5><p>Browser-based tool होने पर PDF editing browser से की जा सकती है।</p><h5>4. Beginners के लिए आसान</h5><p>कई users को complex PDF software के menus और settings समझने में परेशानी होती है। Simple web-based interface शुरुआत करने के लिए आसान हो सकता है।</p><h5>5. Mobile पर भी उपयोगी</h5><p>अगर tool mobile browser को support करता है, तो smartphone से भी PDF editing की जा सकती है।</p><h4>PDF Edit करने के लिए Account क्यों जरूरी नहीं होना चाहिए?</h4><p>हर PDF editing task के लिए account की आवश्यकता नहीं होती।</p><p>अगर user केवल एक PDF में छोटा बदलाव करना चाहता है, तो उससे पहले account बनवाना अतिरिक्त step हो सकता है।</p><p>उदाहरण के लिए:</p><p>आपके पास एक PDF है और उसमें केवल एक text या annotation जोड़ना है।</p><p>अगर tool कहता है:</p><div class="blog-flow">Sign Up → Email Verify → Login → Upload → Edit</div><p>तो पूरा process लंबा हो जाता है।</p><p>इसके मुकाबले no-sign-up workflow हो सकता है:</p><div class="blog-flow">Open Tool → Upload PDF → Edit → Download</div><p>यही सरलता no-sign-up tools की एक बड़ी खासियत है।</p><h4>किन लोगों के लिए यह सुविधा ज्यादा उपयोगी हो सकती है?</h4><ul><li>Students</li><li>Teachers</li><li>Job seekers</li><li>Office employees</li><li>Freelancers</li><li>Small business owners</li><li>सामान्य home users</li><li>ऐसे users जिन्हें occasional PDF editing करनी होती है</li></ul><h4>Browser-Based PDF Editor के फायदे</h4><p>Dudi PDF Editor एक browser-based PDF tool है। इसका मतलब यह है कि PDF editing के लिए dedicated desktop application install करने की बजाय browser के माध्यम से tool इस्तेमाल किया जा सकता है।</p><p>Browser-based PDF editor के कुछ सामान्य फायदे हैं:</p><h5>1. किसी भी compatible browser से काम</h5><p>आप अपने device पर उपलब्ध browser के माध्यम से PDF tool access कर सकते हैं।</p><h5>2. Installation की जरूरत नहीं</h5><p>सिर्फ PDF edit करने के लिए अलग software install करने की जरूरत नहीं होती।</p><h5>3. Storage की बचत</h5><p>Heavy desktop PDF software को install करने के लिए device में अतिरिक्त storage की जरूरत हो सकती है। Browser-based approach में ऐसा installation आवश्यक नहीं होता।</p><h5>4. Updates की चिंता कम</h5><p>Desktop software में updates install करने पड़ सकते हैं। Browser-based tools में user आम तौर पर website के current version को access करता है।</p><h5>5. Different Devices पर सुविधा</h5><p>एक ही तरह का browser-based workflow desktop, laptop और supported mobile devices पर उपयोग किया जा सकता है।</p><h4>मोबाइल से Free PDF Edit करने के फायदे</h4><p>आज PDF से जुड़े बहुत से काम मोबाइल पर ही किए जाते हैं। इसलिए mobile-friendly PDF editor काफी उपयोगी हो सकता है।</p><p>मान लीजिए आपको किसी document में तुरंत correction करना है लेकिन आपके पास computer नहीं है।</p><p>अगर PDF editor mobile browser पर ठीक से काम करता है, तो आप smartphone से ही editing कर सकते हैं।</p><h4>Mobile PDF Editing के फायदे</h4><ul><li>Computer की आवश्यकता नहीं।</li><li>कहीं से भी browser खोलकर काम किया जा सकता है।</li><li>अलग PDF editing application install करने की जरूरत कम हो सकती है।</li><li>छोटे edits जल्दी किए जा सकते हैं।</li><li>Edited PDF को device में save किया जा सकता है।</li></ul><h4>Mobile से PDF Edit करने का सामान्य तरीका</h4><ol><li>Mobile browser खोलें।</li><li>Dudi PDF Editor की वेबसाइट पर जाएं।</li><li>उपलब्ध PDF editing tool चुनें।</li><li>PDF file select करें।</li><li>आवश्यक बदलाव करें।</li><li>Preview करके changes check करें।</li><li>Edited PDF तैयार करें।</li><li>PDF download करें।</li><li>Download की गई file को खोलकर verify करें।</li></ol><h4>Free PDF Editor में कौन-कौन से काम किए जा सकते हैं?</h4><p>किसी tool में उपलब्ध सुविधाएं अलग-अलग हो सकती हैं, लेकिन सामान्य PDF editors में कई तरह के editing tasks मिल सकते हैं।</p><p>उदाहरण के लिए:</p><ul><li>PDF में text जोड़ना</li><li>Text या content को highlight करना</li><li>Annotations करना</li><li>Shapes या markup जोड़ना</li><li>Pages को व्यवस्थित करना</li><li>PDF pages को rotate करना</li><li>कुछ PDF files को merge करना</li><li>PDF को दूसरे format में convert करना</li><li>PDF को compress करना</li><li>PDF पर basic document changes करना</li></ul><p>यहां यह समझना जरूरी है कि हर free PDF editor में सभी advanced features उपलब्ध हों, यह जरूरी नहीं है।</p><p>इसलिए किसी specific task के लिए tool की उपलब्ध features और limitations पहले देखना अच्छा रहता है।</p><h4>बिना पैसे दिए PDF Edit करने से किन खर्चों से बच सकते हैं?</h4><p>Free PDF editing का सबसे सीधा फायदा subscription cost से बचना है।</p><p>कुछ PDF software monthly या yearly subscription model पर काम करते हैं। अगर user को केवल occasional editing करनी है, तो subscription लेना अनावश्यक खर्च हो सकता है।</p><p>उदाहरण के लिए कोई user साल में केवल कुछ बार PDF edit करता है। उसके लिए एक expensive PDF editing package खरीदने की बजाय free tool पर्याप्त हो सकता है—अगर उसके required features उपलब्ध हों।</p><h5>इससे बच सकते हैं:</h5><ul><li>Software purchase cost</li><li>Monthly subscription</li><li>Yearly subscription</li><li>Unnecessary premium upgrades</li><li>केवल basic editing के लिए paid application</li></ul><p>लेकिन "Free" का अर्थ यह नहीं कि हर tool में unlimited features या unlimited file processing उपलब्ध होगी। कुछ free tools में file-size, feature या usage limitations हो सकती हैं।</p><h4>No-Sign-Up PDF Editing से समय कैसे बचता है?</h4><p>आजकल online काम करते समय कई websites पर account बनाना पड़ता है।</p><p>एक सामान्य registration process में हो सकता है:</p><ol><li>Name enter करें।</li><li>Email enter करें।</li><li>Password बनाएं।</li><li>Terms accept करें।</li><li>Verification email खोलें।</li><li>Account verify करें।</li><li>फिर tool इस्तेमाल करें।</li></ol><p>अगर आपको केवल एक छोटी PDF edit करनी है, तो यह पूरा process unnecessary लग सकता है।</p><p>No-sign-up tool में यह workflow काफी छोटा हो सकता है:</p><div class="blog-flow">Website → PDF → Edit → Download</div><p>इससे खासकर छोटे और urgent tasks में समय बच सकता है।</p><h4>PDF Edit करने से पहले किन बातों का ध्यान रखें?</h4><p>Free और no-sign-up होने के बावजूद किसी PDF tool का इस्तेमाल करते समय कुछ basic precautions जरूरी हैं।</p><h5>1. Website का सही address देखें</h5><p>किसी भी unknown website पर document upload करने से पहले सुनिश्चित करें कि आप सही service का इस्तेमाल कर रहे हैं।</p><h5>2. Privacy Policy पढ़ें</h5><p>खासकर अगर PDF में personal या confidential information है।</p><h5>3. HTTPS Check करें</h5><p>Browser में secure connection की जानकारी देखना एक अच्छी security practice है।</p><h5>4. Important PDF का Backup रखें</h5><p>Editing शुरू करने से पहले original PDF की copy सुरक्षित रखना बेहतर है।</p><h5>5. Edited PDF को Check करें</h5><p>Download करने के बाद final PDF को खोलकर देखें कि changes सही हैं या नहीं।</p><h4>Dudi PDF Editor और Privacy</h4><p>Dudi PDF Editor browser-based है और PDF processing के लिए आपका अपना server नहीं है। इसलिए इसका workflow traditional server-upload based PDF editors से अलग है।</p><p>यदि processing browser में client-side होती है, तो PDF को किसी dedicated remote PDF-processing server पर भेजने की आवश्यकता नहीं होती।</p><p>फिर भी users को यह समझना चाहिए कि किसी भी online tool की privacy केवल "free" या "no sign-up" होने से तय नहीं होती।</p><h5>Sensitive PDF के लिए हमेशा:</h5><ul><li>Privacy Policy देखें।</li><li>HTTPS connection verify करें।</li><li>Website की data handling practices समझें।</li><li>केवल trusted website इस्तेमाल करें।</li><li>अपना device और browser updated रखें।</li></ul><p>No-sign-up का मतलब यह नहीं है कि कोई website automatically 100% private या secure है। Privacy को समझने के लिए technical architecture और website की policies दोनों देखना महत्वपूर्ण है।</p><h4>Free PDF Editor किन लोगों के लिए सबसे उपयोगी है?</h4><p>Free PDF editing tool लगभग हर तरह के सामान्य user के लिए उपयोगी हो सकता है, लेकिन कुछ users के लिए इसका फायदा विशेष रूप से अधिक हो सकता है।</p><h5>Students</h5><p>Assignments, notes, forms और study documents में छोटे बदलाव करने के लिए।</p><h5>Job Seekers</h5><p>Resume या supporting documents में basic corrections के लिए।</p><h5>Teachers</h5><p>Study material और worksheets को annotate या organize करने के लिए।</p><h5>Small Businesses</h5><p>Invoices, forms और business documents में basic changes के लिए।</p><h5>Freelancers</h5><p>Client documents और project-related PDFs को manage करने के लिए।</p><h5>सामान्य Users</h5><p>जब कभी किसी PDF में छोटा बदलाव करना हो और paid software खरीदना उचित न लगे।</p><h4>Free PDF Editor इस्तेमाल करने का आसान तरीका</h4><p>अगर आप पहली बार browser-based PDF editor इस्तेमाल कर रहे हैं, तो इस simple workflow को follow कर सकते हैं:</p><h5>Step 1: PDF तैयार रखें</h5><p>जिस PDF को edit करना है उसे अपने device में सुरक्षित रखें।</p><h5>Step 2: Browser खोलें</h5><p>Chrome, Edge, Safari या कोई compatible browser खोलें।</p><h5>Step 3: PDF Editor खोलें</h5><p>Dudi PDF Editor जैसे browser-based PDF editor पर जाएं।</p><h5>Step 4: PDF Upload/Select करें</h5><p>अपनी PDF file चुनें।</p><h5>Step 5: Edit करें</h5><p>Tool में उपलब्ध editing features का इस्तेमाल करें।</p><h5>Step 6: Preview करें</h5><p>Download से पहले PDF को ध्यान से देखें।</p><h5>Step 7: Download करें</h5><p>Final PDF को अपने device में save करें।</p><h5>Step 8: Original सुरक्षित रखें</h5><p>जब तक आपको नई PDF के सही होने का भरोसा न हो, original file delete न करें।</p><h4>Free PDF Editing की कुछ Limitations भी समझें</h4><p>Free tool के कई फायदे हैं, लेकिन हर user को अपनी जरूरत के हिसाब से tool चुनना चाहिए।</p><p>कुछ free PDF editors में:</p><ul><li>Advanced editing features उपलब्ध नहीं हो सकते।</li><li>बहुत बड़ी PDF files पर limits हो सकती हैं।</li><li>कुछ advanced conversion options उपलब्ध नहीं हो सकते।</li><li>Complex PDF layouts में editing सीमित हो सकती है।</li><li>OCR जैसी advanced सुविधाएं उपलब्ध हों या न हों।</li></ul><p>इसलिए अगर आपको केवल basic editing करनी है, तो free tool काफी हो सकता है। लेकिन professional-level PDF workflow के लिए advanced software की आवश्यकता पड़ सकती है।</p><h4>FAQ: Free और No-Sign-Up PDF Editing से जुड़े सवाल</h4><div class="blog-faq"><details class="blog-faq-item"><summary>क्या बिना account बनाए PDF edit कर सकते हैं?</summary><p>हां, अगर PDF editor no-sign-up editing की सुविधा देता है, तो account बनाए बिना PDF edit की जा सकती है।</p></details><details class="blog-faq-item"><summary>क्या बिना पैसे PDF edit करना संभव है?</summary><p>हां। कई PDF tools basic editing सुविधाएं free में उपलब्ध कराते हैं। हालांकि features और usage limits tool के अनुसार अलग हो सकती हैं।</p></details><details class="blog-faq-item"><summary>क्या मोबाइल से PDF edit कर सकते हैं?</summary><p>हां, यदि PDF editor mobile browser को support करता है, तो smartphone से भी PDF edit की जा सकती है।</p></details><details class="blog-faq-item"><summary>No-sign-up PDF editor का क्या फायदा है?</summary><p>इसका सबसे बड़ा फायदा यह है कि user को पहले account बनाने और registration process पूरा करने की आवश्यकता नहीं होती। इससे छोटे tasks जल्दी शुरू किए जा सकते हैं।</p></details><details class="blog-faq-item"><summary>क्या Dudi PDF Editor free है?</summary><p>Dudi PDF Editor को free PDF tools उपलब्ध कराने के लिए बनाया गया है और इसे बिना sign-up के इस्तेमाल करने की सुविधा दी गई है।</p></details><details class="blog-faq-item"><summary>क्या Dudi PDF Editor browser-based है?</summary><p>हां। Dudi PDF Editor browser-based है और PDF processing के लिए आपका अपना server नहीं है।</p></details><details class="blog-faq-item"><summary>क्या Free PDF Editor सुरक्षित होता है?</summary><p>Free होना security की guarantee नहीं है। PDF editor चुनते समय privacy policy, HTTPS, data handling और technical architecture को भी ध्यान में रखना चाहिए।</p></details><details class="blog-faq-item"><summary>क्या Free PDF Editor में सभी advanced features मिलते हैं?</summary><p>जरूरी नहीं। Free tools में basic features उपलब्ध हो सकते हैं, जबकि advanced features की availability अलग-अलग tool पर निर्भर करती है।</p></details></div><h4>निष्कर्ष</h4><p>बिना साइन-up और बिना पैसे दिए PDF edit करने का सबसे बड़ा फायदा सुविधा, समय की बचत और कम लागत है। अगर आपको कभी-कभी PDF में छोटे बदलाव करने होते हैं, तो केवल इसके लिए paid software या subscription लेना जरूरी नहीं हो सकता।</p><p>Browser-based PDF editors की मदद से आप अपने मोबाइल या कंप्यूटर के browser से PDF editing शुरू कर सकते हैं। No-sign-up सुविधा registration की परेशानी कम करती है, जबकि free access छोटे और सामान्य PDF tasks के लिए उपयोगी हो सकता है।</p><p>Dudi PDF Editor browser-based है, बिना sign-up के इस्तेमाल करने के लिए बनाया गया है और PDF processing के लिए आपका अपना server नहीं है। इसलिए इसका workflow traditional server-based PDF tools से अलग है।</p><p>फिर भी एक बात हमेशा याद रखें: Free और No-Sign-Up का मतलब automatically 100% secure या private होना नहीं है। Sensitive documents के लिए privacy policy और data handling practices को समझना जरूरी है।</p><p>अगर आपकी जरूरत basic PDF editing की है, तो एक simple workflow काफी हो सकता है:</p><div class="blog-flow">PDF चुनें → Edit करें → Preview करें → Download करें → Final File Check करें।</div><p>यही सरलता free और no-sign-up PDF editing tools को रोजमर्रा के PDF कामों के लिए एक सुविधाजनक विकल्प बनाती है।</p></div></details><details class="blog-item"><summary>यूनिट, कनवर्टर और सिक्योरिटी टूल्स — School, Home और Internet Use के लिए</summary><div class="blog-body"><p>यह लेख Dudi PDF Editor जैसी वेबसाइट्स पर मिलने वाले कुछ लोकप्रिय यूनिट कनवर्टर और सिक्योरिटी टूल्स की एक झलक देता है — जो पढ़ाई, घर के हिसाब-किताब और रोज़मर्रा के ऑनलाइन काम में उपयोगी होते हैं।</p><h4>यूनिट और कनवर्टर टूल्स (School &amp; Home Use)</h4><p>गणित के होमवर्क और घरेलू काम के लिए:</p><ul><li><b>Length Converter:</b> मीटर, किलोमीटर, फीट और इंच को आपस में बदलना।</li><li><b>Weight Converter:</b> किलोग्राम, ग्राम, पाउंड और टन को बदलना।</li><li><b>Temperature Converter:</b> सेल्सियस को फारेनहाइट में बदलना।</li><li><b>Currency Converter:</b> डॉलर, यूरो को भारतीय रुपयों (₹) में देखना।</li><li><b>Area Converter:</b> ज़मीन के माप (गज़, बीघा, स्क्वायर फीट, एकड़) को बदलना।</li><li><b>Time Converter:</b> घंटे, मिनट, सेकंड और दिनों का हिसाब लगाना।</li><li><b>Speed Converter:</b> किमी/घंटा को मीटर/सेकंड में बदलना।</li><li><b>Data Transfer Converter:</b> MBps को Mbps में बदलना (इंटरनेट स्पीड के लिए)।</li><li><b>Number to Words Converter:</b> अंकों (जैसे 1500) को शब्दों (One Thousand Five Hundred) में बदलना (चेक भरने के लिए)।</li><li><b>Roman Numerals Converter:</b> सामान्य नंबरों को रोमन अंकों (जैसे IX, X) में बदलना।</li></ul><h4>🔐 इंटरनेट, सेक्यूरिटी और डेवलपर टूल्स</h4><p>नौजवानों और तकनीकी काम करने वालों के लिए:</p><ul><li><b>QR Code Generator:</b> किसी भी वेबसाइट या फोन नंबर का क्यूआर कोड बनाना।</li><li><b>QR Code Scanner:</b> कैमरे से या फोटो अपलोड करके क्यूआर कोड पढ़ना।</li><li><b>Strong Password Generator:</b> हैकर्स से बचने के लिए मजबूत पासवर्ड बनाना।</li><li><b>My IP Address:</b> यूजर के कंप्यूटर/इंटरनेट का लाइव आईपी एड्रेस दिखाना।</li><li><b>Password Strength Checker:</b> आपका पासवर्ड कितना सुरक्षित है, यह जांचना।</li><li><b>URL Encoder/Decoder:</b> वेबसाइट के लिंक को सुरक्षित कोड में बदलना।</li><li><b>HTML Entities Converter:</b> कोडिंग के स्पेशल कैरेक्टर्स को बदलना।</li><li><b>MD5 / SHA256 Hash Generator:</b> सिक्योरिटी के लिए डेटा को एनक्रिप्ट करना।</li><li><b>Stopwatch &amp; Timer:</b> ऑनलाइन स्टॉपवॉच और अलार्म टाइमर।</li></ul><p>नोट: यह लिस्ट अभी अपडेट हो रही है — जल्द ही और टूल्स (जैसे Random Number / Dice Roller) इसमें जोड़े जाएंगे।</p></div></details></div>`}
 };
 function toggleSiteMenu(){const m=$('siteMenu'),a=$('siteMenuArrow');if(!m)return;const opening=m.classList.contains('hidden');closeNotifBox();m.classList.toggle('hidden');if(a)a.textContent=opening?'↑':'↓';}
 function closeSiteMenu(){const m=$('siteMenu'),a=$('siteMenuArrow');if(m)m.classList.add('hidden');if(a)a.textContent='↓';}
@@ -436,38 +364,59 @@ document.addEventListener('click',e=>{const box=$('notifBox'),btn=$('notifButton
 
 let siteLang='en';
 const langText={
-  en:{badge:'⚡ 100% FREE • 🚫 No Server Upload • 🔁 Unlimited Use • 🎯 No Signup',title:'<span class="text-red-500">All work in one space</span>',sub:'Convert, merge, split, rotate and turn documents into PDF — without server uploads.',footer:'The world’s most privacy-focused tool',toggle:'हिंदी'},
+  en:{badge:'⚡ 100% FREE • 🚫 No Server Upload • 🔁 Unlimited Use • 🎯 No Signup',title:'PDF work, <span class="text-red-500">all in one place</span>',sub:'Convert, merge, split, rotate and turn documents into PDF — without server uploads.',footer:'The world’s most privacy-focused tool',toggle:'हिंदी'},
   hi:{badge:'⚡ 100% फ्री • 🚫 सर्वर पर अपलोड नहीं • 🔁 बार-बार इस्तेमाल करें • 🎯 बिना साइनअप',title:'PDF का काम, <span class="text-red-500">एक ही जगह</span>',sub:'दस्तावेज़ों को कन्वर्ट, मर्ज, स्प्लिट, रोटेट करें — बिना सर्वर पर अपलोड किए।',footer:'सबसे प्राइवेसी-फ्रेंडली टूल',toggle:'English'}
 };
 const UI_TEXT={
-  en:{btnHomeLabel:'Home',menuBtnLabel:'Menu',miHowto:'❓ How to Use',miAbout:'ℹ️ About Us',miTerms:'📜 Terms & Conditions',miPrivacy:'🔒 Privacy Policy',miContact:'✉️ Contact Us',miPhotoEditor:'🎨 Photo Editor Pro',miPhotoEditorBadge:'FREE',notifTitleText:'Notifications',notifMsgLabel:'Message',notifMsgText:'🎉 100% free tools, no ads, no server upload — everything happens right in your browser!',dropTitle:'Drop files here',dropSub:'or choose files from your device',chooseFilesBtn:'Choose files',backAllTools:'← All tools',privTitle:'Private',privDesc:'Your selected files are not uploaded to a server.',fastTitle:'Fast',fastDesc:'Processing happens directly on your device.',mnfNewLabel:'ALL',mnfTitle:'More New Features',mnfDesc:'Sign, Protect, Watermark, Blank Page, Extract Images, PDF Repair, Compress PDF, Delete Pages, Image Converter, Image Compressor and Word Editor',
-    ocrCardTitle:'OCR Converter',ocrCardDesc:'Image/PDF → editable text',t2pCardTitle:'Text to PDF',t2pCardDesc:'Write text and export PDF',i2tCardTitle:'Image to Text',i2tCardDesc:'Fast browser OCR',batchCardTitle:'Batch Workspace',batchCardDesc:'Coming soon',
-    sliderAllTitle:'ALL FEATURES',sliderAllDesc:'Swipe through all extra tools',aiWorkshopTitle:'AI Workshop',aiWorkshopDesc:'AI-powered tools — coming soon',comingSoonText:'Coming Soon',okBtnText:'OK'},
-  hi:{btnHomeLabel:'होम',menuBtnLabel:'मेनू',miHowto:'❓ कैसे इस्तेमाल करें',miAbout:'ℹ️ हमारे बारे में',miTerms:'📜 नियम और शर्तें',miPrivacy:'🔒 प्राइवेसी पॉलिसी',miContact:'✉️ संपर्क करें',miPhotoEditor:'🎨 फोटो एडिटर प्रो',miPhotoEditorBadge:'फ्री',notifTitleText:'नोटिफिकेशन',notifMsgLabel:'संदेश',notifMsgText:'🎉 100% फ्री टूल, कोई ऐड नहीं, कोई सर्वर अपलोड नहीं — सब कुछ आपके ब्राउज़र में ही होता है!',dropTitle:'फाइलें यहां छोड़ें',dropSub:'या अपने डिवाइस से फाइल चुनें',chooseFilesBtn:'फाइल चुनें',backAllTools:'← सभी टूल',privTitle:'प्राइवेट',privDesc:'आपकी चुनी हुई फाइलें सर्वर पर अपलोड नहीं होतीं।',fastTitle:'फास्ट',fastDesc:'प्रोसेसिंग सीधे आपके डिवाइस पर होती है।',mnfNewLabel:'सभी',mnfTitle:'और नए फीचर्स',mnfDesc:'साइन, प्रोटेक्ट, वॉटरमार्क, खाली पेज, इमेज निकालें, PDF रिपेयर, PDF कंप्रेस, पेज डिलीट, इमेज कन्वर्टर, इमेज कंप्रेसर और वर्ड एडिटर',
-    ocrCardTitle:'OCR कन्वर्टर',ocrCardDesc:'इमेज/PDF → एडिटेबल टेक्स्ट',t2pCardTitle:'Text से PDF',t2pCardDesc:'टेक्स्ट लिखें और PDF बनाएं',i2tCardTitle:'इमेज से Text',i2tCardDesc:'तेज़ ब्राउज़र OCR',batchCardTitle:'बैच वर्कस्पेस',batchCardDesc:'जल्द आ रहा है',
-    sliderAllTitle:'सभी फीचर्स',sliderAllDesc:'सभी एक्स्ट्रा टूल यहां स्वाइप करें',aiWorkshopTitle:'AI वर्कशॉप',aiWorkshopDesc:'AI-पावर्ड टूल — जल्द आ रहे हैं',comingSoonText:'जल्द आ रहा है',okBtnText:'ठीक है'}
+  en:{btnHomeLabel:'Home',menuBtnLabel:'Menu',miHowto:'❓ How to Use',miAbout:'ℹ️ About Us',miBlog:'📰 Blog',miTerms:'📜 Terms & Conditions',miPrivacy:'🔒 Privacy Policy',miContact:'✉️ Contact Us',miPhotoEditor:'🎨 Photo Editor Pro',miPhotoEditorBadge:'FREE',notifTitleText:'Notifications',notifMsgLabel:'Message',notifMsgText:'🎉 100% free tools, no ads, no server upload — everything happens right in your browser!',dropTitle:'Drop files here',dropSub:'or choose files from your device',chooseFilesBtn:'Choose files',backAllTools:'← All tools',privTitle:'Private',privDesc:'Your selected files are not uploaded to a server.',fastTitle:'Fast',fastDesc:'Processing happens directly on your device.',mnfNewLabel:'New',mnfTitle:'More New Features',mnfDesc:'Sign, Protect, Watermark, Blank Page, Extract Images, PDF Repair, Compress PDF, Delete Pages, Image Converter, Image Compressor and Word Editor'},
+  hi:{btnHomeLabel:'होम',menuBtnLabel:'मेनू',miHowto:'❓ कैसे इस्तेमाल करें',miAbout:'ℹ️ हमारे बारे में',miBlog:'📰 ब्लॉग',miTerms:'📜 नियम और शर्तें',miPrivacy:'🔒 प्राइवेसी पॉलिसी',miContact:'✉️ संपर्क करें',miPhotoEditor:'🎨 फोटो एडिटर प्रो',miPhotoEditorBadge:'फ्री',notifTitleText:'नोटिफिकेशन',notifMsgLabel:'संदेश',notifMsgText:'🎉 100% फ्री टूल, कोई ऐड नहीं, कोई सर्वर अपलोड नहीं — सब कुछ आपके ब्राउज़र में ही होता है!',dropTitle:'फाइलें यहां छोड़ें',dropSub:'या अपने डिवाइस से फाइल चुनें',chooseFilesBtn:'फाइल चुनें',backAllTools:'← सभी टूल',privTitle:'प्राइवेट',privDesc:'आपकी चुनी हुई फाइलें सर्वर पर अपलोड नहीं होतीं।',fastTitle:'फास्ट',fastDesc:'प्रोसेसिंग सीधे आपके डिवाइस पर होती है।',mnfNewLabel:'नया',mnfTitle:'और नए फीचर्स',mnfDesc:'साइन, प्रोटेक्ट, वॉटरमार्क, खाली पेज, इमेज निकालें, PDF रिपेयर, PDF कंप्रेस, पेज डिलीट, इमेज कन्वर्टर, इमेज कंप्रेसर और वर्ड एडिटर'}
 };
 function applyUiText(){
   const t=UI_TEXT[siteLang];
   Object.keys(t).forEach(id=>{const el=$(id);if(el)el.textContent=t[id];});
-  if(typeof updateHeadlineAndPrivacy==='function') updateHeadlineAndPrivacy();
-  if(typeof buildTools==='function') buildTools();
-  if(typeof buildFeaturePills==='function') buildFeaturePills();
-  if(typeof buildFeatureSlider==='function') buildFeatureSlider();
-  if(typeof currentTool==='string'&&currentTool&&tools[currentTool]){
-    const t2=tools[currentTool];
-    if($('toolTitle'))$('toolTitle').textContent=T(t2,'title');
-    if($('toolDescription'))$('toolDescription').textContent=T(t2,'desc');
-    if($('fileHint'))$('fileHint').textContent=T(t2,'hint');
-    if(typeof renderOptions==='function')renderOptions();
-    if(typeof updateButton==='function')updateButton();
-  }
-  document.documentElement.lang=siteLang;
+  updateHeadlineAndPrivacy();
 }
 function updateHeadlineAndPrivacy(){
   const h=$('headlineText'),l=$('headlineLabel');
-  if(h)h.textContent=siteLang==='hi'?'Dudi PDF Editor — 100% फ्री PDF Editor • बेझिझक इस्तेमाल करें, आप सुरक्षित हैं • सारा काम आपके डिवाइस पर होता है।':'Dudi PDF Editor — 100% Free PDF Editor • Feel free, you are safe • All work is processed on your device.';
-  if(l)l.textContent=siteLang==='hi'?'नोट':'NOTE';
+  if(h)h.textContent=siteLang==='hi'?'Dudi PDF Editor — 100% फ्री PDF Editor • सारा काम आपके डिवाइस पर होता है।':'Dudi PDF Editor — 100% Free PDF Editor • All work is processed on your device.';
+  if(l)l.textContent=siteLang==='hi'?'हेडलाइंस':'NEWS';
+  setPrivacyLang(siteLang,false);
+}
+function setPrivacyLang(lang,manual=true){
+  const title=$('privacyNoticeTitle'),text=$('privacyNoticeText');
+  if(!title||!text)return;
+  if(lang==='hi'){title.textContent='🔒 हम कुकीज़ का इस्तेमाल नहीं करते';text.textContent='यह एडिटर आपके काम के लिए कुकीज़ का इस्तेमाल नहीं करता। आपका डेटा और प्रोसेसिंग आपके डिवाइस पर रहती है.';}
+  else{title.textContent='🔒 We are not using cookies';text.textContent='This editor does not use cookies for your work. Your data and processing stay on your device.';}
+}
+function closePrivacyNotice(){$('privacyNotice')?.classList.remove('show');}
+function toggleDarkMode(){
+  document.body.classList.toggle('dark-mode');
+  const dark=document.body.classList.contains('dark-mode');
+  localStorage.setItem('dudiDarkMode',dark?'1':'0');
+  const b=$('darkModeBtn');if(b)b.title=dark?'Light mode':'Dark mode';
+  const icon=$('darkModeIcon');if(icon)icon.innerHTML=dark?'<path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.42 1.42M16.94 16.94l1.42 1.42M5.64 18.36l1.42-1.42M16.94 7.06l1.42-1.42"/><circle cx="12" cy="12" r="4"/>':'<path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.8 6.8 0 0 0 21 12.8Z"/>';
+}
+function initDarkMode(){if(localStorage.getItem('dudiDarkMode')==='1')document.body.classList.add('dark-mode');}
+function openComingSoon(){$('comingSoonModal')?.classList.remove('hidden');}
+function closeComingSoon(){$('comingSoonModal')?.classList.add('hidden');}
+
+
+function toggleLang(){
+  siteLang=siteLang==='en'?'hi':'en';
+  const t=langText[siteLang];
+  const badge=$('heroBadge'),title=$('heroTitle'),sub=$('heroSub'),footer=$('footerTag'),label=$('langToggleLabel');
+  if(badge)badge.textContent=t.badge;
+  if(title)title.innerHTML=t.title;
+  if(sub)sub.textContent=t.sub;
+  if(footer)footer.textContent=t.footer;
+  if(label)label.textContent=t.toggle;
+  document.documentElement.lang=siteLang;
+  applyUiText();
+  buildTools();
+  buildFeaturePills();
+  if(currentTool)renderOptions();
+  const modal=$('infoModal');
+  if(modal&&!modal.classList.contains('hidden')&&currentInfoKey)openInfo(currentInfoKey);
 }
 let currentInfoKey=null;
 function openInfo(key){const info=siteInfo[key];if(!info)return;currentInfoKey=key;closeSiteMenu();$('infoTitle').textContent=siteLang==='hi'&&info.titleHi?info.titleHi:info.title;$('infoContent').innerHTML=siteLang==='hi'&&info.htmlHi?info.htmlHi:info.html;const modal=$('infoModal');modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('overflow-hidden');}
@@ -475,7 +424,7 @@ function closeInfo(){const modal=$('infoModal');if(!modal)return;modal.classList
 document.addEventListener('click',e=>{const menu=$('siteMenu'),btn=$('siteMenuButton');if(menu&&!menu.classList.contains('hidden')&&!menu.contains(e.target)&&!btn.contains(e.target))closeSiteMenu();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
-const MORE_FEATURES_KEYS=['ocrConverter','imageToText','textToPdf','excelToPdf','excelMaker','pdfToWord','pdfEditorPro','signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','pdfCrop','pdfGrayscale','pdfToText','wordEditor','pngToPdf','jpegToPdf','pdfPagePreview','pdfImages','pdfTextExtract','imageToJpg','imageToPng','imageToWebp','photoCompress','pdfCompressFast','pdfRotatePages','pdfSplitPages','pdfMergeFiles','pdfPageNumbering','pdfWatermarkQuick','pdfProtectQuick','pdfBlankPage']
+const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor'];
 function T(t,key){return siteLang==='hi'&&t[key+'Hi']!==undefined?t[key+'Hi']:t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
@@ -483,69 +432,66 @@ function buildTools(){
   $('toolsGrid').innerHTML=Object.entries(tools).filter(([key])=>!MORE_FEATURES_KEYS.includes(key)).map(([key,t])=>`<button onclick="openTool('${key}')" class="tool-card relative text-left bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"><span class="absolute top-2 right-2 text-[9px] font-black tracking-wide text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">${premiumLabel}</span><div class="w-11 h-11 rounded-xl bg-slate-100 grid place-items-center text-2xl mb-3">${t.icon}</div><h2 class="font-black text-base">${T(t,'title')}</h2><p class="text-slate-500 text-xs mt-1 min-h-8">${T(t,'desc')}</p><div class="mt-3 text-red-500 text-sm font-bold">${openLabel}</div></button>`).join('');
 }
 function buildFeaturePills(){
-  const grid=$('moreFeaturesGrid');if(!grid)return;
+  const slider=$('featureSlider');if(!slider)return;
   const premiumLabel=siteLang==='hi'?'✅ फ्री':'✅ FREE';
   const newLabel=siteLang==='hi'?'✨ नया':'✨ NEW';
-  grid.innerHTML=MORE_FEATURES_KEYS.map(key=>{
+  slider.innerHTML=MORE_FEATURES_KEYS.map(key=>{
     const t=tools[key];if(!t)return'';
     const badge=t.isNew?newLabel:premiumLabel;
     const badgeClass=t.isNew?'text-emerald-700 bg-emerald-100':'text-amber-700 bg-amber-100';
-    return `<button onclick="openTool('${key}')" class="feature-pill relative text-left hover:shadow-lg transition"><span class="absolute top-2 right-2 text-[9px] font-black tracking-wide ${badgeClass} px-2 py-0.5 rounded-full">${badge}</span><div class="text-3xl">${t.icon}</div><b class="block mt-2">${T(t,'title')}</b><span class="text-sm text-slate-500">${T(t,'desc')}</span></button>`;
+    return `<button onclick="openTool('${key}')" class="feature-pill feature-slide relative text-left hover:shadow-lg transition"><span class="absolute top-2 right-2 text-[9px] font-black tracking-wide ${badgeClass} px-2 py-0.5 rounded-full">${badge}</span><div class="text-3xl">${t.icon}</div><b class="block mt-2">${T(t,'title')}</b><span class="text-sm text-slate-500">${T(t,'desc')}</span></button>`;
   }).join('');
+  buildFeatureDots();
 }
-function buildFeatureSlider(){
-  const keys=MORE_FEATURES_KEYS.filter(k=>tools[k]);const track=$('featureTrack');if(!track)return;
-  const per=window.innerWidth<640?2:(window.innerWidth<900?2:4);const slides=[];
-  for(let i=0;i<keys.length;i+=per){slides.push(keys.slice(i,i+per));}
-  track.innerHTML=slides.map(group=>`<div class="feature-slide">${group.map(key=>{const t=tools[key];return `<button onclick="openTool('${key}')" class="feature-pill text-left hover:border-red-300 transition"><div class="text-xl">${t.icon}</div><b class="block text-sm mt-1">${T(t,'title')}</b><span class="text-[11px] text-slate-500">${T(t,'desc')}</span></button>`}).join('')}</div>`).join('');
-  window.__featureSlide=0;window.__featureSlides=slides.length;track.style.transform='translateX(0)';
-  const dots=$('featureDots');if(dots)dots.innerHTML=slides.map((_,i)=>`<button aria-label="Slide ${i+1}" class="${i===0?'active':''}" onclick="goFeatureSlide(${i})"></button>`).join('');
+function buildFeatureDots(){
+  const dots=$('featureDots'); if(!dots)return;
+  const count=Math.max(1,Math.ceil(MORE_FEATURES_KEYS.length/3));
+  dots.innerHTML=Array.from({length:count},(_,i)=>`<span class="slider-dot${i===0?' active':''}"></span>`).join('');
 }
-function updateFeatureDots(){const dots=$('featureDots');if(!dots)return;[...dots.children].forEach((b,i)=>b.classList.toggle('active',i===window.__featureSlide));}
-function moveFeatureSlider(dir){const track=$('featureTrack');if(!track||!window.__featureSlides)return;window.__featureSlide=(window.__featureSlide+dir+window.__featureSlides)%window.__featureSlides;track.style.transform=`translateX(-${window.__featureSlide*100}%)`;updateFeatureDots();}
-function goFeatureSlide(i){const track=$('featureTrack');if(!track)return;window.__featureSlide=i;track.style.transform=`translateX(-${i*100}%)`;updateFeatureDots();}
-let __featureTimer=setInterval(()=>moveFeatureSlider(1),5000);
-function pauseFeatureSlider(){clearInterval(__featureTimer);}
-function resumeFeatureSlider(){clearInterval(__featureTimer);__featureTimer=setInterval(()=>moveFeatureSlider(1),5000);}
-window.addEventListener('resize',()=>buildFeatureSlider());
-
-initSiteLanguage();
+function slideFeatures(dir){
+  const slider=$('featureSlider');if(!slider)return;
+  const amount=Math.max(220,Math.min(820,slider.clientWidth*.82));
+  slider.scrollBy({left:dir*amount,behavior:'smooth'});
+  setTimeout(updateFeatureDots,350);
+}
+function updateFeatureDots(){
+  const slider=$('featureSlider'),dots=[...document.querySelectorAll('#featureDots .slider-dot')];
+  if(!slider||!dots.length)return;
+  const page=Math.min(dots.length-1,Math.round(slider.scrollLeft/Math.max(1,slider.clientWidth*.82)));
+  dots.forEach((d,i)=>d.classList.toggle('active',i===page));
+}
+function startFeatureAutoSlide(){
+  setInterval(()=>{
+    const slider=$('featureSlider');if(!slider||document.hidden)return;
+    const max=slider.scrollWidth-slider.clientWidth;
+    if(max<=0)return;
+    slider.scrollTo({left:slider.scrollLeft>=max-20?0:Math.min(max,slider.scrollLeft+Math.max(220,slider.clientWidth*.82)),behavior:'smooth'});
+    setTimeout(updateFeatureDots,350);
+  },4200);
+}
 buildTools();
 buildFeaturePills();
-buildFeatureSlider();
-initTheme();
+startFeatureAutoSlide();
 
 (async()=>{try{pdfjs=await import('https://unpkg.com/pdfjs-dist@4.4.168/legacy/build/pdf.mjs');pdfjs.GlobalWorkerOptions.workerSrc='https://unpkg.com/pdfjs-dist@4.4.168/legacy/build/pdf.worker.mjs';}catch(e){console.error(e);}})();
 
-function toggleMoreFeatures(){
-  const p=$('moreFeaturesPanel'),a=$('moreFeaturesArrow');
-  p.classList.toggle('hidden');
-  a.textContent=p.classList.contains('hidden')?'↓':'↑';
-}
-
 function openTool(key){
-  const aliasMap={pngToPdf:'jpgToPdf',jpegToPdf:'jpgToPdf',pdfPagePreview:'pdfToJpg',pdfImages:'pdfToJpg',pdfTextExtract:'pdfToText',imageToJpg:'imageConvert',imageToPng:'imageConvert',imageToWebp:'imageConvert',photoCompress:'imageCompress',pdfCompressFast:'compressPdf',pdfRotatePages:'rotatePdf',pdfSplitPages:'splitPdf',pdfMergeFiles:'mergePdf',pdfPageNumbering:'pageNumbers',pdfWatermarkQuick:'watermarkPdf',pdfProtectQuick:'protectPdf',pdfBlankPage:'addBlankPage'};
-  const requestedTool=key; key=aliasMap[key]||key;
   currentTool=key;selectedFiles=[];editorProDoc=null;editorProBaseCanvas=null;editorProStrokes=[];editorProImageEl=null;editorProPageNum=1;
-  const t=tools[requestedTool]||tools[key];
+  const t=tools[key];
   $('home').classList.add('hidden');$('toolSection').classList.remove('hidden');
   $('toolIcon').textContent=t.icon;$('toolTitle').textContent=T(t,'title');$('toolDescription').textContent=T(t,'desc');
   $('fileInput').accept=t.accept;$('fileInput').multiple=t.multiple;$('fileHint').textContent=T(t,'hint');
-  const needsNoFile=key==='wordEditor'||key==='textToPdf'||key==='excelMaker';
+  const needsNoFile=key==='wordEditor';
   $('dropZone').classList.toggle('hidden',needsNoFile);
   $('fileList').classList.toggle('hidden',needsNoFile);
   renderOptions();renderFiles();clearResult();updateButton();scrollTo(0,0);
 }
-function goHome(){ $('home').classList.remove('hidden');$('toolSection').classList.add('hidden');currentTool=null;selectedFiles=[];photoEditorImage=null;scrollTo(0,0); }
+function goHome(){ $('home').classList.remove('hidden');$('toolSection').classList.add('hidden');currentTool=null;selectedFiles=[];photoEditorImage=null;cropDragMode=null;scrollTo(0,0); }
 
 function renderOptions(){
   const box=$('optionsBox');box.innerHTML='';box.classList.add('hidden');
 
-  if(currentTool==='textToPdf'){box.innerHTML=`<label class="block text-sm font-bold mb-2">Text</label><textarea id="textToPdfInput" class="w-full min-h-64 border border-slate-300 rounded-xl p-4" placeholder="Write or paste your text here..."></textarea>`;box.classList.remove('hidden');
-  } else if(currentTool==='ocrConverter'||currentTool==='imageToText'){
-    const l=siteLang==='hi';
-    box.innerHTML=`<label class="block text-sm font-bold mb-2">${l?'OCR भाषा (accuracy बेहतर करने के लिए सही भाषा चुनें)':'OCR language (choose correctly for better accuracy)'}</label><select id="ocrLangSelect" class="w-full border rounded-xl px-4 py-3"><option value="eng" selected>${l?'English':'English'}</option><option value="hin">${l?'हिंदी':'Hindi'}</option><option value="eng+hin">${l?'English + हिंदी (मिश्रित दस्तावेज़)':'English + Hindi (mixed documents)'}</option></select><p class="text-xs text-slate-400 mt-2">${l?'साफ, सीधी और अच्छी रोशनी वाली स्कैन/फोटो से सबसे सही टेक्स्ट मिलता है।':'Clear, straight and well-lit scans/photos give the most accurate text.'}</p>`;box.classList.remove('hidden');
-  } else if(currentTool==='splitPdf'){
+  if(currentTool==='splitPdf'){
     box.innerHTML=`<label class="block text-sm font-bold mb-2">Pages / ranges</label><input id="rangeInput" class="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-red-400" placeholder="Example: 1-3,5,8-10"><p class="text-xs text-slate-400 mt-2">Separate page numbers with commas. Ranges are inclusive.</p>`;box.classList.remove('hidden');
   } else if(currentTool==='rotatePdf'){
     box.innerHTML=`<label class="block text-sm font-bold mb-2">Rotation</label><select id="rotationInput" class="w-full border border-slate-300 rounded-xl px-4 py-3"><option value="90">90° clockwise</option><option value="180">180°</option><option value="270">270° clockwise</option></select>`;box.classList.remove('hidden');
@@ -662,6 +608,26 @@ function renderOptions(){
     const l=siteLang==='hi';box.innerHTML=`<label class="block text-sm font-bold mb-2">${l?'Scale':'Scale'}</label><select id="upscaleScale" class="w-full border rounded-xl px-4 py-3"><option value="2">2×</option><option value="3">3×</option></select><p class="text-xs text-slate-400 mt-2">${l?'यह AI सुपर-रिज़ॉल्यूशन नहीं है; ब्राउज़र में high-quality canvas upscaling है।':'This is high-quality browser canvas upscaling, not AI super-resolution.'}</p>`;box.classList.remove('hidden');
   } else if(currentTool==='imageGrayscale'){
     box.innerHTML=`<div class="p-4 rounded-2xl bg-slate-50 border text-sm">${siteLang==='hi'?'सभी चुनी हुई इमेज को grayscale बनाया जाएगा।':'All selected images will be converted to grayscale.'}</div>`;box.classList.remove('hidden');
+  } else if(currentTool==='removeBg'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="flex items-center gap-2 mb-4"><span class="text-[10px] font-black tracking-wide text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">✨ AI • ON-DEVICE</span><span class="text-xs text-slate-500 font-bold">${l?'पहली बार AI मॉडल डाउनलोड होने में थोड़ा समय लग सकता है — उसके बाद यह browser में ही cache हो जाता है।':'The AI model may take a little longer to download the first time — after that it is cached in your browser.'}</span></div>
+    <div class="rounded-2xl border bg-slate-900 p-3 text-center"><img id="removeBgPreview" style="max-width:100%;max-height:420px;border-radius:10px;margin:auto;display:block"></div>
+    <p class="text-xs text-slate-400 mt-3">${l?'आउटपुट हमेशा transparent background वाली PNG फाइल होती है।':'The output is always a PNG file with a transparent background.'}</p>`;
+    box.classList.remove('hidden');setTimeout(updateRemoveBgPreview,20);
+  } else if(currentTool==='imageCrop'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="flex items-center gap-2 mb-4"><span class="text-[10px] font-black tracking-wide text-amber-700 bg-amber-100 px-2 py-1 rounded-full">✅ FREE</span><span class="text-xs text-slate-500 font-bold">${l?'बॉक्स को खींचें, कोनों से resize करें — या नीचे से कोई ratio चुनें।':'Drag the box, resize from the corners — or pick a ratio below.'}</span></div>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <button type="button" class="crop-aspect-btn active" onclick="setCropAspect(null,this)">${l?'फ्री':'Free'}</button>
+      <button type="button" class="crop-aspect-btn" onclick="setCropAspect(1,this)">1:1</button>
+      <button type="button" class="crop-aspect-btn" onclick="setCropAspect(4/3,this)">4:3</button>
+      <button type="button" class="crop-aspect-btn" onclick="setCropAspect(3/4,this)">3:4</button>
+      <button type="button" class="crop-aspect-btn" onclick="setCropAspect(16/9,this)">16:9</button>
+      <button type="button" class="crop-aspect-btn" onclick="setCropAspect(9/16,this)">9:16</button>
+    </div>
+    <div class="text-center"><div id="cropStage"><img id="cropImage" draggable="false"><div id="cropBox"><div class="crop-handle" data-handle="nw"></div><div class="crop-handle" data-handle="ne"></div><div class="crop-handle" data-handle="sw"></div><div class="crop-handle" data-handle="se"></div></div></div></div>
+    <div class="mt-4"><label class="block text-sm font-bold mb-2">${l?'आउटपुट':'Output'}</label><select id="cropFormat" class="border rounded-xl px-4 py-3"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></div>`;
+    box.classList.remove('hidden');setTimeout(initImageCropPreview,20);
   } else if(currentTool==='pdfCrop'){
     const l=siteLang==='hi';box.innerHTML=`<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">${[['cropTop',l?'ऊपर':'Top'],['cropRight',l?'दायां':'Right'],['cropBottom',l?'नीचे':'Bottom'],['cropLeft',l?'बायां':'Left']].map(([id,lab])=>`<label class="text-sm font-bold">${lab}<input id="${id}" type="number" min=0 value="0" class="w-full border rounded-xl px-3 py-3 mt-1"></label>`).join('')}</div><p class="text-xs text-slate-400 mt-2">${l?'माप PDF points में हैं।':'Values are in PDF points.'}</p>`;box.classList.remove('hidden');
   } else if(currentTool==='pdfGrayscale'){
@@ -696,23 +662,6 @@ function renderOptions(){
     <div id="weCanvas" contenteditable="true" spellcheck="true"><p>Yahan apna document type karein…</p></div>
     <div class="mt-4"><label class="block text-sm font-bold mb-2">${exportLbl}</label><select id="weExportFormat" class="w-full border rounded-xl px-4 py-3"><option value="pdf">PDF</option><option value="jpg">JPG</option><option value="png">PNG</option></select></div>`;
     box.classList.remove('hidden');
-  } else if(currentTool==='excelMaker'){
-    const l=siteLang==='hi';
-    box.innerHTML=`<div class="flex items-center gap-2 mb-3"><span class="text-[10px] font-black tracking-wide text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">✨ NEW • FREE</span><span class="text-xs text-slate-500 font-bold">${l?'Excel-style ग्रिड — बोल्ड, सेल कलर और =SUM(A1:A5) जैसे फॉर्मूला। फाइल अपलोड की ज़रूरत नहीं।':'Excel-style grid — bold, cell colors, and =SUM(A1:A5)-style formulas. No file upload needed.'}</span></div>
-    <div class="xm-toolbar">
-      <button type="button" class="we-btn" onclick="xmAddRow()">${l?'➕ रो':'➕ Row'}</button>
-      <button type="button" class="we-btn" onclick="xmAddCol()">${l?'➕ कॉलम':'➕ Column'}</button>
-      <button type="button" class="we-btn" onclick="xmDelRow()">${l?'➖ रो':'➖ Row'}</button>
-      <button type="button" class="we-btn" onclick="xmDelCol()">${l?'➖ कॉलम':'➖ Column'}</button>
-      <button type="button" class="we-btn" onclick="xmStyle('bold')"><b>B</b></button>
-      <input type="color" title="${l?'सेल रंग':'Cell color'}" value="#ffffff" class="we-btn p-0" onchange="xmStyle('bg',this.value)">
-      <button type="button" class="we-btn" onclick="xmClear()">🗑 ${l?'साफ़ करें':'Clear'}</button>
-      <span class="text-[11px] text-slate-400 ml-auto">${l?'फॉर्मूला के लिए = से शुरू करें, जैसे =SUM(A1:A5)':'Start with = for formulas, e.g. =SUM(A1:A5)'}</span>
-    </div>
-    <div class="xm-wrap"><table id="xmTable"></table></div>
-    <div class="mt-4"><label class="block text-sm font-bold mb-2">${l?'एक्सपोर्ट फॉर्मेट':'Export format'}</label><select id="xmExportFormat" class="w-full border rounded-xl px-4 py-3"><option value="xlsx">XLSX</option><option value="pdf">PDF</option><option value="csv">CSV</option></select></div>`;
-    box.classList.remove('hidden');
-    xmInit();
   }
 }
 
@@ -727,25 +676,58 @@ function validFile(file){
   if(currentTool==='photoEditor')return /^image\/(jpeg|png|webp)$/i.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name);
   if(currentTool==='wordToPdf')return /\.docx$/i.test(file.name);
   if(currentTool==='excelToPdf')return /\.(xlsx|xls)$/i.test(file.name);
-  if(currentTool==='imageConvert'||currentTool==='imageCompress')return /^image\/(jpeg|png|webp)$/i.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name);
+  if(currentTool==='imageConvert'||currentTool==='imageCompress'||currentTool==='imageCrop'||currentTool==='removeBg')return /^image\/(jpeg|png|webp)$/i.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name);
   return file.type==='application/pdf'||/\.pdf$/i.test(file.name);
 }
-function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);}
+function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);if(currentTool==='imageCrop')setTimeout(initImageCropPreview,20);if(currentTool==='removeBg')setTimeout(updateRemoveBgPreview,20);}
 function renderFiles(){$('fileList').innerHTML=selectedFiles.map((f,i)=>`<div class="flex items-center gap-3 p-4 bg-slate-50 border rounded-xl"><div class="text-2xl">${fileIcon(f)}</div><div class="flex-1 min-w-0"><b class="block truncate text-sm">${esc(f.name)}</b><span class="text-xs text-slate-400">${bytes(f.size)}</span></div><button onclick="removeFile(${i})" class="w-9 h-9 rounded-lg hover:bg-red-100">✕</button></div>`).join('');}
 function fileIcon(f){return /image/i.test(f.type)?'🖼️':/word|docx/i.test(f.type)||/\.docx$/i.test(f.name)?'📝':/sheet|excel|xlsx|xls/i.test(f.type)||/\.(xlsx|xls)$/i.test(f.name)?'📊':'📄';}
 function removeFile(i){selectedFiles.splice(i,1);renderFiles();updateButton();}
-function updateButton(){const b=$('processBtn');const fileOk=selectedFiles.length||currentTool==='wordEditor'||currentTool==='textToPdf'||currentTool==='excelMaker';if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
+function updateButton(){const b=$('processBtn');const fileOk=selectedFiles.length||currentTool==='wordEditor';if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
+
+async function ocrConverter(){
+  if(!window.Tesseract)throw new Error('OCR engine is still loading. Please wait a moment and try again.');
+  if(currentTool==='ocrConverter'&&!selectedFiles.length)throw new Error('Choose an image or PDF first.');
+  const file=selectedFiles[0]; let images=[];
+  if(file.type==='application/pdf'){
+    if(!pdfjs)throw new Error('PDF engine has not loaded yet. Please refresh and try again.');
+    const pdf=await pdfjs.getDocument({data:await file.arrayBuffer()}).promise;
+    for(let n=1;n<=pdf.numPages;n++){
+      setProgress(n-1,pdf.numPages,`Rendering page ${n} for OCR…`);
+      const page=await pdf.getPage(n),vp=page.getViewport({scale:1.7}),canvas=document.createElement('canvas');
+      canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);
+      await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+      images.push(canvas); await idle();
+    }
+  }else{
+    images=[await loadImage(file)];
+  }
+  const worker=await Tesseract.createWorker('eng+hin',1,{logger:m=>{if(m.status==='recognizing text')setProgress(m.progress*100,100,`OCR ${Math.round(m.progress*100)}%…`);}});
+  let full='';
+  try{
+    for(let i=0;i<images.length;i++){
+      setProgress(i,images.length,`Reading text ${i+1}/${images.length}…`);
+      const {data:{text}}=await worker.recognize(images[i]);
+      full+=(full?'\n\n':'')+text.trim();
+      await idle();
+    }
+  }finally{await worker.terminate();}
+  if(!full.trim())throw new Error('No readable text was found.');
+  const blob=new Blob([full],{type:'text/plain;charset=utf-8'});
+  downloadBlob(blob,(file.name.replace(/\.[^.]+$/,'')||'ocr')+'.txt','Download OCR text');
+  showResult(siteLang==='hi'?'OCR टेक्स्ट फाइल तैयार है।':'OCR text file is ready.');
+}
 
 async function processFiles(){
-  if((!selectedFiles.length&&!['wordEditor','textToPdf','excelMaker'].includes(currentTool))||processing)return;
+  if((!selectedFiles.length&&currentTool!=='wordEditor')||processing)return;
   processing=true;$('processSpinner').classList.remove('hidden');$('processBtnText').textContent=siteLang==='hi'?'प्रोसेस हो रहा है…':'Processing…';$('processBtn').disabled=true;
   try{
     switch(currentTool){
-      case'jpgToPdf':await jpgToPdf();break;case'photoEditor':await photoEditor();break;case'pdfToJpg':await pdfToJpg();break;case'mergePdf':await mergePdf();break;case'splitPdf':await splitPdf();break;case'rotatePdf':await rotatePdf();break;case'pageNumbers':await pageNumbers();break;
+      case'jpgToPdf':await jpgToPdf();break;case'ocrConverter':await ocrConverter();break;case'photoEditor':await photoEditor();break;case'pdfToJpg':await pdfToJpg();break;case'mergePdf':await mergePdf();break;case'splitPdf':await splitPdf();break;case'rotatePdf':await rotatePdf();break;case'pageNumbers':await pageNumbers();break;
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'ocrConverter':await ocrConverterTool();break;case'imageToText':await imageToTextTool();break;case'textToPdf':await textToPdfTool();break;case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'excelMaker':await exportExcelMaker();break;case'pdfToWord':await pdfToWordTool();break;
+      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -931,6 +913,115 @@ async function imageResizeTool(){
   for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f);let w=tw,h=th;if(keep){const ratio=img.naturalHeight/img.naturalWidth;w=tw;h=th?th:Math.round(w*ratio);}else{h=th||Math.round(tw*img.naturalHeight/img.naturalWidth);}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);const mime=f.type==='image/png'?'image/png':'image/jpeg';const b=await new Promise(r=>c.toBlob(r,mime,.92));addDownload(URL.createObjectURL(b),`resized-${i+1}.${mime==='image/png'?'png':'jpg'}`,`Image ${i+1} • ${w}×${h}`);}showResult(siteLang==='hi'?`${selectedFiles.length} इमेज resize हो गईं।`:`${selectedFiles.length} image(s) resized.`);}
 async function imageUpscaleTool(){const scale=Number($('upscaleScale')?.value)||2;clearDownloads();for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f),w=img.naturalWidth*scale,h=img.naturalHeight*scale,c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);const mime=f.type==='image/png'?'image/png':'image/jpeg',b=await new Promise(r=>c.toBlob(r,mime,.94));addDownload(URL.createObjectURL(b),`upscaled-${i+1}.${mime==='image/png'?'png':'jpg'}`,`Image ${i+1} • ${scale}×`);}showResult(siteLang==='hi'?`${selectedFiles.length} इमेज ${scale}× upscaled हो गईं।`:`${selectedFiles.length} image(s) upscaled ${scale}×.`);}
 async function imageGrayscaleTool(){clearDownloads();for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f),c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);const d=ctx.getImageData(0,0,c.width,c.height);for(let p=0;p<d.data.length;p+=4){const y=.299*d.data[p]+.587*d.data[p+1]+.114*d.data[p+2];d.data[p]=d.data[p+1]=d.data[p+2]=y;}ctx.putImageData(d,0,0);const b=await new Promise(r=>c.toBlob(r,'image/jpeg',.92));addDownload(URL.createObjectURL(b),`grayscale-${i+1}.jpg`,`Grayscale ${i+1}`);}showResult(siteLang==='hi'?`${selectedFiles.length} grayscale images तैयार हैं।`:`${selectedFiles.length} grayscale images are ready.`);}
+// Image Crop tool
+let cropBox={x:0,y:0,w:0,h:0},cropAspect=null,cropDragMode=null,cropDragStart=null,cropBoxStart=null;
+function initImageCropPreview(){
+  if(currentTool!=='imageCrop'||!selectedFiles[0])return;
+  const img=$('cropImage');if(!img)return;
+  const url=URL.createObjectURL(selectedFiles[0]);
+  img.onload=()=>{
+    const w=img.offsetWidth,h=img.offsetHeight;
+    const bw=Math.round(w*0.8),bh=Math.round(h*0.8);
+    cropBox={x:Math.round((w-bw)/2),y:Math.round((h-bh)/2),w:bw,h:bh};
+    cropAspect=null;
+    renderCropBox();
+    initImageCropControls();
+  };
+  img.src=url;
+}
+function renderCropBox(){const b=$('cropBox');if(!b)return;b.style.left=cropBox.x+'px';b.style.top=cropBox.y+'px';b.style.width=cropBox.w+'px';b.style.height=cropBox.h+'px';}
+function cropStageSize(){const img=$('cropImage');return img?{w:img.offsetWidth,h:img.offsetHeight}:{w:0,h:0};}
+function setCropAspect(ratio,btn){
+  cropAspect=ratio;
+  const {w:sw,h:sh}=cropStageSize();if(!sw||!sh)return;
+  const cx=cropBox.x+cropBox.w/2,cy=cropBox.y+cropBox.h/2;
+  let bw=cropBox.w,bh=ratio?bw/ratio:cropBox.h;
+  if(bh>sh*0.96){bh=sh*0.9;bw=ratio?bh*ratio:bw;}
+  if(bw>sw*0.96){bw=sw*0.9;bh=ratio?bw/ratio:bh;}
+  cropBox={x:Math.max(0,Math.min(sw-bw,cx-bw/2)),y:Math.max(0,Math.min(sh-bh,cy-bh/2)),w:bw,h:bh};
+  renderCropBox();
+  document.querySelectorAll('.crop-aspect-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+function cropPointerXY(e){const stage=$('cropStage').getBoundingClientRect();const p=e.touches&&e.touches.length?e.touches[0]:e;return{x:p.clientX-stage.left,y:p.clientY-stage.top};}
+function cropPointerDown(e,mode){e.preventDefault();cropDragMode=mode;cropDragStart=cropPointerXY(e);cropBoxStart={...cropBox};}
+function cropPointerMove(e){
+  if(!cropDragMode)return;
+  const {w:sw,h:sh}=cropStageSize();if(!sw||!sh)return;
+  const p=cropPointerXY(e);const dx=p.x-cropDragStart.x,dy=p.y-cropDragStart.y;
+  let{x,y,w,h}=cropBoxStart;
+  if(cropDragMode==='move'){
+    x=Math.max(0,Math.min(sw-w,x+dx));y=Math.max(0,Math.min(sh-h,y+dy));
+  }else{
+    let nx=x,ny=y,nw=w,nh=h;
+    if(cropDragMode.includes('e'))nw=Math.max(24,w+dx);
+    if(cropDragMode.includes('s'))nh=Math.max(24,h+dy);
+    if(cropDragMode.includes('w')){nw=Math.max(24,w-dx);nx=x+w-nw;}
+    if(cropDragMode.includes('n')){nh=Math.max(24,h-dy);ny=y+h-nh;}
+    if(cropAspect){nh=nw/cropAspect;if(cropDragMode.includes('n'))ny=y+h-nh;}
+    nx=Math.max(0,nx);ny=Math.max(0,ny);
+    if(nx+nw>sw)nw=sw-nx;if(ny+nh>sh)nh=sh-ny;
+    x=nx;y=ny;w=nw;h=nh;
+  }
+  cropBox={x,y,w,h};renderCropBox();
+}
+function cropPointerUp(){cropDragMode=null;}
+function initImageCropControls(){
+  const box=$('cropBox');if(!box)return;
+  box.onmousedown=e=>{if(e.target.dataset.handle)return;cropPointerDown(e,'move');};
+  box.ontouchstart=e=>{if(e.target.dataset.handle)return;cropPointerDown(e,'move');};
+  document.querySelectorAll('.crop-handle').forEach(h=>{
+    h.onmousedown=e=>{e.stopPropagation();cropPointerDown(e,h.dataset.handle);};
+    h.ontouchstart=e=>{e.stopPropagation();cropPointerDown(e,h.dataset.handle);};
+  });
+  if(!window.__cropListenersAdded){
+    window.__cropListenersAdded=true;
+    document.addEventListener('mousemove',cropPointerMove);
+    document.addEventListener('mouseup',cropPointerUp);
+    document.addEventListener('touchmove',e=>{if(cropDragMode){e.preventDefault();cropPointerMove(e);}},{passive:false});
+    document.addEventListener('touchend',cropPointerUp);
+  }
+}
+async function imageCropTool(){
+  const img=$('cropImage');
+  if(!selectedFiles[0]||!img||!img.naturalWidth)throw new Error('The image is still loading — please wait a moment and try again.');
+  const scaleX=img.naturalWidth/img.offsetWidth,scaleY=img.naturalHeight/img.offsetHeight;
+  const sx=Math.round(cropBox.x*scaleX),sy=Math.round(cropBox.y*scaleY);
+  const sw=Math.max(1,Math.round(cropBox.w*scaleX)),sh=Math.max(1,Math.round(cropBox.h*scaleY));
+  const c=document.createElement('canvas');c.width=sw;c.height=sh;
+  c.getContext('2d').drawImage(img,sx,sy,sw,sh,0,0,sw,sh);
+  const format=$('cropFormat')?.value||'image/jpeg';
+  const blob=await new Promise((resolve,reject)=>c.toBlob(b=>b?resolve(b):reject(new Error('Could not create the cropped image.')),format,format==='image/jpeg'?.92:undefined));
+  const ext=format==='image/png'?'png':'jpg';
+  addDownload(URL.createObjectURL(blob),`cropped-image.${ext}`,`Download Cropped ${ext.toUpperCase()}`);
+  showResult(siteLang==='hi'?'इमेज क्रॉप हो गई।':'Image cropped successfully.');
+}
+
+// Background Remover tool (on-device AI, via @imgly/background-removal)
+function updateRemoveBgPreview(){
+  if(currentTool!=='removeBg'||!selectedFiles[0])return;
+  const img=$('removeBgPreview');if(!img)return;
+  img.src=URL.createObjectURL(selectedFiles[0]);
+}
+let __removeBgModulePromise=null;
+function loadRemoveBgModule(){
+  if(!__removeBgModulePromise)__removeBgModulePromise=import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/+esm');
+  return __removeBgModulePromise;
+}
+async function removeBgTool(){
+  const file=selectedFiles[0];if(!file)throw new Error('Choose a photo first.');
+  const l=siteLang==='hi';
+  setProgress(2,100,l?'AI मॉडल लोड हो रहा है…':'Loading the AI model…');
+  let mod;
+  try{mod=await loadRemoveBgModule();}
+  catch(e){$('progressContainer')?.classList.add('hidden');throw new Error('Could not load the background removal engine. Check your internet connection and try again.');}
+  const removeBackground=mod.default||mod.removeBackground;
+  const blob=await removeBackground(file,{progress:(key,current,total)=>{if(total)setProgress(current,total,l?'बैकग्राउंड हट रहा है…':'Removing the background…');}});
+  $('progressContainer')?.classList.add('hidden');
+  addDownload(URL.createObjectURL(blob),'background-removed.png','Download Transparent PNG');
+  showResult(l?'बैकग्राउंड हट गया — transparent PNG तैयार है।':'Background removed — transparent PNG is ready.');
+}
+
 async function pdfCropTool(){const {PDFDocument}=PDFLib,src=await PDFDocument.load(await selectedFiles[0].arrayBuffer());const t=Number($('cropTop')?.value)||0,r=Number($('cropRight')?.value)||0,b=Number($('cropBottom')?.value)||0,l=Number($('cropLeft')?.value)||0;for(const p of src.getPages()){const box=p.getMediaBox();const x=l,y=b,w=Math.max(1,box.width-l-r),h=Math.max(1,box.height-t-b);p.setCropBox(x,y,w,h);}const out=await src.save({useObjectStreams:true});downloadBlob(new Blob([out],{type:'application/pdf'}),'cropped.pdf','Cropped PDF');showResult(siteLang==='hi'?'PDF crop हो गई।':'PDF cropped.');}
 async function pdfGrayscaleTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;const {jsPDF}=window.jspdf,out=new jsPDF({unit:'pt',format:'a4'});for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:1.6}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;const ctx=c.getContext('2d'),d=ctx.getImageData(0,0,c.width,c.height);for(let p=0;p<d.data.length;p+=4){const y=.299*d.data[p]+.587*d.data[p+1]+.114*d.data[p+2];d.data[p]=d.data[p+1]=d.data[p+2]=y;}ctx.putImageData(d,0,0);if(n>1)out.addPage([vp.width,vp.height]);out.addImage(c.toDataURL('image/jpeg',.9),'JPEG',0,0,vp.width,vp.height,'','FAST');setProgress(n,pdf.numPages,`Page ${n}/${pdf.numPages}`);}downloadBlob(out.output('blob'),'grayscale.pdf','Grayscale PDF');showResult(siteLang==='hi'?'ग्रेस्केल PDF तैयार है।':'Grayscale PDF is ready.');}
 async function pdfToTextTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),tc=await page.getTextContent();all+=`--- Page ${n} ---\\n`+tc.items.map(x=>x.str).join(' ')+'\\n\\n';}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'extracted-text.txt','Download TXT');showResult(siteLang==='hi'?'PDF text निकाल लिया गया।':'PDF text extracted.');}
@@ -976,80 +1067,6 @@ async function exportWordEditor(){
     downloadBlob(blob,`document.${ext}`,`Document Download ${ext.toUpperCase()}`);
     showResult(siteLang==='hi'?'डॉक्यूमेंट इमेज तैयार है।':'Document image is ready.');
   }
-}
-
-/* ============ Excel Maker (browser spreadsheet editor) ============ */
-function xmColLetter(i){let s='';i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;}
-function xmColIndex(letters){letters=letters.toUpperCase();let n=0;for(let i=0;i<letters.length;i++)n=n*26+(letters.charCodeAt(i)-64);return n-1;}
-function xmKey(r,c){return r+'_'+c;}
-function xmInit(){if(!window.__xmData)window.__xmData={rows:10,cols:6,cells:{}};xmRender();}
-function xmCellNumeric(r,c){const v=xmComputeDisplay(r,c);const n=parseFloat(v);return isNaN(n)?0:n;}
-function xmEvalFormula(raw){
-  const expr=raw.slice(1).trim();
-  const sumMatch=expr.match(/^SUM\(([A-Za-z]+)(\d+):([A-Za-z]+)(\d+)\)$/i);
-  if(sumMatch){const c1=xmColIndex(sumMatch[1]),r1=+sumMatch[2]-1,c2=xmColIndex(sumMatch[3]),r2=+sumMatch[4]-1;let sum=0;
-    for(let r=Math.min(r1,r2);r<=Math.max(r1,r2);r++)for(let c=Math.min(c1,c2);c<=Math.max(c1,c2);c++)sum+=xmCellNumeric(r,c);
-    return sum;}
-  const replaced=expr.replace(/([A-Za-z]+)(\d+)/g,(m,col,row)=>xmCellNumeric(+row-1,xmColIndex(col)));
-  if(!/^[0-9+\-*/().\s]+$/.test(replaced))throw new Error('bad formula');
-  return Function('"use strict";return ('+replaced+')')();
-}
-function xmComputeDisplay(r,c){const d=window.__xmData;const cell=d&&d.cells[xmKey(r,c)];const raw=cell?(cell.v||''):'';if(raw.startsWith('='))
-  {try{return String(xmEvalFormula(raw));}catch(e){return '#ERR';}}return raw;}
-function xmRender(){
-  const d=window.__xmData;const tbl=$('xmTable');if(!tbl)return;
-  let html='<thead><tr><th></th>';for(let c=0;c<d.cols;c++)html+=`<th>${xmColLetter(c)}</th>`;html+='</tr></thead><tbody>';
-  for(let r=0;r<d.rows;r++){html+=`<tr><td class="xm-rowhead">${r+1}</td>`;
-    for(let c=0;c<d.cols;c++){const cell=d.cells[xmKey(r,c)]||{};const style=`font-weight:${cell.bold?'800':'400'};background:${cell.bg||'transparent'}`;const disp=esc(xmComputeDisplay(r,c));
-      html+=`<td><input class="xm-cell" style="${style}" value="${disp}" onfocus="xmFocus(${r},${c},this)" oninput="xmInput(${r},${c},this.value)" onblur="xmBlur(${r},${c},this)"></td>`;}
-    html+='</tr>';}
-  tbl.innerHTML=html+'</tbody>';
-}
-function xmFocus(r,c,el){window.__xmSelected={r,c};const d=window.__xmData;const cell=d.cells[xmKey(r,c)];el.value=cell?(cell.v||''):'';}
-function xmInput(r,c,val){const d=window.__xmData;const key=xmKey(r,c);if(!d.cells[key])d.cells[key]={};d.cells[key].v=val;}
-function xmBlur(r,c,el){el.value=xmComputeDisplay(r,c);}
-function xmStyle(kind,val){const s=window.__xmSelected;if(!s)return toast(siteLang==='hi'?'पहले कोई सेल चुनें':'Select a cell first');const d=window.__xmData;const key=xmKey(s.r,s.c);if(!d.cells[key])d.cells[key]={};if(kind==='bold')d.cells[key].bold=!d.cells[key].bold;else if(kind==='bg')d.cells[key].bg=val;xmRender();}
-function xmAddRow(){window.__xmData.rows++;xmRender();}
-function xmAddCol(){window.__xmData.cols++;xmRender();}
-function xmDelRow(){const d=window.__xmData;if(d.rows<=1)return;d.rows--;xmRender();}
-function xmDelCol(){const d=window.__xmData;if(d.cols<=1)return;d.cols--;xmRender();}
-function xmClear(){window.__xmData={rows:10,cols:6,cells:{}};xmRender();}
-async function exportExcelMaker(){
-  const fmt=$('xmExportFormat')?.value||'xlsx';const d=window.__xmData||{rows:0,cols:0,cells:{}};
-  const rows=[];for(let r=0;r<d.rows;r++){const row=[];for(let c=0;c<d.cols;c++)row.push(xmComputeDisplay(r,c));rows.push(row);}
-  if(fmt==='csv'){
-    const csv=rows.map(row=>row.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-    downloadBlob(new Blob([csv],{type:'text/csv;charset=utf-8'}),'spreadsheet.csv',siteLang==='hi'?'CSV डाउनलोड करें':'Download CSV');
-  } else if(fmt==='xlsx'){
-    if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');
-    const ws=XLSX.utils.aoa_to_sheet(rows),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Sheet1');
-    const out=XLSX.write(wb,{bookType:'xlsx',type:'array'});
-    downloadBlob(new Blob([out],{type:'application/octet-stream'}),'spreadsheet.xlsx',siteLang==='hi'?'XLSX डाउनलोड करें':'Download XLSX');
-  } else {
-    const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});
-    const wrap=document.createElement('div');wrap.className='sheet-preview';
-    wrap.innerHTML='<table>'+rows.map(row=>'<tr>'+row.map(v=>`<td>${esc(v||'')}</td>`).join('')+'</tr>').join('')+'</table>';
-    document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,60));
-    await pdf.html(wrap,{margin:[24,24,24,24],autoPaging:'text',html2canvas:{scale:.9,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'spreadsheet.pdf',siteLang==='hi'?'PDF डाउनलोड करें':'Download PDF');wrap.remove();}});
-    return;
-  }
-  showResult(siteLang==='hi'?'स्प्रेडशीट तैयार है।':'Spreadsheet is ready.');
-}
-
-/* ============ PDF to Word ============ */
-async function pdfToWordTool(){
-  if(!pdfjs)throw new Error('PDF engine has not loaded yet. Refresh the page and try again.');
-  const f=selectedFiles[0],pdf=await pdfjs.getDocument({data:await f.arrayBuffer()}).promise;
-  let bodyHtml='';
-  for(let n=1;n<=pdf.numPages;n++){
-    const page=await pdf.getPage(n),content=await page.getTextContent();
-    const pageText=content.items.map(it=>it.str).join(' ');
-    bodyHtml+=`<p>${esc(pageText)}</p>`+(n<pdf.numPages?'<br clear="all" style="page-break-before:always">':'');
-    setProgress(n,pdf.numPages,`Page ${n}/${pdf.numPages}`);await idle();
-  }
-  const html=`<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Document</title></head><body style="font-family:Arial,sans-serif;line-height:1.5">${bodyHtml}</body></html>`;
-  downloadBlob(new Blob(['\ufeff',html],{type:'application/msword'}),'converted-document.doc',siteLang==='hi'?'Word डाउनलोड करें':'Download Word');
-  showResult(siteLang==='hi'?`${pdf.numPages} पेज Word फ़ाइल में बदले गए। नोट: टेक्स्ट-आधारित PDF सबसे अच्छे रिज़ल्ट देते हैं; स्कैन की गई PDF के लिए पहले OCR Converter का इस्तेमाल करें।`:`${pdf.numPages} page(s) converted to Word. Note: text-based PDFs give the best results — for scanned PDFs, run OCR Converter first.`);
 }
 
 let photoEditorImage=null;
@@ -1216,12 +1233,6 @@ async function pdfEditorPro(){
 async function wordToPdf(){if(!window.mammoth)throw new Error('Word library did not load. Check your internet connection.');const result=await mammoth.convertToHtml({arrayBuffer:await selectedFiles[0].arrayBuffer()},{convertImage:mammoth.images.imgElement(async image=>({src:`data:${image.contentType};base64,${await image.read('base64')}`}))});const wrap=document.createElement('div');wrap.className='doc-preview';wrap.innerHTML=result.value;document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,100));const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4'});await pdf.html(wrap,{margin:[36,36,36,36],autoPaging:'text',html2canvas:{scale:1,useCORS:true,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'word-to-pdf.pdf','Word Download PDF');}});wrap.remove();showResult('DOCX PDF is ready.');}
 async function excelToPdf(){if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');const wb=XLSX.read(await selectedFiles[0].arrayBuffer(),{type:'array'});const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});let first=true;for(let si=0;si<wb.SheetNames.length;si++){const name=wb.SheetNames[si],sheet=wb.Sheets[name],html=XLSX.utils.sheet_to_html(sheet,{header:'',footer:''});const wrap=document.createElement('div');wrap.className='sheet-preview';wrap.innerHTML=`<h2 style="font-size:18px;font-weight:700;margin:0 0 12px">${esc(name)}</h2>${html}`;document.body.appendChild(wrap);if(!first)pdf.addPage('a4','landscape');first=false;await pdf.html(wrap,{margin:[28,28,28,28],autoPaging:'text',html2canvas:{scale:.75,backgroundColor:'#fff'},callback:()=>{}});wrap.remove();setProgress(si+1,wb.SheetNames.length,`Sheet ${si+1}/${wb.SheetNames.length} ready`);await idle();}downloadBlob(pdf.output('blob'),'excel-to-pdf.pdf','Excel Download PDF');showResult(`${wb.SheetNames.length} worksheet(s) converted to PDF.`);}
 
-function ocrPreprocess(canvas){const ctx=canvas.getContext('2d');const img=ctx.getImageData(0,0,canvas.width,canvas.height),d=img.data;for(let i=0;i<d.length;i+=4){const g=d[i]*.299+d[i+1]*.587+d[i+2]*.114;const v=g>150?255:g;d[i]=d[i+1]=d[i+2]=v;}ctx.putImageData(img,0,0);return canvas;}
-async function ocrCanvas(canvas){if(!window.Tesseract)throw new Error('OCR engine did not load. Check your internet connection.');const lang=$('ocrLangSelect')?.value||'eng';const {data}=await Tesseract.recognize(ocrPreprocess(canvas),lang,{logger:m=>{if(m.status==='recognizing text'&&m.progress)setProgress(Math.round(m.progress*100),100,siteLang==='hi'?'OCR टेक्स्ट पढ़ रहा है…':'OCR is reading text…');}});return data.text||'';}
-async function imageToTextTool(){const img=await loadImage(selectedFiles[0]);const c=document.createElement('canvas');const max=2600,s=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));c.width=Math.round(img.naturalWidth*s);c.height=Math.round(img.naturalHeight*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);const text=await ocrCanvas(c);downloadBlob(new Blob([text],{type:'text/plain;charset=utf-8'}),'image-to-text.txt','Download OCR Text');showResult(siteLang==='hi'?'इमेज से टेक्स्ट सफलतापूर्वक निकाला गया।':'Image text extracted successfully.');}
-async function ocrConverterTool(){const f=selectedFiles[0];if(/pdf$/i.test(f.type)||/\.pdf$/i.test(f.name)){if(!pdfjs)throw new Error('PDF engine has not loaded yet. Refresh the page and try again.');const pdf=await pdfjs.getDocument({data:await f.arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:2}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;all+=`\n--- Page ${n} ---\n`+(await ocrCanvas(c));setProgress(n,pdf.numPages,`OCR page ${n}/${pdf.numPages}`);await idle();}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'ocr-pdf-text.txt','Download OCR Text');showResult(siteLang==='hi'?`${pdf.numPages} PDF पेज OCR से प्रोसेस हुए।`:`${pdf.numPages} PDF page(s) processed with OCR.`);}else{await imageToTextTool();}}
-async function textToPdfTool(){const text=($('textToPdfInput')?.value||'').trim();if(!text)throw new Error('Enter some text first.');const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'pt',format:'a4'});const margin=48,maxW=pdf.internal.pageSize.getWidth()-margin*2,lines=pdf.splitTextToSize(text,maxW);let y=60;for(const line of lines){if(y>pdf.internal.pageSize.getHeight()-60){pdf.addPage();y=60;}pdf.text(line,margin,y);y+=18;}downloadBlob(pdf.output('blob'),'text-to-pdf.pdf','Download Text PDF');showResult('Text PDF created successfully.');}
-
 function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('a');a.href=url;a.download=name;a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');$('resultText').textContent=siteLang==='hi'?'फाइल तैयार है। नीचे डाउनलोड बटन दबाएं।':'File is ready. Click the Download button below.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
 function addDownload(url,name,label){const a=document.createElement('a');a.href=url;a.download=name;a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');}
 function clearDownloads(){$('downloadArea').innerHTML='';}
@@ -1234,31 +1245,19 @@ function esc(s){const d=document.createElement('div');d.textContent=s;return d.i
 function idle(){return new Promise(r=>setTimeout(r,15));}
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),3500);}
 
-function toggleTheme(){document.documentElement.classList.toggle('dark');const dark=document.documentElement.classList.contains('dark');localStorage.setItem('dudiTheme',dark?'dark':'light');$('themeToggleBtn').textContent=dark?'☀️':'🌙';}
-function initTheme(){const dark=localStorage.getItem('dudiTheme')==='dark';if(dark)document.documentElement.classList.add('dark');const b=$('themeToggleBtn');if(b)b.textContent=dark?'☀️':'🌙';}
-function openUpdateModal(){const m=$('updateModal');if(m){m.classList.add('show');m.setAttribute('aria-hidden','false')}}
-function closeUpdateModal(){const m=$('updateModal');if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true')}}
-function setCookieLanguage(lang){
-  if(lang!=='en'&&lang!=='hi')return;
-  siteLang=lang;
-  try{localStorage.setItem('dudiLang',lang)}catch(e){}
-  if(typeof applyUiText==='function')applyUiText();
-  const notice=$('cookieNoticeText'),choose=$('cookieChooseText');
-  if(notice)notice.textContent=lang==='hi'?'हम कुकीज़ का इस्तेमाल नहीं कर रहे हैं':'We are not using cookies';
-  if(choose)choose.textContent=lang==='hi'?'अपनी भाषा चुनें':'Choose your language';
-  const c=$('cookieSlide');
-  if(c){c.setAttribute('aria-hidden','false');}
-  setTimeout(hideCookieSlide,2000);
-}
-function toggleLang(){setCookieLanguage(siteLang==='en'?'hi':'en');}
-function initSiteLanguage(){try{const saved=localStorage.getItem('dudiLang');if(saved==='hi'||saved==='en')siteLang=saved;}catch(e){}if(typeof applyUiText==='function')applyUiText();}
-function showCookieSlide(){const c=$('cookieSlide');if(c)c.classList.add('show')}
-function hideCookieSlide(){const c=$('cookieSlide');if(c)c.classList.remove('show')}
-window.addEventListener('load',()=>{initSiteLanguage();setTimeout(showCookieSlide,5000)});
-
-function showComingSoon(name){const existing=$('comingSoonModal');if(existing)existing.remove();const d=document.createElement('div');d.id='comingSoonModal';d.className='fixed inset-0 z-[10000] grid place-items-center bg-slate-950/60 backdrop-blur-sm';d.innerHTML=`<div class="bg-white dark:bg-slate-900 rounded-3xl p-8 max-w-sm mx-4 text-center shadow-2xl animate-pulse"><div class="text-5xl mb-3">🚀</div><h2 class="text-2xl font-black">${esc(name)}</h2><p class="text-slate-500 mt-2">${esc(UI_TEXT[siteLang].comingSoonText)}</p><button onclick="document.getElementById('comingSoonModal').remove()" class="mt-5 bg-red-500 text-white font-black px-6 py-3 rounded-xl">${esc(UI_TEXT[siteLang].okBtnText)}</button></div>`;document.body.appendChild(d);}
-
-window.addEventListener('load',()=>{ if(typeof updateHeadlineAndPrivacy==='function') updateHeadlineAndPrivacy(); });
+// Show the welcome logo popup for 3 seconds whenever the website is opened.
+window.addEventListener('load',()=>{
+  initDarkMode();
+  const popup=document.getElementById('welcomeLogoPopup');
+  if(popup){
+    setTimeout(()=>popup.classList.add('hide'),2200);
+    setTimeout(()=>{const p=$('privacyNotice');if(p)p.classList.add('show');},2300);
+  }else{
+    const p=$('privacyNotice');if(p)p.classList.add('show');
+  }
+  updateHeadlineAndPrivacy();
+  setTimeout(()=>{const p=$('privacyNotice');if(p)p.classList.add('show');},2300);
+});
 
 </script>
 </body>

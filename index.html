@@ -1387,84 +1387,21 @@ window.addEventListener('load',()=>{
 </body>
 </html>
 <!-- ============================================================= -->
-<!-- DUDI PDF EDITOR - EXTERNAL FILE POPUP SYSTEM START -->
+<!-- DUDI PDF EDITOR - DIRECT PAGE NAVIGATION (NO POP-UP) -->
 <!-- ============================================================= -->
-
-<!-- 1. फूटर के बटन्स -->
-<footer style="margin-top: 60px; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb; font-family: sans-serif;">
-  <p style="color: #6b7280; font-size: 14px;">&copy; 2026 Dudi PDF Editor. All rights reserved.</p>
-  <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 10px;">
-    <button onclick="openDudiFilePopup('terms.txt', 'Terms & Conditions')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 14px;">Terms & Conditions</button>
-    <button onclick="openDudiFilePopup('privacy.txt', 'Privacy Policy')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 14px;">Privacy Policy</button>
-    <button onclick="openDudiFilePopup('faq.txt', 'FAQ')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 14px;">FAQ</button>
-    <button onclick="openDudiFilePopup('disclaimer.txt', 'Disclaimer')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 14px;">Disclaimer</button>
+<footer style="margin-top: 60px; padding: 30px 20px; text-align: center; border-top: 1px solid #e5e7eb; font-family: sans-serif; background-color: #f9fafb;">
+  <p style="color: #6b7280; font-size: 14px; margin-bottom: 15px;">&copy; 2026 Dudi PDF Editor. All rights reserved.</p>
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    
+    <!-- इन पर क्लिक करते ही उसी टैब में तुरंत नया लिंक खुलेगा -->
+    <a href="./terms.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Terms & Conditions</a>
+    
+    <a href="./privacy.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Privacy Policy</a>
+    
+    <a href="./faq.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">FAQ</a>
+    
+    <a href="./disclaimer.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Disclaimer</a>
+    
   </div>
 </footer>
-
-<!-- 2. सिर्फ एक कॉमन पॉप-अप बॉक्स (फाइल का डेटा इसी में लोड होगा) -->
-<div id="dudiFilePopup" class="dudi-popup-bg">
-  <div class="dudi-popup-box">
-    <span class="dudi-close" onclick="closeDudiFilePopup()">&times;</span>
-    <h3 id="dudiPopupTitle">Loading...</h3>
-    <div class="dudi-popup-text" id="dudiPopupContent">
-      Loading content from file...
-    </div>
-  </div>
-</div>
-
-<!-- 3. पॉप-अप का स्टाइल (CSS) -->
-<style>
-.dudi-popup-bg {
-  display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(4px); font-family: sans-serif;
-}
-.dudi-popup-box {
-  background-color: #ffffff; margin: 12% auto; padding: 25px; border-radius: 12px; width: 85%; max-width: 500px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: dudiFade 0.3s;
-}
-.dudi-close {
-  color: #9ca3af; position: absolute; top: 12px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer;
-}
-.dudi-close:hover { color: #ef4444; }
-.dudi-popup-text {
-  max-height: 280px; overflow-y: auto; margin-top: 15px; text-align: left; line-height: 1.6; color: #374151; font-size: 14px; white-space: pre-wrap; /* इससे आपकी फाइल के पैराग्राफ जैसे लिखे हैं वैसे ही दिखेंगे */
-}
-.dudi-popup-box h3 { margin: 0; color: #111827; font-size: 20px; border-bottom: 2px solid #f3f4f6; padding-bottom: 10px; }
-@keyframes dudiFade { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
-</style>
-
-<!-- 4. फाइल को खींचकर पॉप-अप में दिखाने का लॉजिक (JavaScript) -->
-<script>
-function openDudiFilePopup(fileName, title) {
-  document.getElementById('dudiPopupTitle').innerText = title;
-  document.getElementById('dudiPopupContent').innerText = "Loading...";
-  document.getElementById('dudiFilePopup').style.display = "block";
-  document.body.style.overflow = "hidden";
-
-  // यह कोड आपकी अपलोड की हुई फाइल को बिना पेज रीलोड किये पढ़ लेता है
-  fetch('./' + fileName)
-    .then(response => {
-      if (!response.ok) throw new Error('File not found');
-      return response.text();
-    })
-    .then(data => {
-      document.getElementById('dudiPopupContent').innerText = data;
-    })
-    .catch(err => {
-      document.getElementById('dudiPopupContent').innerText = "Sorry, could not load the content. Please try again later.";
-    });
-}
-
-function closeDudiFilePopup() {
-  document.getElementById('dudiFilePopup').style.display = "none";
-  document.body.style.overflow = "auto";
-}
-
-window.addEventListener('click', function(e) {
-  if (e.target.classList.contains('dudi-popup-bg')) {
-    closeDudiFilePopup();
-  }
-});
-</script>
-
-<!-- ============================================================= -->
-<!-- DUDI PDF EDITOR - EXTERNAL FILE POPUP SYSTEM END -->
 <!-- ============================================================= -->

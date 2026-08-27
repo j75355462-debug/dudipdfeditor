@@ -1892,47 +1892,69 @@ window.addEventListener('load',()=>{
 </div>
 <!-- Dudi PDF Editor Blog Section End -->
 
-<!-- 👇 ISME KOI POP-UP KI ID NAHI CHAHIYE, YEH DIRECT BUTTON SE KAAM KREGA 👇 -->
+<!-- 👇 DUDI PDF EDITOR AUTO SEO SYSTEM (FINAL PERMANENT FIX) 👇 -->
 <script>
 const dudiSEOData = {
     'merge': `<h2>Online PDF Files Merge Kaise Karein?</h2><p>Dudi PDF Editor ka use karke aap bina kisi server upload ke apni multiple PDF files ko ek sath merge kar sakte hain. Yeh tool 100% free hai aur sabhi files aapke browser me hi process hoti hain. Aapko kisi third-party software ko install karne ki zarurat nahi hai. Bas apni files upload karein aur ek click me download karein...</p>`,
     
     'split': `<h2>Large PDF File Ko Pages Me Kaise Split Karein?</h2><p>Agar aapke paas koi badi PDF file hai aur aap uske alag-alag pages nikalna chahte hain, to hamara browser-based tool sabse safe hai. Aap single pages ko alag kar sakte hain ya fir ek specific range chun kar PDF ko cut kar sakte hain. Aapka data puri tarah se secure rehta hai...</p>`,
     
-    'compress': `<h2>PDF File Ka Size Kam Kaise Karein?</h2><p>Online PDF compress karna ab behad aasan hai. Dudi PDF Editor aapki file ki quality ko kharab kiye bina uska size chota kar deta hai. Isse aap asani se email ya government portals par files upload kar sakte hain bina kisi dikkat ke...</p>`
+    'compress': `<h2>PDF File Ka Size Kam Kaise Karein?</h2><p>Online PDF compress karna ab behad aasan hai. Dudi PDF Editor aapki file ki quality ko kharab kiye bina uska size chota kar deta hai. Isse aap asani se email ya government portals par files upload kar sakte hain bina kisi dikkat ke...</p>`,
+    
+    'jpg-to-pdf': `<h2>JPG/PNG Images Ko PDF Kaise Banayein?</h2><p>Dudi PDF Editor se aap apni kisi bhi photo (JPG, JPEG, PNG) ko turant professional PDF document me badal sakte hain. Yeh tool mobile aur desktop dono par tezi se kaam karta hai aur quality bilkul kharab nahi hoti... </p>`,
+    
+    'pdf-to-jpg': `<h2>PDF Pages Ko Images (JPG) Me Kaise Badlein?</h2><p>Agar aap kisi PDF document ke pages ko alag-alag photos ke roop me save canvas chahte hain, to yeh tool aapke liye perfect hai. Ek click me saare pages high quality JPG format me extract ho jayenge...</p>`
 };
 
-// Yeh function direct text badal dega
-function changeDudiText(toolName) {
+function runDudiEngine() {
     const contentBox = document.getElementById('dudi-seo-content');
-    if (contentBox && dudiSEOData[toolName]) {
-        contentBox.innerHTML = dudiSEOData[toolName];
+    if (!contentBox) return;
+
+    let detectedTool = 'merge';
+
+    // JUGAD: Yeh check karega ki website ke kaun se tool wale box me abhi "Choose files" active dikh raha hai
+    const allInputs = document.querySelectorAll('input[type="file"]');
+    allInputs.forEach(input => {
+        // Agar file input screen par visible hai
+        if (input.offsetWidth > 0 || input.offsetHeight > 0) {
+            const parentText = input.closest('div')?.innerHTML?.toLowerCase() || '';
+            const fullBody = document.body.innerHTML.toLowerCase();
+            
+            if (fullBody.includes('split-container') || parentText.includes('split') || window.location.hash.includes('split')) {
+                detectedTool = 'split';
+            } else if (fullBody.includes('compress-container') || parentText.includes('compress') || window.location.hash.includes('compress')) {
+                detectedTool = 'compress';
+            } else if (fullBody.includes('jpg-to-pdf') || parentText.includes('jpg to pdf')) {
+                detectedTool = 'jpg-to-pdf';
+            } else if (fullBody.includes('pdf-to-jpg') || parentText.includes('pdf to jpg')) {
+                detectedTool = 'pdf-to-jpg';
+            }
+        }
+    });
+
+    // Agar upar wale inputs se na mile to screen ke heavy keywords ko scan karega
+    if (detectedTool === 'merge') {
+        const checkHeading = document.querySelector('h2, h3, .tool-title')?.innerText?.toLowerCase() || '';
+        if (checkHeading.includes('split')) detectedTool = 'split';
+        else if (checkHeading.includes('compress') || checkHeading.includes('reduce')) detectedTool = 'compress';
+        else if (checkHeading.includes('jpg to pdf')) detectedTool = 'jpg-to-pdf';
+        else if (checkHeading.includes('pdf to jpg')) detectedTool = 'pdf-to-jpg';
+    }
+
+    // Har halat me sahi text load karega aur use lock rakhega
+    if (contentBox.getAttribute('data-current') !== detectedTool) {
+        contentBox.innerHTML = dudiSEOData[detectedTool];
+        contentBox.setAttribute('data-current', detectedTool);
     }
 }
 
-// CHALAKI: Jaise hi user kisi button par touch karega, yeh uske andar likha text padh legi
-document.addEventListener('click', function(event) {
-    const buttonText = event.target.innerText ? event.target.innerText.toLowerCase() : '';
-    
-    // Agar button me 'split' likha hai
-    if (buttonText.includes('split') || buttonText.includes('alag')) {
-        changeDudiText('split');
-    } 
-    // Agar button me 'compress' ya 'size' likha hai
-    else if (buttonText.includes('compress') || buttonText.includes('size') || buttonText.includes('kam')) {
-        changeDudiText('compress');
-    } 
-    // Agar button me 'merge' ya 'jod' likha hai
-    else if (buttonText.includes('merge') || buttonText.includes('join')) {
-        changeDudiText('merge');
-    }
-});
+// Har 300 milliseconds me automatic piche check karta rahega (bina click ke bhi text update karega)
+setInterval(runDudiEngine, 300);
 
-// Pehli baar page khulne par merge dikhega
-window.addEventListener('load', function() {
-    changeDudiText('merge');
-});
+// Page load par bhi check karega
+window.addEventListener('load', runDudiEngine);
 </script>
+<!-- 👆 FINAL CODE KHATAM 👆 -->
 
 </body>
 </html>

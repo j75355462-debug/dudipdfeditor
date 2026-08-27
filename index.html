@@ -1891,44 +1891,48 @@ window.addEventListener('load',()=>{
     </div>
 </div>
 <!-- Dudi PDF Editor Blog Section End -->
-    <!-- Aapki website ka baaki saara code aur buttons yahan khatam honge -->
-    <!-- ... -->
 
-    <!-- 👇 PURANA HATA KAR YAHAN NAYA CODE PASTE KAREIN 👇 -->
-    <script>
-    const dudiSEOData = {
-        'merge': `<h2>Online PDF Files Merge Kaise Karein?</h2><p>Dudi PDF Editor ka use karke aap bina kisi server upload ke apni multiple PDF files ko ek sath merge kar sakte hain. Yeh tool 100% free hai aur sabhi files aapke browser me hi process hoti hain. Aapko kisi third-party software ko install karne ki zarurat nahi hai. Bas apni files upload karein aur ek click me download karein...</p>`,
-        
-        'split': `<h2>Large PDF File Ko Pages Me Kaise Split Karein?</h2><p>Agar aapke paas koi badi PDF file hai aur aap uske alag-alag pages nikalna chahte hain, to hamara browser-based tool sabse safe hai. Aap single pages ko alag kar sakte hain ya fir ek specific range chun kar PDF ko cut kar sakte hain. Aapka data puri tarah se secure rehta hai...</p>`,
-        
-        'compress': `<h2>PDF File Ka Size Kam Kaise Karein?</h2><p>Online PDF compress karna ab behad aasan hai. Dudi PDF Editor aapki file ki quality ko kharab kiye bina uska size chota kar deta hai. Isse aap asani se email ya government portals par files upload kar sakte hain bina kisi dikkat ke...</p>`
-    };
+<!-- 👇 ISME KOI POP-UP KI ID NAHI CHAHIYE, YEH DIRECT BUTTON SE KAAM KREGA 👇 -->
+<script>
+const dudiSEOData = {
+    'merge': `<h2>Online PDF Files Merge Kaise Karein?</h2><p>Dudi PDF Editor ka use karke aap bina kisi server upload ke apni multiple PDF files ko ek sath merge kar sakte hain. Yeh tool 100% free hai aur sabhi files aapke browser me hi process hoti hain. Aapko kisi third-party software ko install karne ki zarurat nahi hai. Bas apni files upload karein aur ek click me download karein...</p>`,
+    
+    'split': `<h2>Large PDF File Ko Pages Me Kaise Split Karein?</h2><p>Agar aapke paas koi badi PDF file hai aur aap uske alag-alag pages nikalna chahte hain, to hamara browser-based tool sabse safe hai. Aap single pages ko alag kar sakte hain ya fir ek specific range chun kar PDF ko cut kar sakte hain. Aapka data puri tarah se secure rehta hai...</p>`,
+    
+    'compress': `<h2>PDF File Ka Size Kam Kaise Karein?</h2><p>Online PDF compress karna ab behad aasan hai. Dudi PDF Editor aapki file ki quality ko kharab kiye bina uska size chota kar deta hai. Isse aap asani se email ya government portals par files upload kar sakte hain bina kisi dikkat ke...</p>`
+};
 
-    function checkActiveTool() {
-        const contentBox = document.getElementById('dudi-seo-content');
-        if (!contentBox) return;
-
-        let activeTool = 'merge'; 
-
-        if (document.querySelector('#splitModal, .split-popup, [data-tool="split"]')?.getBoundingClientRect().width > 0) {
-            activeTool = 'split';
-        } else if (document.querySelector('#compressModal, .compress-popup, [data-tool="compress"]')?.getBoundingClientRect().width > 0) {
-            activeTool = 'compress';
-        }
-
-        contentBox.innerHTML = dudiSEOData[activeTool];
+// Yeh function direct text badal dega
+function changeDudiText(toolName) {
+    const contentBox = document.getElementById('dudi-seo-content');
+    if (contentBox && dudiSEOData[toolName]) {
+        contentBox.innerHTML = dudiSEOData[toolName];
     }
+}
 
-    document.addEventListener('click', function() {
-        setTimeout(checkActiveTool, 200); 
-    });
+// CHALAKI: Jaise hi user kisi button par touch karega, yeh uske andar likha text padh legi
+document.addEventListener('click', function(event) {
+    const buttonText = event.target.innerText ? event.target.innerText.toLowerCase() : '';
+    
+    // Agar button me 'split' likha hai
+    if (buttonText.includes('split') || buttonText.includes('alag')) {
+        changeDudiText('split');
+    } 
+    // Agar button me 'compress' ya 'size' likha hai
+    else if (buttonText.includes('compress') || buttonText.includes('size') || buttonText.includes('kam')) {
+        changeDudiText('compress');
+    } 
+    // Agar button me 'merge' ya 'jod' likha hai
+    else if (buttonText.includes('merge') || buttonText.includes('join')) {
+        changeDudiText('merge');
+    }
+});
 
-    window.addEventListener('load', checkActiveTool);
-    </script>
-    <!-- 👆 NAYI SCRIPT YAHAN KHATAM 👆 -->
-
-</body>
-</html>
+// Pehli baar page khulne par merge dikhega
+window.addEventListener('load', function() {
+    changeDudiText('merge');
+});
+</script>
 
 </body>
 </html>

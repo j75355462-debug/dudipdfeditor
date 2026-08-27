@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="hi">
 <head>
-  <meta name="msvalidate.01" content="4725FE58296788C605B51D7D543C8FB6" />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9FFWYQH6Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G9FFWYQH6Y');
-</script>
   <!-- Google के लिए लोगो -->
 <link rel="icon" type="image/png" sizes="48x48" href="./favicon.png">
 
@@ -79,6 +69,49 @@
 
 
     .site-menu-item{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:12px;font-size:14px;font-weight:700;color:#334155}
+
+    /* Compress PDF — mode toggle */
+    .compress-mode-btn{border:1px solid #e2e8f0;background:#fff;border-radius:12px;padding:12px 10px;font-weight:800;font-size:13px;cursor:pointer;transition:.15s ease}
+    .compress-mode-btn.compress-mode-active{border-color:#ef4444;background:#fff1f2;color:#ef4444}
+
+    /* Right side Quick Menu (Sidebar) */
+    #quickSideOverlay{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(2px);z-index:10020;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+    #quickSideOverlay.show{opacity:1;visibility:visible}
+    #quickSideMenu{position:fixed;top:0;right:0;height:100%;width:min(300px,82vw);background:#fff;z-index:10021;box-shadow:-12px 0 40px rgba(15,23,42,.25);transform:translateX(100%);transition:transform .3s cubic-bezier(.22,.9,.3,1);display:flex;flex-direction:column;padding:18px}
+    #quickSideMenu.show{transform:translateX(0)}
+    .quick-side-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .quick-side-close{width:38px;height:38px;border-radius:12px;border:1px solid #e2e8f0;background:#f8fafc;font-weight:900;font-size:16px;cursor:pointer;color:#334155}
+    .quick-side-link{display:flex;align-items:center;gap:12px;padding:14px 14px;border-radius:14px;font-weight:800;font-size:15px;color:#0f172a;text-decoration:none;border:1px solid transparent;margin-bottom:8px}
+    .quick-side-link:hover{background:#fff1f2;border-color:#fecaca;color:#ef4444}
+    .quick-side-link .qsl-icon{font-size:20px;width:28px;text-align:center}
+
+    /* Office / New-Features sparkle button */
+    #officeSparkleBtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;padding:14px;border-radius:16px;border:none;cursor:pointer;font-weight:900;font-size:14px;color:#fff;background:linear-gradient(90deg,#ef4444,#f97316,#ef4444);background-size:200% auto;animation:sparkleShift 3s linear infinite;box-shadow:0 12px 30px rgba(239,68,68,.35)}
+    @keyframes sparkleShift{to{background-position:200% center}}
+    #officeModal{position:fixed;inset:0;z-index:10030;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
+    #officeModal.hidden{display:none}
+    .office-card{width:min(760px,96vw);max-height:88vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(15,23,42,.28);padding:22px}
+    .office-tile{border:1px solid #e2e8f0;border-radius:16px;padding:14px;display:flex;gap:12px;align-items:flex-start;background:#fff}
+    .office-tile .office-icon{font-size:22px;width:38px;height:38px;border-radius:12px;background:#f8fafc;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .office-tile-soon{font-size:9px;font-weight:900;color:#94a3b8;background:#f1f5f9;padding:2px 8px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase}
+    .office-tile-ai{border-color:#c7d2fe;background:linear-gradient(135deg,#eef2ff,#fff)}
+    .office-tile-ai .office-icon{background:#e0e7ff}
+
+    /* AI Chat Assistant widget */
+    #aiChatModal{position:fixed;inset:0;z-index:10040;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:14px}
+    #aiChatModal.hidden{display:none}
+    .ai-chat-card{width:min(420px,96vw);height:min(600px,86vh);background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(15,23,42,.28);display:flex;flex-direction:column;overflow:hidden}
+    .ai-chat-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff}
+    .ai-chat-head .ai-chat-icon{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:18px}
+    .ai-chat-body{flex:1;overflow:auto;padding:14px;background:#f8fafc;display:flex;flex-direction:column;gap:10px}
+    .ai-msg{max-width:82%;padding:10px 13px;border-radius:16px;font-size:13.5px;line-height:1.45}
+    .ai-msg-bot{align-self:flex-start;background:#fff;border:1px solid #e2e8f0;color:#0f172a;border-bottom-left-radius:4px}
+    .ai-msg-user{align-self:flex-end;background:#4f46e5;color:#fff;border-bottom-right-radius:4px}
+    .ai-chat-foot{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;background:#fff}
+    .ai-chat-foot input{flex:1;border:1px solid #e2e8f0;border-radius:14px;padding:10px 14px;font-size:13.5px}
+    .ai-chat-foot button{background:#4f46e5;color:#fff;border:none;border-radius:14px;padding:0 16px;font-weight:800}
+    .ai-chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 10px}
+    .ai-chat-quick button{font-size:11.5px;font-weight:700;border:1px solid #e2e8f0;background:#fff;border-radius:999px;padding:6px 10px;color:#4f46e5}
     .site-menu-item:hover{background:#f8fafc;color:#ef4444}
     #infoModal{position:fixed;inset:0;z-index:9998;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px}
     #infoModal.hidden{display:none}
@@ -241,9 +274,22 @@
           <button onclick="openInfo('howto')" class="site-menu-item"><span id="miHowto">❓ How to Use</span></button><button onclick="openInfo('about')" class="site-menu-item"><span id="miAbout">ℹ️ About Us</span></button><button onclick="openInfo('blog')" class="site-menu-item"><span id="miBlog">📰 Blog</span></button><button onclick="openInfo('terms')" class="site-menu-item"><span id="miTerms">📜 Terms & Conditions</span></button><button onclick="openInfo('privacy')" class="site-menu-item"><span id="miPrivacy">🔒 Privacy Policy</span></button><button onclick="openInfo('contact')" class="site-menu-item"><span id="miContact">✉️ Contact Us</span></button><button onclick="openTool('photoEditor');closeSiteMenu()" class="site-menu-item"><span id="miPhotoEditor">🎨 Photo Editor Pro</span> <span id="miPhotoEditorBadge" class="ml-1 text-[9px] font-black text-amber-600">FREE</span></button>
         </div>
       </div>
+      <button onclick="toggleQuickSideMenu()" id="quickSideBtn" class="top-icon-btn" aria-label="Quick Menu" title="Quick Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
+
+<div id="quickSideOverlay" onclick="closeQuickSideMenu()"></div>
+<nav id="quickSideMenu" aria-label="Quick navigation">
+  <div class="quick-side-header">
+    <b class="text-lg">Quick Menu</b>
+    <button class="quick-side-close" onclick="closeQuickSideMenu()" aria-label="Close menu">✕</button>
+  </div>
+  <a href="index.html" class="quick-side-link"><span class="qsl-icon">🏠</span> Home</a>
+  <a href="merge-pdf.html" class="quick-side-link"><span class="qsl-icon">📎</span> Merge PDF</a>
+  <a href="pdf-to-jpg.html" class="quick-side-link"><span class="qsl-icon">🖼️</span> PDF to JPG</a>
+  <a href="compress-pdf.html" class="quick-side-link"><span class="qsl-icon">📦</span> Compress PDF</a>
+</nav>
 
 <main id="home" class="max-w-7xl mx-auto px-4">
   <section class="text-center pt-14 pb-10">
@@ -267,6 +313,7 @@
     <div class="flex items-center justify-between mb-3"><div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">✨ New</div><h2 class="text-xl sm:text-2xl font-black" id="mnfTitle">All New Features</h2></div><div class="flex gap-2"><button class="feature-nav" onclick="slideFeatures(-1)" aria-label="Previous">‹</button><button class="feature-nav" onclick="slideFeatures(1)" aria-label="Next">›</button></div></div>
     <div class="feature-slider-shell"><div id="featureSlider" class="feature-slider"></div></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
     <div class="slider-ad-wrap"><div class="slider-ad-box"><div><script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script></div></div></div>
+    <button id="officeSparkleBtn" onclick="openOfficeModal()">✨ <span id="officeSparkleBtnLabel">Office Tools with AI — 6 Live Now</span></button>
   </section>
 
   <section class="pb-16"><button class="workshop-card w-full" onclick="openComingSoon()"><div class="text-4xl mb-2">🤖</div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">AI</div><h2 class="text-2xl font-black mt-1">AI Workshop</h2><p class="text-sm text-slate-500 mt-1">Powerful AI tools are coming soon.</p></button></section>>
@@ -332,6 +379,32 @@ atOptions = {
   </div>
 </div>
 
+<div id="officeModal" class="hidden" onclick="if(event.target===this)closeOfficeModal()">
+  <div class="office-card">
+    <div class="flex items-center justify-between gap-4 mb-1">
+      <div><h2 class="text-2xl sm:text-3xl font-black" id="officeModalTitle">🏢 Office Tools with AI</h2><p class="text-slate-500 text-sm mt-1" id="officeModalSub">Try the AI helper and 6 working tools now — a few more are still being built.</p></div>
+      <button onclick="closeOfficeModal()" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 font-black shrink-0">✕</button>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-3 mt-5" id="officeModalGrid"></div>
+  </div>
+</div>
+
+<div id="aiChatModal" class="hidden" onclick="if(event.target===this)closeAiChat()">
+  <div class="ai-chat-card" onclick="event.stopPropagation()">
+    <div class="ai-chat-head">
+      <div class="ai-chat-icon">🤖</div>
+      <div class="flex-1"><b id="aiChatTitle">Office AI Assistant</b><div class="text-xs opacity-90" id="aiChatSub">Runs fully in your browser — no data sent anywhere</div></div>
+      <button onclick="closeAiChat()" class="text-white/90 hover:text-white text-lg font-black">✕</button>
+    </div>
+    <div class="ai-chat-body" id="aiChatBody"></div>
+    <div class="ai-chat-quick" id="aiChatQuick"></div>
+    <div class="ai-chat-foot">
+      <input id="aiChatInput" type="text" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendAiChat()">
+      <button onclick="sendAiChat()" id="aiChatSendBtn">➤</button>
+    </div>
+  </div>
+</div>
+
 <div id="welcomeLogoPopup" aria-hidden="true"><div class="welcome-logo-card"><div class="welcome-brand logo-shake"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h6M8 16h8"/></svg></div><h2>Dudi PDF Editor</h2></div><p class="text-center text-sm text-slate-500">Fast • Private • Browser based PDF tools</p></div></div>
 
 <footer class="border-t bg-white"><div class="max-w-7xl mx-auto px-4 py-8 text-center"><div class="text-2xl font-black tracking-wide text-slate-900">Dudi PDF Editor</div><p id="footerTag" class="text-sm text-slate-500 mt-2">The world’s most privacy-focused tool</p><p class="text-sm font-black text-slate-700 mt-4">🇮🇳 Make in India</p></div></footer>
@@ -374,6 +447,11 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  pdfCrop:{title:'Crop PDF',titleHi:'PDF क्रॉप करें',desc:'Crop PDF page margins by entering precise top, right, bottom and left values.',descHi:'Top, right, bottom और left की precise values से PDF pages crop करें।',icon:'✂️',accept:'application/pdf',multiple:false,button:'Crop PDF',buttonHi:'PDF क्रॉप करें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  pdfGrayscale:{title:'Grayscale PDF',titleHi:'ग्रेस्केल PDF',desc:'Convert PDF pages to black-and-white grayscale while keeping the page layout.',descHi:'PDF pages को layout बनाए रखते हुए ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'🖤',accept:'application/pdf',multiple:false,button:'Make Grayscale PDF',buttonHi:'ग्रेस्केल PDF बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  pdfToText:{title:'PDF to Text',titleHi:'PDF से Text',desc:'Extract readable text from PDF pages and save it as a TXT file.',descHi:'PDF pages से readable text निकालकर TXT फाइल बनाएं।',icon:'🔤',accept:'application/pdf',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+ ageCalculator:{title:'Age Calculator',titleHi:'आयु कैलकुलेटर',desc:'Find exact age or gap between two dates in years, months and days.',descHi:'जन्म तिथि से सटीक उम्र या दो तारीखों के बीच का अंतर साल, महीने, दिन में निकालें।',icon:'📅',accept:'',multiple:false,button:'Calculate Age',buttonHi:'उम्र निकालें',hint:'No file needed — just pick a date',hintHi:'फाइल की ज़रूरत नहीं — बस तारीख चुनें',isNew:true},
+ passportPhoto:{title:'Passport Size Photo Maker',titleHi:'पासपोर्ट साइज़ फोटो मेकर',desc:'Crop any photo to standard 3.5×4.5 cm passport size and get a print-ready sheet as PDF/JPG.',descHi:'किसी भी फोटो को 3.5x4.5 cm पासपोर्ट साइज़ में क्रॉप करें और प्रिंट-रेडी शीट PDF/JPG में पाएं।',icon:'🆔',accept:'image/png,image/jpeg,image/webp',multiple:false,button:'Make Passport Photo Sheet',buttonHi:'पासपोर्ट फोटो शीट बनाएं',hint:'JPG / PNG / WEBP photo',hintHi:'JPG / PNG / WEBP फोटो',isNew:true},
+ idCardFormat:{title:'1-Click ID Card Print Formatting',titleHi:'1-क्लिक ID कार्ड प्रिंट फॉर्मेटिंग',desc:'Format Aadhaar, PAN or Voter ID photos (front, optional back) to standard card size on a print sheet.',descHi:'आधार, पैन या वोटर ID फोटो (आगे, वैकल्पिक पीछे) को स्टैंडर्ड कार्ड साइज़ में प्रिंट शीट पर लाएं।',icon:'🪪',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Format ID Card',buttonHi:'ID कार्ड फॉर्मेट करें',hint:'Front photo required, back optional',hintHi:'आगे की फोटो ज़रूरी, पीछे वैकल्पिक',isNew:true},
+ a4Binder:{title:'Multi-Image to Single Page A4 Binder',titleHi:'मल्टी-इमेज A4 बाइंडर',desc:'Stitch Aadhaar (front+back), PAN, marksheets or any photos onto one A4 page — ready to upload.',descHi:'आधार (आगे-पीछे), पैन, मार्कशीट या कोई भी फोटो को एक A4 पेज पर जोड़ें — अपलोड के लिए तैयार।',icon:'📑',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Bind to A4 PDF',buttonHi:'A4 PDF बनाएं',hint:'Select 2–6 images, in order',hintHi:'2-6 इमेज चुनें, क्रम में',isNew:true},
+ invoiceGenerator:{title:'Invoice / Bill Generator',titleHi:'इनवॉइस / बिल जनरेटर',desc:'Fill business, client and item details to get a professional PDF invoice instantly.',descHi:'बिज़नेस, क्लाइंट और आइटम डिटेल भरें और तुरंत प्रोफेशनल PDF इनवॉइस पाएं।',icon:'📄',accept:'',multiple:false,button:'Generate Invoice PDF',buttonHi:'इनवॉइस PDF बनाएं',hint:'No file needed — just fill the form',hintHi:'फाइल की ज़रूरत नहीं — बस फॉर्म भरें',isNew:true},
  wordEditor:{title:'Word Document Editor',titleHi:'वर्ड डॉक्यूमेंट एडिटर',desc:'Create and format documents like MS Word — bold, headings, lists, tables, images — then export as PDF, JPG or PNG.',descHi:'MS Word जैसा डॉक्यूमेंट बनाएं — बोल्ड, हेडिंग, लिस्ट, टेबल, इमेज — फिर PDF, JPG या PNG में डाउनलोड करें।',icon:'📝',accept:'',multiple:false,button:'Open Editor',buttonHi:'एडिटर खोलें',hint:'No file needed — start typing',hintHi:'फाइल की ज़रूरत नहीं — सीधे लिखना शुरू करें',isNew:true},
  lengthConverter:{title:'Length Converter',titleHi:'लंबाई कनवर्टर',desc:'Convert meters, kilometers, feet and inches instantly.',descHi:'मीटर, किलोमीटर, फीट और इंच को तुरंत बदलें।',icon:'📏',accept:'',multiple:false,button:'Convert Length',buttonHi:'लंबाई बदलें',hint:'Enter a value and choose units',hintHi:'मान और यूनिट चुनें',isNew:true},
  weightConverter:{title:'Weight Converter',titleHi:'वज़न कनवर्टर',desc:'Convert kilograms, grams, pounds and tons.',descHi:'किलोग्राम, ग्राम, पाउंड और टन को बदलें।',icon:'⚖️',accept:'',multiple:false,button:'Convert Weight',buttonHi:'वज़न बदलें',hint:'Enter a value and choose units',hintHi:'मान और यूनिट चुनें',isNew:true},
@@ -482,9 +560,95 @@ let currentInfoKey=null;
 function openInfo(key){const info=siteInfo[key];if(!info)return;currentInfoKey=key;closeSiteMenu();$('infoTitle').textContent=siteLang==='hi'&&info.titleHi?info.titleHi:info.title;$('infoContent').innerHTML=siteLang==='hi'&&info.htmlHi?info.htmlHi:info.html;const modal=$('infoModal');modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('overflow-hidden');}
 function closeInfo(){const modal=$('infoModal');if(!modal)return;modal.classList.add('hidden');modal.classList.remove('flex');document.body.classList.remove('overflow-hidden');}
 document.addEventListener('click',e=>{const menu=$('siteMenu'),btn=$('siteMenuButton');if(menu&&!menu.classList.contains('hidden')&&!menu.contains(e.target)&&!btn.contains(e.target))closeSiteMenu();});
+
+/* ---------- Quick Side Menu (right-side hamburger sidebar) ---------- */
+function toggleQuickSideMenu(){const m=$('quickSideMenu');if(!m)return;m.classList.contains('show')?closeQuickSideMenu():openQuickSideMenu();}
+function openQuickSideMenu(){$('quickSideMenu')?.classList.add('show');$('quickSideOverlay')?.classList.add('show');document.body.classList.add('overflow-hidden');}
+function closeQuickSideMenu(){$('quickSideMenu')?.classList.remove('show');$('quickSideOverlay')?.classList.remove('show');document.body.classList.remove('overflow-hidden');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeQuickSideMenu();closeOfficeModal();closeAiChat();}});
+
+/* ---------- Office Tools with AI — sparkle button popup ---------- */
+const OFFICE_LIVE_TOOLS=[
+  {icon:'🆔',key:'passportPhoto',title:'Passport Size Photo Maker',titleHi:'पासपोर्ट साइज़ फोटो मेकर',desc:'Crop to 3.5×4.5 cm and get a print-ready photo sheet as PDF/JPG.',descHi:'3.5x4.5 cm में क्रॉप करें और प्रिंट-रेडी शीट PDF/JPG में पाएं।'},
+  {icon:'🪪',key:'idCardFormat',title:'1-Click ID Card Print Formatting',titleHi:'1-क्लिक ID कार्ड प्रिंट फॉर्मेटिंग',desc:'Format Aadhaar, PAN or Voter ID photos to standard CR80 card size.',descHi:'आधार, पैन या वोटर ID को स्टैंडर्ड CR80 कार्ड साइज़ में फॉर्मेट करें।'},
+  {icon:'📑',key:'a4Binder',title:'Multi-Image to Single Page A4 Binder',titleHi:'मल्टी-इमेज A4 बाइंडर (डॉक्यूमेंट स्टिचर)',desc:'Stitch Aadhaar (front+back), PAN and marksheet images onto one A4 page.',descHi:'आधार (आगे-पीछे), पैन और मार्कशीट इमेज को एक A4 पेज पर जोड़ें।'},
+  {icon:'📄',key:'invoiceGenerator',title:'Invoice / Bill Generator',titleHi:'इनवॉइस / बिल जनरेटर',desc:'Fill business & item details and get a professional PDF invoice instantly.',descHi:'बिज़नेस व आइटम डिटेल भरें और तुरंत प्रोफेशनल PDF इनवॉइस पाएं।'},
+  {icon:'📉',key:'compressPdf',title:'100KB / 500KB / 1MB Fixed PDF Compressor',titleHi:'100KB / 500KB / 1MB फिक्स्ड PDF कंप्रेसर',desc:'Open Compress PDF and pick "Fixed Target Size" to hit an exact KB/MB limit.',descHi:'Compress PDF खोलें और "Fixed Target Size" चुनकर एक तय KB/MB लिमिट में फिट करें।'},
+  {icon:'🖼️',key:'removeBg',title:'Background Remover for Govt. Forms',titleHi:'गवर्नमेंट फॉर्म बैकग्राउंड रिमूवर',desc:'Remove photo backgrounds to match official form requirements — fully local.',descHi:'सरकारी फॉर्म की ज़रूरत के हिसाब से फोटो बैकग्राउंड हटाएं — पूरी तरह लोकल।'}
+];
+const OFFICE_UPCOMING_TOOLS=[
+  {icon:'🎓',title:'Exam Form Resume Builder',titleHi:'एग्जाम फॉर्म रिज़्यूमे बिल्डर',desc:'A single-page resume maker for government job & college forms — instant low-size PDF (under 100KB).',descHi:'सरकारी नौकरी और कॉलेज फॉर्म के लिए सिंगल-पेज रिज़्यूमे मेकर — 100KB से कम PDF।'},
+  {icon:'✍️',title:'Handwriting to PDF Text',titleHi:'हैंडराइटिंग से PDF टेक्स्ट',desc:'Turn photos of handwritten notes into readable digital text and PDF using local OCR.',descHi:'हाथ से लिखे नोट्स की फोटो को लोकल OCR से पढ़ने योग्य टेक्स्ट और PDF में बदलें।'},
+  {icon:'🖼️',title:'HEIC to PDF/JPG Converter',titleHi:'HEIC से PDF/JPG कनवर्टर',desc:'Convert iPhone HEIC photos to PDF/JPG locally (WebP already works in Image Converter today).',descHi:'iPhone की HEIC फोटो को लोकली PDF/JPG में बदलें (WebP आज ही Image Converter में काम करता है)।'},
+  {icon:'🪪',title:'Exact Size Photo & Sign Crop (DPI Settler)',titleHi:'एग्जैक्ट साइज़ फोटो व साइन क्रॉप',desc:'Crop photo to exact 3.5×4.5 cm AND a separate signature to 200–300 DPI in one go, for SSO ID / Police / REET forms.',descHi:'SSO ID, पुलिस, REET फॉर्म के लिए एक साथ फोटो 3.5x4.5cm व साइन 200-300 DPI में क्रॉप करें।'},
+  {icon:'✍️',title:'Mobile E-Sign & Application Fill',titleHi:'मोबाइल ई-साइन व एप्लीकेशन फिल',desc:'Sign with your finger on mobile and stick the signature to the bottom of a document, then download.',descHi:'मोबाइल पर उंगली से साइन करें और डॉक्यूमेंट के नीचे चिपकाकर डाउनलोड करें।'},
+  {icon:'🔍',title:'Scanned Receipt Text Extractor (Hindi/English OCR)',titleHi:'स्कैन्ड रसीद टेक्स्ट एक्सट्रैक्टर',desc:'Local Tesseract.js OCR to copy text from scanned receipts or old registry papers.',descHi:'स्कैन की गई रसीद या रजिस्ट्री पेपर से टेक्स्ट निकालने के लिए लोकल OCR।'},
+  {icon:'🔒',title:'Govt. Offline Privacy Masker',titleHi:'सरकारी ऑफलाइन प्राइवेसी मास्कर',desc:'Black out the first 8 characters of Aadhaar/Jan-Aadhaar numbers locally before sharing.',descHi:'शेयर करने से पहले आधार/जन-आधार के पहले 8 अंक लोकली मास्क करें।'},
+  {icon:'✍️',title:'Hindi Typist & Translation Helper',titleHi:'हिंदी टाइपिस्ट व ट्रांसलेशन हेल्पर',desc:'Voice-to-text typing help and quick Hindi↔English translation for everyday forms.',descHi:'वॉइस-टू-टेक्स्ट टाइपिंग मदद और हिंदी-इंग्लिश ट्रांसलेशन।'},
+  {icon:'📋',title:'Form 16 / Income Tax PDF Splitter',titleHi:'फॉर्म 16 / इनकम टैक्स PDF स्प्लिटर',desc:'Split multi-employee Form 16 or ITR PDFs into individual files.',descHi:'मल्टी-एम्प्लॉई Form 16 या ITR PDF को अलग-अलग फाइलों में बांटें।'},
+  {icon:'🧾',title:'Receipt & Challan Printer Optimizer',titleHi:'रसीद व चालान प्रिंटर ऑप्टिमाइज़र',desc:'Reformat receipts/challans for clean thermal or A4 printing.',descHi:'साफ थर्मल/A4 प्रिंटिंग के लिए रसीद व चालान को दोबारा फॉर्मेट करें।'}
+];
+function buildOfficeModalGrid(){
+  const grid=$('officeModalGrid');if(!grid)return;
+  const l=siteLang==='hi';
+  const liveLabel=l?'✅ अभी काम करता है':'✅ Works Now';
+  const soonLabel=l?'जल्द आ रहा है':'Coming Soon';
+  const aiTile=`<div class="office-tile office-tile-ai sm:col-span-2" style="cursor:pointer" onclick="closeOfficeModal();openAiChat();"><div class="office-icon">🤖</div><div class="flex-1"><div class="flex items-center justify-between gap-2"><b class="text-sm">${l?'ऑफिस टूल विद AI — ब्राउज़र AI चैट बॉट':'Office Tool with AI — Browser AI Chat Bot'}</b><span class="office-tile-soon" style="background:#e0e7ff;color:#4338ca">${l?'अभी ट्राई करें':'Try Now'}</span></div><p class="text-xs text-slate-500 mt-1">${l?'हमारा नया ब्राउज़र-बेस्ड AI असिस्टेंट — कोई भी टूल इस्तेमाल करने में मदद मांगें, बिना कोई डेटा भेजे।':'Our new browser-based AI assistant — ask it how to use any tool, with nothing ever sent to a server.'}</p></div></div>`;
+  const liveTiles=OFFICE_LIVE_TOOLS.map(f=>`<div class="office-tile" style="cursor:pointer;border-color:#bbf7d0;background:#f0fdf4" onclick="closeOfficeModal();openTool('${f.key}');"><div class="office-icon" style="background:#dcfce7">${f.icon}</div><div class="flex-1"><div class="flex items-center justify-between gap-2"><b class="text-sm">${l&&f.titleHi?f.titleHi:f.title}</b><span class="office-tile-soon" style="background:#dcfce7;color:#15803d">${liveLabel}</span></div><p class="text-xs text-slate-500 mt-1">${l&&f.descHi?f.descHi:f.desc}</p></div></div>`).join('');
+  const soonTiles=OFFICE_UPCOMING_TOOLS.map(f=>`<div class="office-tile"><div class="office-icon">${f.icon}</div><div class="flex-1"><div class="flex items-center justify-between gap-2"><b class="text-sm">${l&&f.titleHi?f.titleHi:f.title}</b><span class="office-tile-soon">${soonLabel}</span></div><p class="text-xs text-slate-500 mt-1">${l&&f.descHi?f.descHi:f.desc}</p></div></div>`).join('');
+  grid.innerHTML=aiTile+liveTiles+soonTiles;
+}
+function openOfficeModal(){buildOfficeModalGrid();const m=$('officeModal');m.classList.remove('hidden');m.classList.add('flex');document.body.classList.add('overflow-hidden');}
+function closeOfficeModal(){const m=$('officeModal');if(!m)return;m.classList.add('hidden');m.classList.remove('flex');document.body.classList.remove('overflow-hidden');}
+
+/* ---------- Office AI Assistant — local, browser-based chat bot (no server, keyword-matched) ---------- */
+const AI_CHAT_KB=[
+  {q:['merge','जोड़','combine'],a:{en:'Open the Merge PDF tool from the home page, add two or more PDFs in the order you want, then tap Merge PDF to download the combined file.',hi:'होम पेज से Merge PDF टूल खोलें, जिस क्रम में चाहिए उस क्रम में PDF जोड़ें, फिर Merge PDF दबाकर डाउनलोड करें।'}},
+  {q:['compress','साइज','size','kb','mb'],a:{en:'Open Compress PDF, choose "Fixed Target Size" if a portal needs a specific KB limit, or "Quality Based" for a general size reduction — then process and download.',hi:'Compress PDF खोलें, अगर पोर्टल को खास KB लिमिट चाहिए तो "Fixed Target Size" चुनें, वरना सामान्य कमी के लिए "Quality Based" — फिर प्रोसेस करके डाउनलोड करें।'}},
+  {q:['jpg','jpeg','image','photo','इमेज','फोटो'],a:{en:'Use JPG to PDF to turn images into a PDF, or PDF to JPG to export each PDF page as an image — both work fully offline in your browser.',hi:'इमेज से PDF बनाने के लिए JPG to PDF इस्तेमाल करें, या PDF के हर पेज को इमेज बनाने के लिए PDF to JPG — दोनों पूरी तरह ऑफलाइन काम करते हैं।'}},
+  {q:['password','protect','lock','unlock','सुरक्षित','पासवर्ड'],a:{en:'Use Protect PDF to add a password, or Unlock PDF if you already know the current password and want to remove it.',hi:'पासवर्ड लगाने के लिए Protect PDF, और मौजूदा पासवर्ड हटाने के लिए Unlock PDF इस्तेमाल करें (आपको मौजूदा पासवर्ड पता होना चाहिए)।'}},
+  {q:['age','उम्र','birth','जन्म'],a:{en:'Open the Age Calculator (under More New Features), pick a date of birth and the date to compare, and it instantly shows years, months and days.',hi:'More New Features में Age Calculator खोलें, जन्म तिथि और तुलना तिथि चुनें — तुरंत साल-महीने-दिन दिख जाएंगे।'}},
+  {q:['sign','साइन','signature'],a:{en:'Use Sign PDF to place a signature image on a page, or open PDF Editor Pro for a full text/image/draw signing experience.',hi:'Sign PDF से पेज पर साइन इमेज लगाएं, या पूरा टेक्स्ट/इमेज/ड्रॉ अनुभव के लिए PDF Editor Pro खोलें।'}},
+  {q:['private','privacy','server','safe','सुरक्षा','प्राइवेसी'],a:{en:'Every tool here runs locally in your browser — files are never uploaded to a server, so your documents stay on your device.',hi:'यहां हर टूल आपके ब्राउज़र में ही चलता है — फाइलें कभी सर्वर पर अपलोड नहीं होतीं, आपके डॉक्यूमेंट आपके डिवाइस पर ही रहते हैं।'}},
+  {q:['free','cost','price','पैसा','मुफ्त'],a:{en:'Yes, every tool on Dudi PDF Editor is completely free to use, with no sign-up required.',hi:'हां, Dudi PDF Editor के सभी टूल बिना साइन-अप, पूरी तरह फ्री हैं।'}}
+];
+function aiChatReply(msg){
+  const l=siteLang==='hi';const m=msg.toLowerCase();
+  for(const item of AI_CHAT_KB){if(item.q.some(k=>m.includes(k)))return l?item.a.hi:item.a.en;}
+  return l?'मैं अभी एक सिंपल, लोकल असिस्टेंट हूं — Merge, Compress, Sign, Password, JPG/PDF या Age Calculator जैसे शब्द आज़माएं। नई सुविधाएं जल्द आ रही हैं!':"I'm a simple, local assistant for now — try words like Merge, Compress, Sign, Password, JPG/PDF or Age Calculator. Smarter features are coming soon!";
+}
+function aiChatAppend(text,who){
+  const body=$('aiChatBody');if(!body)return;
+  const div=document.createElement('div');div.className='ai-msg '+(who==='user'?'ai-msg-user':'ai-msg-bot');div.textContent=text;
+  body.appendChild(div);body.scrollTop=body.scrollHeight;
+}
+function sendAiChat(){
+  const input=$('aiChatInput');if(!input||!input.value.trim())return;
+  const msg=input.value.trim();aiChatAppend(msg,'user');input.value='';
+  setTimeout(()=>aiChatAppend(aiChatReply(msg),'bot'),350);
+}
+function aiChatQuickAsk(q){$('aiChatInput').value=q;sendAiChat();}
+function buildAiChatQuickButtons(){
+  const wrap=$('aiChatQuick');if(!wrap)return;
+  const l=siteLang==='hi';
+  const items=l?['PDF मर्ज कैसे करें?','साइज़ कैसे कम करें?','क्या यह प्राइवेट है?']:['How to merge PDFs?','How to compress size?','Is this private?'];
+  wrap.innerHTML=items.map(q=>`<button onclick="aiChatQuickAsk('${q.replace(/'/g,"\\'")}')">${q}</button>`).join('');
+}
+function openAiChat(){
+  const m=$('aiChatModal');if(!m)return;
+  const body=$('aiChatBody');
+  if(body&&!body.dataset.inited){
+    aiChatAppend(siteLang==='hi'?'नमस्ते! मैं आपका ब्राउज़र-बेस्ड AI असिस्टेंट हूं। यह पूरी तरह आपके डिवाइस में चलता है — कोई डेटा बाहर नहीं जाता। मुझसे किसी भी टूल के बारे में पूछें!':"Hi! I'm your browser-based AI assistant. I run fully on your device — nothing is sent anywhere. Ask me about any tool!",'bot');
+    body.dataset.inited='1';
+  }
+  buildAiChatQuickButtons();
+  m.classList.remove('hidden');m.classList.add('flex');document.body.classList.add('overflow-hidden');
+  setTimeout(()=>$('aiChatInput')?.focus(),100);
+}
+function closeAiChat(){const m=$('aiChatModal');if(!m)return;m.classList.add('hidden');m.classList.remove('flex');document.body.classList.remove('overflow-hidden');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
-const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
+const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','ageCalculator','passportPhoto','idCardFormat','a4Binder','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
 function T(t,key){return siteLang==='hi'&&t[key+'Hi']!==undefined?t[key+'Hi']:t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
@@ -534,13 +698,13 @@ function openTool(key){
   $('home').classList.add('hidden');$('toolSection').classList.remove('hidden');
   $('toolIcon').textContent=t.icon;$('toolTitle').textContent=T(t,'title');$('toolDescription').textContent=T(t,'desc');
   $('fileInput').accept=t.accept;$('fileInput').multiple=t.multiple;$('fileHint').textContent=T(t,'hint');
-  const needsNoFile=key==='wordEditor'||['lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(key);
+  const needsNoFile=key==='wordEditor'||['ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(key);
   $('dropZone').classList.toggle('hidden',needsNoFile);
   $('fileList').classList.toggle('hidden',needsNoFile);
   renderOptions();renderFiles();clearResult();updateButton();scrollTo(0,0);
 }
 function goHome(){ $('home').classList.remove('hidden');$('toolSection').classList.add('hidden');currentTool=null;selectedFiles=[];photoEditorImage=null;cropDragMode=null;scrollTo(0,0); }
-document.addEventListener('input',e=>{if(['convValue','convFrom','convTo'].includes(e.target?.id)&&currentTool!=='currencyConverter')runConverter();if(e.target?.id==='specialInput')runSpecialTool();});
+document.addEventListener('input',e=>{if(['convValue','convFrom','convTo'].includes(e.target?.id)&&currentTool!=='currencyConverter')runConverter();if(e.target?.id==='specialInput')runSpecialTool();if(['ageDob','ageAsOf'].includes(e.target?.id))runAgeCalculator();});
 document.addEventListener('change',e=>{if(['convFrom','convTo'].includes(e.target?.id)&&currentTool!=='currencyConverter')runConverter();});
 
 function renderOptions(){
@@ -550,6 +714,35 @@ function renderOptions(){
     const cfg={lengthConverter:['Meter','Kilometer','Foot','Inch'],weightConverter:['Kilogram','Gram','Pound','Ton'],temperatureConverter:['Celsius','Fahrenheit','Kelvin'],currencyConverter:['USD','EUR','GBP','INR'],areaConverter:['Square Meter','Square Feet','Acre','Gaj'],timeConverter:['Seconds','Minutes','Hours','Days'],speedConverter:['km/h','m/s','mph','knots'],dataTransferConverter:['MBps','Mbps']}[currentTool];const l=siteLang==='hi';box.innerHTML=`<div class="grid sm:grid-cols-3 gap-3"><div><label class="block text-sm font-bold mb-2">${l?'मान':'Value'}</label><input id="convValue" type="number" step="any" value="1" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">${l?'से':'From'}</label><select id="convFrom" class="w-full border rounded-xl px-4 py-3">${cfg.map(x=>`<option>${x}</option>`).join('')}</select></div><div><label class="block text-sm font-bold mb-2">${l?'तक':'To'}</label><select id="convTo" class="w-full border rounded-xl px-4 py-3">${cfg.map(x=>`<option>${x}</option>`).join('')}</select></div></div><div id="convResult" class="mt-4 p-4 rounded-2xl bg-slate-50 border font-black"></div>`;box.classList.remove('hidden');setTimeout(runConverter,20);
   } else if(currentTool==='numberToWords'||currentTool==='romanNumerals'){
     const l=siteLang==='hi';box.innerHTML=`<div><label class="block text-sm font-bold mb-2">${l?'इनपुट':'Input'}</label><input id="specialInput" ${currentTool==='numberToWords'?'type=number value=1500':'type=text value=9'} class="w-full border rounded-xl px-4 py-3"></div><div id="specialResult" class="mt-4 p-4 rounded-2xl bg-slate-50 border font-black"></div>`;box.classList.remove('hidden');setTimeout(runSpecialTool,20);
+  } else if(currentTool==='ageCalculator'){
+    const l=siteLang==='hi';const today=new Date().toISOString().slice(0,10);box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">${l?'जन्म तिथि (Date of Birth)':'Date of Birth'}</label><input id="ageDob" type="date" max="${today}" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">${l?'आज की तारीख / तुलना तिथि':'Calculate age as of'}</label><input id="ageAsOf" type="date" value="${today}" class="w-full border rounded-xl px-4 py-3"></div></div><div id="ageResult" class="mt-4 p-4 rounded-2xl bg-slate-50 border font-black"></div>`;box.classList.remove('hidden');setTimeout(runAgeCalculator,20);
+  } else if(currentTool==='passportPhoto'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4">
+      <div><label class="block text-sm font-bold mb-2">${l?'प्रिंट पेपर साइज़':'Print Paper Size'}</label><select id="ppPaper" class="w-full border rounded-xl px-4 py-3"><option value="4x6">4×6 inch ${l?'(फोटो पेपर)':'(photo paper)'}</option><option value="a4" selected>A4</option></select></div>
+      <div><label class="block text-sm font-bold mb-2">DPI</label><select id="ppDpi" class="w-full border rounded-xl px-4 py-3"><option value="200">200</option><option value="300" selected>300 (${l?'रेकमेंडेड':'recommended'})</option></select></div>
+    </div><p class="text-xs text-slate-400 mt-3">${l?'फोटो को बीच से 3.5×4.5 cm पर क्रॉप किया जाएगा और चुने गए पेपर पर जितनी फिट हों उतनी कॉपी लगाई जाएंगी।':'Your photo is centre-cropped to 3.5×4.5 cm and tiled as many times as fit on the chosen paper.'}</p>`;
+    box.classList.remove('hidden');
+  } else if(currentTool==='idCardFormat'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-800 text-sm mb-4">${l?'पहली फाइल = आगे (Front), दूसरी फाइल (वैकल्पिक) = पीछे (Back)। दोनों को CR80 कार्ड साइज़ (85.6mm × 54mm) में फिट किया जाएगा।':'First file = Front, second file (optional) = Back. Both are fit to standard CR80 card size (85.6mm × 54mm).'}</div><div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">DPI</label><select id="idDpi" class="w-full border rounded-xl px-4 py-3"><option value="200">200</option><option value="300" selected>300 (${l?'रेकमेंडेड':'recommended'})</option></select></div></div>`;
+    box.classList.remove('hidden');
+  } else if(currentTool==='a4Binder'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">${l?'पेज ओरिएंटेशन':'Page Orientation'}</label><select id="binderOrientation" class="w-full border rounded-xl px-4 py-3"><option value="portrait" selected>${l?'पोर्ट्रेट':'Portrait'}</option><option value="landscape">${l?'लैंडस्केप':'Landscape'}</option></select></div></div><p class="text-xs text-slate-400 mt-3">${l?'2-6 इमेज चुनें — जितने अपलोड करेंगे, सब एक ही A4 पेज पर व्यवस्थित हो जाएंगी (6 से ज़्यादा होने पर नया पेज जुड़ता है)।':'Pick 2–6 images — they auto-arrange onto one A4 page (a new page is added every 6 images).'}</p>`;
+    box.classList.remove('hidden');
+  } else if(currentTool==='invoiceGenerator'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4">
+      <div><label class="block text-sm font-bold mb-2">${l?'आपका बिज़नेस नाम':'Your Business Name'}</label><input id="invBusiness" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: श्री ट्रेडर्स':'e.g. Sharma Traders'}"></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'बिज़नेस पता / फोन':'Business Address / Phone'}</label><input id="invBusinessAddr" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'पता, फोन नंबर':'Address, phone number'}"></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'ग्राहक का नाम':'Client Name'}</label><input id="invClient" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'ग्राहक/कंपनी का नाम':'Client / company name'}"></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'इनवॉइस नंबर':'Invoice Number'}</label><input id="invNumber" class="w-full border rounded-xl px-4 py-3" value="INV-${Date.now().toString().slice(-6)}"></div>
+      <div class="sm:col-span-2"><label class="block text-sm font-bold mb-2">${l?'आइटम — हर लाइन में: नाम, मात्रा, दर':'Items — one per line: Description, Qty, Rate'}</label><textarea id="invItems" class="w-full border rounded-xl px-4 py-3 min-h-28" placeholder="${l?'जैसे:\nप्रिंटिंग सर्विस, 2, 500\nडिज़ाइन वर्क, 1, 1200':'e.g.\nPrinting Service, 2, 500\nDesign Work, 1, 1200'}"></textarea></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'टैक्स (%) — वैकल्पिक':'Tax (%) — optional'}</label><input id="invTax" type="number" min="0" max="100" step="0.01" value="0" class="w-full border rounded-xl px-4 py-3"></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'नोट्स — वैकल्पिक':'Notes — optional'}</label><input id="invNotes" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: 7 दिन में भुगतान करें':'e.g. Payment due in 7 days'}"></div>
+    </div>`;
+    box.classList.remove('hidden');
   } else if(currentTool==='qrGenerator'){
     const l=siteLang==='hi';box.innerHTML=`<label class="block text-sm font-bold mb-2">${l?'टेक्स्ट / URL / फोन':'Text / URL / Phone'}</label><textarea id="qrText" class="w-full border rounded-xl px-4 py-3 min-h-28" placeholder="https://example.com"></textarea><div class="flex flex-wrap gap-2 mt-4"><button type="button" onclick="generateQr()" class="bg-red-500 text-white font-black px-5 py-3 rounded-xl">${l?'QR बनाएं':'Generate QR'}</button><button type="button" onclick="downloadQr()" class="bg-slate-800 text-white font-black px-5 py-3 rounded-xl">${l?'PNG डाउनलोड':'Download PNG'}</button></div><div id="qrOutput" class="mt-5 p-6 rounded-2xl border bg-white flex justify-center"></div>`;box.classList.remove('hidden');
   } else if(currentTool==='qrScanner'){
@@ -656,7 +849,39 @@ function renderOptions(){
       </div>
     </div>`;box.classList.remove('hidden');setTimeout(initEditorProControls,50);
   } else if(currentTool==='compressPdf'){
-    box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">Compression Quality</label><select id="compressQuality" class="w-full border rounded-xl px-4 py-3"><option value="1.2">High — better quality, larger file</option><option value="0.9" selected>Balanced — recommended</option><option value="0.65">Small — more compression</option><option value="0.45">Maximum — smallest size</option></select></div><div><label class="block text-sm font-bold mb-2">JPEG Quality</label><select id="compressJpegQuality" class="w-full border rounded-xl px-4 py-3"><option value="0.92">92%</option><option value="0.82" selected>82%</option><option value="0.7">70%</option><option value="0.55">55%</option></select></div></div><p class="text-xs text-slate-400 mt-3">The PDF is rebuilt from rendered page images. Text/searchable content may be flattened.</p>`;box.classList.remove('hidden');
+    const l=siteLang==='hi';
+    box.innerHTML=`
+      <div class="sm:col-span-2 mb-4">
+        <label class="block text-sm font-bold mb-2">${l?'कंप्रेशन मोड':'Compression Mode'}</label>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" id="compressModeQualityBtn" onclick="setCompressMode('quality')" class="compress-mode-btn">⚙️ ${l?'क्वालिटी आधारित':'Quality Based'}</button>
+          <button type="button" id="compressModeTargetBtn" onclick="setCompressMode('target')" class="compress-mode-btn">🎯 ${l?'फिक्स्ड टारगेट साइज़':'Fixed Target Size'}</button>
+        </div>
+      </div>
+      <div id="compressQualityFields" class="grid sm:grid-cols-2 gap-4">
+        <div><label class="block text-sm font-bold mb-2">${l?'कंप्रेशन क्वालिटी':'Compression Quality'}</label><select id="compressQuality" class="w-full border rounded-xl px-4 py-3"><option value="1.2">${l?'हाई — बेहतर क्वालिटी, बड़ी फाइल':'High — better quality, larger file'}</option><option value="0.9" selected>${l?'बैलेंस्ड — रेकमेंडेड':'Balanced — recommended'}</option><option value="0.65">${l?'स्मॉल — ज्यादा कंप्रेशन':'Small — more compression'}</option><option value="0.45">${l?'मैक्सिमम — सबसे छोटी साइज़':'Maximum — smallest size'}</option></select></div>
+        <div><label class="block text-sm font-bold mb-2">${l?'JPEG क्वालिटी':'JPEG Quality'}</label><select id="compressJpegQuality" class="w-full border rounded-xl px-4 py-3"><option value="0.92">92%</option><option value="0.82" selected>82%</option><option value="0.7">70%</option><option value="0.55">55%</option></select></div>
+      </div>
+      <div id="compressTargetFields" class="hidden">
+        <label class="block text-sm font-bold mb-2">${l?'टारगेट साइज़ चुनें (सरकारी फॉर्म के लिए)':'Choose target size (great for govt. forms)'}</label>
+        <select id="compressTargetSize" class="w-full border rounded-xl px-4 py-3">
+          <option value="50">${l?'50 KB से कम':'Under 50 KB'}</option>
+          <option value="100" selected>${l?'100 KB से कम':'Under 100 KB'}</option>
+          <option value="200">${l?'200 KB से कम':'Under 200 KB'}</option>
+          <option value="500">${l?'500 KB से कम':'Under 500 KB'}</option>
+          <option value="1024">${l?'1 MB से कम':'Under 1 MB'}</option>
+        </select>
+        <p class="text-xs text-slate-400 mt-2">${l?'हर पेज को दिए गए साइज़ में फिट करने के लिए कोशिश की जाती है — बहुत ज्यादा पेज होने पर क्वालिटी कम हो सकती है।':'Each page is iteratively squeezed toward this size — with many pages, quality may drop more to hit the limit.'}</p>
+      </div>
+      <div class="mt-4 p-4 rounded-2xl border bg-slate-50 flex gap-4 items-center" id="compressPreviewWrap">
+        <canvas id="compressPreviewCanvas" class="rounded-lg border bg-white shrink-0" style="width:96px;height:124px;object-fit:contain"></canvas>
+        <div class="flex-1 text-sm min-w-0">
+          <div class="font-bold" id="compressPreviewLabel">${l?'फाइल चुनने के बाद यहां लाइव प्रीव्यू दिखेगा':'Live preview appears here once you pick a PDF'}</div>
+          <div class="text-xs text-slate-500 mt-1" id="compressPreviewStats"></div>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400 mt-3">${l?'PDF को rendered page images से दोबारा बनाया जाता है, इसलिए text/searchable content flatten हो सकता है।':'The PDF is rebuilt from rendered page images. Text/searchable content may be flattened.'}</p>`;
+    box.classList.remove('hidden');setTimeout(()=>{setCompressMode('quality');initCompressPreview();},20);
   } else if(currentTool==='signPdf'){
     box.innerHTML=`<div class="grid sm:grid-cols-2 gap-4"><div><label class="block text-sm font-bold mb-2">Signature Image</label><input id="signInput" type="file" accept="image/png,image/jpeg" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Page</label><input id="signPage" type="number" min="1" value="1" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">X</label><input id="signX" type="number" value="50" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Y</label><input id="signY" type="number" value="50" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-bold mb-2">Width</label><input id="signWidth" type="number" value="130" class="w-full border rounded-xl px-4 py-3"></div></div>`;box.classList.remove('hidden');
   } else if(currentTool==='protectPdf'){
@@ -758,11 +983,11 @@ function validFile(file){
   if(currentTool==='imageConvert'||currentTool==='imageCompress'||currentTool==='imageCrop'||currentTool==='removeBg'||currentTool==='qrScanner')return /^image\/(jpeg|png|webp)$/i.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name);
   return file.type==='application/pdf'||/\.pdf$/i.test(file.name);
 }
-function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);if(currentTool==='imageCrop')setTimeout(initImageCropPreview,20);if(currentTool==='removeBg')setTimeout(updateRemoveBgPreview,20);}
+function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);if(currentTool==='imageCrop')setTimeout(initImageCropPreview,20);if(currentTool==='removeBg')setTimeout(updateRemoveBgPreview,20);if(currentTool==='compressPdf')setTimeout(initCompressPreview,20);}
 function renderFiles(){$('fileList').innerHTML=selectedFiles.map((f,i)=>`<div class="flex items-center gap-3 p-4 bg-slate-50 border rounded-xl"><div class="text-2xl">${fileIcon(f)}</div><div class="flex-1 min-w-0"><b class="block truncate text-sm">${esc(f.name)}</b><span class="text-xs text-slate-400">${bytes(f.size)}</span></div><button onclick="removeFile(${i})" class="w-9 h-9 rounded-lg hover:bg-red-100">✕</button></div>`).join('');}
 function fileIcon(f){return /image/i.test(f.type)?'🖼️':/word|docx/i.test(f.type)||/\.docx$/i.test(f.name)?'📝':/sheet|excel|xlsx|xls/i.test(f.type)||/\.(xlsx|xls)$/i.test(f.name)?'📊':'📄';}
 function removeFile(i){selectedFiles.splice(i,1);renderFiles();updateButton();}
-function updateButton(){const b=$('processBtn');const noFileTool=['wordEditor','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool);const fileOk=selectedFiles.length||noFileTool;if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
+function updateButton(){const b=$('processBtn');const noFileTool=['wordEditor','ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool);const fileOk=selectedFiles.length||noFileTool;if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
 
 async function ocrConverter(){
   if(!window.Tesseract)throw new Error('OCR engine is still loading. Please wait a moment and try again.');
@@ -805,6 +1030,23 @@ function specialNumberToWords(n){n=Number(n);if(!Number.isFinite(n))return'Inval
 function numberToRoman(n){n=Math.floor(Number(n));if(!Number.isFinite(n)||n<1||n>3999)return'Use an integer from 1 to 3999';const a=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let o='';for(const[v,c]of a)while(n>=v){o+=c;n-=v;}return o;}
 function romanToNumber(x){x=String(x).toUpperCase().trim();if(!/^[IVXLCDM]+$/.test(x))return NaN;const m={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};let n=0;for(let i=0;i<x.length;i++)n+=(m[x[i]]<(m[x[i+1]]||0)?-m[x[i]]:m[x[i]]);return numberToRoman(n)===x?n:NaN;}
 function runSpecialTool(){const o=$('specialResult');if(!o)return;o.textContent=currentTool==='numberToWords'?specialNumberToWords($('specialInput').value):String((/^\d+$/.test($('specialInput').value)?numberToRoman(Number($('specialInput').value)):romanToNumber($('specialInput').value))||'Invalid');}
+function runAgeCalculator(){
+  const o=$('ageResult');if(!o)return;
+  const l=siteLang==='hi';
+  const dobVal=$('ageDob')?.value,asOfVal=$('ageAsOf')?.value;
+  if(!dobVal){o.textContent=l?'जन्म तिथि चुनें':'Pick a date of birth';return;}
+  const dob=new Date(dobVal+'T00:00:00'),asOf=new Date((asOfVal||new Date().toISOString().slice(0,10))+'T00:00:00');
+  if(isNaN(dob.getTime())||isNaN(asOf.getTime())){o.textContent=l?'अमान्य तारीख':'Invalid date';return;}
+  if(dob>asOf){o.textContent=l?'जन्म तिथि, तुलना तिथि से पहले होनी चाहिए':'Date of birth must be before the compare date';return;}
+  let years=asOf.getFullYear()-dob.getFullYear(),months=asOf.getMonth()-dob.getMonth(),days=asOf.getDate()-dob.getDate();
+  if(days<0){months--;const prevMonth=new Date(asOf.getFullYear(),asOf.getMonth(),0);days+=prevMonth.getDate();}
+  if(months<0){years--;months+=12;}
+  const totalDays=Math.floor((asOf-dob)/86400000);
+  const totalMonths=years*12+months;
+  o.innerHTML=l
+    ? `<div class="text-lg">${years} साल, ${months} महीने, ${days} दिन</div><div class="text-xs font-normal text-slate-500 mt-2">कुल ${totalMonths} महीने • कुल ${totalDays.toLocaleString('en-IN')} दिन</div>`
+    : `<div class="text-lg">${years} years, ${months} months, ${days} days</div><div class="text-xs font-normal text-slate-500 mt-2">Total ${totalMonths} months • Total ${totalDays.toLocaleString('en-IN')} days</div>`;
+}
 function generateQr(){const b=$('qrOutput');if(!b||!window.QRCode)return;const t=$('qrText').value.trim();if(!t)return toast('Enter text first.');b.innerHTML='';new QRCode(b,{text:t,width:220,height:220,correctLevel:QRCode.CorrectLevel.M});}
 function downloadQr(){const i=$('qrOutput')?.querySelector('img');if(!i)return toast('Generate a QR code first.');openDownloadGate(i.src,'qr-code.png');}
 let qrStream=null,qrAnim=null;async function startQrCamera(){try{qrStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}}});const v=$('qrVideo');v.srcObject=qrStream;v.classList.remove('hidden');scanQrVideo();}catch(e){toast('Camera permission denied. Upload a QR image instead.');}}function stopQrCamera(){if(qrStream){qrStream.getTracks().forEach(t=>t.stop());qrStream=null;}cancelAnimationFrame(qrAnim);const v=$('qrVideo');if(v){v.pause();v.srcObject=null;v.classList.add('hidden');}}function scanQrVideo(){const v=$('qrVideo'),c=$('qrCanvas');if(!v||!c)return;const f=()=>{if(!qrStream||!v.videoWidth){qrAnim=requestAnimationFrame(f);return;}c.width=v.videoWidth;c.height=v.videoHeight;const x=c.getContext('2d');x.drawImage(v,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height),q=window.jsQR?.(d.data,d.width,d.height,{inversionAttempts:'attemptBoth'});if(q){$('qrScanResult').textContent=q.data;stopQrCamera();return;}qrAnim=requestAnimationFrame(f)};f();}async function scanQrImage(file){if(!file)return;const i=await loadImage(file),c=$('qrCanvas');c.width=i.naturalWidth;c.height=i.naturalHeight;c.getContext('2d').drawImage(i,0,0);const d=c.getContext('2d').getImageData(0,0,c.width,c.height),q=window.jsQR?.(d.data,d.width,d.height,{inversionAttempts:'attemptBoth'});$('qrScanResult').textContent=q?q.data:'No QR code found.';}
@@ -815,10 +1057,10 @@ function encodeUrlTool(){try{$('urlResult').textContent=encodeURI($('urlText').v
 async function generateHash(k){const t=$('hashText').value;if(k==='md5'){$('hashResult').textContent=md5(t);return;}const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));$('hashResult').textContent=[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}
 let timeToolTimer=null,timeToolStart=0,timeToolElapsed=0,timeToolRemaining=0;function fmtTime(ms){const t=Math.max(0,ms),s=Math.floor(t/1000),m=Math.floor(s/60),h=Math.floor(m/60);return`${String(h).padStart(2,'0')}:${String(m%60).padStart(2,'0')}:${String(s%60).padStart(2,'0')}.${Math.floor(t%1000/100)}`}function startTimeTool(){clearInterval(timeToolTimer);if($('timeMode').value==='timer'){if(!timeToolRemaining)timeToolRemaining=(Number($('timerSeconds').value)||60)*1000;timeToolStart=Date.now();timeToolTimer=setInterval(()=>{timeToolRemaining=Math.max(0,timeToolRemaining-(Date.now()-timeToolStart));timeToolStart=Date.now();$('timeDisplay').textContent=fmtTime(timeToolRemaining);if(!timeToolRemaining){clearInterval(timeToolTimer);toast('Timer finished.')}},100)}else{const b=timeToolElapsed;timeToolStart=Date.now();timeToolTimer=setInterval(()=>$('timeDisplay').textContent=fmtTime(b+Date.now()-timeToolStart),100);}}function pauseTimeTool(){if($('timeMode').value==='timer'){timeToolRemaining=Math.max(0,timeToolRemaining-(Date.now()-timeToolStart));clearInterval(timeToolTimer);}else{timeToolElapsed+=Date.now()-timeToolStart;clearInterval(timeToolTimer);}}function resetTimeTool(){clearInterval(timeToolTimer);timeToolStart=0;timeToolElapsed=0;timeToolRemaining=0;$('timeDisplay').textContent='00:00.0';}
 function rollRandomTool(){if($('diceMode').value==='dice')$('randomResult').textContent='🎲 '+(crypto.getRandomValues(new Uint32Array(1))[0]%6+1);else $('randomResult').textContent=String(crypto.getRandomValues(new Uint32Array(1))[0]%(Math.max(1,Number($('randomMax').value)||100)+1));}
-async function simpleFeatureProcess(){if(currentTool==='currencyConverter')await runCurrencyConverter();else if(['lengthConverter','weightConverter','temperatureConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter'].includes(currentTool))runConverter();else if(currentTool==='numberToWords'||currentTool==='romanNumerals')runSpecialTool();else if(currentTool==='qrGenerator')generateQr();else if(currentTool==='qrScanner')showResult('Use camera or image upload above.');else if(currentTool==='passwordGenerator')generateStrongPassword();else if(currentTool==='myIp')await loadMyIp();else if(currentTool==='passwordStrength')checkPasswordStrength();else if(currentTool==='urlEncoder')encodeUrlTool();else if(currentTool==='htmlEntities')encodeHtmlEntities();else if(currentTool==='hashGenerator')await generateHash('sha256');else if(currentTool==='stopwatchTimer')startTimeTool();else if(currentTool==='diceRoller')rollRandomTool();}
+async function simpleFeatureProcess(){if(currentTool==='currencyConverter')await runCurrencyConverter();else if(['lengthConverter','weightConverter','temperatureConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter'].includes(currentTool))runConverter();else if(currentTool==='numberToWords'||currentTool==='romanNumerals')runSpecialTool();else if(currentTool==='qrGenerator')generateQr();else if(currentTool==='qrScanner')showResult('Use camera or image upload above.');else if(currentTool==='passwordGenerator')generateStrongPassword();else if(currentTool==='myIp')await loadMyIp();else if(currentTool==='passwordStrength')checkPasswordStrength();else if(currentTool==='urlEncoder')encodeUrlTool();else if(currentTool==='htmlEntities')encodeHtmlEntities();else if(currentTool==='hashGenerator')await generateHash('sha256');else if(currentTool==='stopwatchTimer')startTimeTool();else if(currentTool==='diceRoller')rollRandomTool();else if(currentTool==='ageCalculator')runAgeCalculator();}
 
 async function processFiles(){
-  if((!selectedFiles.length&&!['wordEditor','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool))||processing)return;
+  if((!selectedFiles.length&&!['wordEditor','ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool))||processing)return;
   processing=true;$('processSpinner').classList.remove('hidden');$('processBtnText').textContent=siteLang==='hi'?'प्रोसेस हो रहा है…':'Processing…';$('processBtn').disabled=true;
   try{
     switch(currentTool){
@@ -826,7 +1068,7 @@ async function processFiles(){
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
+      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -912,25 +1154,90 @@ async function extractImages(){
   if(found)showResult(`Extracted ${found} page images as JPG files.`);
 }
 
+let compressMode='quality';
+function setCompressMode(mode){
+  compressMode=mode;
+  const qBtn=$('compressModeQualityBtn'),tBtn=$('compressModeTargetBtn'),qFields=$('compressQualityFields'),tFields=$('compressTargetFields');
+  if(!qBtn)return;
+  qBtn.classList.toggle('compress-mode-active',mode==='quality');tBtn.classList.toggle('compress-mode-active',mode==='target');
+  qFields.classList.toggle('hidden',mode!=='quality');tFields.classList.toggle('hidden',mode!=='target');
+}
+async function ensurePdfjs(){
+  if(pdfjs)return pdfjs;
+  try{pdfjs=await import('https://unpkg.com/pdfjs-dist@4.4.168/legacy/build/pdf.mjs');pdfjs.GlobalWorkerOptions.workerSrc='https://unpkg.com/pdfjs-dist@4.4.168/legacy/build/pdf.worker.mjs';}catch(e){console.error(e);}
+  return pdfjs;
+}
+async function initCompressPreview(){
+  const canvas=$('compressPreviewCanvas'),label=$('compressPreviewLabel'),stats=$('compressPreviewStats');
+  if(!canvas||!selectedFiles.length)return;
+  const l=siteLang==='hi';
+  if(label)label.textContent=l?'PDF इंजन लोड हो रहा है…':'Loading PDF engine…';
+  const engine=await ensurePdfjs();
+  if(!engine){if(label)label.textContent=l?'प्रीव्यू लोड नहीं हो सका। इंटरनेट चेक करें।':'Preview could not load. Check your internet connection.';return;}
+  try{
+    const buf=await selectedFiles[0].arrayBuffer();
+    const pdf=await engine.getDocument({data:buf}).promise;
+    const page=await pdf.getPage(1);
+    const vp=page.getViewport({scale:Math.min(1,90/page.getViewport({scale:1}).width)});
+    canvas.width=Math.max(1,Math.ceil(vp.width));canvas.height=Math.max(1,Math.ceil(vp.height));
+    await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+    if(label)label.textContent=l?'पेज 1 प्रीव्यू':'Page 1 preview';
+    if(stats)stats.textContent=`${pdf.numPages} ${l?'पेज':'pages'} • ${bytes(selectedFiles[0].size)}`;
+  }catch(e){console.error(e);if(label)label.textContent=l?'यह फाइल पढ़ने में समस्या हुई। कृपया दूसरी PDF आज़माएं।':'Could not read this file. Please try another PDF.';}
+}
 async function compressPdf(){
-  if(!pdfjs)throw new Error('PDF engine has not loaded yet. Refresh the page and try again.');
+  const l=siteLang==='hi';
+  const engine=await ensurePdfjs();
+  if(!engine)throw new Error(l?'PDF इंजन लोड नहीं हो सका। इंटरनेट कनेक्शन चेक करके पेज रीफ्रेश करें।':'PDF engine could not load. Check your internet connection and refresh the page.');
   const srcBytes=await selectedFiles[0].arrayBuffer();
-  const pdf=await pdfjs.getDocument({data:srcBytes}).promise;
+  const pdf=await engine.getDocument({data:srcBytes}).promise;
+  const mode=compressMode||'quality';
+  const targetTotalBytes=mode==='target'?(Number($('compressTargetSize')?.value)||100)*1024:0;
   const quality=Number($('compressQuality')?.value)||0.9;
-  const jpegQuality=Number($('compressJpegQuality')?.value)||0.82;
+  const baseJpegQuality=Number($('compressJpegQuality')?.value)||0.82;
+  const perPageBudget=targetTotalBytes?Math.max(4000,Math.floor(targetTotalBytes/pdf.numPages)):0;
   const out=await PDFLib.PDFDocument.create();
+  const canvas=$('compressPreviewCanvas'),label=$('compressPreviewLabel'),stats=$('compressPreviewStats');
+  let runningBytes=0;
   for(let n=1;n<=pdf.numPages;n++){
-    const page=await pdf.getPage(n),base=page.getViewport({scale:1}),vp=page.getViewport({scale:quality});
-    const c=document.createElement('canvas');c.width=Math.max(1,Math.ceil(vp.width));c.height=Math.max(1,Math.ceil(vp.height));
-    await page.render({canvasContext:c.getContext('2d',{alpha:false}),viewport:vp,background:'white'}).promise;
-    const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',jpegQuality));
+    const page=await pdf.getPage(n),base=page.getViewport({scale:1});
+    let c=null,blob=null;
+    if(mode==='target'){
+      let scale=0.9,fits=false,attempt=0;
+      while(!fits&&attempt<3){
+        const vp=page.getViewport({scale});
+        c=document.createElement('canvas');c.width=Math.max(1,Math.ceil(vp.width));c.height=Math.max(1,Math.ceil(vp.height));
+        await page.render({canvasContext:c.getContext('2d',{alpha:false}),viewport:vp,background:'white'}).promise;
+        let lo=.15,hi=.92,best=null;
+        for(let k=0;k<7;k++){
+          const q=(lo+hi)/2;const b=await new Promise(r=>c.toBlob(r,'image/jpeg',q));
+          if(b.size>perPageBudget)hi=q;else{best=b;lo=q;}
+        }
+        blob=best||await new Promise(r=>c.toBlob(r,'image/jpeg',.15));
+        if(blob.size<=perPageBudget||scale<=0.35)fits=true;else scale=Math.max(0.35,scale-0.25);
+        attempt++;
+      }
+    } else {
+      const vp=page.getViewport({scale:quality});
+      c=document.createElement('canvas');c.width=Math.max(1,Math.ceil(vp.width));c.height=Math.max(1,Math.ceil(vp.height));
+      await page.render({canvasContext:c.getContext('2d',{alpha:false}),viewport:vp,background:'white'}).promise;
+      blob=await new Promise(r=>c.toBlob(r,'image/jpeg',baseJpegQuality));
+    }
+    runningBytes+=blob.size;
     const img=await out.embedJpg(await blob.arrayBuffer());
     const p=out.addPage([base.width,base.height]);p.drawImage(img,{x:0,y:0,width:base.width,height:base.height});
-    setProgress(n,pdf.numPages,`Compressing page ${n} of ${pdf.numPages}…`);await idle();
+    if(canvas&&c){const pw=96,ph=Math.max(1,Math.round(pw*c.height/c.width));canvas.width=pw;canvas.height=ph;canvas.getContext('2d').drawImage(c,0,0,pw,ph);}
+    if(label)label.textContent=l?`पेज ${n}/${pdf.numPages} कंप्रेस हो रहा है…`:`Compressing page ${n}/${pdf.numPages}…`;
+    if(stats)stats.textContent=`${l?'अब तक':'So far'}: ${bytes(runningBytes)}`;
+    setProgress(n,pdf.numPages,l?`पेज ${n} कंप्रेस हो रहा है (${bytes(runningBytes)} अब तक)…`:`Compressing page ${n} of ${pdf.numPages} (${bytes(runningBytes)} so far)…`);
+    await idle();
   }
   const outputBytes=await out.save({useObjectStreams:true});
   downloadBlob(new Blob([outputBytes],{type:'application/pdf'}),'compressed.pdf','Compressed Download PDF');
-  showResult(`Compressed PDF is ready. Original: ${bytes(srcBytes.byteLength)} • New: ${bytes(outputBytes.length)}`);
+  const savedPct=Math.max(0,Math.round((1-outputBytes.length/srcBytes.byteLength)*100));
+  if(label)label.textContent=l?'पूरा हुआ ✅':'Done ✅';
+  if(stats)stats.textContent=`${bytes(srcBytes.byteLength)} → ${bytes(outputBytes.length)} • ${savedPct}% ${l?'कम':'smaller'}`;
+  showResult(l?`कंप्रेस्ड PDF तैयार है। Original: ${bytes(srcBytes.byteLength)} • New: ${bytes(outputBytes.length)} • ${savedPct}% छोटी`:`Compressed PDF is ready. Original: ${bytes(srcBytes.byteLength)} • New: ${bytes(outputBytes.length)} • ${savedPct}% smaller`);
 }
 
 async function pdfRepair(){
@@ -1005,6 +1312,191 @@ async function imageCompressTool(){
     setProgress(i+1,selectedFiles.length,siteLang==='hi'?`इमेज ${i+1} तैयार`:`Image ${i+1} ready`);await idle();
   }
   showResult(siteLang==='hi'?`${selectedFiles.length} इमेज कंप्रेस हो गईं।`:`${selectedFiles.length} image(s) compressed.`);
+}
+
+/* ---------- New: Passport Size Photo Maker ---------- */
+async function passportPhotoTool(){
+  const l=siteLang==='hi';
+  clearDownloads();
+  const dpi=Number($('ppDpi')?.value)||300;
+  const paper=$('ppPaper')?.value||'a4';
+  setProgress(0,1,l?'फोटो तैयार हो रही है…':'Preparing photo…');await idle();
+  const img=await loadImage(selectedFiles[0]);
+  const cmToPx=cm=>Math.round(cm/2.54*dpi);
+  const photoW=cmToPx(3.5),photoH=cmToPx(4.5);
+  // centre-crop source image to the 3.5:4.5 aspect ratio, then draw at target px size
+  const targetRatio=photoW/photoH;const srcRatio=img.naturalWidth/img.naturalHeight;
+  let sx=0,sy=0,sw=img.naturalWidth,sh=img.naturalHeight;
+  if(srcRatio>targetRatio){sw=Math.round(sh*targetRatio);sx=Math.round((img.naturalWidth-sw)/2);}
+  else{sh=Math.round(sw/targetRatio);sy=Math.round((img.naturalHeight-sh)/2);}
+  const photoCanvas=document.createElement('canvas');photoCanvas.width=photoW;photoCanvas.height=photoH;
+  const pctx=photoCanvas.getContext('2d',{alpha:false});pctx.fillStyle='#fff';pctx.fillRect(0,0,photoW,photoH);
+  pctx.drawImage(img,sx,sy,sw,sh,0,0,photoW,photoH);
+  // paper size in px at chosen dpi
+  const paperWIn=paper==='a4'?8.27:4,paperHIn=paper==='a4'?11.69:6;
+  const pageW=Math.round(paperWIn*dpi),pageH=Math.round(paperHIn*dpi);
+  const gap=Math.round(0.15*dpi/2.54); // ~1.5mm gap
+  const cols=Math.max(1,Math.floor((pageW-gap)/(photoW+gap)));
+  const rows=Math.max(1,Math.floor((pageH-gap)/(photoH+gap)));
+  const sheet=document.createElement('canvas');sheet.width=pageW;sheet.height=pageH;
+  const sctx=sheet.getContext('2d',{alpha:false});sctx.fillStyle='#fff';sctx.fillRect(0,0,pageW,pageH);
+  const totalW=cols*photoW+(cols-1)*gap,totalH=rows*photoH+(rows-1)*gap;
+  const offX=Math.round((pageW-totalW)/2),offY=Math.round((pageH-totalH)/2);
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const x=offX+c*(photoW+gap),y=offY+r*(photoH+gap);
+      sctx.drawImage(photoCanvas,x,y);
+      sctx.strokeStyle='#cbd5e1';sctx.lineWidth=1;sctx.strokeRect(x+0.5,y+0.5,photoW-1,photoH-1);
+    }
+  }
+  setProgress(1,1,l?'शीट तैयार हो रही है…':'Building sheet…');await idle();
+  const sheetBlob=await new Promise(r=>sheet.toBlob(r,'image/jpeg',.95));
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({orientation:'portrait',unit:'mm',format:paper==='a4'?'a4':[101.6,152.4],compress:true});
+  const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+  pdf.addImage(await blobToDataURL(sheetBlob),'JPEG',0,0,pw,ph,undefined,'FAST');
+  addDownload(URL.createObjectURL(sheetBlob),'passport-photo-sheet.jpg',l?'JPG शीट डाउनलोड करें':'Download JPG sheet');
+  downloadBlob(pdf.output('blob'),'passport-photo-sheet.pdf',l?'PDF शीट डाउनलोड करें':'Download PDF sheet');
+  showResult(l?`${cols*rows} पासपोर्ट फोटो कॉपी की शीट तैयार है (${photoW}×${photoH}px, ${dpi} DPI)।`:`Sheet with ${cols*rows} passport photo copies is ready (${photoW}×${photoH}px at ${dpi} DPI).`);
+}
+function blobToDataURL(blob){return new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(blob);});}
+
+/* ---------- New: 1-Click ID Card Print Formatting ---------- */
+async function idCardFormatTool(){
+  const l=siteLang==='hi';
+  clearDownloads();
+  const dpi=Number($('idDpi')?.value)||300;
+  const mmToPx=mm=>Math.round(mm/25.4*dpi);
+  const cardW=mmToPx(85.6),cardH=mmToPx(54);
+  const fitToCard=async(file)=>{
+    const img=await loadImage(file);
+    const targetRatio=cardW/cardH,srcRatio=img.naturalWidth/img.naturalHeight;
+    let sx=0,sy=0,sw=img.naturalWidth,sh=img.naturalHeight;
+    if(srcRatio>targetRatio){sw=Math.round(sh*targetRatio);sx=Math.round((img.naturalWidth-sw)/2);}
+    else{sh=Math.round(sw/targetRatio);sy=Math.round((img.naturalHeight-sh)/2);}
+    const c=document.createElement('canvas');c.width=cardW;c.height=cardH;
+    const ctx=c.getContext('2d',{alpha:false});ctx.fillStyle='#fff';ctx.fillRect(0,0,cardW,cardH);
+    ctx.drawImage(img,sx,sy,sw,sh,0,0,cardW,cardH);
+    return c;
+  };
+  setProgress(0,selectedFiles.length,l?'फ्रंट तैयार हो रहा है…':'Preparing front…');await idle();
+  const frontCanvas=await fitToCard(selectedFiles[0]);
+  let backCanvas=null;
+  if(selectedFiles[1]){setProgress(1,selectedFiles.length,l?'बैक तैयार हो रहा है…':'Preparing back…');await idle();backCanvas=await fitToCard(selectedFiles[1]);}
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});
+  const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+  const cardWmm=85.6,cardHmm=54,gapMm=10;
+  const totalW=backCanvas?cardWmm*2+gapMm:cardWmm;
+  const startX=(pw-totalW)/2,y=(ph-cardHmm)/2;
+  const frontBlob=await new Promise(r=>frontCanvas.toBlob(r,'image/jpeg',.95));
+  pdf.addImage(await blobToDataURL(frontBlob),'JPEG',startX,y,cardWmm,cardHmm,undefined,'FAST');
+  addDownload(URL.createObjectURL(frontBlob),'id-card-front.jpg',l?'फ्रंट JPG डाउनलोड करें':'Download front JPG');
+  if(backCanvas){
+    const backBlob=await new Promise(r=>backCanvas.toBlob(r,'image/jpeg',.95));
+    pdf.addImage(await blobToDataURL(backBlob),'JPEG',startX+cardWmm+gapMm,y,cardWmm,cardHmm,undefined,'FAST');
+    addDownload(URL.createObjectURL(backBlob),'id-card-back.jpg',l?'बैक JPG डाउनलोड करें':'Download back JPG');
+  }
+  downloadBlob(pdf.output('blob'),'id-card-print.pdf',l?'प्रिंट PDF डाउनलोड करें':'Download print PDF');
+  setProgress(selectedFiles.length,selectedFiles.length,l?'तैयार':'Ready');
+  showResult(l?'ID कार्ड फॉर्मेट हो गया है (85.6×54mm)।':'ID card formatted to standard size (85.6×54mm).');
+}
+
+/* ---------- New: Multi-Image to Single Page A4 Binder ---------- */
+async function a4BinderTool(){
+  const l=siteLang==='hi';
+  clearDownloads();
+  const orientation=$('binderOrientation')?.value||'portrait';
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({orientation,unit:'mm',format:'a4',compress:true});
+  const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+  const margin=8,gap=6;
+  const chunks=[];for(let i=0;i<selectedFiles.length;i+=6)chunks.push(selectedFiles.slice(i,i+6));
+  for(let ci=0;ci<chunks.length;ci++){
+    const chunk=chunks[ci];
+    if(ci>0)pdf.addPage('a4',orientation);
+    const n=chunk.length;
+    const cols=n<=1?1:2,rows=Math.ceil(n/cols);
+    const cellW=(pw-margin*2-gap*(cols-1))/cols,cellH=(ph-margin*2-gap*(rows-1))/rows;
+    for(let i=0;i<n;i++){
+      setProgress(ci*6+i+1,selectedFiles.length,l?`इमेज ${ci*6+i+1} जोड़ी जा रही है…`:`Adding image ${ci*6+i+1}…`);await idle();
+      const img=await loadImage(chunk[i]);
+      const col=i%cols,row=Math.floor(i/cols);
+      const cellX=margin+col*(cellW+gap),cellY=margin+row*(cellH+gap);
+      const scale=Math.min(cellW/img.naturalWidth,cellH/img.naturalHeight);
+      const dw=img.naturalWidth*scale,dh=img.naturalHeight*scale;
+      const dx=cellX+(cellW-dw)/2,dy=cellY+(cellH-dh)/2;
+      const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;
+      const ctx=c.getContext('2d',{alpha:false});ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);
+      const data=c.toDataURL('image/jpeg',.92);
+      pdf.addImage(data,'JPEG',dx,dy,dw,dh,undefined,'FAST');
+      pdf.setDrawColor(203,213,225);pdf.rect(cellX,cellY,cellW,cellH);
+    }
+  }
+  downloadBlob(pdf.output('blob'),'a4-binder.pdf',l?'A4 PDF डाउनलोड करें':'Download A4 PDF');
+  showResult(l?`${selectedFiles.length} इमेज ${chunks.length} A4 पेज पर जोड़ी गईं।`:`${selectedFiles.length} image(s) bound onto ${chunks.length} A4 page(s).`);
+}
+
+/* ---------- New: Invoice / Bill Generator ---------- */
+async function invoiceGeneratorTool(){
+  const l=siteLang==='hi';
+  clearDownloads();
+  const business=$('invBusiness')?.value.trim()||(l?'आपका बिज़नेस':'Your Business');
+  const businessAddr=$('invBusinessAddr')?.value.trim()||'';
+  const client=$('invClient')?.value.trim()||(l?'ग्राहक':'Client');
+  const number=$('invNumber')?.value.trim()||'INV-001';
+  const taxPct=Number($('invTax')?.value)||0;
+  const notes=$('invNotes')?.value.trim()||'';
+  const rawLines=($('invItems')?.value||'').split('\n').map(s=>s.trim()).filter(Boolean);
+  const items=rawLines.map(line=>{
+    const parts=line.split(',').map(s=>s.trim());
+    const desc=parts[0]||(l?'आइटम':'Item');
+    const qty=Number(parts[1])||1;
+    const rate=Number(parts[2])||0;
+    return {desc,qty,rate,total:qty*rate};
+  });
+  if(!items.length){toast(l?'कम से कम एक आइटम जोड़ें':'Add at least one item');return;}
+  const subtotal=items.reduce((s,i)=>s+i.total,0);
+  const tax=subtotal*taxPct/100;
+  const grand=subtotal+tax;
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({unit:'mm',format:'a4'});
+  const pw=pdf.internal.pageSize.getWidth();
+  let y=20;
+  pdf.setFont('helvetica','bold');pdf.setFontSize(20);pdf.text(business,15,y);
+  pdf.setFont('helvetica','normal');pdf.setFontSize(10);
+  if(businessAddr){y+=6;pdf.text(businessAddr,15,y);}
+  y+=12;pdf.setFontSize(14);pdf.setFont('helvetica','bold');pdf.text(l?'इनवॉइस':'INVOICE',pw-15,20,{align:'right'});
+  pdf.setFont('helvetica','normal');pdf.setFontSize(10);
+  pdf.text(`${l?'नंबर':'No'}: ${number}`,pw-15,27,{align:'right'});
+  pdf.text(`${l?'तारीख':'Date'}: ${new Date().toLocaleDateString('en-IN')}`,pw-15,32,{align:'right'});
+  y=Math.max(y,32)+10;
+  pdf.setFont('helvetica','bold');pdf.text((l?'बिल टू':'Bill To')+':',15,y);
+  pdf.setFont('helvetica','normal');pdf.text(client,15,y+5);
+  y+=16;
+  pdf.setFillColor(15,23,42);pdf.rect(15,y,pw-30,8,'F');
+  pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(10);
+  pdf.text(l?'विवरण':'Description',18,y+5.5);
+  pdf.text(l?'मात्रा':'Qty',pw-70,y+5.5,{align:'right'});
+  pdf.text(l?'दर':'Rate',pw-45,y+5.5,{align:'right'});
+  pdf.text(l?'कुल':'Total',pw-18,y+5.5,{align:'right'});
+  y+=8;pdf.setTextColor(15,23,42);pdf.setFont('helvetica','normal');
+  items.forEach((it,i)=>{
+    y+=8;
+    if(i%2===1){pdf.setFillColor(248,250,252);pdf.rect(15,y-6,pw-30,8,'F');}
+    pdf.text(String(it.desc).slice(0,60),18,y-0.5);
+    pdf.text(String(it.qty),pw-70,y-0.5,{align:'right'});
+    pdf.text('Rs.'+it.rate.toFixed(2),pw-45,y-0.5,{align:'right'});
+    pdf.text('Rs.'+it.total.toFixed(2),pw-18,y-0.5,{align:'right'});
+  });
+  y+=12;pdf.setDrawColor(226,232,240);pdf.line(pw-80,y,pw-15,y);y+=6;
+  pdf.text((l?'सब-टोटल':'Subtotal')+':',pw-45,y,{align:'right'});pdf.text('Rs.'+subtotal.toFixed(2),pw-18,y,{align:'right'});
+  if(taxPct){y+=6;pdf.text(`${l?'टैक्स':'Tax'} (${taxPct}%):`,pw-45,y,{align:'right'});pdf.text('Rs.'+tax.toFixed(2),pw-18,y,{align:'right'});}
+  y+=8;pdf.setFont('helvetica','bold');pdf.setFontSize(12);
+  pdf.text((l?'ग्रैंड टोटल':'Grand Total')+':',pw-45,y,{align:'right'});pdf.text('Rs.'+grand.toFixed(2),pw-18,y,{align:'right'});
+  if(notes){y+=14;pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(100,116,139);pdf.text((l?'नोट':'Note')+': '+notes,15,y);}
+  downloadBlob(pdf.output('blob'),`${number}.pdf`,l?'इनवॉइस PDF डाउनलोड करें':'Download invoice PDF');
+  showResult(l?`इनवॉइस तैयार है। ग्रैंड टोटल: Rs.${grand.toFixed(2)}`:`Invoice is ready. Grand total: Rs.${grand.toFixed(2)}`);
 }
 
 async function imageResizeTool(){
@@ -1393,7 +1885,6 @@ window.addEventListener('load',()=>{
     </div>
 </div>
 <!-- Dudi PDF Editor Blog Section End -->
-<script src="https://pl30965869.profitableratecpmnetwork.com/36/86/88/3686887926455541c5ac63fcc8f67b12.js"></script>
 
 </body>
 </html>

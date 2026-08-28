@@ -16,6 +16,9 @@
   <meta property="og:image" content="./favicon.png" />
   <meta property="og:type" content="website" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/jspdf@4.2.1/dist/jspdf.umd.min.js"></script>
   <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
@@ -255,16 +258,142 @@
     .download-gate-close{margin-top:10px;background:transparent;border:0;color:#94a3b8;font-size:12px;font-weight:700;cursor:pointer}
     body.dark-mode .download-gate-card{background:#111827;color:#e5e7eb}
     @media(max-width:640px){.slider-ad-box{min-height:70px;padding:4px;border-radius:12px}.download-gate-card{padding:20px 16px}.download-gate-timer{font-size:48px}}
+
+    /* ================= DUDI AI PDF — Premium Charcoal Redesign ================= */
+    :root{--dudi-purple:#8B5CF6;--dudi-cyan:#06B6D4;--dudi-bg:#0B0F19;--dudi-bg2:#151b2c}
+    body{font-family:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif!important}
+    body.dark-mode{background:
+      radial-gradient(circle at 8% 8%,rgba(139,92,246,.14),transparent 32%),
+      radial-gradient(circle at 92% 6%,rgba(6,182,212,.14),transparent 32%),
+      var(--dudi-bg)!important;color:#e2e8f0!important}
+    body.dark-mode header{background:rgba(11,15,25,.88)!important;backdrop-filter:blur(14px);border-bottom:1px solid rgba(139,92,246,.3)!important;box-shadow:0 1px 24px rgba(6,182,212,.08)}
+    body.dark-mode .dudi-sidebar{box-shadow:0 0 0 1px rgba(139,92,246,.1) inset,0 20px 50px rgba(2,6,23,.35)}
+    body.dark-mode .dudi-sidebar:hover{border-color:rgba(6,182,212,.35)!important}
+    body.dark-mode .bg-white,body.dark-mode .feature-pill,body.dark-mode .tool-card,body.dark-mode .info-card,body.dark-mode .privacy-notice,body.dark-mode .welcome-logo-card,body.dark-mode .office-card,body.dark-mode .ai-chat-card,body.dark-mode .coming-card{background:var(--dudi-bg2)!important;color:#e2e8f0!important;border-color:rgba(148,163,184,.18)!important}
+    body.dark-mode .tool-card{box-shadow:0 0 0 1px rgba(139,92,246,.12) inset}
+    body.dark-mode .tool-card:hover{box-shadow:0 20px 50px rgba(139,92,246,.25),0 0 0 1px rgba(6,182,212,.35) inset;border-color:var(--dudi-cyan)!important}
+    body.dark-mode .bg-red-500,body.dark-mode .hover\:bg-red-600:hover,body.dark-mode #officeSparkleBtn,body.dark-mode #chooseFilesBtn{background:linear-gradient(90deg,var(--dudi-purple),var(--dudi-cyan))!important;border-color:transparent!important}
+    body.dark-mode .text-red-500,body.dark-mode .text-red-600{background:linear-gradient(90deg,var(--dudi-purple),var(--dudi-cyan));-webkit-background-clip:text;background-clip:text;color:transparent!important}
+    body.dark-mode .bg-red-50,body.dark-mode .bg-red-100,body.dark-mode .from-red-50{background:rgba(139,92,246,.12)!important;color:#c4b5fd!important}
+    body.dark-mode .border-red-100,body.dark-mode .border-red-300,body.dark-mode .border-red-400,body.dark-mode .ring-red-400{border-color:rgba(6,182,212,.5)!important}
+    body.dark-mode .hover\:bg-red-50:hover,body.dark-mode .hover\:bg-red-100:hover{background:rgba(139,92,246,.14)!important}
+    body.dark-mode .hover\:border-red-300:hover{border-color:var(--dudi-cyan)!important}
+    body.dark-mode .drop-zone{border-color:rgba(148,163,184,.35)!important}
+    body.dark-mode .drop-zone.drag{border-color:var(--dudi-cyan)!important;background:rgba(6,182,212,.08)!important;box-shadow:0 0 50px rgba(6,182,212,.35)}
+    body.dark-mode .rounded-3xl.shadow-xl{box-shadow:0 25px 70px rgba(0,0,0,.45),0 0 0 1px rgba(139,92,246,.15) inset!important}
+    body.dark-mode .headline-wrap{border-color:rgba(139,92,246,.3)!important}
+
+    /* Buttons: electric-gradient process + neon-glow download */
+    #processBtn:not(:disabled){background:linear-gradient(90deg,var(--dudi-purple),var(--dudi-cyan))!important;color:#fff!important;box-shadow:0 10px 30px rgba(139,92,246,.4);border:none!important;transition:.2s}
+    #processBtn:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 14px 38px rgba(6,182,212,.45)}
+    body.dark-mode #processBtn:disabled{background:rgba(148,163,184,.15)!important;color:#64748b!important}
+    .spinner{width:20px;height:20px;border-radius:999px;border:3px solid rgba(255,255,255,.25);border-top-color:#fff;border-right-color:var(--dudi-cyan);animation:dudiSpin .6s linear infinite}
+    @keyframes dudiSpin{to{transform:rotate(360deg)}}
+    #downloadArea a,#downloadArea button{background:linear-gradient(90deg,#10b981,var(--dudi-cyan))!important;color:#062521!important;font-weight:900;border-radius:14px!important;box-shadow:0 0 0 0 rgba(6,182,212,.55)}
+    #resultBox:not(.hidden) #downloadArea a,#resultBox:not(.hidden) #downloadArea button{animation:dudiDownloadPulse 1.7s ease-in-out infinite}
+    @keyframes dudiDownloadPulse{0%,100%{box-shadow:0 0 0 0 rgba(6,182,212,.55)}50%{box-shadow:0 0 26px 10px rgba(16,185,129,.4)}}
+
+    /* Download-gate timer — new avatar (same ad + same fast-download logic, fresh look) */
+    .download-gate-timer{background:linear-gradient(90deg,var(--dudi-purple),var(--dudi-cyan))!important;-webkit-background-clip:text;background-clip:text;color:transparent!important}
+    .fast-download-btn{background:linear-gradient(90deg,#10b981,var(--dudi-cyan))!important;box-shadow:0 0 0 0 rgba(6,182,212,.6)!important}
+    @keyframes fastGlow{to{box-shadow:0 0 26px 10px rgba(6,182,212,.4);transform:translateY(-1px)}}
+    body.dark-mode .download-gate-card{background:var(--dudi-bg2)!important;color:#e2e8f0;border:1px solid rgba(139,92,246,.25)}
+
+    /* Header logo + nav + privacy badge */
+    .dudi-logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:16px;letter-spacing:-.02em;white-space:nowrap}
+    .dudi-logo-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--dudi-purple),var(--dudi-cyan));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+    .dudi-header-nav{display:flex;align-items:center;gap:18px;font-size:13px;font-weight:800}
+    .dudi-header-nav a{color:inherit;opacity:.75;text-decoration:none;cursor:pointer}
+    .dudi-header-nav a:hover{opacity:1;color:var(--dudi-cyan)}
+    .dudi-privacy-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:900;padding:6px 12px;border-radius:999px;background:rgba(16,185,129,.12);color:#10b981;border:1px solid rgba(16,185,129,.35);white-space:nowrap}
+    body.dark-mode .dudi-privacy-badge{color:#34d399}
+    @media(max-width:900px){.dudi-header-nav,.dudi-privacy-badge{display:none}}
+
+    /* Latest guides grid */
+    .dudi-guides-section{padding:30px 0 6px}
+    .dudi-guides-head{margin-bottom:14px}
+    .dudi-guides-head h2{font-size:22px;font-weight:900;margin:2px 0 0}
+    .dudi-guides-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    @media(max-width:1024px){.dudi-guides-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:700px){.dudi-guides-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:420px){.dudi-guides-grid{grid-template-columns:1fr}}
+    .dudi-guide-card{display:flex;align-items:center;gap:10px;padding:14px;border-radius:16px;border:1px solid #e2e8f0;background:#fff;text-decoration:none;color:inherit;font-weight:700;font-size:13.5px;line-height:1.3;transition:.2s}
+    body.dark-mode .dudi-guide-card{background:rgba(255,255,255,.03);border-color:rgba(148,163,184,.18)}
+    .dudi-guide-card:hover{transform:translateY(-3px);border-color:var(--dudi-cyan);box-shadow:0 14px 34px rgba(6,182,212,.18)}
+    .dudi-guide-icon{font-size:20px;flex-shrink:0}
+
+    /* Footer links row (folded into the existing footer — no duplicate blocks) */
+    .dudi-footer-links{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:center;font-size:13px;font-weight:800;margin-top:16px;padding-top:16px;border-top:1px solid #e2e8f0}
+    body.dark-mode .dudi-footer-links{border-color:rgba(148,163,184,.18)}
+    .dudi-footer-links a{color:inherit;opacity:.75;text-decoration:none}
+    .dudi-footer-links a:hover{opacity:1;color:var(--dudi-cyan)}
+
+    /* Workspace: 3-column dashboard (left tools / center viewer / right AI zone) */
+    .dudi-mobile-toolbar{display:none;gap:10px;margin-bottom:14px}
+    .dudi-mobile-toolbar-btn{flex:1;padding:11px;border-radius:12px;font-weight:900;font-size:13px;border:1px solid #e2e8f0;background:#fff;color:inherit;cursor:pointer}
+    body.dark-mode .dudi-mobile-toolbar-btn{border-color:rgba(148,163,184,.3);background:rgba(255,255,255,.04)}
+    .dudi-drawer-overlay{position:fixed;inset:0;background:rgba(2,6,23,.6);backdrop-filter:blur(2px);z-index:9998;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+    .dudi-drawer-overlay.show{opacity:1;visibility:visible}
+    .dudi-workspace-grid{display:grid;grid-template-columns:250px 1fr 270px;gap:20px;align-items:start}
+    .dudi-center-col{min-width:0}
+    .dudi-sidebar{border:1px solid #e2e8f0;border-radius:20px;background:#fff;padding:14px;max-height:78vh;overflow:auto;position:sticky;top:78px}
+    body.dark-mode .dudi-sidebar{background:rgba(255,255,255,.03);border-color:rgba(148,163,184,.16)}
+    .dudi-sidebar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:14px}
+    .dudi-sidebar-close{display:none;width:30px;height:30px;border-radius:9px;border:1px solid #e2e8f0;background:transparent;color:inherit;font-weight:900;cursor:pointer}
+    body.dark-mode .dudi-sidebar-close{border-color:rgba(148,163,184,.3)}
+    .dudi-tool-list{display:flex;flex-direction:column;gap:4px}
+    .dudi-tool-link{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;font-size:13px;font-weight:700;text-align:left;background:transparent;border:1px solid transparent;color:inherit;cursor:pointer;width:100%}
+    .dudi-tool-link:hover{background:rgba(139,92,246,.12)}
+    .dudi-tool-link.active{background:linear-gradient(90deg,rgba(139,92,246,.22),rgba(6,182,212,.22));border-color:rgba(6,182,212,.4)}
+    .dudi-tool-link-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+    .dudi-ai-list{display:flex;flex-direction:column;gap:8px}
+    .dudi-ai-btn{display:flex;align-items:center;gap:10px;padding:12px 12px;border-radius:14px;font-weight:800;font-size:13px;border:1px solid rgba(6,182,212,.3);background:rgba(6,182,212,.06);color:inherit;cursor:pointer;text-align:left;width:100%}
+    .dudi-ai-btn:hover{border-color:var(--dudi-cyan);box-shadow:0 8px 22px rgba(6,182,212,.2);transform:translateY(-1px)}
+
+    @media(max-width:900px){
+      .dudi-mobile-toolbar{display:flex}
+      .dudi-workspace-grid{grid-template-columns:1fr}
+      .dudi-sidebar{position:fixed;top:0;height:100%;width:min(300px,84vw);z-index:9999;transform:translateX(-110%);transition:transform .3s cubic-bezier(.22,.9,.3,1);border-radius:0;max-height:none}
+      .dudi-sidebar-left{left:0}
+      .dudi-sidebar-right{right:0;transform:translateX(110%)}
+      .dudi-sidebar.show{transform:translateX(0)}
+      .dudi-sidebar-close{display:block}
+    }
+
+    /* Settings panel (language + theme) — reachable from the header on every screen */
+    .dudi-settings-panel{position:fixed;top:0;right:0;height:100%;width:min(320px,88vw);background:#fff;z-index:10022;box-shadow:-12px 0 40px rgba(15,23,42,.25);transform:translateX(110%);transition:transform .3s cubic-bezier(.22,.9,.3,1);padding:18px;overflow:auto}
+    .dudi-settings-panel.show{transform:translateX(0)}
+    body.dark-mode .dudi-settings-panel{background:var(--dudi-bg2);color:#e2e8f0}
+    .dudi-settings-group{margin-bottom:20px}
+    .dudi-settings-label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;opacity:.6;margin-bottom:8px}
+    .dudi-settings-row{display:flex;flex-wrap:wrap;gap:8px}
+    .dudi-lang-option,.dudi-theme-option,.dudi-text-option,.dudi-motion-option{padding:9px 14px;border-radius:12px;border:1px solid #e2e8f0;background:transparent;color:inherit;font-weight:800;font-size:13px;cursor:pointer}
+    body.dark-mode .dudi-lang-option,body.dark-mode .dudi-theme-option,body.dark-mode .dudi-text-option,body.dark-mode .dudi-motion-option{border-color:rgba(148,163,184,.3)}
+    .dudi-lang-option.active,.dudi-theme-option.active,.dudi-text-option.active,.dudi-motion-option.active{background:linear-gradient(90deg,var(--dudi-purple),var(--dudi-cyan));border-color:transparent;color:#fff}
+    .dudi-settings-note{font-size:12px;opacity:.65;line-height:1.5;margin:0}
+    #dudiOfflineToggleBtn.active{background:linear-gradient(90deg,#10b981,var(--dudi-cyan));border-color:transparent;color:#fff}
+
+    /* Text size */
+    body.dudi-text-sm{font-size:14px}
+    body.dudi-text-lg{font-size:18px}
+
+    /* Reduce motion */
+    body.dudi-reduce-motion *{animation:none!important;transition:none!important}
   </style>
 </head>
 <body>
+<script>(function(){try{var p=localStorage.getItem('dudiDarkMode');if(p===null||p==='1')document.body.classList.add('dark-mode');}catch(e){}})();</script>
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
-    <button onclick="goHome()" class="top-icon-btn" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></button>
+    <div class="flex items-center gap-3 min-w-0">
+      <button onclick="goHome()" class="top-icon-btn" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></button>
+      <div class="dudi-logo"><span class="dudi-logo-mark">🗂️</span><span>Dudi AI PDF</span></div>
+    </div>
+    <nav class="dudi-header-nav"><a href="#dudiGuides">Latest Guides</a><a href="javascript:void(0)" onclick="openInfo('howto')">FAQs</a></nav>
     <div class="flex items-center gap-2">
-      <button onclick="toggleLang()" id="langToggleBtn" class="top-icon-btn" aria-label="Language" title="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"/></svg></button>
-      <button onclick="toggleDarkMode()" id="darkModeBtn" class="top-icon-btn" aria-label="Dark mode" title="Dark / Light mode"><svg id="darkModeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.8 6.8 0 0 0 21 12.8Z"/></svg></button>
+      <span class="dudi-privacy-badge">🟢 100% Private &amp; Offline</span>
+      <button onclick="toggleSettingsPanel()" id="dudiSettingsBtn" class="top-icon-btn" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
       <div class="relative">
         <button onclick="toggleNotifBox()" id="notifButton" class="top-icon-btn relative" aria-label="Notifications" title="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
         <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]"><div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div><div class="rounded-xl border border-slate-100 bg-slate-50 p-2"><div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1" id="notifMsgLabel">Message</div><p id="notifMsgText" class="text-sm text-slate-600 px-1 py-2">🎉 100% free tools, koi ad nahi, koi server upload nahi — sab kuch aapke browser mein!</p></div><div class="mt-3 rounded-xl border border-slate-100 bg-white p-2 overflow-hidden"><script async="async" data-cfasync="false" src="https://pl30964195.profitableratecpmnetwork.com/3ee04ac9d05e6caef39a0d0285701995/invoke.js"></script><div id="container-3ee04ac9d05e6caef39a0d0285701995"></div></div></div>
@@ -292,6 +421,51 @@
   <a href="compress-pdf.html" class="quick-side-link"><span class="qsl-icon">📦</span> Compress PDF</a>
 </nav>
 
+<div id="dudiSettingsOverlay" class="dudi-drawer-overlay" onclick="closeSettingsPanel()"></div>
+<aside id="dudiSettingsPanel" class="dudi-settings-panel" aria-label="Settings">
+  <div class="dudi-sidebar-head"><b>⚙️ Settings</b><button type="button" class="dudi-sidebar-close" style="display:block" onclick="closeSettingsPanel()" aria-label="Close settings">✕</button></div>
+  <div class="dudi-settings-group">
+    <div class="dudi-settings-label">Text Size</div>
+    <div class="dudi-settings-row">
+      <button type="button" class="dudi-text-option" data-size="sm" onclick="setTextSize('sm')">A-</button>
+      <button type="button" class="dudi-text-option" data-size="md" onclick="setTextSize('md')">A</button>
+      <button type="button" class="dudi-text-option" data-size="lg" onclick="setTextSize('lg')">A+</button>
+    </div>
+  </div>
+  <div class="dudi-settings-group">
+    <div class="dudi-settings-label">Motion</div>
+    <div class="dudi-settings-row">
+      <button type="button" class="dudi-motion-option" data-motion="on" onclick="setReduceMotion(false)">✨ Animations On</button>
+      <button type="button" class="dudi-motion-option" data-motion="off" onclick="setReduceMotion(true)">🚫 Reduce Motion</button>
+    </div>
+  </div>
+  <div class="dudi-settings-group">
+    <div class="dudi-settings-label">Offline Mode</div>
+    <div class="dudi-settings-row">
+      <button type="button" id="dudiOfflineToggleBtn" class="dudi-lang-option" onclick="toggleOfflineMode()">📴 Enable Offline Mode</button>
+    </div>
+    <p class="dudi-settings-note" id="dudiOfflineNote" style="margin-top:8px">All tools already run 100% in your browser. Turn this on so the app itself also opens without internet after your first visit.</p>
+  </div>
+  <div class="dudi-settings-group">
+    <div class="dudi-settings-label">Auto-Download</div>
+    <div class="dudi-settings-row">
+      <button type="button" id="dudiAutoDownloadBtn" class="dudi-lang-option" onclick="toggleAutoDownload()">⬇️ Auto-download when ready</button>
+    </div>
+    <p class="dudi-settings-note" style="margin-top:8px">When on, finished files download automatically instead of waiting for you to tap Download.</p>
+  </div>
+  <div class="dudi-settings-group">
+    <div class="dudi-settings-label">App Data</div>
+    <div class="dudi-settings-row">
+      <button type="button" class="dudi-lang-option" onclick="clearDudiAppData()">🗑️ Clear Saved Settings &amp; Cache</button>
+    </div>
+    <p class="dudi-settings-note" style="margin-top:8px">Resets text size, motion and other saved preferences on this device. Your files are never stored, so there is nothing else to clear.</p>
+  </div>
+  <div class="dudi-settings-group">
+    <div class="dudi-settings-label">Privacy</div>
+    <p class="dudi-settings-note">🟢 100% Private — every file is processed on your device. Nothing is uploaded to a server.</p>
+  </div>
+</aside>
+
 <main id="home" class="max-w-7xl mx-auto px-4">
   <section class="text-center pt-14 pb-10">
     <div id="heroBadge" class="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full bg-red-50 text-red-600 px-5 py-2.5 text-sm font-black mb-5">⚡ 100% FREE • 🚫 No Server Upload • 🔁 Unlimited Use • 🎯 No Signup</div>
@@ -317,11 +491,51 @@
     <button id="officeSparkleBtn" onclick="openOfficeModal()">✨ <span id="officeSparkleBtnLabel">Office Tools with AI — 6 Live Now</span></button>
   </section>
 
-  <section class="pb-16"><button class="workshop-card w-full" onclick="openComingSoon()"><div class="text-4xl mb-2">🤖</div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">AI</div><h2 class="text-2xl font-black mt-1">AI Workshop</h2><p class="text-sm text-slate-500 mt-1">Powerful AI tools are coming soon.</p></button></section>>
+  <section class="pb-16"><button class="workshop-card w-full" onclick="openComingSoon()"><div class="text-4xl mb-2">🤖</div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">AI</div><h2 class="text-2xl font-black mt-1">AI Workshop</h2><p class="text-sm text-slate-500 mt-1">Powerful AI tools are coming soon.</p></button></section>
+
+<section class="dudi-guides-section" id="dudiGuides">
+  <div class="dudi-guides-head">
+    <div class="text-[10px] font-black uppercase tracking-widest" style="color:#06B6D4">📚 Guides</div>
+    <h2>Latest PDF Guides &amp; Articles</h2>
+  </div>
+  <div class="dudi-guides-grid">
+    <a class="dudi-guide-card" href="blog/blog1.html"><span class="dudi-guide-icon">📎</span><span>PDF Merge Kaise Karein</span></a>
+    <a class="dudi-guide-card" href="blog/blog2.html"><span class="dudi-guide-icon">✂️</span><span>PDF Split — Step by Step Guide</span></a>
+    <a class="dudi-guide-card" href="blog/blog3.html"><span class="dudi-guide-icon">📦</span><span>Compress PDF Without Losing Quality</span></a>
+    <a class="dudi-guide-card" href="blog/blog4.html"><span class="dudi-guide-icon">🔄</span><span>Rotate PDF Pages Correctly</span></a>
+    <a class="dudi-guide-card" href="blog/blog5.html"><span class="dudi-guide-icon">🔢</span><span>Add Page Numbers to a PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog6.html"><span class="dudi-guide-icon">🖼️</span><span>JPG to PDF — Complete Guide</span></a>
+    <a class="dudi-guide-card" href="blog/blog7.html"><span class="dudi-guide-icon">📄</span><span>PDF to JPG in One Click</span></a>
+    <a class="dudi-guide-card" href="blog/blog8.html"><span class="dudi-guide-icon">📝</span><span>Word to PDF Conversion Tips</span></a>
+    <a class="dudi-guide-card" href="blog/blog9.html"><span class="dudi-guide-icon">📊</span><span>Excel to PDF Made Easy</span></a>
+    <a class="dudi-guide-card" href="blog/blog10.html"><span class="dudi-guide-icon">🔐</span><span>Password Protect Your PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog11.html"><span class="dudi-guide-icon">🔓</span><span>Unlock a Protected PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog12.html"><span class="dudi-guide-icon">💧</span><span>Add a Watermark to PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog13.html"><span class="dudi-guide-icon">🖊️</span><span>How to E-Sign a PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog14.html"><span class="dudi-guide-icon">🗑️</span><span>Delete Pages From a PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog15.html"><span class="dudi-guide-icon">📃</span><span>Insert a Blank Page in PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog16.html"><span class="dudi-guide-icon">🔍</span><span>Extract Text From a PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog17.html"><span class="dudi-guide-icon">🎨</span><span>Photo Editor Pro — Full Guide</span></a>
+    <a class="dudi-guide-card" href="blog/blog18.html"><span class="dudi-guide-icon">🆔</span><span>ID Card &amp; Passport Photo Sizing</span></a>
+    <a class="dudi-guide-card" href="blog/blog19.html"><span class="dudi-guide-icon">🧾</span><span>Create an Invoice PDF</span></a>
+    <a class="dudi-guide-card" href="blog/blog20.html"><span class="dudi-guide-icon">📱</span><span>QR Code Generator &amp; Scanner</span></a>
+  </div>
+</section>
 </main>
 
 <section id="toolSection" class="hidden max-w-5xl mx-auto px-4 py-8">
   <button onclick="goHome()" class="mb-5 text-slate-500 hover:text-slate-900 font-semibold" id="backAllTools">← All tools</button>
+  <div class="dudi-mobile-toolbar">
+    <button type="button" class="dudi-mobile-toolbar-btn" onclick="toggleDudiDrawer('left')">☰ Tools</button>
+    <button type="button" class="dudi-mobile-toolbar-btn" onclick="toggleDudiDrawer('right')">✨ AI Zone</button>
+  </div>
+  <div id="dudiDrawerOverlay" class="dudi-drawer-overlay" onclick="closeDudiDrawers()"></div>
+  <div class="dudi-workspace-grid">
+    <aside id="dudiLeftSidebar" class="dudi-sidebar dudi-sidebar-left">
+      <div class="dudi-sidebar-head"><b>🗂️ All Tools</b><button type="button" class="dudi-sidebar-close" onclick="closeDudiDrawers()" aria-label="Close">✕</button></div>
+      <div id="dudiLeftToolList" class="dudi-tool-list"></div>
+    </aside>
+    <div class="dudi-center-col">
   <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
     <div class="p-6 sm:p-8 border-b flex items-center gap-4">
       <div id="toolIcon" class="w-14 h-14 rounded-2xl bg-red-100 grid place-items-center text-3xl">📄</div>
@@ -367,6 +581,18 @@ atOptions = {
       </div>
     </div>
   </div>
+    </div>
+    <aside id="dudiRightSidebar" class="dudi-sidebar dudi-sidebar-right">
+      <div class="dudi-sidebar-head"><b>✨ AI Zone</b><button type="button" class="dudi-sidebar-close" onclick="closeDudiDrawers()" aria-label="Close">✕</button></div>
+      <div class="dudi-ai-list">
+        <button type="button" class="dudi-ai-btn" onclick="openComingSoon()">✨ <span>AI Summarize</span></button>
+        <button type="button" class="dudi-ai-btn" onclick="openComingSoon()">🕵️‍♂️ <span>Auto-Redact Private Data</span></button>
+        <button type="button" class="dudi-ai-btn" onclick="openComingSoon()">🎙️ <span>Voice Command</span></button>
+        <button type="button" class="dudi-ai-btn" onclick="openAiChat()">🤖 <span>AI Chat Box</span></button>
+        <button type="button" class="dudi-ai-btn" onclick="toggleSettingsPanel()">⚙️ <span>Settings</span></button>
+      </div>
+    </aside>
+  </div>
 </section>
 
 
@@ -408,7 +634,7 @@ atOptions = {
 
 <div id="welcomeLogoPopup" aria-hidden="true"><div class="welcome-logo-card"><div class="welcome-brand logo-shake"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h6M8 16h8"/></svg></div><h2>Dudi PDF Editor</h2></div><p class="text-center text-sm text-slate-500">Fast • Private • Browser based PDF tools</p></div></div>
 
-<footer class="border-t bg-white"><div class="max-w-7xl mx-auto px-4 py-8 text-center"><div class="text-2xl font-black tracking-wide text-slate-900">Dudi PDF Editor</div><p id="footerTag" class="text-sm text-slate-500 mt-2">The world’s most privacy-focused tool</p><p class="text-sm font-black text-slate-700 mt-4">🇮🇳 Make in India</p></div></footer>
+<footer class="border-t bg-white"><div class="max-w-7xl mx-auto px-4 py-8 text-center"><div class="text-2xl font-black tracking-wide text-slate-900">Dudi PDF Editor</div><p id="footerTag" class="text-sm text-slate-500 mt-2">The world’s most privacy-focused tool</p><p class="text-sm font-black text-slate-700 mt-4">🇮🇳 Make in India</p><div class="dudi-footer-links"><a href="./privacy.html">Privacy Policy</a><a href="javascript:void(0)" onclick="openInfo('howto')">FAQ</a><a href="./disclaimer.html">Disclaimer</a><a href="./contact.html">Contact Us</a><a href="./about.html">About Us</a><a href="./terms.html">Terms &amp; Conditions</a></div></div></footer>
 <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[100] bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl text-sm max-w-[90vw] text-center"></div>
 
 <div id="downloadGate" class="download-gate hidden" aria-hidden="true"><div class="download-gate-card"><div class="text-4xl mb-2">🚀</div><h2 class="text-2xl font-black">Download तैयार है</h2><p id="downloadGateText" class="download-gate-sub">आपका डाउनलोड शुरू होने वाला है…</p><div id="downloadGateTimer" class="download-gate-timer">10</div><button id="fastDownloadBtn" type="button" class="fast-download-btn" onclick="fastDownloadNow()">🚀 Fast Download</button><button type="button" class="download-gate-close" onclick="cancelDownloadGate()">Close</button><script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script></div></div>
@@ -501,10 +727,11 @@ function toggleNotifBox(){const b=$('notifBox');if(!b)return;const opening=b.cla
 function closeNotifBox(){const b=$('notifBox');if(b)b.classList.add('hidden');}
 document.addEventListener('click',e=>{const box=$('notifBox'),btn=$('notifButton');if(box&&!box.classList.contains('hidden')&&!box.contains(e.target)&&!btn.contains(e.target))closeNotifBox();});
 
-let siteLang='en';
+let siteLang=(function(){try{var s=localStorage.getItem('dudiLang');return(s==='hi'||s==='ru')?s:'en';}catch(e){return'en';}})();
 const langText={
   en:{badge:'⚡ 100% FREE • 🚫 No Server Upload • 🔁 Unlimited Use • 🎯 No Signup',title:'PDF work, <span class="text-red-500">all in one place</span>',sub:'Convert, merge, split, rotate and turn documents into PDF — without server uploads.',footer:'The world’s most privacy-focused tool',toggle:'हिंदी'},
-  hi:{badge:'⚡ 100% फ्री • 🚫 सर्वर पर अपलोड नहीं • 🔁 बार-बार इस्तेमाल करें • 🎯 बिना साइनअप',title:'PDF का काम, <span class="text-red-500">एक ही जगह</span>',sub:'दस्तावेज़ों को कन्वर्ट, मर्ज, स्प्लिट, रोटेट करें — बिना सर्वर पर अपलोड किए।',footer:'सबसे प्राइवेसी-फ्रेंडली टूल',toggle:'English'}
+  hi:{badge:'⚡ 100% फ्री • 🚫 सर्वर पर अपलोड नहीं • 🔁 बार-बार इस्तेमाल करें • 🎯 बिना साइनअप',title:'PDF का काम, <span class="text-red-500">एक ही जगह</span>',sub:'दस्तावेज़ों को कन्वर्ट, मर्ज, स्प्लिट, रोटेट करें — बिना सर्वर पर अपलोड किए।',footer:'सबसे प्राइवेसी-फ्रेंडली टूल',toggle:'Русский'},
+  ru:{badge:'⚡ 100% бесплатно • 🚫 Без загрузки на сервер • 🔁 Без ограничений • 🎯 Без регистрации',title:'Работа с PDF <span class="text-red-500">в одном месте</span>',sub:'Конвертируйте, объединяйте, разделяйте и вращайте документы — без загрузки на сервер.',footer:'Самый приватный инструмент для PDF',toggle:'English'}
 };
 const UI_TEXT={
   en:{btnHomeLabel:'Home',menuBtnLabel:'Menu',miHowto:'❓ How to Use',miAbout:'ℹ️ About Us',miBlog:'📰 Blog',miTerms:'📜 Terms & Conditions',miPrivacy:'🔒 Privacy Policy',miContact:'✉️ Contact Us',miPhotoEditor:'🎨 Photo Editor Pro',miPhotoEditorBadge:'FREE',notifTitleText:'Notifications',notifMsgLabel:'Message',notifMsgText:'🎉 100% free tools, no ads, no server upload — everything happens right in your browser!',dropTitle:'Drop files here',dropSub:'or choose files from your device',chooseFilesBtn:'Choose files',backAllTools:'← All tools',privTitle:'Private',privDesc:'Your selected files are not uploaded to a server.',fastTitle:'Fast',fastDesc:'Processing happens directly on your device.',mnfNewLabel:'New',mnfTitle:'More New Features',mnfDesc:'Sign, Protect, Watermark, Blank Page, Extract Images, PDF Repair, Compress PDF, Delete Pages, Image Converter, Image Compressor and Word Editor'},
@@ -535,14 +762,30 @@ function toggleDarkMode(){
   const b=$('darkModeBtn');if(b)b.title=dark?'Light mode':'Dark mode';
   const icon=$('darkModeIcon');if(icon)icon.innerHTML=dark?'<path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.42 1.42M16.94 16.94l1.42 1.42M5.64 18.36l1.42-1.42M16.94 7.06l1.42-1.42"/><circle cx="12" cy="12" r="4"/>':'<path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.8 6.8 0 0 0 21 12.8Z"/>';
 }
-function initDarkMode(){if(localStorage.getItem('dudiDarkMode')==='1')document.body.classList.add('dark-mode');}
+let dudiAutoDownload=(function(){try{return localStorage.getItem('dudiAutoDownload')==='1';}catch(e){return false;}})();
+function toggleAutoDownload(){
+  dudiAutoDownload=!dudiAutoDownload;
+  try{localStorage.setItem('dudiAutoDownload',dudiAutoDownload?'1':'0');}catch(e){}
+  updateSettingsPanelUI();
+}
+function clearDudiAppData(){
+  try{
+    ['dudiTextSize','dudiReduceMotion','dudiAutoDownload','dudiDarkMode'].forEach(k=>localStorage.removeItem(k));
+  }catch(e){}
+  toast(siteLang==='hi'?'सेव की गई सेटिंग्स साफ़ हो गईं।':'Saved settings cleared.');
+  document.body.classList.remove('dudi-text-sm','dudi-text-lg','dudi-reduce-motion');
+  dudiAutoDownload=false;
+  updateSettingsPanelUI();
+}
+function initDarkMode(){var pref=localStorage.getItem('dudiDarkMode');if(pref===null||pref==='1')document.body.classList.add('dark-mode');}
 function openComingSoon(){$('comingSoonModal')?.classList.remove('hidden');}
 function closeComingSoon(){$('comingSoonModal')?.classList.add('hidden');}
 
 
-function toggleLang(){
-  siteLang=siteLang==='en'?'hi':'en';
-  const t=langText[siteLang];
+function setLanguage(code){
+  if(code!=='en'&&code!=='hi'&&code!=='ru')return;
+  siteLang=code;
+  const t=langText[siteLang]||langText.en;
   const badge=$('heroBadge'),title=$('heroTitle'),sub=$('heroSub'),footer=$('footerTag'),label=$('langToggleLabel');
   if(badge)badge.textContent=t.badge;
   if(title)title.innerHTML=t.title;
@@ -556,7 +799,11 @@ function toggleLang(){
   if(currentTool)renderOptions();
   const modal=$('infoModal');
   if(modal&&!modal.classList.contains('hidden')&&currentInfoKey)openInfo(currentInfoKey);
+  try{localStorage.setItem('dudiLang',siteLang);}catch(e){}
+  renderDudiSidebars();
+  updateSettingsPanelUI();
 }
+function toggleLang(){setLanguage(siteLang==='en'?'hi':(siteLang==='hi'?'ru':'en'));}
 let currentInfoKey=null;
 function openInfo(key){const info=siteInfo[key];if(!info)return;currentInfoKey=key;closeSiteMenu();$('infoTitle').textContent=siteLang==='hi'&&info.titleHi?info.titleHi:info.title;$('infoContent').innerHTML=siteLang==='hi'&&info.htmlHi?info.htmlHi:info.html;const modal=$('infoModal');modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('overflow-hidden');}
 function closeInfo(){const modal=$('infoModal');if(!modal)return;modal.classList.add('hidden');modal.classList.remove('flex');document.body.classList.remove('overflow-hidden');}
@@ -650,7 +897,7 @@ function closeAiChat(){const m=$('aiChatModal');if(!m)return;m.classList.add('hi
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
 const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','ageCalculator','passportPhoto','idCardFormat','a4Binder','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
-function T(t,key){return siteLang==='hi'&&t[key+'Hi']!==undefined?t[key+'Hi']:t[key];}
+function T(t,key){var suf=siteLang==='hi'?'Hi':(siteLang==='ru'?'Ru':'');if(suf&&t[key+suf]!==undefined)return t[key+suf];return t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
   const premiumLabel=siteLang==='hi'?'✅ फ्री':'✅ FREE';
@@ -702,9 +949,9 @@ function openTool(key){
   const needsNoFile=key==='wordEditor'||['ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(key);
   $('dropZone').classList.toggle('hidden',needsNoFile);
   $('fileList').classList.toggle('hidden',needsNoFile);
-  renderOptions();renderFiles();clearResult();updateButton();scrollTo(0,0);
+  renderOptions();renderFiles();clearResult();updateButton();scrollTo(0,0);renderDudiSidebars();
 }
-function goHome(){ $('home').classList.remove('hidden');$('toolSection').classList.add('hidden');currentTool=null;selectedFiles=[];photoEditorImage=null;cropDragMode=null;scrollTo(0,0); }
+function goHome(){ $('home').classList.remove('hidden');$('toolSection').classList.add('hidden');currentTool=null;selectedFiles=[];photoEditorImage=null;cropDragMode=null;scrollTo(0,0);closeDudiDrawers(); }
 document.addEventListener('input',e=>{if(['convValue','convFrom','convTo'].includes(e.target?.id)&&currentTool!=='currencyConverter')runConverter();if(e.target?.id==='specialInput')runSpecialTool();if(['ageDob','ageAsOf'].includes(e.target?.id))runAgeCalculator();});
 document.addEventListener('change',e=>{if(['convFrom','convTo'].includes(e.target?.id)&&currentTool!=='currencyConverter')runConverter();});
 
@@ -1816,7 +2063,7 @@ let __downloadGateTimer=null,__downloadGateSeconds=10,__downloadGateUrl='',__dow
 const FAST_DOWNLOAD_URL='https://www.profitableratecpmnetwork.com/ns41dvei5?key=2c87ec33a6d219448ad2d57bbdd54103';
 function triggerFileDownload(url,name){const a=document.createElement('a');a.href=url;a.download=name||'download';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();}
 function closeDownloadGate(){clearInterval(__downloadGateTimer);__downloadGateTimer=null;const gate=$('downloadGate');if(gate){gate.classList.add('hidden');gate.setAttribute('aria-hidden','true');}const fast=$('fastDownloadBtn');if(fast)fast.classList.remove('show');}
-function openDownloadGate(url,name){__downloadGateUrl=url;__downloadGateName=name||'download';__downloadGateSeconds=10;clearInterval(__downloadGateTimer);const gate=$('downloadGate'),timer=$('downloadGateTimer'),fast=$('fastDownloadBtn');if(!gate||!timer||!fast){triggerFileDownload(url,name);return;}timer.textContent='10';fast.classList.remove('show');gate.classList.remove('hidden');gate.setAttribute('aria-hidden','false');$('downloadGateText').textContent=siteLang==='hi'?'डाउनलोड शुरू होने के लिए 10 सेकंड बाकी हैं।':'Your download will start automatically in 10 seconds.';__downloadGateTimer=setInterval(()=>{__downloadGateSeconds=Math.max(0,__downloadGateSeconds-1);timer.textContent=String(__downloadGateSeconds);if(__downloadGateSeconds===6)fast.classList.add('show');if(__downloadGateSeconds===0){clearInterval(__downloadGateTimer);__downloadGateTimer=null;triggerFileDownload(__downloadGateUrl,__downloadGateName);closeDownloadGate();}},1000);}
+function openDownloadGate(url,name){if(dudiAutoDownload){triggerFileDownload(url,name);return;}__downloadGateUrl=url;__downloadGateName=name||'download';__downloadGateSeconds=10;clearInterval(__downloadGateTimer);const gate=$('downloadGate'),timer=$('downloadGateTimer'),fast=$('fastDownloadBtn');if(!gate||!timer||!fast){triggerFileDownload(url,name);return;}timer.textContent='10';fast.classList.remove('show');gate.classList.remove('hidden');gate.setAttribute('aria-hidden','false');$('downloadGateText').textContent=siteLang==='hi'?'डाउनलोड शुरू होने के लिए 10 सेकंड बाकी हैं।':'Your download will start automatically in 10 seconds.';__downloadGateTimer=setInterval(()=>{__downloadGateSeconds=Math.max(0,__downloadGateSeconds-1);timer.textContent=String(__downloadGateSeconds);if(__downloadGateSeconds===6)fast.classList.add('show');if(__downloadGateSeconds===0){clearInterval(__downloadGateTimer);__downloadGateTimer=null;triggerFileDownload(__downloadGateUrl,__downloadGateName);closeDownloadGate();}},1000);}
 function fastDownloadNow(){if(!__downloadGateUrl)return;window.open(FAST_DOWNLOAD_URL,'_blank','noopener,noreferrer');triggerFileDownload(__downloadGateUrl,__downloadGateName);closeDownloadGate();}
 function cancelDownloadGate(){closeDownloadGate();}
 function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');$('resultText').textContent=siteLang==='hi'?'फाइल तैयार है। नीचे डाउनलोड बटन दबाएं।':'File is ready. Click the Download button below.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
@@ -1834,6 +2081,13 @@ function toast(msg){const t=$('toast');t.textContent=msg;t.classList.remove('hid
 // Show the welcome logo popup for 3 seconds whenever the website is opened.
 window.addEventListener('load',()=>{
   initDarkMode();
+  try{
+    const savedSize=localStorage.getItem('dudiTextSize');
+    if(savedSize==='sm'||savedSize==='lg')document.body.classList.add(savedSize==='sm'?'dudi-text-sm':'dudi-text-lg');
+    if(localStorage.getItem('dudiReduceMotion')==='1')document.body.classList.add('dudi-reduce-motion');
+  }catch(e){}
+  if(siteLang!=='en'){const _t=langText[siteLang]||langText.en;const _badge=$('heroBadge'),_title=$('heroTitle'),_sub=$('heroSub'),_footer=$('footerTag'),_label=$('langToggleLabel');if(_badge)_badge.textContent=_t.badge;if(_title)_title.innerHTML=_t.title;if(_sub)_sub.textContent=_t.sub;if(_footer)_footer.textContent=_t.footer;if(_label)_label.textContent=_t.toggle;document.documentElement.lang=siteLang;applyUiText();}
+  updateSettingsPanelUI();
   const popup=document.getElementById('welcomeLogoPopup');
   if(popup){
     setTimeout(()=>popup.classList.add('hide'),2200);
@@ -1986,28 +2240,116 @@ window.addEventListener('load', runDudiEngine);
 </style>
 <!-- Rayazan Text-Based Premium Footer End -->
 
+<script>
+/* ---- Dudi AI PDF: workspace sidebars + settings panel (dark theme, EN/HI/RU, light/dark) ---- */
+function renderDudiSidebars(){
+  const left=document.getElementById('dudiLeftToolList');
+  if(left){
+    if(!left.dataset.filled){
+      let html='';
+      for(const k in tools){
+        const t=tools[k];
+        html+=`<button type="button" class="dudi-tool-link" data-tool="${k}" onclick="openTool('${k}')"><span class="dudi-tool-link-icon">${t.icon}</span><span>${T(t,'title')}</span></button>`;
+      }
+      left.innerHTML=html;
+      left.dataset.filled='1';
+    }else{
+      left.querySelectorAll('.dudi-tool-link').forEach(b=>{
+        const t=tools[b.getAttribute('data-tool')];
+        if(t)b.querySelector('span:last-child').textContent=T(t,'title');
+      });
+    }
+    left.querySelectorAll('.dudi-tool-link').forEach(b=>b.classList.toggle('active',b.getAttribute('data-tool')===currentTool));
+  }
+  closeDudiDrawers();
+}
+function toggleDudiDrawer(side){
+  const el=document.getElementById(side==='left'?'dudiLeftSidebar':'dudiRightSidebar');
+  const ov=document.getElementById('dudiDrawerOverlay');
+  if(!el||!ov)return;
+  const opening=!el.classList.contains('show');
+  closeDudiDrawers();
+  if(opening){el.classList.add('show');ov.classList.add('show');document.body.classList.add('overflow-hidden');}
+}
+function closeDudiDrawers(){
+  document.getElementById('dudiLeftSidebar')?.classList.remove('show');
+  document.getElementById('dudiRightSidebar')?.classList.remove('show');
+  document.getElementById('dudiDrawerOverlay')?.classList.remove('show');
+  document.body.classList.remove('overflow-hidden');
+}
+function toggleSettingsPanel(){
+  const p=document.getElementById('dudiSettingsPanel'),ov=document.getElementById('dudiSettingsOverlay');
+  if(!p||!ov)return;
+  const opening=!p.classList.contains('show');
+  closeSettingsPanel();closeQuickSideMenu();closeSiteMenu();closeNotifBox();
+  if(opening){p.classList.add('show');ov.classList.add('show');document.body.classList.add('overflow-hidden');updateSettingsPanelUI();}
+}
+function closeSettingsPanel(){
+  document.getElementById('dudiSettingsPanel')?.classList.remove('show');
+  document.getElementById('dudiSettingsOverlay')?.classList.remove('show');
+  document.body.classList.remove('overflow-hidden');
+}
+function setTheme(mode){
+  const dark=document.body.classList.contains('dark-mode');
+  if((mode==='dark')!==dark)toggleDarkMode();
+  updateSettingsPanelUI();
+}
+function updateSettingsPanelUI(){
+  const size=document.body.classList.contains('dudi-text-lg')?'lg':(document.body.classList.contains('dudi-text-sm')?'sm':'md');
+  document.querySelectorAll('.dudi-text-option').forEach(b=>b.classList.toggle('active',b.getAttribute('data-size')===size));
+  const reduced=document.body.classList.contains('dudi-reduce-motion');
+  document.querySelectorAll('.dudi-motion-option').forEach(b=>b.classList.toggle('active',(b.getAttribute('data-motion')==='off')===reduced));
+  const offBtn=document.getElementById('dudiOfflineToggleBtn'),offNote=document.getElementById('dudiOfflineNote');
+  if(offBtn){
+    const on='serviceWorker' in navigator && navigator.serviceWorker.controller;
+    offBtn.classList.toggle('active',!!on);
+    offBtn.textContent=on?'✅ Offline Mode Is On':'📴 Enable Offline Mode';
+  }
+  const adBtn=document.getElementById('dudiAutoDownloadBtn');
+  if(adBtn){
+    adBtn.classList.toggle('active',!!dudiAutoDownload);
+    adBtn.textContent=dudiAutoDownload?'✅ Auto-download is On':'⬇️ Auto-download when ready';
+  }
+}
+
+/* ---- Text size ---- */
+function setTextSize(size){
+  document.body.classList.remove('dudi-text-sm','dudi-text-lg');
+  if(size==='sm')document.body.classList.add('dudi-text-sm');
+  if(size==='lg')document.body.classList.add('dudi-text-lg');
+  try{localStorage.setItem('dudiTextSize',size);}catch(e){}
+  updateSettingsPanelUI();
+}
+
+/* ---- Reduce motion (accessibility) ---- */
+function setReduceMotion(on){
+  document.body.classList.toggle('dudi-reduce-motion',!!on);
+  try{localStorage.setItem('dudiReduceMotion',on?'1':'0');}catch(e){}
+  updateSettingsPanelUI();
+}
+
+/* ---- Offline Mode: registers sw.js only if that file is present next to
+   index.html. It never breaks the site if the file is missing — it just
+   tells the user how to turn the feature on. ---- */
+function toggleOfflineMode(){
+  if(!('serviceWorker' in navigator)){
+    toast('Your browser does not support offline mode.');
+    return;
+  }
+  if(navigator.serviceWorker.controller){
+    navigator.serviceWorker.getRegistrations().then(regs=>{regs.forEach(r=>r.unregister());});
+    toast('Offline mode turned off. Reload the page to apply.');
+    setTimeout(updateSettingsPanelUI,300);
+    return;
+  }
+  navigator.serviceWorker.register('./sw.js').then(()=>{
+    toast('Offline mode is on — this app will now open even without internet.');
+    updateSettingsPanelUI();
+  }).catch(()=>{
+    toast('To enable offline mode, add the sw.js file next to index.html in your GitHub repo.');
+  });
+}
+</script>
+
 </body>
 </html>
-<!-- ============================================================= -->
-<!-- DUDI PDF EDITOR - COMPLETE DIRECT NAVIGATION FOOTER -->
-<!-- ============================================================= -->
-<footer style="margin-top: 60px; padding: 30px 20px; text-align: center; border-top: 1px solid #e5e7eb; font-family: sans-serif; background-color: #f9fafb;">
-  <p style="color: #6b7280; font-size: 14px; margin-bottom: 15px;">&copy; 2026 Dudi PDF Editor. All rights reserved.</p>
-  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    
-    <!-- Links open instantly in the same tab with direct navigation -->
-    <a href="./about.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">About Us</a>
-    
-    <a href="./terms.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Terms & Conditions</a>
-    
-    <a href="./privacy.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Privacy Policy</a>
-    
-    <a href="./faq.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">FAQ</a>
-    
-    <a href="./disclaimer.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Disclaimer</a>
-    
-    <a href="./contact.html" style="text-decoration: none; color: #ef4444; font-weight: 600; font-size: 14px;">Contact Us</a>
-    
-  </div>
-</footer>
-<!-- ============================================================= -->

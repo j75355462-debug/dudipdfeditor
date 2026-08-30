@@ -193,6 +193,13 @@
     .brand-mark svg{width:21px;height:21px;color:#fff}
     .logo-shake{animation:logoShake .9s ease-in-out infinite alternate}@keyframes logoShake{0%{transform:translateX(-2px) rotate(-1deg)}50%{transform:translateX(2px) rotate(1deg)}100%{transform:translateX(-1px) rotate(-.5deg)}}
     .feature-slider-shell{position:relative}.feature-slider{display:flex;gap:12px;overflow:hidden;scroll-behavior:smooth;padding:4px 34px 12px;scrollbar-width:none}.feature-slider::-webkit-scrollbar{display:none}
+    .feature-side-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:36px;height:36px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.16);font-weight:900;font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0f172a}
+    .feature-side-nav:hover{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.15),0 10px 25px rgba(14,165,233,.16)}
+    .feature-side-nav:active{transform:translateY(-50%) scale(.94)}
+    .feature-side-nav-left{left:-2px}
+    .feature-side-nav-right{right:-2px}
+    body.dark-mode .feature-side-nav{background:#111827;color:#fff;border-color:#334155}
+    @media(max-width:640px){.feature-side-nav{width:30px;height:30px;font-size:15px}.feature-side-nav-left{left:0}.feature-side-nav-right{right:0}}
     .feature-slide{flex:0 0 min(260px,82vw)}.feature-nav{width:34px;height:34px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.12);font-weight:900;cursor:pointer}
     body.dark-mode .feature-nav{background:#111827;color:#fff;border-color:#334155}
     .slider-dot{width:7px;height:7px;border-radius:999px;background:#cbd5e1;transition:.2s}.slider-dot.active{width:20px;background:#ef4444}
@@ -487,7 +494,7 @@
 
   <section class="pb-8">
     <div class="flex items-center justify-between mb-3"><div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">✨ New</div><h2 class="text-xl sm:text-2xl font-black" id="mnfTitle">All New Features</h2></div><div class="flex gap-2"><button class="feature-nav" onclick="slideFeatures(-1)" aria-label="Previous">‹</button><button class="feature-nav" onclick="slideFeatures(1)" aria-label="Next">›</button></div></div>
-    <div class="feature-slider-shell"><div id="featureSlider" class="feature-slider"></div></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
+    <div class="feature-slider-shell"><button type="button" class="feature-side-nav feature-side-nav-left" onclick="slideFeatures(-1)" aria-label="Previous">‹</button><div id="featureSlider" class="feature-slider"></div><button type="button" class="feature-side-nav feature-side-nav-right" onclick="slideFeatures(1)" aria-label="Next">›</button></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
     <div class="slider-ad-wrap"><div class="slider-ad-box"><div><script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script></div></div></div>
     <button id="officeSparkleBtn" onclick="openOfficeModal()">✨ <span id="officeSparkleBtnLabel">Office Tools with AI — 6 Live Now</span></button>
   </section>
@@ -638,7 +645,7 @@ atOptions = {
 <footer class="border-t bg-white"><div class="max-w-7xl mx-auto px-4 py-8 text-center"><div class="text-2xl font-black tracking-wide text-slate-900">Dudi PDF Editor</div><p id="footerTag" class="text-sm text-slate-500 mt-2">The world’s most privacy-focused tool</p><p class="text-sm font-black text-slate-700 mt-4">🇮🇳 Make in India</p><div class="dudi-footer-links"><a href="./privacy.html">Privacy Policy</a><a href="javascript:void(0)" onclick="openInfo('howto')">FAQ</a><a href="./disclaimer.html">Disclaimer</a><a href="./contact.html">Contact Us</a><a href="./about.html">About Us</a><a href="./terms.html">Terms &amp; Conditions</a></div></div></footer>
 <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[100] bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl text-sm max-w-[90vw] text-center"></div>
 
-<div id="downloadGate" class="download-gate hidden" aria-hidden="true"><div class="download-gate-card"><div class="text-4xl mb-2">🚀</div><h2 class="text-2xl font-black">Download is ready</h2><p id="downloadGateText" class="download-gate-sub">Your download will start automatically in 10 seconds.</p><div id="downloadGateTimer" class="download-gate-timer">10</div><button id="fastDownloadBtn" type="button" class="fast-download-btn" onclick="fastDownloadNow()">🚀 Fast Download</button><button type="button" class="download-gate-close" onclick="cancelDownloadGate()">Close</button><script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script></div></div>
+<div id="downloadGate" class="download-gate hidden" aria-hidden="true"><div class="download-gate-card"><div class="text-4xl mb-2">🚀</div><h2 class="text-2xl font-black">Download is ready</h2><p id="downloadGateText" class="download-gate-sub">Preparing your download… please wait 8 seconds.</p><div id="downloadGateTimer" class="download-gate-timer">8</div><button id="fastDownloadBtn" type="button" class="fast-download-btn" onclick="fastDownloadNow()">🚀 Fast Download</button><button type="button" class="download-gate-close" onclick="cancelDownloadGate()">Close</button></div></div>
 
 <div id="comingSoonModal" class="hidden" onclick="if(event.target===this)closeComingSoon()"><div class="coming-card"><div class="coming-icon">🤖</div><h2 class="text-2xl font-black mt-2">Coming Soon</h2><p class="text-slate-500 text-sm mt-2">AI Workshop is being prepared. Stay tuned!</p><button onclick="closeComingSoon()" class="mt-5 bg-red-500 hover:bg-red-600 text-white font-black px-7 py-3 rounded-xl">OK</button></div></div>
 <div id="privacyNotice" class="privacy-notice" role="status"><div class="min-w-0"><div id="privacyNoticeTitle" class="font-black text-slate-800 text-sm">🔒 We are not using cookies</div><div id="privacyNoticeText" class="text-xs text-slate-500 mt-1">This editor does not use cookies for your work. Your data and processing stay on your device.</div></div><button class="privacy-ok" onclick="closePrivacyNotice()">OK</button></div>
@@ -700,7 +707,8 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  htmlEntities:{title:'HTML Entities Converter',titleHi:'HTML Entities कनवर्टर',desc:'Convert HTML special characters to entities and back.',descHi:'HTML special characters को entities में बदलें और वापस करें।',icon:'<>',accept:'',multiple:false,button:'Convert HTML',buttonHi:'HTML बदलें',hint:'Example: & → &amp;',hintHi:'उदाहरण: & → &amp;',isNew:true},
  hashGenerator:{title:'MD5 / SHA-256 Hash Generator',titleHi:'MD5 / SHA-256 Hash Generator',desc:'Generate MD5 and SHA-256 hashes locally.',descHi:'MD5 और SHA-256 hash लोकली बनाएं।',icon:'#️⃣',accept:'',multiple:false,button:'Generate Hash',buttonHi:'Hash बनाएं',hint:'Hashing is not encryption',hintHi:'Hashing encryption नहीं है',isNew:true},
  stopwatchTimer:{title:'Stopwatch & Timer',titleHi:'Stopwatch & Timer',desc:'Use a stopwatch or countdown timer.',descHi:'Stopwatch या countdown timer चलाएं।',icon:'⏲️',accept:'',multiple:false,button:'Start',buttonHi:'शुरू करें',hint:'Choose stopwatch or timer',hintHi:'Stopwatch या timer चुनें',isNew:true},
- diceRoller:{title:'Random Number / Dice Roller',titleHi:'Random Number / Dice Roller',desc:'Generate random numbers or roll virtual dice.',descHi:'रैंडम नंबर निकालें या वर्चुअल dice रोल करें।',icon:'🎲',accept:'',multiple:false,button:'Roll',buttonHi:'रोल करें',hint:'Choose a mode',hintHi:'मोड चुनें',isNew:true}
+ diceRoller:{title:'Random Number / Dice Roller',titleHi:'Random Number / Dice Roller',desc:'Generate random numbers or roll virtual dice.',descHi:'रैंडम नंबर निकालें या वर्चुअल dice रोल करें।',icon:'🎲',accept:'',multiple:false,button:'Roll',buttonHi:'रोल करें',hint:'Choose a mode',hintHi:'मोड चुनें',isNew:true},
+ resumeBuilder:{title:'AI Resume Builder',titleHi:'AI Resume Builder',desc:'Fill in your details and build a polished, professional resume as a PDF — right in your browser.',descHi:'अपनी डिटेल भरें और ब्राउज़र में ही एक प्रोफेशनल Resume PDF तैयार करें।',icon:'🧠',accept:'',multiple:false,button:'Build & Download Resume',buttonHi:'Resume बनाएं और डाउनलोड करें',hint:'No sign-up — everything stays on your device',hintHi:'कोई sign-up नहीं — सब कुछ आपके डिवाइस पर ही रहता है',isNew:true}
 };
 
 let currentTool=null,selectedFiles=[],processing=false,pdfjs=null;
@@ -897,7 +905,7 @@ function openAiChat(){
 function closeAiChat(){const m=$('aiChatModal');if(!m)return;m.classList.add('hidden');m.classList.remove('flex');document.body.classList.remove('overflow-hidden');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
-const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','ageCalculator','passportPhoto','idCardFormat','a4Binder','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
+const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','ageCalculator','passportPhoto','idCardFormat','a4Binder','invoiceGenerator','resumeBuilder','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
 function T(t,key){var suf=siteLang==='hi'?'Hi':(siteLang==='ru'?'Ru':'');if(suf&&t[key+suf]!==undefined)return t[key+suf];return t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
@@ -947,7 +955,7 @@ function openTool(key){
   $('home').classList.add('hidden');$('toolSection').classList.remove('hidden');
   $('toolIcon').textContent=t.icon;$('toolTitle').textContent=T(t,'title');$('toolDescription').textContent=T(t,'desc');
   $('fileInput').accept=t.accept;$('fileInput').multiple=t.multiple;$('fileHint').textContent=T(t,'hint');
-  const needsNoFile=key==='wordEditor'||['ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(key);
+  const needsNoFile=key==='wordEditor'||['ageCalculator','invoiceGenerator','resumeBuilder','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(key);
   $('dropZone').classList.toggle('hidden',needsNoFile);
   $('fileList').classList.toggle('hidden',needsNoFile);
   renderOptions();renderFiles();clearResult();updateButton();scrollTo(0,0);renderDudiSidebars();
@@ -990,6 +998,34 @@ function renderOptions(){
       <div class="sm:col-span-2"><label class="block text-sm font-bold mb-2">${l?'आइटम — हर लाइन में: नाम, मात्रा, दर':'Items — one per line: Description, Qty, Rate'}</label><textarea id="invItems" class="w-full border rounded-xl px-4 py-3 min-h-28" placeholder="${l?'जैसे:\nप्रिंटिंग सर्विस, 2, 500\nडिज़ाइन वर्क, 1, 1200':'e.g.\nPrinting Service, 2, 500\nDesign Work, 1, 1200'}"></textarea></div>
       <div><label class="block text-sm font-bold mb-2">${l?'टैक्स (%) — वैकल्पिक':'Tax (%) — optional'}</label><input id="invTax" type="number" min="0" max="100" step="0.01" value="0" class="w-full border rounded-xl px-4 py-3"></div>
       <div><label class="block text-sm font-bold mb-2">${l?'नोट्स — वैकल्पिक':'Notes — optional'}</label><input id="invNotes" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: 7 दिन में भुगतान करें':'e.g. Payment due in 7 days'}"></div>
+    </div>`;
+    box.classList.remove('hidden');
+  } else if(currentTool==='resumeBuilder'){
+    const l=siteLang==='hi';
+    box.innerHTML=`<div class="dudi-resume-form space-y-5">
+      <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-800 text-sm">${l?'सभी डिटेल भरें (Summary छोड़ सकते हैं, AI उसे अपने आप बना देगा), नीचे टेम्पलेट चुनें और Build बटन दबाएं।':'Fill in your details (you can leave Summary blank — AI will write one for you), pick a template below, then press Build.'}</div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="block text-sm font-bold mb-2">${l?'पूरा नाम *':'Full Name *'}</label><input id="rbName" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: रोहन शर्मा':'e.g. Rohan Sharma'}"></div>
+        <div><label class="block text-sm font-bold mb-2">${l?'पद / रोल *':'Target Role / Title *'}</label><input id="rbTitle" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: वेब डेवलपर':'e.g. Web Developer'}"></div>
+        <div><label class="block text-sm font-bold mb-2">Email</label><input id="rbEmail" type="email" class="w-full border rounded-xl px-4 py-3" placeholder="you@example.com"></div>
+        <div><label class="block text-sm font-bold mb-2">${l?'फोन':'Phone'}</label><input id="rbPhone" class="w-full border rounded-xl px-4 py-3" placeholder="+91 90000 00000"></div>
+        <div><label class="block text-sm font-bold mb-2">${l?'शहर / लोकेशन':'Location'}</label><input id="rbLocation" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: जयपुर, राजस्थान':'e.g. Jaipur, Rajasthan'}"></div>
+        <div><label class="block text-sm font-bold mb-2">LinkedIn / Portfolio</label><input id="rbLink" class="w-full border rounded-xl px-4 py-3" placeholder="linkedin.com/in/…"></div>
+      </div>
+      <div><label class="block text-sm font-bold mb-2">${l?'प्रोफेशनल समरी — खाली छोड़ सकते हैं':'Professional Summary — optional, leave blank for AI to write one'}</label><textarea id="rbSummary" class="w-full border rounded-xl px-4 py-3 min-h-20" placeholder="${l?'2-3 लाइनों में अपने बारे में बताएं…':'2-3 lines about yourself…'}"></textarea></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'कार्य अनुभव — हर लाइन: पद @ कंपनी | अवधि | काम (सेमीकोलन से अलग)':'Work Experience — one entry per line: Role @ Company | Duration | responsibilities separated by ;'}</label><textarea id="rbExperience" class="w-full border rounded-xl px-4 py-3 min-h-28" placeholder="${l?'जैसे:\nवेब डेवलपर @ ABC टेक | जन 2022 - अभी | वेबसाइट बनाई; टीम को लीड किया\nइंटर्न @ XYZ | जून 2021 - दिस 2021 | बग फिक्स किए':'e.g.\nWeb Developer @ ABC Tech | Jan 2022 - Present | Built client websites; Led a 3-person team\nIntern @ XYZ | Jun 2021 - Dec 2021 | Fixed bugs; Wrote documentation'}"></textarea></div>
+      <div><label class="block text-sm font-bold mb-2">${l?'शिक्षा — हर लाइन: डिग्री, संस्थान, वर्ष':'Education — one per line: Degree, Institution, Year'}</label><textarea id="rbEducation" class="w-full border rounded-xl px-4 py-3 min-h-20" placeholder="${l?'जैसे:\nB.Tech Computer Science, XYZ University, 2023':'e.g.\nB.Tech Computer Science, XYZ University, 2023'}"></textarea></div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="block text-sm font-bold mb-2">${l?'स्किल्स (कॉमा से अलग)':'Skills (comma separated)'}</label><textarea id="rbSkills" class="w-full border rounded-xl px-4 py-3 min-h-16" placeholder="${l?'जैसे: JavaScript, React, टीम वर्क':'e.g. JavaScript, React, Team Leadership'}"></textarea></div>
+        <div><label class="block text-sm font-bold mb-2">${l?'भाषाएं — वैकल्पिक':'Languages — optional'}</label><input id="rbLanguages" class="w-full border rounded-xl px-4 py-3" placeholder="${l?'जैसे: हिंदी, अंग्रेज़ी':'e.g. English, Hindi'}"></div>
+      </div>
+      <div>
+        <label class="block text-sm font-bold mb-2">${l?'टेम्पलेट चुनें':'Choose a Template'}</label>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="dudi-resume-tpl-option"><input type="radio" name="rbTemplate" value="modern" checked><div><b>${l?'मॉडर्न (बोल्ड हेडर)':'Modern — Bold Header'}</b><span class="block text-xs text-slate-500 mt-1">${l?'साफ, कलरफुल हेडर के साथ क्लासिक लेआउट।':'Clean single-column layout with a bold colored header band.'}</span></div></label>
+          <label class="dudi-resume-tpl-option"><input type="radio" name="rbTemplate" value="sidebar"><div><b>${l?'एलिगेंट (साइडबार)':'Elegant — Sidebar'}</b><span class="block text-xs text-slate-500 mt-1">${l?'डार्क साइडबार में कॉन्टैक्ट और स्किल्स।':'Dark sidebar for contact info and skills, content on the right.'}</span></div></label>
+        </div>
+      </div>
     </div>`;
     box.classList.remove('hidden');
   } else if(currentTool==='qrGenerator'){
@@ -1236,7 +1272,7 @@ function addFiles(files){const valid=files.filter(validFile);if(!valid.length)re
 function renderFiles(){$('fileList').innerHTML=selectedFiles.map((f,i)=>`<div class="flex items-center gap-3 p-4 bg-slate-50 border rounded-xl"><div class="text-2xl">${fileIcon(f)}</div><div class="flex-1 min-w-0"><b class="block truncate text-sm">${esc(f.name)}</b><span class="text-xs text-slate-400">${bytes(f.size)}</span></div><button onclick="removeFile(${i})" class="w-9 h-9 rounded-lg hover:bg-red-100">✕</button></div>`).join('');}
 function fileIcon(f){return /image/i.test(f.type)?'🖼️':/word|docx/i.test(f.type)||/\.docx$/i.test(f.name)?'📝':/sheet|excel|xlsx|xls/i.test(f.type)||/\.(xlsx|xls)$/i.test(f.name)?'📊':'📄';}
 function removeFile(i){selectedFiles.splice(i,1);renderFiles();updateButton();}
-function updateButton(){const b=$('processBtn');const noFileTool=['wordEditor','ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool);const fileOk=selectedFiles.length||noFileTool;if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
+function updateButton(){const b=$('processBtn');const noFileTool=['wordEditor','ageCalculator','invoiceGenerator','resumeBuilder','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool);const fileOk=selectedFiles.length||noFileTool;if(!fileOk||processing){b.disabled=true;b.className='w-full mt-6 bg-slate-200 text-slate-400 font-black py-4 rounded-xl flex items-center justify-center gap-3';if(!processing)$('processBtnText').textContent=siteLang==='hi'?'पहले फाइल चुनें':'Choose files first';return}b.disabled=false;b.className='w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3';$('processBtnText').textContent=T(tools[currentTool],'button');}
 
 async function ocrConverter(){
   if(!window.Tesseract)throw new Error('OCR engine is still loading. Please wait a moment and try again.');
@@ -1309,7 +1345,7 @@ function rollRandomTool(){if($('diceMode').value==='dice')$('randomResult').text
 async function simpleFeatureProcess(){if(currentTool==='currencyConverter')await runCurrencyConverter();else if(['lengthConverter','weightConverter','temperatureConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter'].includes(currentTool))runConverter();else if(currentTool==='numberToWords'||currentTool==='romanNumerals')runSpecialTool();else if(currentTool==='qrGenerator')generateQr();else if(currentTool==='qrScanner')showResult('Use camera or image upload above.');else if(currentTool==='passwordGenerator')generateStrongPassword();else if(currentTool==='myIp')await loadMyIp();else if(currentTool==='passwordStrength')checkPasswordStrength();else if(currentTool==='urlEncoder')encodeUrlTool();else if(currentTool==='htmlEntities')encodeHtmlEntities();else if(currentTool==='hashGenerator')await generateHash('sha256');else if(currentTool==='stopwatchTimer')startTimeTool();else if(currentTool==='diceRoller')rollRandomTool();else if(currentTool==='ageCalculator')runAgeCalculator();}
 
 async function processFiles(){
-  if((!selectedFiles.length&&!['wordEditor','ageCalculator','invoiceGenerator','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool))||processing)return;
+  if((!selectedFiles.length&&!['wordEditor','ageCalculator','invoiceGenerator','resumeBuilder','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'].includes(currentTool))||processing)return;
   processing=true;$('processSpinner').classList.remove('hidden');$('processBtnText').textContent=siteLang==='hi'?'प्रोसेस हो रहा है…':'Processing…';$('processBtn').disabled=true;
   try{
     switch(currentTool){
@@ -1317,7 +1353,7 @@ async function processFiles(){
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
+      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'resumeBuilder':await resumeBuilderTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -1748,6 +1784,181 @@ async function invoiceGeneratorTool(){
   showResult(l?`इनवॉइस तैयार है। ग्रैंड टोटल: Rs.${grand.toFixed(2)}`:`Invoice is ready. Grand total: Rs.${grand.toFixed(2)}`);
 }
 
+/* ---------- AI Resume Builder ---------- */
+function rbCapFirst(s){s=String(s||'').trim();return s?s.charAt(0).toUpperCase()+s.slice(1):s;}
+function rbSmartBullet(raw){
+  let t=String(raw||'').trim();if(!t)return'';
+  t=rbCapFirst(t);
+  if(!/[.!]$/.test(t))t+='.';
+  return t;
+}
+function rbAiSummary(name,title,skills,expCount,l){
+  const skillPhrase=skills.length?(l?`मुख्य स्किल्स में ${skills.slice(0,4).join(', ')} शामिल हैं`:`with strong skills in ${skills.slice(0,4).join(', ')}`):'';
+  if(l){
+    return `${title||'प्रोफेशनल'} के रूप में ${expCount?`${expCount}+ अनुभव के साथ ` :''}परिणाम-उन्मुख और सीखने के लिए उत्साहित उम्मीदवार। ${skillPhrase}, टीम में मिलकर काम करने और नई चुनौतियों को हल करने में सक्षम।`.replace(/\s+/g,' ').trim();
+  }
+  return `Motivated ${title||'professional'} ${expCount?`with ${expCount}+ relevant experience `:''}${skillPhrase}. Known for reliability, clear communication, and a strong ability to work well within a team to deliver results.`.replace(/\s+/g,' ').trim();
+}
+function rbParseExperience(text){
+  return String(text||'').split('\n').map(s=>s.trim()).filter(Boolean).map(line=>{
+    const parts=line.split('|').map(s=>s.trim());
+    const roleCompany=parts[0]||'';
+    const duration=parts[1]||'';
+    const bullets=(parts[2]||'').split(';').map(s=>s.trim()).filter(Boolean).map(rbSmartBullet);
+    let role=roleCompany,company='';
+    const at=roleCompany.split('@');
+    if(at.length>1){role=at[0].trim();company=at.slice(1).join('@').trim();}
+    return {role,company,duration,bullets};
+  });
+}
+function rbParseEducation(text){
+  return String(text||'').split('\n').map(s=>s.trim()).filter(Boolean).map(line=>{
+    const parts=line.split(',').map(s=>s.trim());
+    return {degree:parts[0]||'',institution:parts[1]||'',year:parts[2]||''};
+  });
+}
+async function resumeBuilderTool(){
+  const l=siteLang==='hi';
+  clearDownloads();
+  const name=$('rbName')?.value.trim();
+  const title=$('rbTitle')?.value.trim();
+  if(!name||!title){toast(l?'कृपया पूरा नाम और पद भरें':'Please fill in your Full Name and Target Role');return;}
+  const email=$('rbEmail')?.value.trim()||'';
+  const phone=$('rbPhone')?.value.trim()||'';
+  const location=$('rbLocation')?.value.trim()||'';
+  const link=$('rbLink')?.value.trim()||'';
+  let summary=$('rbSummary')?.value.trim()||'';
+  const experience=rbParseExperience($('rbExperience')?.value);
+  const education=rbParseEducation($('rbEducation')?.value);
+  const skills=($('rbSkills')?.value||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const languages=($('rbLanguages')?.value||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const template=(document.querySelector('input[name="rbTemplate"]:checked')?.value)||'modern';
+  if(!summary)summary=rbAiSummary(name,title,skills,experience.length,l);
+
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({unit:'mm',format:'a4'});
+  const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+
+  function wrapText(text,maxWidth,size,font='normal'){
+    pdf.setFont('helvetica',font);pdf.setFontSize(size);
+    return pdf.splitTextToSize(text,maxWidth);
+  }
+  function ensureSpace(y,need,marginTop){
+    if(y+need>ph-14){pdf.addPage();return marginTop;}
+    return y;
+  }
+
+  if(template==='sidebar'){
+    /* ---- Elegant Sidebar Template ---- */
+    const sideW=64;
+    pdf.setFillColor(30,41,59);pdf.rect(0,0,sideW,ph,'F');
+    let sy=18;
+    pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(15);
+    wrapText(name,sideW-14,15,'bold').forEach(line=>{pdf.text(line,7,sy);sy+=6.5;});
+    sy+=1;pdf.setFont('helvetica','normal');pdf.setFontSize(10.5);pdf.setTextColor(203,213,225);
+    wrapText(title,sideW-14,10.5).forEach(line=>{pdf.text(line,7,sy);sy+=5;});
+    sy+=6;pdf.setDrawColor(100,116,139);pdf.line(7,sy,sideW-7,sy);sy+=8;
+    pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.setTextColor(56,189,248);pdf.text(l?'संपर्क':'CONTACT',7,sy);sy+=6;
+    pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(226,232,240);
+    [email,phone,location,link].filter(Boolean).forEach(line=>{wrapText(line,sideW-14,9).forEach(w=>{sy=ensureSpace(sy,6,18);pdf.text(w,7,sy);sy+=5;});});
+    if(skills.length){
+      sy+=5;pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.setTextColor(56,189,248);pdf.text(l?'स्किल्स':'SKILLS',7,sy);sy+=6;
+      pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(226,232,240);
+      skills.forEach(sk=>{sy=ensureSpace(sy,6,18);wrapText('• '+sk,sideW-14,9).forEach(w=>{pdf.text(w,7,sy);sy+=5;});});
+    }
+    if(education.length){
+      sy+=5;pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.setTextColor(56,189,248);pdf.text(l?'शिक्षा':'EDUCATION',7,sy);sy+=6;
+      pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(226,232,240);
+      education.forEach(ed=>{
+        sy=ensureSpace(sy,14,18);
+        wrapText(ed.degree,sideW-14,9,'bold').forEach(w=>{pdf.setFont('helvetica','bold');pdf.text(w,7,sy);sy+=4.6;});
+        pdf.setFont('helvetica','normal');
+        [ed.institution,ed.year].filter(Boolean).forEach(w=>{pdf.text(w,7,sy);sy+=4.6;});
+        sy+=2;
+      });
+    }
+    if(languages.length){
+      sy+=3;pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.setTextColor(56,189,248);pdf.text(l?'भाषाएं':'LANGUAGES',7,sy);sy+=6;
+      pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(226,232,240);pdf.text(languages.join(', '),7,sy);
+    }
+    /* Right content column */
+    let ry=20;const rx=sideW+10,rw=pw-sideW-20;
+    pdf.setTextColor(15,23,42);
+    pdf.setFont('helvetica','bold');pdf.setFontSize(12);pdf.setTextColor(30,41,59);pdf.text(l?'प्रोफाइल':'PROFILE',rx,ry);ry+=2;
+    pdf.setDrawColor(56,189,248);pdf.setLineWidth(0.8);pdf.line(rx,ry+1.5,rx+rw,ry+1.5);ry+=8;
+    pdf.setFont('helvetica','normal');pdf.setFontSize(10);pdf.setTextColor(51,65,85);
+    wrapText(summary,rw,10).forEach(line=>{ry=ensureSpace(ry,6,20);pdf.text(line,rx,ry);ry+=5.2;});
+    if(experience.length){
+      ry+=6;ry=ensureSpace(ry,14,20);
+      pdf.setFont('helvetica','bold');pdf.setFontSize(12);pdf.setTextColor(30,41,59);pdf.text(l?'कार्य अनुभव':'EXPERIENCE',rx,ry);ry+=2;
+      pdf.setDrawColor(56,189,248);pdf.line(rx,ry+1.5,rx+rw,ry+1.5);ry+=8;
+      experience.forEach(exp=>{
+        ry=ensureSpace(ry,14,20);
+        pdf.setFont('helvetica','bold');pdf.setFontSize(10.5);pdf.setTextColor(15,23,42);pdf.text(exp.role,rx,ry);
+        pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(100,116,139);
+        pdf.text(exp.duration,rx+rw,ry,{align:'right'});ry+=5;
+        if(exp.company){pdf.setFont('helvetica','italic');pdf.setFontSize(9.5);pdf.setTextColor(71,85,105);pdf.text(exp.company,rx,ry);ry+=5;}
+        pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);pdf.setTextColor(51,65,85);
+        exp.bullets.forEach(b=>{wrapText('• '+b,rw-2,9.5).forEach(w=>{ry=ensureSpace(ry,6,20);pdf.text(w,rx+2,ry);ry+=4.8;});});
+        ry+=3;
+      });
+    }
+  } else {
+    /* ---- Modern Bold Header Template ---- */
+    pdf.setFillColor(239,68,68);pdf.rect(0,0,pw,38,'F');
+    pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(20);pdf.text(name,15,17);
+    pdf.setFont('helvetica','normal');pdf.setFontSize(11.5);pdf.text(title,15,25);
+    pdf.setFontSize(9);const contactLine=[email,phone,location,link].filter(Boolean).join('   |   ');
+    if(contactLine)pdf.text(contactLine,15,32);
+    let y=48;
+    function sectionHeader(txt){
+      y=ensureSpace(y,12,20);
+      pdf.setFont('helvetica','bold');pdf.setFontSize(12);pdf.setTextColor(239,68,68);pdf.text(txt,15,y);
+      pdf.setDrawColor(239,68,68);pdf.setLineWidth(0.7);pdf.line(15,y+2,pw-15,y+2);y+=9;
+      pdf.setTextColor(15,23,42);
+    }
+    sectionHeader(l?'प्रोफाइल':'PROFILE SUMMARY');
+    pdf.setFont('helvetica','normal');pdf.setFontSize(10.5);
+    wrapText(summary,pw-30,10.5).forEach(line=>{y=ensureSpace(y,6,20);pdf.text(line,15,y);y+=5.4;});
+    if(experience.length){
+      y+=6;sectionHeader(l?'कार्य अनुभव':'WORK EXPERIENCE');
+      experience.forEach(exp=>{
+        y=ensureSpace(y,14,20);
+        pdf.setFont('helvetica','bold');pdf.setFontSize(11);pdf.text(exp.role,15,y);
+        pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);pdf.setTextColor(100,116,139);
+        pdf.text(exp.duration,pw-15,y,{align:'right'});pdf.setTextColor(15,23,42);y+=5.4;
+        if(exp.company){pdf.setFont('helvetica','italic');pdf.setFontSize(10);pdf.setTextColor(71,85,105);pdf.text(exp.company,15,y);pdf.setTextColor(15,23,42);y+=5.4;}
+        pdf.setFont('helvetica','normal');pdf.setFontSize(10);
+        exp.bullets.forEach(b=>{wrapText('• '+b,pw-34,10).forEach(w=>{y=ensureSpace(y,6,20);pdf.text(w,18,y);y+=5;});});
+        y+=4;
+      });
+    }
+    if(education.length){
+      y+=4;sectionHeader(l?'शिक्षा':'EDUCATION');
+      education.forEach(ed=>{
+        y=ensureSpace(y,10,20);
+        pdf.setFont('helvetica','bold');pdf.setFontSize(10.5);pdf.text(ed.degree,15,y);
+        pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);pdf.setTextColor(100,116,139);
+        pdf.text([ed.institution,ed.year].filter(Boolean).join(' — '),pw-15,y,{align:'right'});
+        pdf.setTextColor(15,23,42);y+=6.5;
+      });
+    }
+    if(skills.length){
+      y+=4;sectionHeader(l?'स्किल्स':'SKILLS');
+      pdf.setFont('helvetica','normal');pdf.setFontSize(10);
+      wrapText(skills.join('   •   '),pw-30,10).forEach(line=>{y=ensureSpace(y,6,20);pdf.text(line,15,y);y+=5.4;});
+    }
+    if(languages.length){
+      y+=4;sectionHeader(l?'भाषाएं':'LANGUAGES');
+      pdf.setFont('helvetica','normal');pdf.setFontSize(10);pdf.text(languages.join(', '),15,y);
+    }
+  }
+
+  const fileSafeName=(name||'resume').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'resume';
+  downloadBlob(pdf.output('blob'),`${fileSafeName}-resume.pdf`,l?'Resume PDF डाउनलोड करें':'Download Resume PDF');
+  showResult(l?'आपका Resume तैयार है! नीचे डाउनलोड बटन दबाएं।':'Your resume is ready! Click the download button below.');
+}
+
 async function imageResizeTool(){
   const tw=Number($('resizeW')?.value)||1200,th=Number($('resizeH')?.value)||0,keep=$('resizeKeepRatio')?.checked!==false;clearDownloads();
   for(let i=0;i<selectedFiles.length;i++){const f=selectedFiles[i],img=await loadImage(f);let w=tw,h=th;if(keep){const ratio=img.naturalHeight/img.naturalWidth;w=tw;h=th?th:Math.round(w*ratio);}else{h=th||Math.round(tw*img.naturalHeight/img.naturalWidth);}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);const mime=f.type==='image/png'?'image/png':'image/jpeg';const b=await new Promise(r=>c.toBlob(r,mime,.92));addDownload(URL.createObjectURL(b),`resized-${i+1}.${mime==='image/png'?'png':'jpg'}`,`Image ${i+1} • ${w}×${h}`);}showResult(siteLang==='hi'?`${selectedFiles.length} इमेज resize हो गईं।`:`${selectedFiles.length} image(s) resized.`);}
@@ -2060,12 +2271,42 @@ async function pdfEditorPro(){
 async function wordToPdf(){if(!window.mammoth)throw new Error('Word library did not load. Check your internet connection.');const result=await mammoth.convertToHtml({arrayBuffer:await selectedFiles[0].arrayBuffer()},{convertImage:mammoth.images.imgElement(async image=>({src:`data:${image.contentType};base64,${await image.read('base64')}`}))});const wrap=document.createElement('div');wrap.className='doc-preview';wrap.innerHTML=result.value;document.body.appendChild(wrap);await new Promise(r=>setTimeout(r,100));const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4'});await pdf.html(wrap,{margin:[36,36,36,36],autoPaging:'text',html2canvas:{scale:1,useCORS:true,backgroundColor:'#fff'},callback:doc=>{downloadBlob(doc.output('blob'),'word-to-pdf.pdf','Word Download PDF');}});wrap.remove();showResult('DOCX PDF is ready.');}
 async function excelToPdf(){if(!window.XLSX)throw new Error('Excel library did not load. Check your internet connection.');const wb=XLSX.read(await selectedFiles[0].arrayBuffer(),{type:'array'});const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'landscape'});let first=true;for(let si=0;si<wb.SheetNames.length;si++){const name=wb.SheetNames[si],sheet=wb.Sheets[name],html=XLSX.utils.sheet_to_html(sheet,{header:'',footer:''});const wrap=document.createElement('div');wrap.className='sheet-preview';wrap.innerHTML=`<h2 style="font-size:18px;font-weight:700;margin:0 0 12px">${esc(name)}</h2>${html}`;document.body.appendChild(wrap);if(!first)pdf.addPage('a4','landscape');first=false;await pdf.html(wrap,{margin:[28,28,28,28],autoPaging:'text',html2canvas:{scale:.75,backgroundColor:'#fff'},callback:()=>{}});wrap.remove();setProgress(si+1,wb.SheetNames.length,`Sheet ${si+1}/${wb.SheetNames.length} ready`);await idle();}downloadBlob(pdf.output('blob'),'excel-to-pdf.pdf','Excel Download PDF');showResult(`${wb.SheetNames.length} worksheet(s) converted to PDF.`);}
 
-let __downloadGateTimer=null,__downloadGateSeconds=10,__downloadGateUrl='',__downloadGateName='download';
+let __downloadGateTimer=null,__downloadGateElapsed=0,__downloadGateUrl='',__downloadGateName='download';
+const __DOWNLOAD_GATE_WAIT=8; /* seconds of fake wait before the Fast Download button appears */
 const FAST_DOWNLOAD_URL='https://www.profitableratecpmnetwork.com/ns41dvei5?key=2c87ec33a6d219448ad2d57bbdd54103';
 function triggerFileDownload(url,name){const a=document.createElement('a');a.href=url;a.download=name||'download';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();}
 function closeDownloadGate(){clearInterval(__downloadGateTimer);__downloadGateTimer=null;const gate=$('downloadGate');if(gate){gate.classList.add('hidden');gate.setAttribute('aria-hidden','true');}const fast=$('fastDownloadBtn');if(fast)fast.classList.remove('show');}
-function openDownloadGate(url,name){if(dudiAutoDownload){triggerFileDownload(url,name);return;}__downloadGateUrl=url;__downloadGateName=name||'download';__downloadGateSeconds=10;clearInterval(__downloadGateTimer);const gate=$('downloadGate'),timer=$('downloadGateTimer'),fast=$('fastDownloadBtn');if(!gate||!timer||!fast){triggerFileDownload(url,name);return;}timer.textContent='10';fast.classList.remove('show');gate.classList.remove('hidden');gate.setAttribute('aria-hidden','false');$('downloadGateText').textContent=siteLang==='hi'?'डाउनलोड शुरू होने के लिए 10 सेकंड बाकी हैं।':'Your download will start automatically in 10 seconds.';__downloadGateTimer=setInterval(()=>{__downloadGateSeconds=Math.max(0,__downloadGateSeconds-1);timer.textContent=String(__downloadGateSeconds);if(__downloadGateSeconds===5)fast.classList.add('show');if(__downloadGateSeconds===0){clearInterval(__downloadGateTimer);__downloadGateTimer=null;triggerFileDownload(__downloadGateUrl,__downloadGateName);closeDownloadGate();}},1000);}
-function fastDownloadNow(){if(!__downloadGateUrl)return;window.open(FAST_DOWNLOAD_URL,'_blank','noopener,noreferrer');triggerFileDownload(__downloadGateUrl,__downloadGateName);closeDownloadGate();}
+function openDownloadGate(url,name){
+  if(dudiAutoDownload){triggerFileDownload(url,name);return;}
+  __downloadGateUrl=url;__downloadGateName=name||'download';__downloadGateElapsed=0;
+  clearInterval(__downloadGateTimer);
+  const gate=$('downloadGate'),timer=$('downloadGateTimer'),fast=$('fastDownloadBtn');
+  if(!gate||!timer||!fast){triggerFileDownload(url,name);return;}
+  timer.textContent=String(__DOWNLOAD_GATE_WAIT);
+  fast.classList.remove('show');
+  gate.classList.remove('hidden');gate.setAttribute('aria-hidden','false');
+  $('downloadGateText').textContent=siteLang==='hi'?('डाउनलोड तैयार हो रहा है… '+__DOWNLOAD_GATE_WAIT+' सेकंड रुकें।'):('Preparing your download… please wait '+__DOWNLOAD_GATE_WAIT+' seconds.');
+  /* The smart/ad link only ever opens from a real click on Fast Download below — never automatically, never before that. */
+  __downloadGateTimer=setInterval(()=>{
+    __downloadGateElapsed++;
+    const remaining=Math.max(0,__DOWNLOAD_GATE_WAIT-__downloadGateElapsed);
+    timer.textContent=String(remaining);
+    if(__downloadGateElapsed>=__DOWNLOAD_GATE_WAIT){
+      clearInterval(__downloadGateTimer);__downloadGateTimer=null;
+      timer.textContent='✓';
+      $('downloadGateText').textContent=siteLang==='hi'?'तैयार है! नीचे Fast Download दबाएं।':'Ready! Tap Fast Download below.';
+      fast.classList.add('show');
+    }
+  },1000);
+}
+function fastDownloadNow(){
+  if(!__downloadGateUrl)return;
+  const url=__downloadGateUrl,name=__downloadGateName;
+  /* User-initiated click: this is the ONLY place the smart link is opened. */
+  try{window.open(FAST_DOWNLOAD_URL,'_blank','noopener,noreferrer');}catch(e){}
+  triggerFileDownload(url,name);
+  closeDownloadGate();
+}
 function cancelDownloadGate(){closeDownloadGate();}
 function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');$('resultText').textContent=siteLang==='hi'?'फाइल तैयार है। नीचे डाउनलोड बटन दबाएं।':'File is ready. Click the Download button below.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
 function addDownload(url,name,label){const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');}
@@ -2214,32 +2455,7 @@ window.addEventListener('load', runDudiEngine);
 </script>
 <!-- 👆 SCRIPT CODE KHATAM 👆 -->
 
-<!-- Rayazan Text-Based Premium Footer Start -->
-<div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 15px; padding: 15px 20px; background-color: #f8f9fa; border-top: 1px solid #e9ecef; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 100%; margin: 0 auto; box-sizing: border-box;">
-    
-    
-    <div style="font-family: 'Times New Roman', Times, serif; font-size: 20px; font-weight: 700; color: #0A192F; letter-spacing: 2px; text-transform: uppercase; user-select: none;">
-        R<span style="color: #D4AF37; font-size: 16px; vertical-align: super; margin-left: -2px;">★</span>YAZAN
-    </div>
-
-    <!-- Clean Vertical Divider Line (Desktop only) -->
-    <div style="width: 1px; height: 22px; background-color: #d1d5db; margin: 0 5px;" class="rayazan-txt-divider"></div>
-
-    
-    <div style="color: #1f2937; font-size: 14px; text-align: center; letter-spacing: 0.3px; line-height: 1.5;">
-        🔒 <strong>Dudi PDF Editor</strong> is a proud product of the 
-        <a href="https://rayazan.com" target="_blank" style="color: #0A192F; text-decoration: none; font-weight: 700; border-bottom: 2px solid #D4AF37; padding-bottom: 1px; transition: all 0.2s ease;">Rayazan Ecosystem</a>
-    </div>
-</div>
-
-<!-- Mobile Friendly Responsive CSS -->
-<style>
-@media (max-width: 550px) {
-    .rayazan-txt-divider { display: none !important; }
-    div[style*="justify-content: center"] { flex-direction: column !important; gap: 10px !important; text-align: center !important; }
-}
-</style>
-<!-- Rayazan Text-Based Premium Footer End -->
+<!-- Rayazan footer removed on request -->
 
 <script>
 /* ---- Dudi AI PDF: workspace sidebars + settings panel (dark theme, EN/HI/RU, light/dark) ---- */
@@ -2398,16 +2614,21 @@ body.dark-mode .feature-pill .text-slate-500{color:#cbd5e1!important}
 .dudi-ai-results{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px;max-height:132px;overflow:auto}
 .dudi-ai-result{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;cursor:pointer;transition:.2s}
 .dudi-ai-result:hover{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.10)}
-.dudi-home-chat-messages{height:104px;overflow:auto;margin-top:10px;padding:4px 2px;font-size:13px;line-height:1.55}
-.dudi-home-chat-msg{padding:9px 11px;border-radius:13px;background:#f1f5f9;margin-bottom:7px}
-.dudi-home-chat-msg.user{background:#fee2e2;text-align:right}
-.dudi-home-chat-input-row{display:flex;gap:8px;margin-top:10px}
-.dudi-home-chat-input{flex:1;min-width:0;border:1px solid #cbd5e1;border-radius:13px;padding:11px 13px;font-weight:700}
-.dudi-home-chat-send{width:48px;padding:0}
-body.dark-mode .dudi-ai-search-card,body.dark-mode .dudi-home-chat-card{background:#0f172a;border-color:#334155}
+.dudi-resume-promo-card{cursor:pointer;position:relative;overflow:hidden;border:1px solid transparent;border-radius:22px;padding:20px;box-shadow:0 16px 40px rgba(99,102,241,.28);background:linear-gradient(135deg,#4f46e5,#7c3aed 55%,#ec4899);color:#fff;display:flex;flex-direction:column;justify-content:center;transition:.2s ease}
+.dudi-resume-promo-card:hover{transform:translateY(-3px);box-shadow:0 22px 50px rgba(99,102,241,.38)}
+.dudi-resume-promo-badge{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.22);font-size:10px;font-weight:900;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
+.dudi-resume-promo-icon{font-size:30px;margin-bottom:6px}
+.dudi-resume-promo-title{font-weight:950;font-size:18px}
+.dudi-resume-promo-desc{font-size:12.5px;opacity:.92;margin-top:6px;line-height:1.5}
+.dudi-resume-promo-btn{margin-top:14px;align-self:flex-start;background:#fff;color:#4f46e5;border:0;border-radius:13px;padding:10px 18px;font-weight:950;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.dudi-resume-promo-btn:hover{filter:brightness(.96)}
+.dudi-resume-tpl-option{display:flex;gap:10px;align-items:flex-start;border:2px solid #e2e8f0;border-radius:16px;padding:12px 14px;cursor:pointer;transition:.15s}
+.dudi-resume-tpl-option input{margin-top:4px}
+.dudi-resume-tpl-option:has(input:checked){border-color:#ef4444;background:#fff1f2}
+body.dark-mode .dudi-resume-tpl-option{border-color:#334155}
+body.dark-mode .dudi-resume-tpl-option:has(input:checked){background:#3f1d24;border-color:#ef4444}
+body.dark-mode .dudi-ai-search-card{background:#0f172a;border-color:#334155}
 body.dark-mode .dudi-ai-result{background:#111827;color:#f8fafc;border-color:#475569}
-body.dark-mode .dudi-home-chat-msg{background:#1e293b;color:#f8fafc}
-body.dark-mode .dudi-home-chat-msg.user{background:#3f1d24}
 @media(max-width:850px){.dudi-ai-search-wrap{grid-template-columns:1fr}}
 
 /* Guides are buttons with modal content, not page navigation. */
@@ -2534,17 +2755,15 @@ function renderSearchResults(q,container,emptyText){
 function addHomeAiPanel(){
   const home=document.getElementById('home');if(!home||document.getElementById('dudiHomeAiPanel'))return;
   const first=home.querySelector('section');if(!first)return;
+  const l0=siteLang==='hi';
   const panel=document.createElement('div');panel.id='dudiHomeAiPanel';panel.innerHTML=`<div class="dudi-ai-search-wrap">
   <div class="dudi-ai-search-card"><div class="dudi-ai-search-title">🔎 AI Feature Search</div><div class="text-xs text-slate-500 mt-1">Search any Dudi tool by name or by what you want to do.</div><div class="dudi-ai-search-input-row"><input id="dudiAiSearchInput" class="dudi-ai-search-input" placeholder="Search a feature…" autocomplete="off"><button id="dudiAiSearchBtn" class="dudi-ai-search-btn" type="button">Search</button></div><div id="dudiAiSearchResults" class="dudi-ai-results"></div></div>
-  <div class="dudi-home-chat-card"><div class="dudi-home-chat-title">🤖 AI Ivan</div><div class="text-xs text-slate-500 mt-1">Tell me the feature you need. I will give you a button to open it.</div><div id="dudiHomeChatMessages" class="dudi-home-chat-messages"><div class="dudi-home-chat-msg">Hi! Try “merge PDF”, “compress PDF”, “OCR”, “passport photo”, or any tool name.</div></div><div class="dudi-home-chat-input-row"><input id="dudiHomeChatInput" class="dudi-home-chat-input" placeholder="Type a feature name…" autocomplete="off"><button id="dudiHomeChatSend" class="dudi-home-chat-send" type="button">➤</button></div></div>
+  <div class="dudi-resume-promo-card" onclick="openTool('resumeBuilder')"><div class="dudi-resume-promo-badge">✨ ${l0?'नया':'NEW'}</div><div class="dudi-resume-promo-icon">🧠📄</div><div class="dudi-resume-promo-title">${l0?'AI Resume Builder':'AI Resume Builder'}</div><div class="dudi-resume-promo-desc">${l0?'अपनी डिटेल भरें, AI आपके लिए प्रोफेशनल Resume तैयार करेगा — सुंदर टेम्पलेट के साथ, PDF में सेव करें।':'Fill in your details and let AI build you a polished, professional resume — pick a template and save it as a PDF.'}</div><button type="button" class="dudi-resume-promo-btn">🚀 ${l0?'Resume बनाएं':'Build My Resume'}</button></div>
   </div>`;
   first.insertAdjacentElement('beforebegin',panel);
   const si=document.getElementById('dudiAiSearchInput'),sr=document.getElementById('dudiAiSearchResults');
   const runSearch=()=>renderSearchResults(si.value,sr,'No matching feature found. Try a simpler word.');
   si.addEventListener('input',runSearch);document.getElementById('dudiAiSearchBtn').onclick=runSearch;
-  const ci=document.getElementById('dudiHomeChatInput'),cb=document.getElementById('dudiHomeChatMessages');
-  const send=()=>{const q=ci.value.trim();if(!q)return;cb.insertAdjacentHTML('beforeend',`<div class="dudi-home-chat-msg user">${esc(q)}</div>`);const found=allToolMatches(q);if(found.length){cb.insertAdjacentHTML('beforeend',`<div class="dudi-home-chat-msg">I found this feature:<br><button type="button" class="dudi-ai-result" onclick="openTool('${found[0].k}')">${found[0].t.icon} ${esc(T(found[0].t,'title'))} → Open</button></div>`);}else cb.insertAdjacentHTML('beforeend','<div class="dudi-home-chat-msg">I could not find that feature. Try “PDF merge”, “split”, “compress”, “OCR”, “photo editor”, or “passport photo”.</div>');ci.value='';cb.scrollTop=cb.scrollHeight;};
-  document.getElementById('dudiHomeChatSend').onclick=send;ci.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
 }
 
 /* Every Latest PDF Guide opens a modal. Default is English; language changes follow the Settings selection. */

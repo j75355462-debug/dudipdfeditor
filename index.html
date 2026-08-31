@@ -36,6 +36,16 @@
     body{margin:0;background:radial-gradient(circle at 10% 10%,rgba(239,68,68,.09),transparent 27%),radial-gradient(circle at 90% 5%,rgba(99,102,241,.09),transparent 27%),#f8fafc;color:#0f172a}
     .tool-card{transition:.22s ease}.tool-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(15,23,42,.12)}
     .drop-zone{transition:.2s ease}.drop-zone.drag{border-color:#ef4444;background:#fff1f2;transform:scale(1.01)}
+    .dudi-welcome-splash{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 40%,#1e1b4b,#0f172a 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:20px;transition:opacity .5s ease}
+    .dudi-welcome-splash.dudi-welcome-hide{opacity:0;pointer-events:none}
+    .dudi-welcome-text-wrap{max-width:92vw;text-align:center}
+    .dudi-welcome-text{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-weight:900;font-size:clamp(22px,5.5vw,52px);white-space:normal;background:linear-gradient(100deg,#f8fafc 30%,#fde68a 45%,#f8fafc 60%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:dudiShine 2.4s linear infinite;min-height:1.3em}
+    .dudi-welcome-text::after{content:'';display:inline-block;width:3px;height:.9em;background:#fde68a;margin-left:3px;vertical-align:-.1em;animation:dudiCaretBlink 0.9s step-end infinite}
+    @keyframes dudiShine{0%{background-position:200% 0}100%{background-position:-50% 0}}
+    @keyframes dudiCaretBlink{0%,100%{opacity:1}50%{opacity:0}}
+    .dudi-welcome-enter-btn{opacity:0;transform:translateY(10px);pointer-events:none;transition:.35s ease;background:linear-gradient(135deg,#ef4444,#f97316);color:#fff;font-weight:900;font-size:15px;padding:14px 30px;border:0;border-radius:999px;box-shadow:0 14px 34px rgba(239,68,68,.4);cursor:pointer}
+    .dudi-welcome-enter-btn.show{opacity:1;transform:translateY(0);pointer-events:auto}
+    .dudi-welcome-enter-btn:hover{filter:brightness(1.06);transform:translateY(-2px)}
     .spinner{width:20px;height:20px;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:999px;animation:spin .7s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
     .preview-page{background:white;box-shadow:0 4px 18px rgba(15,23,42,.08);padding:16px;margin-bottom:12px}
@@ -310,6 +320,8 @@
     /* Header logo + nav + privacy badge */
     .dudi-logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:16px;letter-spacing:-.02em;white-space:nowrap}
     .dudi-logo-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--dudi-purple),var(--dudi-cyan));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+    .dudi-logo-mark-spin{animation:dudiLogoSpin3d 3.2s linear infinite;transform-style:preserve-3d;perspective:400px}
+    @keyframes dudiLogoSpin3d{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
     .dudi-header-nav{display:flex;align-items:center;gap:18px;font-size:13px;font-weight:800}
     .dudi-header-nav a{color:inherit;opacity:.75;text-decoration:none;cursor:pointer}
     .dudi-header-nav a:hover{opacity:1;color:var(--dudi-cyan)}
@@ -392,11 +404,43 @@
 <body>
 <script>(function(){try{var p=localStorage.getItem('dudiDarkMode');if(p==='1')document.body.classList.add('dark-mode');}catch(e){}})();</script>
 
+<div id="dudiWelcomeSplash" class="dudi-welcome-splash">
+  <div class="dudi-welcome-text-wrap">
+    <h1 id="dudiWelcomeText" class="dudi-welcome-text">Welcome to Dudi PDF Editor</h1>
+  </div>
+  <button type="button" id="dudiWelcomeEnterBtn" class="dudi-welcome-enter-btn">Enter Site →</button>
+</div>
+<script>
+(function(){
+  var splash=document.getElementById('dudiWelcomeSplash');
+  var btn=document.getElementById('dudiWelcomeEnterBtn');
+  var textEl=document.getElementById('dudiWelcomeText');
+  if(!splash||!btn||!textEl)return;
+  var full=textEl.textContent;
+  textEl.textContent='';
+  var i=0;
+  function typeNext(){
+    if(i<=full.length){textEl.textContent=full.slice(0,i);i++;setTimeout(typeNext,45);}
+    else{btn.classList.add('show');}
+  }
+  setTimeout(typeNext,300);
+  function closeSplash(){
+    splash.classList.add('dudi-welcome-hide');
+    setTimeout(function(){splash.remove();},550);
+    try{sessionStorage.setItem('dudiWelcomeSeen','1');}catch(e){}
+  }
+  btn.addEventListener('click',closeSplash);
+  try{
+    if(sessionStorage.getItem('dudiWelcomeSeen')==='1'){splash.remove();}
+  }catch(e){}
+})();
+</script>
+
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
     <div class="flex items-center gap-3 min-w-0">
       <button onclick="goHome()" class="top-icon-btn" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></button>
-      <div class="dudi-logo"><span class="dudi-logo-mark">🗂️</span><span>Dudi AI PDF</span></div>
+      <div class="dudi-logo"><span class="dudi-logo-mark dudi-logo-mark-spin">🗂️</span><span>Dudi AI PDF</span></div>
     </div>
     <nav class="dudi-header-nav"><a href="#dudiGuides">Latest Guides</a><a href="javascript:void(0)" onclick="openInfo('howto')">FAQs</a></nav>
     <div class="flex items-center gap-2">
@@ -507,7 +551,7 @@
     <h2>Latest PDF Guides &amp; Articles</h2>
   </div>
   <div class="dudi-guides-grid">
-    <a class="dudi-guide-card" href="blog/blog1.html"><span class="dudi-guide-icon">📎</span><span>PDF Merge Kaise Karein</span></a>
+    <a class="dudi-guide-card" href="blog/blog1.html"><span class="dudi-guide-icon">📎</span><span>How to Merge PDF Files</span></a>
     <a class="dudi-guide-card" href="blog/blog2.html"><span class="dudi-guide-icon">✂️</span><span>PDF Split — Step by Step Guide</span></a>
     <a class="dudi-guide-card" href="blog/blog3.html"><span class="dudi-guide-icon">📦</span><span>Compress PDF Without Losing Quality</span></a>
     <a class="dudi-guide-card" href="blog/blog4.html"><span class="dudi-guide-icon">🔄</span><span>Rotate PDF Pages Correctly</span></a>
@@ -1243,9 +1287,15 @@ function renderOptions(){
 
 $('fileInput').addEventListener('change',e=>{addFiles([...e.target.files]);e.target.value='';});
 $('dropZone').addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')$('fileInput').click();});
-['dragenter','dragover'].forEach(x=>$('dropZone').addEventListener(x,e=>{e.preventDefault();$('dropZone').classList.add('drag');}));
-['dragleave','drop'].forEach(x=>$('dropZone').addEventListener(x,e=>{e.preventDefault();$('dropZone').classList.remove('drag');}));
-$('dropZone').addEventListener('drop',e=>addFiles([...e.dataTransfer.files]));
+['dragenter','dragover'].forEach(x=>$('dropZone').addEventListener(x,e=>{e.preventDefault();e.stopPropagation();$('dropZone').classList.add('drag');}));
+['dragleave','drop'].forEach(x=>$('dropZone').addEventListener(x,e=>{e.preventDefault();e.stopPropagation();$('dropZone').classList.remove('drag');}));
+$('dropZone').addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();if(e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files.length)addFiles([...e.dataTransfer.files]);});
+/* Global guard: without this, dropping even slightly outside the drop-zone makes the browser
+   navigate away and open the raw file, which looks like the whole site crashing. */
+['dragenter','dragover','drop'].forEach(evt=>{
+  window.addEventListener(evt,e=>{e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='none';},false);
+  document.addEventListener(evt,e=>{e.preventDefault();},false);
+});
 
 function validFile(file){
   if(currentTool==='jpgToPdf')return file.type==='image/jpeg'||file.type==='image/png'||/\.(jpe?g|png)$/i.test(file.name);
@@ -3178,6 +3228,22 @@ body.dark-mode .text-slate-600{color:#cbd5e1!important}
   object-fit:cover;
 }
 .dudi-home-banner-wrap{padding:26px 0 30px}
+/* Poster slider: small/medium auto-rotating cards near the search box */
+.dudi-poster-slider-wrap{max-width:720px;margin:22px auto 30px;padding:0 6px}
+.dudi-poster-slider{position:relative;height:172px;border-radius:20px;overflow:hidden;box-shadow:0 18px 46px rgba(15,23,42,.14)}
+.dudi-poster-slide{position:absolute;inset:0;display:flex;align-items:center;gap:16px;padding:20px 24px;opacity:0;transform:translateX(18px);transition:opacity .5s ease,transform .5s ease;pointer-events:none;color:#fff}
+.dudi-poster-slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.dudi-poster-icon{font-size:34px;flex-shrink:0;width:58px;height:58px;border-radius:16px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.dudi-poster-body{min-width:0;flex:1}
+.dudi-poster-badge{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.06em;background:rgba(255,255,255,.22);padding:2px 9px;border-radius:999px;margin-bottom:6px}
+.dudi-poster-title{font-weight:900;font-size:16px;line-height:1.25}
+.dudi-poster-desc{font-size:12px;opacity:.92;margin-top:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dudi-poster-cta{flex-shrink:0;background:#fff;color:#1e1b4b;font-weight:900;font-size:12px;padding:9px 14px;border-radius:999px;border:0;cursor:pointer;white-space:nowrap}
+.dudi-poster-cta:hover{filter:brightness(.96)}
+.dudi-poster-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.dudi-poster-dot{width:7px;height:7px;border-radius:999px;background:#cbd5e1;border:0;cursor:pointer;padding:0}
+.dudi-poster-dot.active{background:#ef4444;width:18px;border-radius:999px}
+@media(max-width:640px){.dudi-poster-slider{height:190px}.dudi-poster-slide{padding:16px 16px;gap:12px}.dudi-poster-icon{width:46px;height:46px;font-size:26px}.dudi-poster-title{font-size:14px}.dudi-poster-desc{font-size:11.5px}}
 .dudi-splash{
   position:fixed;inset:0;z-index:10080;display:flex;align-items:center;justify-content:center;
   background:rgba(2,6,23,.72);backdrop-filter:blur(8px);opacity:1;
@@ -3233,15 +3299,45 @@ const DUDI_BANNER = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/7QBQUGhv
 function esc2(v){const d=document.createElement('div');d.textContent=String(v??'');return d.innerHTML;}
 
 /* ---------- Header + home hero ---------- */
+const DUDI_POSTERS=[
+  {icon:'🚀',badge:'FREE FOREVER',title:'100% Free • No Sign-Up',desc:'Every tool works instantly in your browser — no account, no file upload, no waiting.',cta:'Explore Tools',bg:'linear-gradient(135deg,#0f172a,#1e293b)',action:'scrollTools'},
+  {icon:'🧠',badge:'NEW',title:'AI Resume Builder',desc:'Fill in your details and get a polished, professional resume as a PDF in seconds.',cta:'Build Resume',bg:'linear-gradient(135deg,#4f46e5,#7c3aed)',action:'resumeBuilder'},
+  {icon:'🔎',badge:'POPULAR',title:'Extract Text from Scans & Photos',desc:'Turn scanned PDFs or images into editable, searchable text using OCR.',cta:'Try OCR',bg:'linear-gradient(135deg,#0891b2,#0e7490)',action:'ocrConverter'},
+  {icon:'🖊️',badge:'HANDY',title:'Sign PDFs & Fill Forms',desc:'Add your signature, text and drawings to any PDF, right on your screen.',cta:'Sign a PDF',bg:'linear-gradient(135deg,#059669,#047857)',action:'pdfEditorPro'},
+  {icon:'📝',badge:'CONVERT',title:'Word & Excel to PDF',desc:'Turn DOCX and XLSX files into clean, ready-to-share PDF documents.',cta:'Convert Now',bg:'linear-gradient(135deg,#db2777,#be185d)',action:'wordToPdf'},
+  {icon:'📤',badge:'SHARE',title:'Share Instantly',desc:'Download any result and share it straight to WhatsApp in one tap.',cta:'Explore Tools',bg:'linear-gradient(135deg,#ea580c,#c2410c)',action:'scrollTools'}
+];
+let __posterIndex=0,__posterTimer=null;
+function posterGoTo(i){
+  const slides=document.querySelectorAll('.dudi-poster-slide'),dots=document.querySelectorAll('.dudi-poster-dot');
+  if(!slides.length)return;
+  __posterIndex=(i+slides.length)%slides.length;
+  slides.forEach((s,idx)=>s.classList.toggle('active',idx===__posterIndex));
+  dots.forEach((d,idx)=>d.classList.toggle('active',idx===__posterIndex));
+}
+function posterAction(action){
+  if(action==='scrollTools'){document.getElementById('toolsGrid')?.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  openTool(action);
+}
+function initPosterSlider(){
+  const wrap=document.getElementById('dudiPosterSlider');if(!wrap)return;
+  clearInterval(__posterTimer);
+  __posterTimer=setInterval(()=>posterGoTo(__posterIndex+1),3000);
+  wrap.addEventListener('mouseenter',()=>clearInterval(__posterTimer));
+  wrap.addEventListener('mouseleave',()=>{__posterTimer=setInterval(()=>posterGoTo(__posterIndex+1),3000);});
+}
 function upgradeBrandAndHero(){
   const brand=document.querySelector('.dudi-logo');
   if(brand){
-    brand.innerHTML='<span class="dudi-header-brand">Dudi PDF Editor</span>';
+    brand.innerHTML='<span class="dudi-logo-mark dudi-logo-mark-spin">🗂️</span><span class="dudi-header-brand">Dudi PDF Editor</span>';
     brand.classList.add('dudi-logo-upgraded');
   }
   const hero=document.querySelector('#home > section:first-child');
   if(hero){
-    hero.innerHTML='<div class="dudi-home-banner-wrap"><img class="dudi-home-banner" alt="Dudi PDF Editor — Privacy First PDF Editing" src="'+DUDI_BANNER+'"></div>';
+    const slidesHtml=DUDI_POSTERS.map((p,i)=>`<div class="dudi-poster-slide${i===0?' active':''}" style="background:${p.bg}"><div class="dudi-poster-icon">${p.icon}</div><div class="dudi-poster-body"><span class="dudi-poster-badge">${p.badge}</span><div class="dudi-poster-title">${esc2(p.title)}</div><div class="dudi-poster-desc">${esc2(p.desc)}</div></div><button type="button" class="dudi-poster-cta" onclick="posterAction('${p.action}')">${esc2(p.cta)}</button></div>`).join('');
+    const dotsHtml=DUDI_POSTERS.map((p,i)=>`<button type="button" class="dudi-poster-dot${i===0?' active':''}" aria-label="Slide ${i+1}" onclick="posterGoTo(${i})"></button>`).join('');
+    hero.innerHTML='<div class="dudi-poster-slider-wrap"><div class="dudi-poster-slider" id="dudiPosterSlider">'+slidesHtml+'</div><div class="dudi-poster-dots">'+dotsHtml+'</div></div>';
+    initPosterSlider();
   }
   document.querySelectorAll('.headline-wrap').forEach(x=>x.remove());
 }

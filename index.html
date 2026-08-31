@@ -406,7 +406,7 @@
 
 <div id="dudiWelcomeSplash" class="dudi-welcome-splash">
   <div class="dudi-welcome-text-wrap">
-    <h1 id="dudiWelcomeText" class="dudi-welcome-text">Welcome to Dudi PDF Editor</h1>
+    <h1 id="dudiWelcomeText" class="dudi-welcome-text">Welcome to Dudi PDF Editor — World’s Most Powerful PDF Editor</h1>
   </div>
   <button type="button" id="dudiWelcomeEnterBtn" class="dudi-welcome-enter-btn">Enter Site →</button>
 </div>
@@ -420,10 +420,10 @@
   textEl.textContent='';
   var i=0;
   function typeNext(){
-    if(i<=full.length){textEl.textContent=full.slice(0,i);i++;setTimeout(typeNext,45);}
+    if(i<=full.length){textEl.textContent=full.slice(0,i);i++;setTimeout(typeNext,28);}
     else{btn.classList.add('show');}
   }
-  setTimeout(typeNext,300);
+  setTimeout(typeNext,80);
   function closeSplash(){
     splash.classList.add('dudi-welcome-hide');
     setTimeout(function(){splash.remove();},550);
@@ -537,8 +537,8 @@
   </section>
 
   <section class="pb-8">
-    <div class="flex items-center justify-between mb-3"><div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">✨ New</div><h2 class="text-xl sm:text-2xl font-black" id="mnfTitle">All New Features</h2></div><div class="flex gap-2"><button class="feature-nav" onclick="slideFeatures(-1)" aria-label="Previous">‹</button><button class="feature-nav" onclick="slideFeatures(1)" aria-label="Next">›</button></div></div>
-    <div class="feature-slider-shell"><button type="button" class="feature-side-nav feature-side-nav-left" onclick="slideFeatures(-1)" aria-label="Previous">‹</button><div id="featureSlider" class="feature-slider"></div><button type="button" class="feature-side-nav feature-side-nav-right" onclick="slideFeatures(1)" aria-label="Next">›</button></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
+    <div class="flex items-center justify-between mb-3"><div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">✨ New</div><h2 class="text-xl sm:text-2xl font-black" id="mnfTitle">All New Features</h2></div></div>
+    <div class="feature-slider-shell"><div id="featureSlider" class="feature-slider"></div><button type="button" class="feature-next-btn" onclick="slideFeatures(1)" aria-label="Next feature">Next ✨</button></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
     <!-- slider ad box removed: was auto-loading on every page open -->
     <button id="officeSparkleBtn" onclick="openOfficeModal()">✨ <span id="officeSparkleBtnLabel">Office Tools with AI — 6 Live Now</span></button>
   </section>
@@ -548,9 +548,12 @@
 <section class="dudi-guides-section" id="dudiGuides">
   <div class="dudi-guides-head">
     <div class="text-[10px] font-black uppercase tracking-widest" style="color:#06B6D4">📚 Guides</div>
-    <h2>Latest PDF Guides &amp; Articles</h2>
+    <div class="flex items-center justify-between gap-3">
+      <h2>Latest PDF Guides &amp; Articles</h2>
+      <button type="button" class="dudi-guide-toggle" onclick="toggleGuides()" aria-expanded="false" aria-controls="dudiGuidesGrid">☰ Show Guides <span>⌄</span></button>
+    </div>
   </div>
-  <div class="dudi-guides-grid">
+  <div class="dudi-guides-grid" id="dudiGuidesGrid">
     <a class="dudi-guide-card" href="blog/blog1.html"><span class="dudi-guide-icon">📎</span><span>How to Merge PDF Files</span></a>
     <a class="dudi-guide-card" href="blog/blog2.html"><span class="dudi-guide-icon">✂️</span><span>PDF Split — Step by Step Guide</span></a>
     <a class="dudi-guide-card" href="blog/blog3.html"><span class="dudi-guide-icon">📦</span><span>Compress PDF Without Losing Quality</span></a>
@@ -712,7 +715,9 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  imageCrop:{title:'Image Crop',titleHi:'इमेज क्रॉप करें',desc:'Drag a box over your photo to crop it to exactly the part you want, with optional aspect ratios.',descHi:'फोटो पर बॉक्स को खींचकर बिल्कुल अपनी पसंद के हिस्से में क्रॉप करें, चाहें तो aspect ratio भी चुनें।',icon:'🔲',accept:'image/jpeg,image/png,image/webp',multiple:false,button:'Crop Image',buttonHi:'इमेज क्रॉप करें',hint:'JPG, PNG or WEBP',hintHi:'JPG, PNG या WEBP',isNew:true},
  pdfCrop:{title:'Crop PDF',titleHi:'PDF क्रॉप करें',desc:'Crop PDF page margins by entering precise top, right, bottom and left values.',descHi:'Top, right, bottom और left की precise values से PDF pages crop करें।',icon:'✂️',accept:'application/pdf',multiple:false,button:'Crop PDF',buttonHi:'PDF क्रॉप करें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  pdfGrayscale:{title:'Grayscale PDF',titleHi:'ग्रेस्केल PDF',desc:'Convert PDF pages to black-and-white grayscale while keeping the page layout.',descHi:'PDF pages को layout बनाए रखते हुए ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'🖤',accept:'application/pdf',multiple:false,button:'Make Grayscale PDF',buttonHi:'ग्रेस्केल PDF बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
- pdfToText:{title:'PDF to Text',titleHi:'PDF से Text',desc:'Extract readable text from PDF pages and save it as a TXT file.',descHi:'PDF pages से readable text निकालकर TXT फाइल बनाएं।',icon:'🔤',accept:'application/pdf',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+ pdfToWord:{title:'PDF to Word',titleHi:'PDF से Word',desc:'Extract PDF text into a Word-compatible DOC file with clean paragraphs.',descHi:'PDF का टेक्स्ट Word-compatible DOC फाइल में निकालें।',icon:'📝',accept:'application/pdf',multiple:false,button:'Convert PDF to Word',buttonHi:'PDF से Word बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+  pdfToExcel:{title:'PDF to Excel',titleHi:'PDF से Excel',desc:'Extract readable PDF text into an XLSX worksheet.',descHi:'PDF का readable text XLSX worksheet में निकालें।',icon:'📊',accept:'application/pdf',multiple:false,button:'Convert PDF to Excel',buttonHi:'PDF से Excel बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+  pdfToText:{title:'PDF to Text',titleHi:'PDF से Text',desc:'Extract readable text from PDF pages and save it as a TXT file.',descHi:'PDF pages से readable text निकालकर TXT फाइल बनाएं।',icon:'🔤',accept:'application/pdf',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  ageCalculator:{title:'Age Calculator',titleHi:'आयु कैलकुलेटर',desc:'Find exact age or gap between two dates in years, months and days.',descHi:'जन्म तिथि से सटीक उम्र या दो तारीखों के बीच का अंतर साल, महीने, दिन में निकालें।',icon:'📅',accept:'',multiple:false,button:'Calculate Age',buttonHi:'उम्र निकालें',hint:'No file needed — just pick a date',hintHi:'फाइल की ज़रूरत नहीं — बस तारीख चुनें',isNew:true},
  passportPhoto:{title:'Passport Size Photo Maker',titleHi:'पासपोर्ट साइज़ फोटो मेकर',desc:'Crop any photo to standard 3.5×4.5 cm passport size and get a print-ready sheet as PDF/JPG.',descHi:'किसी भी फोटो को 3.5x4.5 cm पासपोर्ट साइज़ में क्रॉप करें और प्रिंट-रेडी शीट PDF/JPG में पाएं।',icon:'🆔',accept:'image/png,image/jpeg,image/webp',multiple:false,button:'Make Passport Photo Sheet',buttonHi:'पासपोर्ट फोटो शीट बनाएं',hint:'JPG / PNG / WEBP photo',hintHi:'JPG / PNG / WEBP फोटो',isNew:true},
  idCardFormat:{title:'1-Click ID Card Print Formatting',titleHi:'1-क्लिक ID कार्ड प्रिंट फॉर्मेटिंग',desc:'Format Aadhaar, PAN or Voter ID photos (front, optional back) to standard card size on a print sheet.',descHi:'आधार, पैन या वोटर ID फोटो (आगे, वैकल्पिक पीछे) को स्टैंडर्ड कार्ड साइज़ में प्रिंट शीट पर लाएं।',icon:'🪪',accept:'image/png,image/jpeg,image/webp',multiple:true,button:'Format ID Card',buttonHi:'ID कार्ड फॉर्मेट करें',hint:'Front photo required, back optional',hintHi:'आगे की फोटो ज़रूरी, पीछे वैकल्पिक',isNew:true},
@@ -936,7 +941,7 @@ function openAiChat(){
 function closeAiChat(){const m=$('aiChatModal');if(!m)return;m.classList.add('hidden');m.classList.remove('flex');document.body.classList.remove('overflow-hidden');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSiteMenu();closeInfo();closeNotifBox();}});
 
-const MORE_FEATURES_KEYS=['signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','ageCalculator','passportPhoto','idCardFormat','a4Binder','invoiceGenerator','resumeBuilder','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
+const MORE_FEATURES_KEYS=['pdfToWord','pdfToExcel','signPdf','protectPdf','unlockPdf','watermarkPdf','addBlankPage','extractImages','pdfRepair','compressPdf','deletePages','imageConvert','imageCompress','imageResize','imageUpscale','imageGrayscale','removeBg','imageCrop','pdfCrop','pdfGrayscale','pdfToText','wordEditor','ageCalculator','passportPhoto','idCardFormat','a4Binder','invoiceGenerator','resumeBuilder','lengthConverter','weightConverter','temperatureConverter','currencyConverter','areaConverter','timeConverter','speedConverter','dataTransferConverter','numberToWords','romanNumerals','qrGenerator','qrScanner','passwordGenerator','myIp','passwordStrength','urlEncoder','htmlEntities','hashGenerator','stopwatchTimer','diceRoller'];
 function T(t,key){var suf=siteLang==='hi'?'Hi':(siteLang==='ru'?'Ru':'');if(suf&&t[key+suf]!==undefined)return t[key+suf];return t[key];}
 function buildTools(){
   const openLabel=siteLang==='hi'?'टूल खोलें →':'Open tool →';
@@ -947,7 +952,9 @@ function buildFeaturePills(){
   const slider=$('featureSlider');if(!slider)return;
   const premiumLabel=siteLang==='hi'?'✅ फ्री':'✅ FREE';
   const newLabel=siteLang==='hi'?'✨ नया':'✨ NEW';
-  slider.innerHTML=MORE_FEATURES_KEYS.map(key=>{
+  const requested=[{icon:'🧠',title:'AI-Powered PDF Chat & Summary',desc:'Read, summarize and ask questions about a PDF locally in your browser.',action:'ai'},{icon:'💬',title:'Smart WhatsApp & Link Sharing',desc:'Share generated files directly on supported mobile devices, with a PC copy-link fallback.',action:'share'},{icon:'🔤',title:'Advanced Hindi / Regional Language OCR',desc:'Extract text from image/PDF scans with browser-based OCR.',action:'ocrConverter'},{icon:'✍️',title:'Direct Form Filler & Auto-Signature',desc:'Fill PDFs with text and place a signature using the existing live PDF editor.',action:'pdfEditorPro'},{icon:'📊',title:'PDF to Excel / Word Perfect Formatting Converter',desc:'Extract PDF text into Excel or Word-compatible output.',action:'pdfToExcel'}];
+  const requestedHtml=requested.map(r=>`<button onclick="${r.action==='ai'?'openAiPdfSummary()':r.action==='share'?'openLatestShare()':`openTool('${r.action}')`}" class="feature-pill feature-slide relative text-left hover:shadow-lg transition"><span class="absolute top-2 right-2 text-[9px] font-black tracking-wide text-cyan-700 bg-cyan-100 px-2 py-0.5 rounded-full">✨ NEW</span><div class="text-3xl">${r.icon}</div><b class="block mt-2">${r.title}</b><span class="text-sm text-slate-500">${r.desc}</span></button>`).join('');
+  slider.innerHTML=requestedHtml+MORE_FEATURES_KEYS.map(key=>{
     const t=tools[key];if(!t)return'';
     const badge=t.isNew?newLabel:premiumLabel;
     const badgeClass=t.isNew?'text-emerald-700 bg-emerald-100':'text-amber-700 bg-amber-100';
@@ -1390,7 +1397,7 @@ async function processFiles(){
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'resumeBuilder':await resumeBuilderTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
+      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToWord':await pdfToWord();break;case'pdfToExcel':await pdfToExcel();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'resumeBuilder':await resumeBuilderTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -2099,6 +2106,9 @@ function loadRemoveBgModule(){
 async function removeBgTool(){const file=selectedFiles[0];if(!file)throw new Error('Choose a photo first.');const l=siteLang==='hi';setProgress(1,100,l?'Background Removal engine लोड हो रहा है…':'Loading background removal engine…');let mod;try{mod=await loadRemoveBgModule();}catch(e){console.error(e);throw new Error('AI engine load नहीं हो पाया। साइट को HTTPS पर खोलें और internet connection check करें.');}const removeBackground=mod.default||mod.removeBackground;if(typeof removeBackground!=='function')throw new Error('Background removal engine is unavailable.');let last=1;const config={publicPath:'https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/',model:'isnet_fp16',device:'gpu',proxyToWorker:true,output:{format:'image/png',type:'foreground',quality:1},progress:(key,current,total)=>{if(!total)return;const p=Math.max(last,Math.min(100,Math.round(current/total*100)));last=p;const msg=String(key||'').toLowerCase().includes('download')?(l?'AI model डाउनलोड हो रहा है…':'Downloading AI model…'):(l?'बैकग्राउंड हट रहा है…':'Removing background…');setProgress(p,100,msg);}};let blob;try{setProgress(3,100,l?'AI model तैयार हो रहा है…':'Preparing AI model…');blob=await removeBackground(file,config);}catch(e){console.error(e);throw new Error('Background removal failed: '+(e?.message||'model/runtime error'));}$('progressContainer')?.classList.add('hidden');addDownload(URL.createObjectURL(blob),'background-removed.png',l?'Transparent PNG डाउनलोड करें':'Download Transparent PNG');showResult(l?'✅ Background हट गया — transparent PNG तैयार है।':'✅ Background removed — transparent PNG is ready.');}
 async function pdfCropTool(){const {PDFDocument}=PDFLib,src=await PDFDocument.load(await selectedFiles[0].arrayBuffer());const t=Number($('cropTop')?.value)||0,r=Number($('cropRight')?.value)||0,b=Number($('cropBottom')?.value)||0,l=Number($('cropLeft')?.value)||0;for(const p of src.getPages()){const box=p.getMediaBox();const x=l,y=b,w=Math.max(1,box.width-l-r),h=Math.max(1,box.height-t-b);p.setCropBox(x,y,w,h);}const out=await src.save({useObjectStreams:true});downloadBlob(new Blob([out],{type:'application/pdf'}),'cropped.pdf','Cropped PDF');showResult(siteLang==='hi'?'PDF crop हो गई।':'PDF cropped.');}
 async function pdfGrayscaleTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;const {jsPDF}=window.jspdf,out=new jsPDF({unit:'pt',format:'a4'});for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:1.6}),c=document.createElement('canvas');c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;const ctx=c.getContext('2d'),d=ctx.getImageData(0,0,c.width,c.height);for(let p=0;p<d.data.length;p+=4){const y=.299*d.data[p]+.587*d.data[p+1]+.114*d.data[p+2];d.data[p]=d.data[p+1]=d.data[p+2]=y;}ctx.putImageData(d,0,0);if(n>1)out.addPage([vp.width,vp.height]);out.addImage(c.toDataURL('image/jpeg',.9),'JPEG',0,0,vp.width,vp.height,'','FAST');setProgress(n,pdf.numPages,`Page ${n}/${pdf.numPages}`);}downloadBlob(out.output('blob'),'grayscale.pdf','Grayscale PDF');showResult(siteLang==='hi'?'ग्रेस्केल PDF तैयार है।':'Grayscale PDF is ready.');}
+async function extractPdfPlainText(file){if(!pdfjs)throw new Error('PDF engine is still loading.');const doc=await pdfjs.getDocument({data:await file.arrayBuffer()}).promise;let pages=[];for(let n=1;n<=doc.numPages;n++){const page=await doc.getPage(n),c=await page.getTextContent();pages.push(c.items.map(x=>x.str).join(' ').replace(/\s+/g,' ').trim());}return pages;}
+async function pdfToWord(){const pages=await extractPdfPlainText(selectedFiles[0]);const html='<!doctype html><html><head><meta charset="utf-8"></head><body>'+pages.map((x,i)=>`<h2>Page ${i+1}</h2><p>${esc2(x)}</p>`).join('')+'</body></html>';downloadBlob(new Blob([html],{type:'application/msword'}),'pdf-to-word.doc','Download Word File');showResult('PDF converted to a Word-compatible DOC file.');}
+async function pdfToExcel(){const pages=await extractPdfPlainText(selectedFiles[0]);const rows=[['Page','Text'],...pages.map((x,i)=>[i+1,x])];const ws=XLSX.utils.aoa_to_sheet(rows);ws['!cols']=[{wch:10},{wch:100}];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'PDF Text');const out=XLSX.write(wb,{bookType:'xlsx',type:'array'});downloadBlob(new Blob([out],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),'pdf-to-excel.xlsx','Download Excel File');showResult('PDF converted to an XLSX worksheet.');}
 async function pdfToTextTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),tc=await page.getTextContent();all+=`--- Page ${n} ---\\n`+tc.items.map(x=>x.str).join(' ')+'\\n\\n';}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'extracted-text.txt','Download TXT');showResult(siteLang==='hi'?'PDF text निकाल लिया गया।':'PDF text extracted.');}
 
 /* ---------- New: Word Document Editor Pro ---------- */
@@ -2345,8 +2355,16 @@ function fastDownloadNow(){
   closeDownloadGate();
 }
 function cancelDownloadGate(){closeDownloadGate();}
-function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');$('resultText').textContent=siteLang==='hi'?'फाइल तैयार है। नीचे डाउनलोड बटन दबाएं।':'File is ready. Click the Download button below.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
-function addDownload(url,name,label){const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);$('resultBox').classList.remove('hidden');}
+function downloadBlob(blob,name,label){const url=URL.createObjectURL(blob);clearDownloads();const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);addWhatsAppShare(url,name);$('resultBox').classList.remove('hidden');$('resultText').textContent=siteLang==='hi'?'फाइल तैयार है। नीचे डाउनलोड या WhatsApp Share दबाएं।':'File is ready. Download or share it on WhatsApp.';if(!window.__pdfDownloadUrls)window.__pdfDownloadUrls=[];window.__pdfDownloadUrls.push(url);}
+function addDownload(url,name,label){const a=document.createElement('a');a.href='#';a.className='inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-black cursor-pointer';a.textContent='⬇️ '+label;a.addEventListener('click',e=>{e.preventDefault();openDownloadGate(url,name);});$('downloadArea').appendChild(a);addWhatsAppShare(url,name);$('resultBox').classList.remove('hidden');}
+async function shareGeneratedFile(url,name){
+  try{const response=await fetch(url);const blob=await response.blob();const file=new File([blob],name||'Dudi-PDF-Editor-file.pdf',{type:blob.type||'application/pdf'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({title:'Dudi PDF Editor',text:'Shared from Dudi PDF Editor',files:[file]});return true;}}catch(e){if(e&&e.name==='AbortError')return true;}return false;}
+function openWhatsAppShare(url,name){if(/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)){openShareProcess(url,name);return;}showCopyLinkPopup(url,name);}
+function addWhatsAppShare(url,name){const wrap=document.createElement('div');wrap.className='dudi-share-row';const b=document.createElement('button');b.type='button';b.className='dudi-whatsapp-btn';b.innerHTML='💬 WhatsApp Share';b.onclick=()=>openWhatsAppShare(url,name);wrap.appendChild(b);$('downloadArea').appendChild(wrap);}
+function openShareProcess(url,name){let m=$('dudiShareModal');if(!m){m=document.createElement('div');m.id='dudiShareModal';m.className='dudi-share-modal';m.innerHTML='<div class="dudi-share-card"><div class="text-4xl">💬</div><h3>WhatsApp Share</h3><p id="dudiShareText"></p><div class="dudi-share-spinner"></div><button id="dudiShareProcessBtn" type="button">Open WhatsApp →</button><button type="button" class="dudi-share-cancel" onclick="closeShareModal()">Cancel</button></div>';document.body.appendChild(m);}m.dataset.url=url;m.dataset.name=name||'Dudi-PDF-Editor-file.pdf';m.classList.add('show');$('dudiShareText').textContent='Tap the button to continue. Supported phones can share the generated PDF directly to WhatsApp.';$('dudiShareProcessBtn').onclick=async()=>{const ok=await shareGeneratedFile(m.dataset.url,m.dataset.name);if(ok){closeShareModal();return;}try{window.open('https://wa.me/?text='+encodeURIComponent('Dudi PDF Editor file: '+location.href),'_blank','noopener,noreferrer');}catch(e){}closeShareModal();};}
+function closeShareModal(){$('dudiShareModal')?.classList.remove('show');}
+function showCopyLinkPopup(url,name){let m=$('dudiCopyModal');if(!m){m=document.createElement('div');m.id='dudiCopyModal';m.className='dudi-share-modal';m.innerHTML='<div class="dudi-share-card"><div class="text-4xl">🔗</div><h3>Copy File Link</h3><p>PC पर browser-generated local file का permanent public URL नहीं बनता। Link copy करें या downloaded file को WhatsApp Desktop में attach करें।</p><input id="dudiCopyInput" readonly class="dudi-copy-input"><button id="dudiCopyBtn" type="button">📋 Copy Link</button><button type="button" class="dudi-share-cancel" onclick="closeCopyModal()">Close</button></div>';document.body.appendChild(m);}$('dudiCopyInput').value=url;m.classList.add('show');$('dudiCopyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(url);toast('Link copied.');}catch(e){$('dudiCopyInput').select();document.execCommand('copy');toast('Link copied.');}};}
+function closeCopyModal(){$('dudiCopyModal')?.classList.remove('show');}
 function clearDownloads(){$('downloadArea').innerHTML='';}
 function showResult(text){$('resultText').textContent=text;$('resultBox').classList.remove('hidden');}
 function clearResult(){$('resultBox').classList.add('hidden');$('downloadArea').innerHTML='';$('progressContainer').classList.add('hidden');$('progressBar').style.width='0%';}
@@ -2843,6 +2861,141 @@ window.setLanguage=function(code){
 })();
 </script>
 
+
+<script>
+/* ============================================================
+   DUDI SAFE ADD-ON PACK v1
+   Only adds new functionality; does not remove/replace existing tools.
+   ============================================================ */
+(function(){
+  'use strict';
+  const $d=id=>document.getElementById(id);
+  const escD=s=>String(s??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+
+  /* ---------- Resume Builder: two selectable template cards ---------- */
+  function resumeTemplatePicker(){
+    return `
+      <div class="dudi-rb-template-wrap">
+        <div class="dudi-rb-template-head"><div><div class="dudi-rb-kicker">✨ Choose Template</div><h3>Choose your resume design</h3></div><button type="button" class="dudi-rb-change" onclick="document.getElementById('dudiResumeTemplates')?.classList.toggle('hidden')">Change</button></div>
+        <div id="dudiResumeTemplates" class="dudi-rb-template-grid">
+          <label class="dudi-rb-template-card selected"><input type="radio" name="dudiRbTemplate" value="modern" checked><div class="dudi-rb-mini modern"><div class="mini-name">YOUR NAME</div><div class="mini-role">PROFESSIONAL ROLE</div><div class="mini-line"></div><div class="mini-cols"><span></span><b></b></div></div><div class="dudi-rb-template-info"><b>Modern Professional</b><span>Clean • ATS-friendly • Professional</span></div></label>
+          <label class="dudi-rb-template-card"><input type="radio" name="dudiRbTemplate" value="sidebar"><div class="dudi-rb-mini sidebar"><div class="mini-side"></div><div class="mini-content"><div class="mini-name">YOUR NAME</div><div class="mini-role">PROFESSIONAL ROLE</div><div class="mini-line"></div><div class="mini-cols"><span></span><b></b></div></div></div><div class="dudi-rb-template-info"><b>Elegant Sidebar</b><span>Stylish • Compact • Eye-catching</span></div></label>
+        </div>
+      </div>`;
+  }
+
+  const oldRO=dudiOriginalRenderOptions=window.renderOptions;
+  window.renderOptions=function(){
+    if(typeof oldRO==='function')oldRO();
+    if(window.currentTool==='examResumeBuilder'){
+      const box=$d('optionsBox'); if(!box)return;
+      box.innerHTML=`
+        ${resumeTemplatePicker()}
+        <div class="grid sm:grid-cols-2 gap-3 mt-4">
+          <input id="rbName" class="w-full border rounded-xl px-4 py-3" placeholder="Full name">
+          <input id="rbTitle" class="w-full border rounded-xl px-4 py-3" placeholder="Target role / Job title">
+          <input id="rbEmail" class="w-full border rounded-xl px-4 py-3" placeholder="Email">
+          <input id="rbPhone" class="w-full border rounded-xl px-4 py-3" placeholder="Phone">
+          <input id="rbLocation" class="w-full border rounded-xl px-4 py-3" placeholder="City / Location">
+          <input id="rbLink" class="w-full border rounded-xl px-4 py-3" placeholder="LinkedIn / Portfolio (optional)">
+          <textarea id="rbSummary" class="sm:col-span-2 w-full border rounded-xl px-4 py-3 min-h-20" placeholder="Professional summary / objective"></textarea>
+          <textarea id="rbEducation" class="w-full border rounded-xl px-4 py-3 min-h-24" placeholder="Education — one entry per line"></textarea>
+          <textarea id="rbSkills" class="w-full border rounded-xl px-4 py-3 min-h-24" placeholder="Skills — comma separated"></textarea>
+          <textarea id="rbExperience" class="sm:col-span-2 w-full border rounded-xl px-4 py-3 min-h-28" placeholder="Experience — Company | Role | achievement bullets"></textarea>
+          <input id="rbLanguages" class="w-full border rounded-xl px-4 py-3" placeholder="Languages, e.g. Hindi, English">
+        </div>`;
+      box.classList.remove('hidden');
+      box.querySelectorAll('input[name="dudiRbTemplate"]').forEach(r=>r.addEventListener('change',()=>{
+        box.querySelectorAll('.dudi-rb-template-card').forEach(c=>c.classList.remove('selected')); r.closest('.dudi-rb-template-card')?.classList.add('selected');
+      }));
+    }
+  };
+
+  /* Make the existing resume PDF generator honor the two templates. */
+  const oldResume=window.examResumeBuilderTool;
+  window.examResumeBuilderTool=async function(){
+    if(!window.jspdf){toast?.('PDF engine is not loaded.');return;}
+    const {jsPDF}=window.jspdf, pdf=new jsPDF({unit:'mm',format:'a4',compress:true});
+    const val=id=>(($d(id)?.value)||'').trim();
+    const name=val('rbName')||'Your Name', title=val('rbTitle')||'Professional';
+    const email=val('rbEmail'),phone=val('rbPhone'),location=val('rbLocation'),link=val('rbLink');
+    const summary=val('rbSummary')||'Motivated professional with strong skills and a commitment to delivering high-quality work.';
+    const education=val('rbEducation')||'Education'; const skills=val('rbSkills')||'Skills'; const exp=val('rbExperience')||'Experience and achievements'; const languages=val('rbLanguages');
+    const tpl=document.querySelector('input[name="dudiRbTemplate"]:checked')?.value||'modern';
+    const W=pdf.internal.pageSize.getWidth(),H=pdf.internal.pageSize.getHeight();
+    const wrap=(txt,w,size)=>{pdf.setFontSize(size);return pdf.splitTextToSize(txt,w)};
+    if(tpl==='sidebar'){
+      const sw=61; pdf.setFillColor(15,23,42);pdf.rect(0,0,sw,H,'F');
+      pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(17);let y=22;
+      wrap(name,sw-12,17).forEach(x=>{pdf.text(x,7,y);y+=7}); y+=2;pdf.setFont('helvetica','normal');pdf.setFontSize(10);wrap(title,sw-12,10).forEach(x=>{pdf.text(x,7,y);y+=5});
+      y+=8;pdf.setDrawColor(71,85,105);pdf.line(7,y,sw-7,y);y+=9;pdf.setTextColor(125,211,252);pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdf.text('CONTACT',7,y);y+=6;pdf.setTextColor(226,232,240);pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);
+      [email,phone,location,link].filter(Boolean).forEach(t=>wrap(t,sw-14,8.5).forEach(x=>{pdf.text(x,7,y);y+=4.6}));
+      y+=7;pdf.setTextColor(125,211,252);pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdf.text('SKILLS',7,y);y+=6;pdf.setTextColor(226,232,240);pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);wrap(skills,sw-14,8.5).forEach(x=>{pdf.text(x,7,y);y+=4.5});
+      let x=70,cy=22, cw=W-80; pdf.setTextColor(15,23,42);pdf.setFont('helvetica','bold');pdf.setFontSize(19);pdf.text(name,x,cy);cy+=7;pdf.setTextColor(71,85,105);pdf.setFont('helvetica','normal');pdf.setFontSize(10);pdf.text(title,x,cy);cy+=10;
+      const section=(h,t)=>{cy+=3;pdf.setTextColor(14,116,144);pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.text(h,x,cy);cy+=5;pdf.setTextColor(30,41,59);pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);wrap(t,cw,9.5).forEach(q=>{if(cy>H-15){pdf.addPage();cy=20}pdf.text(q,x,cy);cy+=4.7});cy+=3};
+      section('PROFILE',summary);section('EXPERIENCE',exp);section('EDUCATION',education);if(languages)section('LANGUAGES',languages);
+    }else{
+      pdf.setFillColor(15,23,42);pdf.rect(0,0,W,34,'F');pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(21);pdf.text(name,15,16);pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);pdf.text(title,15,24);
+      const contact=[email,phone,location,link].filter(Boolean).join('  •  ');if(contact)pdf.text(contact,15,30);
+      let y=46;const section=(h,t)=>{pdf.setTextColor(14,116,144);pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.text(h,15,y);y+=6;pdf.setTextColor(30,41,59);pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);wrap(t,W-30,9.5).forEach(q=>{if(y>H-15){pdf.addPage();y=20}pdf.text(q,15,y);y+=4.8});y+=4};
+      section('PROFILE',summary);section('EXPERIENCE',exp);section('EDUCATION',education);section('SKILLS',skills);if(languages)section('LANGUAGES',languages);
+    }
+    const safe=name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'resume';
+    downloadBlob(pdf.output('blob'),safe+'-resume.pdf','Download Resume PDF');showResult('Your resume is ready. Selected template: '+(tpl==='sidebar'?'Elegant Sidebar':'Modern Professional')+'.');
+  };
+
+  /* ---------- Basic Clideo-style browser video editor ---------- */
+  if(typeof window.addOfficeTool==='function'){
+    addOfficeTool('basicVideoEditor','Video Editor — Basic','Clideo-style browser video editor with preview, trim, mute and speed controls. Processing stays in your browser.','🎬','video/*',false,'Export Video','MP4/MOV/WebM and common browser video formats');
+  }else if(window.tools){
+    tools.basicVideoEditor={title:'Video Editor — Basic',titleHi:'Basic Video Editor',desc:'Clideo-style browser video editor with preview, trim, mute and speed controls.',descHi:'ब्राउज़र में basic video editor — trim, mute और speed controls.',icon:'🎬',accept:'video/*',multiple:false,button:'Export Video',buttonHi:'Export Video',hint:'Select a video file',hintHi:'Video file चुनें',isNew:true};
+  }
+  if(window.officeDescriptions)officeDescriptions.basicVideoEditor='Basic Clideo-style editing: preview, trim, mute and playback speed. Export is generated locally.';
+  if(typeof window.buildOfficeModalGrid==='function'){
+    const oldGrid=window.buildOfficeModalGrid;
+    window.buildOfficeModalGrid=function(){oldGrid();const g=$d('officeModalGrid');if(g&&!g.querySelector('[data-video-editor]'))g.insertAdjacentHTML('beforeend','<div data-video-editor class="office-tile office-live-now" style="cursor:pointer" onclick="closeOfficeModal();openTool(\'basicVideoEditor\')"><div class="office-icon">🎬</div><div class="flex-1"><div class="flex items-center justify-between gap-2"><b class="text-sm">Video Editor — Basic</b><span class="office-tile-soon" style="background:#dcfce7;color:#15803d">LIVE NOW</span></div><p class="text-xs text-slate-500 mt-1">Trim, mute, speed and export video in your browser.</p></div></div>');};
+  }
+
+  const oldRO2=window.renderOptions;
+  window.renderOptions=function(){
+    if(typeof oldRO2==='function')oldRO2();
+    if(window.currentTool!=='basicVideoEditor')return;
+    const box=$d('optionsBox');if(!box)return;
+    box.innerHTML=`<div class="dudi-video-editor-panel"><div class="dudi-video-preview-wrap"><video id="dudiVideoPreview" controls playsinline></video></div><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4"><label>Start (sec)<input id="dudiVideoStart" type="number" min="0" step="0.1" value="0"></label><label>End (sec)<input id="dudiVideoEnd" type="number" min="0" step="0.1" value="0"></label><label>Speed<select id="dudiVideoSpeed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label><label class="dudi-video-check"><input id="dudiVideoMute" type="checkbox"> Mute audio</label></div><p id="dudiVideoStatus" class="text-xs text-slate-500 mt-3">Upload a video to preview and edit it.</p></div>`;
+    box.classList.remove('hidden');
+    const f=window.selectedFiles?.[0],v=$d('dudiVideoPreview');if(f&&v){v.src=URL.createObjectURL(f);v.onloadedmetadata=()=>{$d('dudiVideoEnd').value=v.duration.toFixed(1);$d('dudiVideoStart').max=v.duration;$d('dudiVideoEnd').max=v.duration;};}
+  };
+
+  const oldOpen=window.openTool;
+  window.openTool=function(key){if(typeof oldOpen==='function')oldOpen(key);if(key==='basicVideoEditor'){setTimeout(()=>window.renderOptions?.(),40)}};
+  const oldProc=window.processFiles;
+  window.processFiles=async function(){if(window.currentTool==='basicVideoEditor')return exportDudiVideo();return typeof oldProc==='function'?oldProc():undefined};
+
+  async function exportDudiVideo(){
+    const f=window.selectedFiles?.[0];if(!f){toast?.('Please select a video first.');return;}
+    const v=$d('dudiVideoPreview');if(!v||!v.captureStream){toast?.('This browser does not support in-browser video export. Try Chrome or Edge.');return;}
+    let start=Math.max(0,Number($d('dudiVideoStart')?.value)||0),end=Number($d('dudiVideoEnd')?.value)||v.duration;if(!isFinite(end)||end<=0)end=v.duration;if(start>=end){toast?.('End time must be greater than start time.');return;}
+    const speed=Number($d('dudiVideoSpeed')?.value)||1, mute=!!$d('dudiVideoMute')?.checked;
+    const status=$d('dudiVideoStatus');if(status)status.textContent='Exporting video locally… keep this tab open.';
+    const url=URL.createObjectURL(f);v.src=url;v.currentTime=start;v.playbackRate=speed;v.muted=mute;
+    await new Promise(r=>{const done=()=>{v.removeEventListener('loadedmetadata',done);r()};if(v.readyState>=1)done();else v.addEventListener('loadedmetadata',done)});
+    await new Promise(r=>{const seek=()=>{v.removeEventListener('seeked',seek);r()};v.addEventListener('seeked',seek);v.currentTime=start});
+    const stream=v.captureStream();if(mute){stream.getAudioTracks().forEach(t=>t.enabled=false)}
+    const mime=['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(x=>MediaRecorder.isTypeSupported(x))||'';if(!mime){toast?.('Video export format is not supported in this browser.');return}
+    const rec=new MediaRecorder(stream,{mimeType:mime});const chunks=[];rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);const stopped=new Promise(res=>rec.onstop=res);rec.start(250);await v.play();
+    await new Promise(resolve=>{const check=()=>{if(v.currentTime>=end||v.ended){v.removeEventListener('timeupdate',check);resolve()}else requestAnimationFrame(check)};v.addEventListener('timeupdate',check)});
+    v.pause();rec.stop();await stopped;stream.getTracks().forEach(t=>t.stop());URL.revokeObjectURL(url);
+    const blob=new Blob(chunks,{type:mime});downloadBlob(blob,'dudi-video-edited.webm','Download Edited Video');showResult('Edited video exported locally as WebM.');if(status)status.textContent='Done — your edited video is ready to download.';
+  }
+
+  /* Styling isolated to the new add-on components. */
+  const st=document.createElement('style');st.textContent=`
+    .dudi-rb-template-wrap{border:1px solid #e2e8f0;border-radius:20px;padding:16px;background:linear-gradient(145deg,#fff,#f8fafc);box-shadow:0 12px 35px rgba(15,23,42,.07)}
+    .dudi-rb-template-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.dudi-rb-kicker{font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#06b6d4}.dudi-rb-template-head h3{font-size:18px;font-weight:900;margin:3px 0 0}.dudi-rb-change{border:1px solid #cbd5e1;border-radius:10px;padding:7px 11px;font-weight:800;background:#fff}.dudi-rb-template-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}.dudi-rb-template-card{position:relative;border:2px solid #e2e8f0;border-radius:18px;padding:10px;background:#fff;cursor:pointer;transition:.22s;box-shadow:0 8px 25px rgba(15,23,42,.05)}.dudi-rb-template-card:hover{transform:translateY(-3px);box-shadow:0 16px 35px rgba(15,23,42,.12)}.dudi-rb-template-card.selected{border-color:#06b6d4;box-shadow:0 0 0 4px rgba(6,182,212,.1)}.dudi-rb-template-card input{position:absolute;opacity:0}.dudi-rb-mini{height:155px;border-radius:12px;background:#f8fafc;position:relative;overflow:hidden;padding:15px;color:#0f172a}.dudi-rb-mini .mini-name{font-weight:900;font-size:11px}.dudi-rb-mini .mini-role{font-size:7px;color:#64748b;margin-top:3px}.dudi-rb-mini .mini-line{height:3px;background:#06b6d4;width:45%;margin:9px 0}.dudi-rb-mini .mini-cols{display:grid;grid-template-columns:1fr 1.8fr;gap:8px}.dudi-rb-mini .mini-cols span,.dudi-rb-mini .mini-cols b{height:82px;background:#e2e8f0;border-radius:5px}.dudi-rb-mini.sidebar{padding-left:55px}.dudi-rb-mini .mini-side{position:absolute;left:0;top:0;bottom:0;width:43px;background:#0f172a}.dudi-rb-template-info{display:flex;flex-direction:column;padding:9px 3px 2px}.dudi-rb-template-info b{font-size:13px}.dudi-rb-template-info span{font-size:11px;color:#64748b;margin-top:3px}.dudi-video-editor-panel{border:1px solid #e2e8f0;border-radius:20px;padding:16px;background:#fff;box-shadow:0 12px 35px rgba(15,23,42,.07)}.dudi-video-preview-wrap{background:#0f172a;border-radius:16px;overflow:hidden;display:flex;justify-content:center;align-items:center;min-height:220px}.dudi-video-preview-wrap video{width:100%;max-height:480px;display:block}.dudi-video-editor-panel label{font-size:11px;font-weight:900;color:#475569;text-transform:uppercase;letter-spacing:.04em}.dudi-video-editor-panel input[type=number],.dudi-video-editor-panel select{display:block;width:100%;margin-top:6px;border:1px solid #cbd5e1;border-radius:11px;padding:10px;background:#fff;font-weight:700}.dudi-video-check{display:flex!important;align-items:center;gap:8px;padding-top:25px}.dudi-video-check input{width:18px;height:18px}
+    @media(max-width:640px){.dudi-rb-template-grid{grid-template-columns:1fr}.dudi-rb-mini{height:135px}.dudi-video-preview-wrap{min-height:180px}}
+  `;document.head.appendChild(st);
+})();
+</script>
 </body>
 </html>
 
@@ -3288,6 +3441,14 @@ body.dark-mode .dudi-guide-help{color:#cbd5e1!important}
 /* New office tools */
 .office-live-now{border-color:#86efac!important;background:#f0fdf4!important}
 body.dark-mode .office-live-now{background:#0b2415!important;border-color:#166534!important}
+
+/* ---------- Requested UI upgrades ---------- */
+.dudi-welcome-text{animation:dudiWelcomeGlow 3.6s ease-in-out infinite!important}@keyframes dudiWelcomeGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(6,182,212,0))}50%{filter:drop-shadow(0 0 18px rgba(6,182,212,.34))}}
+.dudi-guide-toggle{border:1px solid #cbd5e1;background:linear-gradient(135deg,#fff,#f8fafc);border-radius:14px;padding:9px 13px;font-size:12px;font-weight:900;cursor:pointer;box-shadow:0 8px 20px rgba(15,23,42,.08);transition:.22s}.dudi-guide-toggle:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(6,182,212,.25);border-color:#06b6d4}.dudi-guides-grid{display:none}.dudi-guides-grid.show{display:grid}
+.feature-slider-shell{padding-right:76px}.feature-next-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:1px solid #cbd5e1;background:linear-gradient(135deg,#fff,#f1f5f9);color:#0f172a;border-radius:999px;padding:10px 13px;font-size:12px;font-weight:900;cursor:pointer;box-shadow:0 10px 26px rgba(15,23,42,.14);transition:.22s;z-index:30}.feature-next-btn:hover{transform:translateY(-50%) scale(1.05);border-color:#06b6d4;box-shadow:0 0 26px rgba(6,182,212,.3)}.feature-slider{scroll-snap-type:x proximity;touch-action:pan-x;overscroll-behavior-x:contain}.feature-slide{scroll-snap-align:start}
+.dudi-share-row{display:block;width:100%;margin-top:10px}.dudi-whatsapp-btn{width:100%;border:0;border-radius:14px;padding:12px 16px;background:linear-gradient(90deg,#16a34a,#22c55e,#06b6d4);color:#fff;font-weight:900;cursor:pointer;box-shadow:0 10px 26px rgba(34,197,94,.2);transition:.22s}.dudi-whatsapp-btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(34,197,94,.34)}
+.dudi-share-modal{position:fixed;inset:0;z-index:10100;background:rgba(2,6,23,.68);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:18px}.dudi-share-modal.show{display:flex}.dudi-share-card{width:min(430px,94vw);background:#fff;border-radius:24px;padding:24px;text-align:center;box-shadow:0 30px 100px rgba(0,0,0,.32)}.dudi-share-card h3{font-size:22px;font-weight:950;margin:8px 0}.dudi-share-card p{font-size:13px;line-height:1.55;color:#64748b}.dudi-share-card button{width:100%;margin-top:12px;border:0;border-radius:14px;padding:13px 16px;background:linear-gradient(90deg,#16a34a,#06b6d4);color:#fff;font-weight:900;cursor:pointer}.dudi-share-card .dudi-share-cancel{background:#f1f5f9;color:#475569}.dudi-share-spinner{width:28px;height:28px;border:3px solid #e2e8f0;border-top-color:#06b6d4;border-radius:50%;animation:dudiSpin .7s linear infinite;margin:12px auto}.dudi-copy-input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:12px;font-size:11px;margin-top:8px}
+body.dark-mode .dudi-guide-toggle,body.dark-mode .feature-next-btn,body.dark-mode .dudi-share-card{background:#111827;color:#f8fafc;border-color:#334155}.dudi-share-card .dudi-share-cancel{background:#1f2937;color:#e5e7eb}button,.dudi-guide-card,.tool-card{transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}button:hover,.dudi-guide-card:hover,.tool-card:hover{filter:drop-shadow(0 0 8px rgba(6,182,212,.16))}@media(max-width:640px){.feature-slider-shell{padding-right:56px}.feature-next-btn{right:0;padding:9px 10px;font-size:11px}.feature-slider{gap:10px}.feature-slide{flex-basis:82vw}.dudi-guides-grid{grid-template-columns:1fr!important}}
 </style>
 
 <script id="dudi-final-v2-script">
@@ -3343,18 +3504,7 @@ function upgradeBrandAndHero(){
 }
 
 /* ---------- 1-second logo/banner splash ---------- */
-function showDudiSplash(){
-  let el=document.getElementById('dudiSplash');
-  if(!el){
-    el=document.createElement('div');
-    el.id='dudiSplash';el.className='dudi-splash';
-    el.innerHTML='<img alt="Dudi PDF Editor" src="'+DUDI_BANNER+'">';
-    document.body.appendChild(el);
-  }
-  el.classList.remove('hide');
-  clearTimeout(window.__dudiSplashTimer);
-  window.__dudiSplashTimer=setTimeout(()=>el.classList.add('hide'),1000);
-}
+function showDudiSplash(){const el=document.getElementById('dudiSplash');if(el)el.remove();}
 
 /* Existing drawer functions are wrapped so the splash appears for 1 second when a side drawer opens. */
 const oldToggleDudiDrawer=window.toggleDudiDrawer;
@@ -3815,6 +3965,26 @@ window.processFiles=async function(){
   if(currentTool==='receiptOptimizer')return receiptOptimizerTool();
   return typeof oldProcessFiles==='function'?oldProcessFiles():undefined;
 };
+
+/* ---------- Requested: expanded Hindi / regional OCR selector ---------- */
+let dudiOcrLang='eng+hin';
+const oldRenderOptionsRequested=renderOptions;
+renderOptions=function(){oldRenderOptionsRequested();if(currentTool!=='ocrConverter')return;const box=$('optionsBox');if(!box)return;box.classList.remove('hidden');const wrap=document.createElement('div');wrap.className='rounded-2xl border border-cyan-200 bg-cyan-50 p-3';wrap.innerHTML='<label class="block text-xs font-black uppercase tracking-wide text-cyan-800 mb-2">OCR Language / भाषा</label><select id="dudiOcrLangSelect" class="w-full border rounded-xl px-3 py-2 bg-white font-bold"><option value="eng+hin">English + हिन्दी</option><option value="eng+ben">English + বাংলা</option><option value="eng+guj">English + ગુજરાતી</option><option value="eng+mar">English + मराठी</option><option value="eng+pan">English + ਪੰਜਾਬੀ</option><option value="eng+tam">English + தமிழ்</option><option value="eng+tel">English + తెలుగు</option><option value="eng+kan">English + ಕನ್ನಡ</option></select><p class="text-[11px] text-cyan-900 mt-2">OCR runs in your browser. The selected Tesseract language model may take a little longer to load the first time.</p>';box.appendChild(wrap);$('dudiOcrLangSelect').value=dudiOcrLang;$('dudiOcrLangSelect').onchange=e=>{dudiOcrLang=e.target.value;};};
+const oldOcrConverterRequested=ocrConverter;
+ocrConverter=async function(){
+  if(!window.Tesseract)throw new Error('OCR engine is still loading. Please wait a moment and try again.');
+  if(currentTool==='ocrConverter'&&!selectedFiles.length)throw new Error('Choose an image or PDF first.');
+  const file=selectedFiles[0];let images=[];
+  if(file.type==='application/pdf'){if(!pdfjs)throw new Error('PDF engine has not loaded yet. Please refresh and try again.');const pdf=await pdfjs.getDocument({data:await file.arrayBuffer()}).promise;for(let n=1;n<=pdf.numPages;n++){setProgress(n-1,pdf.numPages,`Rendering page ${n} for OCR…`);const page=await pdf.getPage(n),vp=page.getViewport({scale:1.7}),canvas=document.createElement('canvas');canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;images.push(canvas);await idle();}}else images=[await loadImage(file)];
+  const lang=(currentTool==='ocrConverter'&&document.getElementById('dudiOcrLangSelect')?.value)||dudiOcrLang||'eng+hin';
+  const worker=await Tesseract.createWorker(lang,1,{logger:m=>{if(m.status==='recognizing text')setProgress(m.progress*100,100,`OCR ${Math.round(m.progress*100)}%…`);}});let full='';try{for(let i=0;i<images.length;i++){setProgress(i,images.length,`Reading text ${i+1}/${images.length}…`);const {data:{text}}=await worker.recognize(images[i]);full+=(full?'\n\n':'')+text.trim();await idle();}}finally{await worker.terminate();}if(!full.trim())throw new Error('No readable text was found.');const blob=new Blob([full],{type:'text/plain;charset=utf-8'});downloadBlob(blob,(file.name.replace(/\.[^.]+$/,'')||'ocr')+'.txt','Download OCR text');showResult(siteLang==='hi'?'OCR टेक्स्ट फाइल तैयार है।':'OCR text file is ready.');
+};
+/* ---------- Requested: collapsible Guides ---------- */
+function openLatestShare(){const urls=window.__pdfDownloadUrls||[];if(!urls.length){toast('Create/download a result first, then use WhatsApp Share.');return;}openWhatsAppShare(urls[urls.length-1],'Dudi-PDF-Editor-file.pdf');}
+function toggleGuides(){const g=$('dudiGuidesGrid'),b=document.querySelector('.dudi-guide-toggle');if(!g||!b)return;const open=g.classList.toggle('show');b.setAttribute('aria-expanded',String(open));b.innerHTML=open?'☰ Hide Guides <span>⌃</span>':'☰ Show Guides <span>⌄</span>';}
+async function aiSummarizePdfFile(file){if(!file)throw new Error('Choose a PDF first.');if(!pdfjs)throw new Error('PDF engine is still loading. Please try again in a moment.');const doc=await pdfjs.getDocument({data:await file.arrayBuffer()}).promise;let text='';for(let n=1;n<=Math.min(doc.numPages,20);n++){const page=await doc.getPage(n),content=await page.getTextContent();text+=' '+content.items.map(x=>x.str).join(' ');}text=text.replace(/\s+/g,' ').trim();if(!text)throw new Error('No readable text found. Try OCR for a scanned/image-only PDF.');const sentences=text.split(/(?<=[.!?।])\s+/).filter(Boolean),words=text.split(/\s+/).filter(Boolean),freq={};words.forEach(w=>{const k=w.toLowerCase().replace(/[^\p{L}\p{N}]+/gu,'');if(k.length>3)freq[k]=(freq[k]||0)+1;});const top=Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>x[0]);const scored=sentences.map((x,i)=>({x,i,score:x.split(/\s+/).reduce((n,w)=>n+(top.includes(w.toLowerCase().replace(/[^\p{L}\p{N}]+/gu,''))?1:0),0)})).sort((a,b)=>b.score-a.score||a.i-b.i).slice(0,5).sort((a,b)=>a.i-b.i).map(x=>x.x);return{pages:doc.numPages,chars:text.length,topics:top,summary:scored.join(' '),text};}
+async function openAiPdfSummary(){let file=selectedFiles[0];if(!file){const inp=document.createElement('input');inp.type='file';inp.accept='application/pdf';inp.onchange=async()=>{if(inp.files[0]){selectedFiles=[inp.files[0]];await openAiPdfSummary();}};inp.click();return;}let m=$('aiSummaryModal');if(!m){m=document.createElement('div');m.id='aiSummaryModal';m.className='dudi-share-modal';m.innerHTML='<div class="dudi-share-card" style="text-align:left"><div class="text-4xl">🧠</div><h3>AI-Powered PDF Chat & Summary</h3><p id="aiSummaryStatus">Reading the PDF locally…</p><div id="aiSummaryOutput" style="max-height:45vh;overflow:auto;border:1px solid #e2e8f0;border-radius:14px;padding:12px;background:#f8fafc;font-size:13px;line-height:1.6"></div><input id="aiSummaryQuestion" class="dudi-copy-input" placeholder="Ask about this PDF…"><button id="aiSummaryAskBtn" type="button">Ask AI</button><button id="aiSummaryCloseBtn" type="button" class="dudi-share-cancel">Close</button></div>';document.body.appendChild(m);$('aiSummaryCloseBtn').onclick=()=>m.classList.remove('show');}m.classList.add('show');$('aiSummaryOutput').textContent='';try{const r=await aiSummarizePdfFile(file);m.dataset.text=r.text;$('aiSummaryStatus').textContent=`${r.pages} pages • ${r.chars.toLocaleString()} characters • Topics: ${r.topics.join(', ')}`;$('aiSummaryOutput').textContent=r.summary||'No concise summary could be extracted.';}catch(e){$('aiSummaryStatus').textContent=e.message||'Unable to summarize this PDF.';}$('aiSummaryAskBtn').onclick=()=>{const q=$('aiSummaryQuestion').value.trim().toLowerCase(),t=m.dataset.text||'';if(!q){$('aiSummaryOutput').textContent='Type a question first.';return;}const terms=q.split(/\s+/).filter(x=>x.length>2),parts=t.split(/(?<=[.!?।])\s+/).filter(Boolean),hits=parts.filter(x=>terms.some(k=>x.toLowerCase().includes(k))).slice(0,5);$('aiSummaryOutput').textContent=hits.length?hits.join(' '):'I could not find a matching passage in this PDF. Try a keyword from the document.';};}
+window.aiSummarizeCurrent=openAiPdfSummary;
 
 /* ---------- Auto-redact button ---------- */
 document.querySelectorAll('.dudi-ai-btn').forEach(btn=>{

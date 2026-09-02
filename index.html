@@ -1323,7 +1323,7 @@ function validFile(file){
   if(currentTool==='imageConvert'||currentTool==='imageCompress'||currentTool==='imageCrop'||currentTool==='removeBg'||currentTool==='qrScanner')return /^image\/(jpeg|png|webp)$/i.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name);
   return file.type==='application/pdf'||/\.pdf$/i.test(file.name);
 }
-function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);if(currentTool==='imageCrop')setTimeout(initImageCropPreview,20);if(currentTool==='removeBg')setTimeout(updateRemoveBgPreview,20);if(currentTool==='compressPdf')setTimeout(initCompressPreview,20);}
+function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);if(currentTool==='imageCrop')setTimeout(initImageCropPreview,20);if(currentTool==='removeBg')setTimeout(updateRemoveBgPreview,20);if(currentTool==='compressPdf')setTimeout(initCompressPreview,20);if(currentTool==='basicVideoEditor')setTimeout(()=>window.renderOptions?.(),30);}
 function renderFiles(){$('fileList').innerHTML=selectedFiles.map((f,i)=>`<div class="flex items-center gap-3 p-4 bg-slate-50 border rounded-xl"><div class="text-2xl">${fileIcon(f)}</div><div class="flex-1 min-w-0"><b class="block truncate text-sm">${esc(f.name)}</b><span class="text-xs text-slate-400">${bytes(f.size)}</span></div><button onclick="removeFile(${i})" class="w-9 h-9 rounded-lg hover:bg-red-100">✕</button></div>`).join('');}
 function fileIcon(f){return /image/i.test(f.type)?'🖼️':/word|docx/i.test(f.type)||/\.docx$/i.test(f.name)?'📝':/sheet|excel|xlsx|xls/i.test(f.type)||/\.(xlsx|xls)$/i.test(f.name)?'📊':'📄';}
 function removeFile(i){selectedFiles.splice(i,1);renderFiles();updateButton();}
@@ -3002,7 +3002,7 @@ window.setLanguage=function(code){
     const url=URL.createObjectURL(f);v.src=url;v.currentTime=start;v.playbackRate=speed;v.muted=mute;
     await new Promise(r=>{const done=()=>{v.removeEventListener('loadedmetadata',done);r()};if(v.readyState>=1)done();else v.addEventListener('loadedmetadata',done)});
     await new Promise(r=>{const seek=()=>{v.removeEventListener('seeked',seek);r()};v.addEventListener('seeked',seek);v.currentTime=start});
-    const stream=v.captureStream();if(mute){stream.getAudioTracks().forEach(t=>t.enabled=false)}
+    const capture=(v.captureStream||v.mozCaptureStream)?.bind(v);if(!capture){toast?.('This browser does not support in-browser video export. Try Chrome or Edge.');return;}const stream=capture();if(mute){stream.getAudioTracks().forEach(t=>t.enabled=false)}
     const mime=['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(x=>MediaRecorder.isTypeSupported(x))||'';if(!mime){toast?.('Video export format is not supported in this browser.');return}
     const rec=new MediaRecorder(stream,{mimeType:mime});const chunks=[];rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);const stopped=new Promise(res=>rec.onstop=res);rec.start(250);await v.play();
     await new Promise(resolve=>{const check=()=>{if(v.currentTime>=end||v.ended){v.removeEventListener('timeupdate',check);resolve()}else requestAnimationFrame(check)};v.addEventListener('timeupdate',check)});
@@ -4106,6 +4106,138 @@ function initV2(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(initV2,20),{once:true});
 else setTimeout(initV2,20);
+
+})();
+</script>
+
+
+<script>
+/* ============================================================
+   DUDI AD + TOOL NAVIGATION ADD-ON
+   Isolated: does not replace existing tool engines or UI.
+   ============================================================ */
+(function(){
+  'use strict';
+
+  /* ---------- Notification ad: zone 11705969 ---------- */
+  (function loadNotificationAd(){
+    if(document.querySelector('script[data-dudi-ad-zone="11705969"]')) return;
+    var s=document.createElement('script');
+    s.dataset.zone='11705969';
+    s.dataset.dudiAdZone='11705969';
+    s.src='https://nap5k.com/tag.min.js';
+    s.async=true;
+    (document.head||document.documentElement).appendChild(s);
+  })();
+
+  /* ---------- Tool-click ad: zone 11705998 ---------- */
+  var TOOL_CLICK_AD_SRC='https://al5sm.com/tag.min.js';
+  var toolAdLoaded=false;
+  function loadToolClickAd(){
+    if(toolAdLoaded || document.querySelector('script[data-dudi-ad-zone="11705998"]')) return;
+    toolAdLoaded=true;
+    var s=document.createElement('script');
+    s.dataset.zone='11705998';
+    s.dataset.dudiAdZone='11705998';
+    s.src=TOOL_CLICK_AD_SRC;
+    s.async=true;
+    (document.head||document.documentElement).appendChild(s);
+  }
+
+  /* ---------- Resume/video click URL ad ---------- */
+  var CLICK_REDIRECT_AD='https://omg10.com/4/11706009';
+  var lastClickAdAt=0;
+  function openClickAd(){
+    var now=Date.now();
+    if(now-lastClickAdAt<1200) return;
+    lastClickAdAt=now;
+    try{
+      var w=window.open(CLICK_REDIRECT_AD,'_blank','noopener,noreferrer');
+      if(w){ try{w.opener=null;}catch(_){} try{window.focus();}catch(_){} }
+    }catch(_){}
+  }
+
+  /* ---------- Vignette when returning from a tool ---------- */
+  var VIGNETTE_SRC='https://n6wxm.com/vignette.min.js';
+  var vignetteCooldownUntil=0;
+  function loadVignetteAd(){
+    var now=Date.now();
+    if(now<vignetteCooldownUntil) return;
+    vignetteCooldownUntil=now+4000;
+    var old=document.querySelector('script[data-dudi-ad-zone="11705986"]');
+    if(old) old.remove();
+    var s=document.createElement('script');
+    s.dataset.zone='11705986';
+    s.dataset.dudiAdZone='11705986';
+    s.src=VIGNETTE_SRC;
+    s.async=true;
+    (document.head||document.documentElement).appendChild(s);
+  }
+
+  /* ---------- Make SPA tool navigation browser-back friendly ---------- */
+  var dudiHistoryReady=false;
+  var originalOpenTool=window.openTool;
+  if(typeof originalOpenTool==='function'){
+    window.openTool=function(key){
+      var result=originalOpenTool.apply(this,arguments);
+      try{
+        history.pushState({dudiTool:key},'',location.href.split('#')[0]+'#tool-'+encodeURIComponent(key));
+        dudiHistoryReady=true;
+      }catch(_){}
+      return result;
+    };
+  }
+
+  var originalGoHome=window.goHome;
+  if(typeof originalGoHome==='function'){
+    window.goHome=function(){
+      var wasInTool=!!window.currentTool;
+      var result=originalGoHome.apply(this,arguments);
+      if(wasInTool) loadVignetteAd();
+      try{
+        if(location.hash.indexOf('#tool-')===0) history.replaceState({dudiHome:true},'',location.href.split('#')[0]);
+      }catch(_){}
+      return result;
+    };
+  }
+
+  window.addEventListener('popstate',function(){
+    if(window.currentTool){
+      var wasTool=true;
+      try{ if(typeof originalGoHome==='function') originalGoHome(); }catch(_){}
+      if(wasTool) loadVignetteAd();
+    }
+  });
+
+  /* If a tool card is clicked, load the requested tag ad.
+     Resume Builder and Video Editor additionally open the supplied URL ad. */
+  document.addEventListener('click',function(e){
+    var el=e.target.closest?.('[onclick]');
+    if(!el) return;
+    var code=el.getAttribute('onclick')||'';
+
+    if(code.indexOf("openTool('resumeBuilder')")!==-1){
+      loadToolClickAd();
+      openClickAd();
+      return;
+    }
+    if(code.indexOf("openTool('basicVideoEditor')")!==-1){
+      loadToolClickAd();
+      openClickAd();
+      return;
+    }
+
+    /* Any normal Dudi tool click gets the 11705998 tag ad. */
+    if(code.indexOf('openTool(')!==-1){
+      loadToolClickAd();
+    }
+  },true);
+
+  /* Direct tool-list clicks generated dynamically. */
+  document.addEventListener('click',function(e){
+    var b=e.target.closest?.('.dudi-tool-link');
+    if(b) loadToolClickAd();
+  },true);
 
 })();
 </script>

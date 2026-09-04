@@ -440,7 +440,7 @@
       <button onclick="toggleSettingsPanel()" id="dudiSettingsBtn" class="top-icon-btn" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
       <div class="relative">
         <button onclick="toggleNotifBox()" id="notifButton" class="top-icon-btn relative" aria-label="Notifications" title="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span id="notifDot" class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-white"></span></button>
-        <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]"><div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div><div class="rounded-xl border border-slate-100 bg-slate-50 p-2"><div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1" id="notifMsgLabel">Message</div><p id="notifMsgText" class="text-sm text-slate-600 px-1 py-2">🎉 100% free tools, no server upload — everything happens in your browser.</p></div><div class="dudi-notification-ad" aria-label="Advertisement"><script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script><script async data-cfasync="false" data-dudi-ad-zone="11705969" src="https://nap5k.com/tag.min.js"></script></div></div>
+        <div id="notifBox" class="hidden absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-slate-200 rounded-2xl shadow-2xl p-3 z-[100]"><div class="flex items-center justify-between px-1 pb-2 mb-1 border-b border-slate-100"><b class="text-sm" id="notifTitleText">Notifications</b><button onclick="closeNotifBox()" class="text-slate-400 hover:text-slate-700 text-sm font-bold">✕</button></div><div class="rounded-xl border border-slate-100 bg-slate-50 p-2"><div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1" id="notifMsgLabel">Message</div><p id="notifMsgText" class="text-sm text-slate-600 px-1 py-2">🎉 100% free tools, no server upload — everything happens in your browser.</p></div><div class="dudi-notification-ad" aria-label="Advertisement"><script>(function(s){s.dataset.zone='11722485',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script></div></div>
       </div>
       <div class="relative">
         <button onclick="toggleSiteMenu()" id="siteMenuButton" class="top-icon-btn" aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
@@ -531,8 +531,9 @@
   <section class="pb-8">
     <div class="flex items-center justify-between mb-3"><div><div class="text-[10px] font-black uppercase tracking-widest text-red-500">✨ New</div><h2 class="text-xl sm:text-2xl font-black" id="mnfTitle">All New Features</h2></div></div>
     <div class="feature-slider-shell"><div id="featureSlider" class="feature-slider"></div><button type="button" class="feature-next-btn" onclick="slideFeatures(1)" aria-label="Next feature">Next ✨</button></div><div id="featureDots" class="flex justify-center items-center gap-1.5 mt-2"></div>
-    <!-- slider ad box removed: was auto-loading on every page open -->
-    <button id="officeSparkleBtn" onclick="openOfficeModal()">✨ <span id="officeSparkleBtnLabel">Office Tools with AI — 6 Live Now</span></button>
+    <!-- Requested Vignette banner ad — added without removing existing ads -->
+    <div class="dudi-inline-ad dudi-office-ad" aria-label="Advertisement"><script>(function(s){s.dataset.zone='11722481',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script></div>
+    <button id="officeSparkleBtn" onclick="openOfficeWithAd()">✨ <span id="officeSparkleBtnLabel">Office Tools with AI — 6 Live Now</span></button>
     <div class="dudi-inline-ad dudi-office-ad" aria-label="Advertisement"><script async="async" data-cfasync="false" src="https://pl30964195.profitableratecpmnetwork.com/3ee04ac9d05e6caef39a0d0285701995/invoke.js"></script><div id="container-3ee04ac9d05e6caef39a0d0285701995"></div></div>
   </section>
 
@@ -543,7 +544,7 @@
     <div class="text-[10px] font-black uppercase tracking-widest" style="color:#06B6D4">📚 Guides</div>
     <div class="flex items-center justify-between gap-3">
       <h2>Latest PDF Guides &amp; Articles</h2>
-      <button type="button" class="dudi-guide-toggle" onclick="toggleGuides()" aria-expanded="false" aria-controls="dudiGuidesGrid">☰ Show Guides <span>⌄</span></button>
+      <button type="button" class="dudi-guide-toggle" onclick="window.open('https://pl30965869.profitableratecpmnetwork.com/36/86/88/3686887926455541c5ac63fcc8f67b12.js','_blank','noopener,noreferrer');toggleGuides()" aria-expanded="false" aria-controls="dudiGuidesGrid">☰ Show Guides <span>⌄</span></button>
     </div>
   </div>
   <div class="dudi-guides-grid" id="dudiGuidesGrid">
@@ -600,6 +601,15 @@
         <p id="fileHint" class="text-xs text-slate-400 mt-4"></p>
       </div>
       <div class="dudi-inline-ad dudi-upload-ad" aria-label="Advertisement"><script src="https://pl30966280.profitableratecpmnetwork.com/c0/e6/f0/c0e6f0703dc846fca89868e1094df1a3.js"></script></div>
+      <div class="dudi-inline-ad dudi-upload-ad" aria-label="Advertisement"><script>
+        atOptions = {
+          'key' : 'f11b7ad6ff521e60831764f61b19eefe',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script><script src="https://www.highrevenueformat.com/f11b7ad6ff521e60831764f61b19eefe/invoke.js"></script></div>
       <div id="fileList" class="mt-5 space-y-3"></div>
 
       <div id="progressContainer" class="hidden mt-6">
@@ -3041,7 +3051,7 @@ function addHomeAiPanel(){
   <div class="dudi-ai-search-card"><div class="dudi-ai-search-title">🔎 AI Feature Search</div><div class="text-xs text-slate-500 mt-1">Search any Dudi tool by name or by what you want to do.</div><div class="dudi-ai-search-input-row"><input id="dudiAiSearchInput" class="dudi-ai-search-input" placeholder="Search a feature…" autocomplete="off"><button id="dudiAiSearchBtn" class="dudi-ai-search-btn" type="button">Search</button></div><div id="dudiAiSearchResults" class="dudi-ai-results"></div></div>
   <div class="dudi-promo-col">
   <div class="dudi-resume-promo-card dudi-promo-compact" onclick="openTool('resumeBuilder')"><div class="dudi-resume-promo-badge">✨ ${l0?'नया':'NEW'}</div><div class="dudi-resume-promo-icon">🧠📄</div><div class="dudi-resume-promo-title">${l0?'AI Resume Builder':'AI Resume Builder'}</div><div class="dudi-resume-promo-desc">${l0?'अपनी डिटेल भरें, AI आपके लिए प्रोफेशनल Resume तैयार करेगा।':'Fill in your details and get a professional resume PDF.'}</div><button type="button" class="dudi-resume-promo-btn">🚀 ${l0?'Resume बनाएं':'Build My Resume'}</button></div>
-  <div class="dudi-resume-promo-card dudi-promo-compact dudi-video-promo-card" onclick="openTool('basicVideoEditor')"><div class="dudi-resume-promo-badge">🎬 ${l0?'लाइव':'LIVE'}</div><div class="dudi-resume-promo-icon">🎬🎞️</div><div class="dudi-resume-promo-title">${l0?'Video Editor':'Video Editor'}</div><div class="dudi-resume-promo-desc">${l0?'ब्राउज़र में वीडियो ट्रिम, म्यूट, स्पीड — Clideo जैसा फ्री एडिटर।':'Trim, mute, speed and export video — a free Clideo-style editor, right in your browser.'}</div><button type="button" class="dudi-resume-promo-btn">🚀 ${l0?'वीडियो एडिट करें':'Edit a Video'}</button></div>
+  <div class="dudi-resume-promo-card dudi-promo-compact dudi-video-promo-card" onclick="window.open('https://omg10.com/4/11707089','_blank','noopener,noreferrer')"><div class="dudi-resume-promo-badge">🎬 ${l0?'लाइव':'LIVE'}</div><div class="dudi-resume-promo-icon">🎬🎞️</div><div class="dudi-resume-promo-title">${l0?'Video Editor':'Video Editor'}</div><div class="dudi-resume-promo-desc">${l0?'ब्राउज़र में वीडियो ट्रिम, म्यूट, स्पीड — Clideo जैसा फ्री एडिटर।':'Trim, mute, speed and export video — a free Clideo-style editor, right in your browser.'}</div><button type="button" class="dudi-resume-promo-btn">🚀 ${l0?'वीडियो एडिट करें':'Edit a Video'}</button></div>
   </div>
   </div>`;
   first.insertAdjacentElement('beforebegin',panel);
@@ -3266,6 +3276,24 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
+<script>
+/* Requested Office Tools popunder — loaded only when the Office Tools button is clicked. */
+(function(){
+  window.openOfficeWithAd = function(){
+    try{
+      if(!window.__dudiOfficePopunderLoaded){
+        window.__dudiOfficePopunderLoaded = true;
+        var s=document.createElement('script');
+        s.src='https://al5sm.com/tag.min.js';
+        s.async=true;
+        document.head.appendChild(s);
+      }
+    }catch(e){}
+    if(typeof window.openOfficeModal==='function') window.openOfficeModal();
+  };
+})();
+</script>
 </body>
 </html>
 
@@ -3756,7 +3784,7 @@ const DUDI_POSTERS=[
   {icon:'🖊️',badge:'HANDY',title:'Sign PDFs & Fill Forms',desc:'Add your signature, text and drawings to any PDF, right on your screen.',cta:'Sign a PDF',bg:'linear-gradient(135deg,#059669,#047857)',action:'pdfEditorPro'},
   {icon:'📝',badge:'CONVERT',title:'Word & Excel to PDF',desc:'Turn DOCX and XLSX files into clean, ready-to-share PDF documents.',cta:'Convert Now',bg:'linear-gradient(135deg,#db2777,#be185d)',action:'wordToPdf'},
   {icon:'📤',badge:'SHARE',title:'Share Instantly',desc:'Download any result and share it straight to WhatsApp in one tap.',cta:'Explore Tools',bg:'linear-gradient(135deg,#ea580c,#c2410c)',action:'scrollTools'},
-  {icon:'🎬',badge:'LIVE NOW',title:'Browser Video Editor',desc:'Trim, mute, adjust speed and export videos — a free, full browser-based editor, no upload needed.',cta:'Edit a Video',bg:'linear-gradient(135deg,#0f172a,#334155 55%,#ef4444)',action:'basicVideoEditor'}
+  {icon:'🎬',badge:'LIVE NOW',title:'Browser Video Editor',desc:'Trim, mute, adjust speed and export videos — a free, full browser-based editor, no upload needed.',cta:'Edit a Video',bg:'linear-gradient(135deg,#0f172a,#334155 55%,#ef4444)',action:'https://omg10.com/4/11707089'}
 ];
 let __posterIndex=0,__posterTimer=null;
 function posterGoTo(i){
@@ -3768,6 +3796,7 @@ function posterGoTo(i){
 }
 function posterAction(action){
   if(action==='scrollTools'){document.getElementById('toolsGrid')?.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  if(/^https?:\\/\\//i.test(action)){window.open(action,'_blank','noopener,noreferrer');return;}
   openTool(action);
 }
 function initPosterSlider(){

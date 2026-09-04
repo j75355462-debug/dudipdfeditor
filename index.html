@@ -42,12 +42,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-md5@0.8.3/build/md5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
 
   <style>
     *{box-sizing:border-box}
     body{margin:0;background:radial-gradient(circle at 10% 10%,rgba(239,68,68,.09),transparent 27%),radial-gradient(circle at 90% 5%,rgba(99,102,241,.09),transparent 27%),#f8fafc;color:#0f172a}
     .tool-card{transition:.22s ease}.tool-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(15,23,42,.12)}
     .drop-zone{transition:.2s ease}.drop-zone.drag{border-color:#ef4444;background:#fff1f2;transform:scale(1.01)}
+    #editorCanvas.editor-canvas-drop{outline:3px dashed #ef4444;outline-offset:-3px;filter:brightness(.97)}
     .dudi-welcome-splash{position:fixed;inset:0;z-index:9999;background:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:20px;transition:opacity .5s ease}
     .dudi-welcome-splash.dudi-welcome-hide{opacity:0;pointer-events:none}
     .dudi-welcome-text-wrap{max-width:92vw;text-align:center}
@@ -708,6 +711,9 @@ compressPdf:{title:'Compress PDF',titleHi:'PDF कंप्रेस करे�
  pdfGrayscale:{title:'Grayscale PDF',titleHi:'ग्रेस्केल PDF',desc:'Convert PDF pages to black-and-white grayscale while keeping the page layout.',descHi:'PDF pages को layout बनाए रखते हुए ब्लैक-एंड-व्हाइट ग्रेस्केल में बदलें।',icon:'🖤',accept:'application/pdf',multiple:false,button:'Make Grayscale PDF',buttonHi:'ग्रेस्केल PDF बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  pdfToWord:{title:'PDF to Word',titleHi:'PDF से Word',desc:'Extract PDF text into a Word-compatible DOC file with clean paragraphs.',descHi:'PDF का टेक्स्ट Word-compatible DOC फाइल में निकालें।',icon:'📝',accept:'application/pdf',multiple:false,button:'Convert PDF to Word',buttonHi:'PDF से Word बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
   pdfToExcel:{title:'PDF to Excel',titleHi:'PDF से Excel',desc:'Extract readable PDF text into an XLSX worksheet.',descHi:'PDF का readable text XLSX worksheet में निकालें।',icon:'📊',accept:'application/pdf',multiple:false,button:'Convert PDF to Excel',buttonHi:'PDF से Excel बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+ bankStatementToExcel:{title:'Bank Statement to Excel',titleHi:'बैंक स्टेटमेंट से Excel',desc:'Extract transaction rows (date, description, amounts) from a bank statement PDF into an XLSX file.',descHi:'बैंक स्टेटमेंट PDF से लेनदेन (तारीख, विवरण, राशि) निकालकर XLSX फाइल बनाएं।',icon:'🏦',accept:'application/pdf',multiple:false,button:'Convert Statement to Excel',buttonHi:'स्टेटमेंट को Excel में बदलें',hint:'PDF bank/passbook statement',hintHi:'PDF बैंक/पासबुक स्टेटमेंट',isNew:true},
+ pdfToPpt:{title:'PDF to PowerPoint',titleHi:'PDF से PowerPoint',desc:'Turn every PDF page into a slide in a downloadable PPTX presentation.',descHi:'हर PDF पन्ने को PPTX प्रेजेंटेशन की एक स्लाइड बनाएं।',icon:'📽️',accept:'application/pdf',multiple:false,button:'Convert PDF to PPTX',buttonHi:'PDF से PPTX बनाएं',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
+ pptToPdf:{title:'PowerPoint to PDF',titleHi:'PowerPoint से PDF',desc:'Convert a PPTX presentation\'s text and images into a PDF, one slide per page.',descHi:'PPTX प्रेजेंटेशन के टेक्स्ट और इमेज को PDF में बदलें, हर स्लाइड एक पेज।',icon:'📤',accept:'.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation',multiple:false,button:'Convert PPTX to PDF',buttonHi:'PPTX से PDF बनाएं',hint:'PPTX only — complex animations/designs are not preserved',hintHi:'सिर्फ PPTX — एनिमेशन/डिज़ाइन पूरी तरह नहीं आते',isNew:true},
   pdfToText:{title:'PDF to Text',titleHi:'PDF से Text',desc:'Extract readable text from PDF pages and save it as a TXT file.',descHi:'PDF pages से readable text निकालकर TXT फाइल बनाएं।',icon:'🔤',accept:'application/pdf',multiple:false,button:'Extract Text',buttonHi:'Text निकालें',hint:'PDF only',hintHi:'सिर्फ PDF',isNew:true},
  ageCalculator:{title:'Age Calculator',titleHi:'आयु कैलकुलेटर',desc:'Find exact age or gap between two dates in years, months and days.',descHi:'जन्म तिथि से सटीक उम्र या दो तारीखों के बीच का अंतर साल, महीने, दिन में निकालें।',icon:'📅',accept:'',multiple:false,button:'Calculate Age',buttonHi:'उम्र निकालें',hint:'No file needed — just pick a date',hintHi:'फाइल की ज़रूरत नहीं — बस तारीख चुनें',isNew:true},
  passportPhoto:{title:'Passport Size Photo Maker',titleHi:'पासपोर्ट साइज़ फोटो मेकर',desc:'Crop any photo to standard 3.5×4.5 cm passport size and get a print-ready sheet as PDF/JPG.',descHi:'किसी भी फोटो को 3.5x4.5 cm पासपोर्ट साइज़ में क्रॉप करें और प्रिंट-रेडी शीट PDF/JPG में पाएं।',icon:'🆔',accept:'image/png,image/jpeg,image/webp',multiple:false,button:'Make Passport Photo Sheet',buttonHi:'पासपोर्ट फोटो शीट बनाएं',hint:'JPG / PNG / WEBP photo',hintHi:'JPG / PNG / WEBP फोटो',isNew:true},
@@ -1301,6 +1307,7 @@ function validFile(file){
   if(currentTool==='wordToPdf')return /\.docx$/i.test(file.name);
   if(currentTool==='excelToPdf')return /\.(xlsx|xls)$/i.test(file.name);
   if(currentTool==='imageConvert'||currentTool==='imageCompress'||currentTool==='imageCrop'||currentTool==='removeBg'||currentTool==='qrScanner')return /^image\/(jpeg|png|webp)$/i.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name);
+  if(currentTool==='pptToPdf')return /\.pptx$/i.test(file.name)||/presentationml/i.test(file.type);
   return file.type==='application/pdf'||/\.pdf$/i.test(file.name);
 }
 function addFiles(files){const valid=files.filter(validFile);if(!valid.length)return toast('Choose a valid file for this tool.');selectedFiles=tools[currentTool].multiple?[...selectedFiles,...valid]:[valid[0]];renderFiles();updateButton();clearResult();if(currentTool==='photoEditor')setTimeout(updatePhotoEditorPreview,20);if(currentTool==='pdfEditorPro')setTimeout(editorProLoadFile,20);if(currentTool==='imageCrop')setTimeout(initImageCropPreview,20);if(currentTool==='removeBg')setTimeout(updateRemoveBgPreview,20);if(currentTool==='compressPdf')setTimeout(initCompressPreview,20);if(currentTool==='basicVideoEditor')setTimeout(()=>window.renderOptions?.(),30);}
@@ -1388,7 +1395,7 @@ async function processFiles(){
       case'pdfEditorPro':await pdfEditorPro();break;case'wordToPdf':await wordToPdf();break;case'excelToPdf':await excelToPdf();break;
       case'signPdf':await signPdf();break;case'protectPdf':await protectPdf();break;case'unlockPdf':await unlockPdf();break;case'watermarkPdf':await watermarkPdf();break;
       case'addBlankPage':await addBlankPage();break;case'extractImages':await extractImages();break;case'pdfRepair':await pdfRepair();break;case'compressPdf':await compressPdf();break;
-      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToWord':await pdfToWord();break;case'pdfToExcel':await pdfToExcel();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'resumeBuilder':await resumeBuilderTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
+      case'deletePages':await deletePagesTool();break;case'imageConvert':await imageConvertTool();break;case'imageCompress':await imageCompressTool();break;case'imageResize':await imageResizeTool();break;case'imageUpscale':await imageUpscaleTool();break;case'imageGrayscale':await imageGrayscaleTool();break;case'removeBg':await removeBgTool();break;case'imageCrop':await imageCropTool();break;case'pdfCrop':await pdfCropTool();break;case'pdfGrayscale':await pdfGrayscaleTool();break;case'pdfToWord':await pdfToWord();break;case'pdfToExcel':await pdfToExcel();break;case'bankStatementToExcel':await bankStatementToExcel();break;case'pdfToPpt':await pdfToPpt();break;case'pptToPdf':await pptToPdf();break;case'pdfToText':await pdfToTextTool();break;case'wordEditor':await exportWordEditor();break;case'passportPhoto':await passportPhotoTool();break;case'idCardFormat':await idCardFormatTool();break;case'a4Binder':await a4BinderTool();break;case'invoiceGenerator':await invoiceGeneratorTool();break;case'resumeBuilder':await resumeBuilderTool();break;case'ageCalculator':case'lengthConverter':case'weightConverter':case'temperatureConverter':case'currencyConverter':case'areaConverter':case'timeConverter':case'speedConverter':case'dataTransferConverter':case'numberToWords':case'romanNumerals':case'qrGenerator':case'qrScanner':case'passwordGenerator':case'myIp':case'passwordStrength':case'urlEncoder':case'htmlEntities':case'hashGenerator':case'stopwatchTimer':case'diceRoller':await simpleFeatureProcess();break;
     }
   }catch(e){console.error(e);toast('Processing error: '+(e.message||'Unknown error'));}
   finally{processing=false;$('processSpinner').classList.add('hidden');updateButton();}
@@ -2100,6 +2107,188 @@ async function pdfGrayscaleTool(){if(!pdfjs)throw new Error('PDF engine has not 
 async function extractPdfPlainText(file){if(!pdfjs)throw new Error('PDF engine is still loading.');const doc=await pdfjs.getDocument({data:await file.arrayBuffer()}).promise;let pages=[];for(let n=1;n<=doc.numPages;n++){const page=await doc.getPage(n),c=await page.getTextContent();pages.push(c.items.map(x=>x.str).join(' ').replace(/\s+/g,' ').trim());}return pages;}
 async function pdfToWord(){const pages=await extractPdfPlainText(selectedFiles[0]);const html='<!doctype html><html><head><meta charset="utf-8"></head><body>'+pages.map((x,i)=>`<h2>Page ${i+1}</h2><p>${esc2(x)}</p>`).join('')+'</body></html>';downloadBlob(new Blob([html],{type:'application/msword'}),'pdf-to-word.doc','Download Word File');showResult('PDF converted to a Word-compatible DOC file.');}
 async function pdfToExcel(){const pages=await extractPdfPlainText(selectedFiles[0]);const rows=[['Page','Text'],...pages.map((x,i)=>[i+1,x])];const ws=XLSX.utils.aoa_to_sheet(rows);ws['!cols']=[{wch:10},{wch:100}];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'PDF Text');const out=XLSX.write(wb,{bookType:'xlsx',type:'array'});downloadBlob(new Blob([out],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),'pdf-to-excel.xlsx','Download Excel File');showResult('PDF converted to an XLSX worksheet.');}
+
+/* ---------- Bank Statement to Excel ----------
+   Groups PDF text items into visual lines (by Y position), then heuristically
+   splits each transaction line into Date / Description / up to 3 amount columns
+   using a leading-date pattern and trailing numeric-amount patterns. Bank
+   statement layouts vary a lot, so this is best-effort — the sheet always
+   includes every extracted line so nothing is silently dropped. */
+async function extractPdfLines(file){
+  if(!pdfjs)throw new Error('PDF engine has not loaded yet.');
+  const doc=await pdfjs.getDocument({data:await file.arrayBuffer()}).promise;
+  const pagesLines=[];
+  for(let n=1;n<=doc.numPages;n++){
+    const page=await doc.getPage(n),tc=await page.getTextContent();
+    const rows={};
+    tc.items.forEach(it=>{
+      if(!it.str||!it.str.trim())return;
+      const y=Math.round((it.transform&&it.transform[5]||0)/2)*2;
+      (rows[y]=rows[y]||[]).push({x:(it.transform&&it.transform[4])||0,str:it.str});
+    });
+    const ys=Object.keys(rows).map(Number).sort((a,b)=>b-a);
+    pagesLines.push(ys.map(y=>rows[y].sort((a,b)=>a.x-b.x).map(t=>t.str).join(' ').replace(/\s+/g,' ').trim()).filter(Boolean));
+  }
+  return pagesLines;
+}
+async function bankStatementToExcel(){
+  const pagesLines=await extractPdfLines(selectedFiles[0]);
+  const allLines=pagesLines.flat();
+  const dateRe=/^(\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4}|\d{1,2}\s+[A-Za-z]{3,9},?\s+\d{2,4}|\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})\b/;
+  const amtRe=/-?\d{1,3}(?:,\d{2,3})*(?:\.\d{1,2})?/g;
+  const rows=[['Date','Description','Amount 1','Amount 2','Amount 3']];
+  let txCount=0;
+  allLines.forEach(line=>{
+    const dm=line.match(dateRe);
+    if(!dm)return;
+    const date=dm[0].trim();
+    const rest=line.slice(dm[0].length).trim();
+    const found=(rest.match(amtRe)||[]).filter(a=>/\d/.test(a)&&a.replace(/[-,.]/g,'').length<=12);
+    const amounts=found.slice(-3);
+    let desc=rest;
+    [...amounts].reverse().forEach(a=>{
+      const idx=desc.lastIndexOf(a);
+      if(idx!==-1)desc=(desc.slice(0,idx)+' '+desc.slice(idx+a.length)).trim();
+    });
+    desc=desc.replace(/\s+/g,' ').trim();
+    rows.push([date,desc||rest,amounts[0]||'',amounts[1]||'',amounts[2]||'']);
+    txCount++;
+  });
+  if(!txCount){
+    rows.length=1;rows[0]=['Extracted Line'];
+    allLines.forEach(l=>rows.push([l]));
+  }
+  const ws=XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols']=txCount?[{wch:12},{wch:55},{wch:14},{wch:14},{wch:14}]:[{wch:100}];
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Bank Statement');
+  const out=XLSX.write(wb,{bookType:'xlsx',type:'array'});
+  downloadBlob(new Blob([out],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),'bank-statement.xlsx','Download Excel File');
+  showResult(txCount
+    ? (siteLang==='hi'?`${txCount} लेनदेन Excel में निकाले गए। कृपया Amount कॉलम एक बार जांच लें, अलग-अलग बैंकों का फॉर्मेट अलग होता है।`:`${txCount} transaction rows extracted to Excel. Please double-check the amount columns — bank statement layouts vary.`)
+    : (siteLang==='hi'?'लेनदेन अपने आप पहचान नहीं पाए — सभी लाइनें Excel में डाल दी गई हैं।':'Could not auto-detect transaction rows — every extracted line was exported instead so you can review it.'));
+}
+
+/* ---------- PDF to PowerPoint ----------
+   Renders every PDF page to an image and places it full-bleed on its own
+   slide. Keeps 100% visual fidelity to the source PDF (text stays exactly
+   as designed) at the cost of the slide text not being separately editable. */
+async function pdfToPpt(){
+  if(!pdfjs)throw new Error('PDF engine has not loaded yet.');
+  if(typeof PptxGenJS==='undefined')throw new Error('Presentation engine did not load. Check your connection and try again.');
+  const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;
+  const pptx=new PptxGenJS();
+  const slideW=13.33,slideH=7.5;
+  pptx.defineLayout({name:'DUDI_WIDE',width:slideW,height:slideH});
+  pptx.layout='DUDI_WIDE';
+  for(let n=1;n<=pdf.numPages;n++){
+    setProgress(n-1,pdf.numPages,`Page ${n} is rendering…`);
+    const page=await pdf.getPage(n),vp=page.getViewport({scale:2}),c=document.createElement('canvas');
+    c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);
+    await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+    const data=c.toDataURL('image/jpeg',.92);
+    const imgRatio=vp.width/vp.height,slideRatio=slideW/slideH;
+    let w,h;if(imgRatio>slideRatio){w=slideW;h=slideW/imgRatio;}else{h=slideH;w=slideH*imgRatio;}
+    const slide=pptx.addSlide();
+    slide.background={color:'FFFFFF'};
+    slide.addImage({data,x:(slideW-w)/2,y:(slideH-h)/2,w,h});
+    await idle();
+    setProgress(n,pdf.numPages,`Slide ${n} is ready`);
+  }
+  const blob=await pptx.write('blob');
+  downloadBlob(blob,'pdf-to-presentation.pptx','Download PPTX');
+  showResult(siteLang==='hi'?`${pdf.numPages} स्लाइड बनाई गईं — हर स्लाइड PDF पेज की इमेज है।`:`${pdf.numPages} slides created — each slide is an image of the original PDF page.`);
+}
+
+/* ---------- PowerPoint to PDF ----------
+   PPTX is a ZIP of OOXML. This unzips it, reads each slide's XML (text runs
+   in reading order, title vs body via placeholder type) and any embedded
+   images (via the slide's relationship file), then lays them out on a PDF
+   page with jsPDF. This preserves the text content and pictures of the
+   presentation but does not preserve exact visual design, transitions or
+   animations — that requires a full rendering engine no browser tool has. */
+async function pptToPdf(){
+  if(typeof JSZip==='undefined')throw new Error('Presentation engine did not load. Check your connection and try again.');
+  if(!window.jspdf?.jsPDF)throw new Error('PDF engine did not load. Refresh the page and try again.');
+  const {jsPDF}=window.jspdf;
+  const zip=await JSZip.loadAsync(await selectedFiles[0].arrayBuffer());
+  let slideW=12192000,slideH=6858000;
+  const presFile=zip.file('ppt/presentation.xml');
+  if(presFile){
+    const m=(await presFile.async('string')).match(/<p:sldSz[^>]*cx="(\d+)"[^>]*cy="(\d+)"/);
+    if(m){slideW=+m[1];slideH=+m[2];}
+  }
+  const slideFiles=Object.keys(zip.files).filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n))
+    .sort((a,b)=>(+a.match(/slide(\d+)\.xml/)[1])-(+b.match(/slide(\d+)\.xml/)[1]));
+  if(!slideFiles.length)throw new Error('No slides found in this PPTX file.');
+  const pageW=720,pageH=Math.max(400,Math.round(720*(slideH/slideW)));
+  const emu2pt=v=>(v/12700)*(pageW/(slideW/12700));
+  const emu2ptY=v=>(v/12700)*(pageH/(slideH/12700));
+  const parser=new DOMParser();
+  let pdf=null;
+  for(let i=0;i<slideFiles.length;i++){
+    setProgress(i,slideFiles.length,`Slide ${i+1} is being read…`);
+    try{
+      const path=slideFiles[i];
+      const xml=parser.parseFromString(await zip.file(path).async('string'),'application/xml');
+      const relPath='ppt/slides/_rels/'+path.split('/').pop()+'.rels';
+      let rels={};
+      const relFile=zip.file(relPath);
+      if(relFile){
+        const relXml=parser.parseFromString(await relFile.async('string'),'application/xml');
+        [...relXml.getElementsByTagName('Relationship')].forEach(r=>{rels[r.getAttribute('Id')]=r.getAttribute('Target');});
+      }
+      if(!pdf)pdf=new jsPDF({orientation:pageW>pageH?'landscape':'portrait',unit:'pt',format:[pageW,pageH],compress:true});
+      else pdf.addPage([pageW,pageH],pageW>pageH?'landscape':'portrait');
+      pdf.setFillColor(255,255,255);pdf.rect(0,0,pageW,pageH,'F');
+      const shapes=[...xml.getElementsByTagName('p:sp'),...xml.getElementsByTagName('p:pic')]
+        .sort((a,b)=>{const all=[...xml.getElementsByTagName('p:spTree')[0]?.childNodes||[]];return all.indexOf(a)-all.indexOf(b);});
+      let cursorY=40;
+      for(const sh of shapes){
+        try{
+          if(sh.tagName==='p:pic'){
+            const blip=sh.getElementsByTagName('a:blip')[0];
+            const embed=blip?.getAttribute('r:embed');
+            if(!embed||!rels[embed])continue;
+            let target=rels[embed].replace('../','ppt/');
+            if(!target.startsWith('ppt/'))target='ppt/media/'+target.split('/').pop();
+            const mediaFile=zip.file(target);
+            if(!mediaFile)continue;
+            const extRaw=(target.split('.').pop()||'png').toLowerCase();
+            if(!['png','jpg','jpeg'].includes(extRaw))continue;
+            const base64=await mediaFile.async('base64');
+            const fmt=extRaw==='png'?'PNG':'JPEG';
+            const mime=extRaw==='jpg'?'jpeg':extRaw;
+            let x=40,y=cursorY,w=pageW-80,h=200;
+            const xfrm=sh.getElementsByTagName('a:off')[0],ext2=sh.getElementsByTagName('a:ext')[0];
+            if(xfrm&&ext2){
+              x=emu2pt(+xfrm.getAttribute('x'));y=emu2ptY(+xfrm.getAttribute('y'));
+              w=emu2pt(+ext2.getAttribute('cx'));h=emu2ptY(+ext2.getAttribute('cy'));
+            }
+            pdf.addImage('data:image/'+mime+';base64,'+base64,fmt,x,y,w,h,undefined,'FAST');
+          }else{
+            const paras=[...sh.getElementsByTagName('a:p')].map(p=>[...p.getElementsByTagName('a:t')].map(t=>t.textContent).join('')).filter(t=>t.trim());
+            if(!paras.length)continue;
+            const ph=sh.getElementsByTagName('p:ph')[0];
+            const isTitle=ph&&(ph.getAttribute('type')==='title'||ph.getAttribute('type')==='ctrTitle');
+            pdf.setFont('helvetica',isTitle?'bold':'normal');
+            pdf.setFontSize(isTitle?22:13);
+            paras.forEach(t=>{
+              pdf.splitTextToSize(t,pageW-80).forEach(line=>{
+                if(cursorY<pageH-24){pdf.text(line,40,cursorY);cursorY+=isTitle?26:18;}
+              });
+            });
+            cursorY+=10;
+          }
+        }catch(shapeErr){console.warn('Skipped one slide element:',shapeErr);}
+      }
+    }catch(slideErr){console.warn('Skipped a slide:',slideErr);}
+    await idle();
+    setProgress(i+1,slideFiles.length,`Slide ${i+1} converted`);
+  }
+  if(!pdf)throw new Error('Could not read any slides from this file.');
+  downloadBlob(pdf.output('blob'),'presentation-to-pdf.pdf','Download PDF');
+  showResult(siteLang==='hi'?`${slideFiles.length} स्लाइड PDF में बदली गईं। टेक्स्ट और इमेज आती हैं; जटिल डिज़ाइन/एनिमेशन पूरी तरह नहीं आते।`:`${slideFiles.length} slides converted to PDF. Text and images carry over — complex slide designs and animations are not preserved.`);
+}
 async function pdfToTextTool(){if(!pdfjs)throw new Error('PDF engine has not loaded yet.');const pdf=await pdfjs.getDocument({data:await selectedFiles[0].arrayBuffer()}).promise;let all='';for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),tc=await page.getTextContent();all+=`--- Page ${n} ---\\n`+tc.items.map(x=>x.str).join(' ')+'\\n\\n';}downloadBlob(new Blob([all],{type:'text/plain;charset=utf-8'}),'extracted-text.txt','Download TXT');showResult(siteLang==='hi'?'PDF text निकाल लिया गया।':'PDF text extracted.');}
 
 /* ---------- New: Word Document Editor Pro ---------- */
@@ -2262,7 +2451,28 @@ function initEditorProControls(){
     catch(e){toast('Could not load the image.');}
   };
   const c=$('editorCanvas');
-  if(c){c.onmousedown=editorProPointerDown;c.onmousemove=editorProPointerMove;c.onmouseup=editorProPointerUp;c.onmouseleave=editorProPointerUp;c.ontouchstart=editorProPointerDown;c.ontouchmove=editorProPointerMove;c.ontouchend=editorProPointerUp;}
+  if(c){
+    c.onmousedown=editorProPointerDown;c.onmousemove=editorProPointerMove;c.onmouseup=editorProPointerUp;c.onmouseleave=editorProPointerUp;
+    c.ontouchstart=editorProPointerDown;c.ontouchmove=editorProPointerMove;c.ontouchend=editorProPointerUp;
+    /* Drag an image file straight onto the page — drops it exactly where released. */
+    c.ondragover=e=>{e.preventDefault();e.stopPropagation();c.classList.add('editor-canvas-drop');};
+    c.ondragleave=e=>{e.preventDefault();e.stopPropagation();c.classList.remove('editor-canvas-drop');};
+    c.ondrop=async e=>{
+      e.preventDefault();e.stopPropagation();c.classList.remove('editor-canvas-drop');
+      const f=e.dataTransfer?.files?.[0];
+      if(!f||!/^image\/(png|jpeg|webp)$/i.test(f.type)){toast(siteLang==='hi'?'सिर्फ PNG/JPG इमेज ड्रैग करें।':'Drag a PNG or JPG image here.');return;}
+      try{
+        const el=await loadImage(f);editorProImageEl=el;
+        const w=150,h=Math.max(10,Math.round(w*((el.naturalHeight/el.naturalWidth)||0.6)));
+        const drop=editorProPoint(e),pdf=editorProToPdfXY(drop.x,drop.y);
+        editorProSetMode('image');
+        if($('imageWidth'))$('imageWidth').value=w;if($('imageHeight'))$('imageHeight').value=h;
+        if($('imageX'))$('imageX').value=Math.round(pdf.x-w/2);if($('imageY'))$('imageY').value=Math.round(pdf.y-h/2);
+        editorProRedraw();
+        toast(siteLang==='hi'?'इमेज पेज पर जोड़ी गई — अभी X/Y से एडजस्ट करें।':'Image dropped on the page — fine-tune with X/Y if needed.');
+      }catch(err){toast(siteLang==='hi'?'इमेज लोड नहीं हो सकी।':'Could not load that image.');}
+    };
+  }
   editorProSetMode('text');
   if(editorProBaseCanvas)editorProRenderExisting();
 }
@@ -2817,7 +3027,7 @@ window.slideFeatures=function(dir){const s=document.getElementById('featureSlide
 /* Search box above the home banner: searches every real tool. */
 function allToolMatches(q){
   q=String(q||'').toLowerCase().trim();if(!q)return[];
-  const aliases={jpgToPdf:'jpg image convert pdf',pdfToJpg:'pdf image jpg',mergePdf:'combine join pdf',splitPdf:'divide pages pdf',ocrConverter:'ocr text scan',pdfEditorPro:'edit pdf',compressPdf:'compress reduce size',removeBg:'background remove',passportPhoto:'passport photo',idCardFormat:'id card',a4Binder:'a4 images',invoiceGenerator:'invoice bill',qrGenerator:'qr code',qrScanner:'scan qr'};
+  const aliases={jpgToPdf:'jpg image convert pdf',pdfToJpg:'pdf image jpg',mergePdf:'combine join pdf',splitPdf:'divide pages pdf',ocrConverter:'ocr text scan',pdfEditorPro:'edit pdf',compressPdf:'compress reduce size',removeBg:'background remove',passportPhoto:'passport photo',idCardFormat:'id card',a4Binder:'a4 images',invoiceGenerator:'invoice bill',qrGenerator:'qr code',qrScanner:'scan qr',bankStatementToExcel:'bank statement passbook excel transactions',pdfToPpt:'pdf powerpoint ppt slides',pptToPdf:'powerpoint ppt pdf slides'};
   return Object.keys(tools).map(k=>({k,t:tools[k],score:(T(tools[k],'title')+' '+T(tools[k],'desc')+' '+(aliases[k]||k)).toLowerCase().includes(q)?3:0})).filter(x=>x.score).sort((a,b)=>a.t.title.length-b.t.title.length).slice(0,8);
 }
 function renderSearchResults(q,container,emptyText){
@@ -3113,18 +3323,34 @@ body.dark-mode .text-slate-600{color:#cbd5e1!important}
     return deviceFileLimit() === MOBILE_LIMIT ? '50 MB' : '500 MB';
   }
   function showUploadWarning(file){
-    const msg = (siteLang==='hi')
-      ? `⚠️ ${file.name} बहुत बड़ी है (${bytes(file.size)}). इस डिवाइस पर अधिकतम ${fileLimitText()} की फाइल ही अपलोड की जा सकती है। फाइल को चुना नहीं गया।`
-      : `⚠️ ${file.name} is too large (${bytes(file.size)}). On this device the maximum allowed file size is ${fileLimitText()}. The file was not added.`;
-    toast(msg);
+    const hi=siteLang==='hi';
+    const msg = hi
+      ? `${file.name} बहुत बड़ी है (${bytes(file.size)}). इस डिवाइस पर अधिकतम ${fileLimitText()} की फाइल ही अपलोड की जा सकती है।`
+      : `${file.name} is too large (${bytes(file.size)}). On this device the maximum allowed file size is ${fileLimitText()}.`;
+    toast('⚠️ '+msg);
     const dz=$('dropZone');
     if(dz){
       let w=document.getElementById('dudiUploadWarning');
       if(!w){w=document.createElement('div');w.id='dudiUploadWarning';w.className='dudi-upload-warning';dz.appendChild(w);}
-      w.textContent=msg;
+      w.textContent='⚠️ '+msg;
       clearTimeout(window.__dudiUploadWarningTimer);
       window.__dudiUploadWarningTimer=setTimeout(()=>w.remove(),5000);
     }
+    /* Real popup dialog, not just a toast/banner. */
+    let m=document.getElementById('dudiSizeErrorModal');
+    if(!m){
+      m=document.createElement('div');
+      m.id='dudiSizeErrorModal';
+      m.className='dudi-share-modal';
+      m.innerHTML='<div class="dudi-share-card"><div class="text-4xl">🚫</div><h3 id="dudiSizeErrorTitle"></h3><p id="dudiSizeErrorMsg"></p><button id="dudiSizeErrorOkBtn" type="button">OK</button></div>';
+      document.body.appendChild(m);
+      $('dudiSizeErrorOkBtn').onclick=()=>m.classList.remove('show');
+      m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show');});
+    }
+    $('dudiSizeErrorTitle').textContent=hi?'फ़ाइल बहुत बड़ी है':'File too large';
+    $('dudiSizeErrorMsg').textContent=msg+(hi?' फाइल को चुना नहीं गया।':' The file was not added.');
+    $('dudiSizeErrorOkBtn').textContent=hi?'ठीक है':'OK';
+    m.classList.add('show');
   }
 
   /* Replace only addFiles; all existing processing functions remain unchanged. */
@@ -4172,5 +4398,59 @@ else setTimeout(initV2,20);
   document.addEventListener('click',function(e){var el=e.target.closest?.('[onclick]');if(!el)return;var code=el.getAttribute('onclick')||'';if(code.indexOf('openAiPdfSummary(')!==-1)openRestrictedToolAd();},true);
   document.addEventListener('click',function(e){var b=e.target.closest?.('#aiSummaryAskBtn');if(b&&!b.dataset.dudiAdDone){b.dataset.dudiAdDone='1';openRestrictedToolAd();}},true);
   /* Global click ads, notification auto-loader, and vignette-on-home-return are intentionally disabled. */
+})();
+</script>
+
+<style>
+  /* ---------- "Magic" button click ripple ---------- */
+  .dudi-ripple{position:fixed;z-index:99999;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.85) 0%,rgba(239,68,68,.55) 45%,rgba(239,68,68,0) 72%);transform:translate(-50%,-50%) scale(0);animation:dudiRippleGo .55s ease-out forwards}
+  @keyframes dudiRippleGo{0%{transform:translate(-50%,-50%) scale(0);opacity:.9}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+  /* ---------- "Magic" light-wave sweep on file upload ---------- */
+  #dropZone{position:relative;overflow:hidden}
+  .dudi-lightwave{position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.85) 48%,rgba(239,68,68,.35) 52%,transparent 70%);background-size:250% 100%;background-position:150% 0;opacity:0;z-index:5}
+  .dudi-lightwave.dudi-lightwave-go{animation:dudiWaveGo .9s ease-out forwards}
+  @keyframes dudiWaveGo{0%{opacity:1;background-position:150% 0}100%{opacity:0;background-position:-50% 0}}
+  @media(prefers-reduced-motion:reduce){.dudi-ripple,.dudi-lightwave.dudi-lightwave-go{animation:none!important}}
+</style>
+<script>
+(function(){
+  'use strict';
+  /* Ripple on any real button / clickable action element, site-wide. */
+  function spawnRipple(x,y,size){
+    var r=document.createElement('div');
+    r.className='dudi-ripple';
+    r.style.left=x+'px';r.style.top=y+'px';r.style.width=size+'px';r.style.height=size+'px';
+    document.body.appendChild(r);
+    r.addEventListener('animationend',function(){r.remove();});
+    setTimeout(function(){r.remove();},700);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest && e.target.closest('button, .tool-card, [role="button"], a.dudi-lang-option, .feature-pill');
+    if(!el)return;
+    var rect=el.getBoundingClientRect();
+    var size=Math.max(rect.width,rect.height)*1.6;
+    spawnRipple(e.clientX||rect.left+rect.width/2,e.clientY||rect.top+rect.height/2,size);
+  },true);
+
+  /* Light-wave sweep across the drop zone whenever a file is successfully added. */
+  function fireLightWave(){
+    var dz=document.getElementById('dropZone');if(!dz)return;
+    var w=dz.querySelector('.dudi-lightwave');
+    if(!w){w=document.createElement('div');w.className='dudi-lightwave';dz.appendChild(w);}
+    w.classList.remove('dudi-lightwave-go');
+    void w.offsetWidth; /* restart animation */
+    w.classList.add('dudi-lightwave-go');
+  }
+  var originalAddFiles2=window.addFiles;
+  if(typeof originalAddFiles2==='function'){
+    window.addFiles=function(files){
+      var before=(window.selectedFiles||[]).length;
+      var result=originalAddFiles2.apply(this,arguments);
+      setTimeout(function(){
+        if((window.selectedFiles||[]).length>before)fireLightWave();
+      },0);
+      return result;
+    };
+  }
 })();
 </script>

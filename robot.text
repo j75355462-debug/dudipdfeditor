@@ -1,7 +1,38 @@
 User-agent: *
 Allow: /
 
-# Custom rules for AI and LLM Crawlers
+# Chat Apps & Social Media Link Preview Bots (WhatsApp, Telegram, etc.)
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# Global AI & LLM Crawlers (OpenAI, Anthropic, Perplexity, etc.)
 User-agent: GPTBot
 Allow: /
 
@@ -14,8 +45,59 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
-# Link to your sitemap
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Tech Giants AI Crawlers (Apple, Amazon, Microsoft)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MSNBot
+Allow: /
+
+# Russian & European AI & Search Crawlers (Yandex & Partners)
+User-agent: Yandex
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: YandexAdditional
+Allow: /
+
+User-agent: YandexMobileBot
+Allow: /
+
+User-agent: YandexDirect
+Allow: /
+
+# Chinese & Asian AI & Search Crawlers (Baidu, TikTok/ByteDance)
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-render
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Universal Sitemap Link
 Sitemap: https://dudipdfeditor.in

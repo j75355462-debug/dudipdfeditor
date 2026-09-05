@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Custom rules for AI and LLM Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Link to your sitemap
+Sitemap: https://dudipdfeditor.in
